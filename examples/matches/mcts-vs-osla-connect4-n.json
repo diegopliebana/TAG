@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "game": {"name": "connect4", "parameters": {"width": 7, "height": 6, "winning_length": 4}},
+  "players": [
+    {"name": "ucb1", "agent": {"type": "mcts", "config_file": "../mcts/basic.json"}},
+    {"name": "osla", "agent": {"type": "osla"}}
+  ],
+  "games": 20,
+  "seed": null,
+  "positions": "rotate",
+  "reporting": {"format": "summary", "path": "results/match.json", "include_actions": true}
+}

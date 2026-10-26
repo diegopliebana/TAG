@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rust TAG - presentation review</title>
+  <link rel="stylesheet" href="presentation/style.css">
+</head>
+<body data-theme="dark">
+<main>
+  <header class="page-header"><div><p class="eyebrow">RUST TAG / PRESENTATION REVIEW</p><h1>A seat at the table.</h1><p>Two games. Existing CC0 artwork. A preview of movement and sound.</p></div><a href="index.html">Open playable bridge</a></header>
+  <section class="toolbar" aria-label="Preview settings">
+    <button id="setup-open" type="button">Setup layout</button>
+    <label>Sample<select id="scene" disabled></select></label>
+    <label>Theme<select id="theme"><option value="light">Light table</option><option value="dark" selected>Dark table</option></select></label>
+    <label class="check"><input id="reduced" type="checkbox">Reduced motion</label>
+    <label class="check"><input id="mute" type="checkbox">Mute</label>
+    <label>Volume<input id="volume" type="range" min="0" max="100" value="35" aria-label="Sound volume"></label>
+  </section>
+  <dialog id="setup-preview">
+    <form method="dialog">
+      <p class="eyebrow">SETUP LAYOUT / PREVIEW ONLY</p><h2>A new game</h2>
+      <label>Game<select id="setup-game"><option value="tictactoe">Tic-Tac-Toe</option><option value="connect4">Connect 4</option></select></label>
+      <div class="setup-seats"><label>Player 0<select><option>Human</option><option>First Available</option><option>Random</option><option>OSLA</option></select></label><label>Player 1<select><option>OSLA</option><option>Human</option><option>First Available</option><option>Random</option></select></label><label>Player 1 seed<input type="text" value="7"></label></div>
+      <details><summary>Change game parameters</summary><div id="setup-parameters"></div></details>
+      <div class="sample-controls"><button value="close">Close preview</button><button type="button" disabled>Start game</button></div>
+    </form>
+  </dialog>
+  <p id="status" class="status" role="status" aria-live="polite">Loading the engine and candidate assets...</p>
+  <div class="table-layout">
+    <section class="game-panel" aria-label="Game preview">
+      <div class="game-header"><div><p class="eyebrow" id="game-name">BOARD PREVIEW</p><h2 id="position-title">Preparing sample positions</h2></div><span class="pill" id="result">Preparing</span></div>
+      <div id="players" class="players"></div>
+      <div id="board" class="board-scroll"></div>
+      <div class="sample-controls"><button id="initial" disabled>Initial</button><button id="middle" disabled>Ongoing</button><button id="finished" disabled>Finished</button><button id="play" class="primary" disabled>Play sample</button><button id="step" disabled>Next sample move</button></div>
+      <p class="caption" id="position-details"></p>
+    </section>
+    <aside>
+      <section class="side-panel"><p class="eyebrow">SAMPLE MOVE LIST</p><h2>How this position unfolded</h2><ol id="moves"></ol><p class="caption">These are fixed preview sequences executed by the Rust engine.</p></section>
+      <section class="side-panel"><p class="eyebrow">LATER INTERFACE</p><h2>Room for game review</h2><p>Branch selection, forks and save/load will use this space in their upcoming stages.</p></section>
+    </aside>
+  </div>
+  <section class="sound-panel"><div><p class="eyebrow">LISTEN AND COMPARE</p><h2>Short cues for game moments</h2><p id="audio-status" role="status">Sounds play after you press a button.</p></div><div id="sounds" class="sound-buttons"></div></section>
+  <footer><p>Candidate presentation for review. Artwork and audio are copied unchanged from Kenney CC0 packs; the interface arranges those assets.</p><a href="assets/README.md">Asset provenance and maintenance</a></footer>
+</main>
+<script type="module" src="presentation/app.js"></script>
+</body></html>

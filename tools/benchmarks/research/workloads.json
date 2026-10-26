@@ -1,0 +1,102 @@
+{
+  "profiles": [
+    {
+      "game": "tictactoe",
+      "players": 2,
+      "fixture": "initial position"
+    },
+    {
+      "game": "connect4",
+      "players": 2,
+      "fixture": "initial position"
+    },
+    {
+      "game": "cantstop",
+      "players": 2,
+      "fixture": "seeded allocation phase"
+    },
+    {
+      "game": "cantstop",
+      "players": 3,
+      "fixture": "seeded allocation phase"
+    },
+    {
+      "game": "cantstop",
+      "players": 4,
+      "fixture": "seeded allocation phase"
+    },
+    {
+      "game": "loveletter",
+      "players": 2,
+      "fixture": "initial position"
+    },
+    {
+      "game": "loveletter",
+      "players": 3,
+      "fixture": "initial position"
+    },
+    {
+      "game": "loveletter",
+      "players": 4,
+      "fixture": "initial position"
+    }
+  ],
+  "operations": {
+    "control": "Loop/black_box or volatile sink control; do not subtract blindly.",
+    "init": "Construct rules state and run setup; parameter/model construction excluded.",
+    "copy": "Rust exact state clone; Java public full-state copy, which branches future chance RNGs and includes framework bookkeeping.",
+    "observe": "Owned permitted observation in Rust; player copy in Java.",
+    "actions": "Available actions on the prepared state.",
+    "offered": "Rust offered actions from a previously prepared observation.",
+    "transition": "Clone prepared state, then apply its first legal action; clone is INCLUDED.",
+    "query": "Next player/current actor, player result and score queries.",
+    "fork": "Rust observation-derived simulation fork; Java player copy/determinization. Semantics differ in stochastic games.",
+    "encode": "Rust permitted metadata/action/mask encoding with no named numeric payloads; full arrays measured through Python separately.",
+    "save": "Extract sufficient state data and serialize JSON; not a complete session file.",
+    "load": "Deserialize sufficient state JSON and validate/restore state.",
+    "first": "Rust FirstAvailableAgent; Java first-list-element baseline, not an added Java agent implementation.",
+    "random": "Select a prepared choice with the agent RNG.",
+    "osla": "Construct seeded OSLA and choose; Java includes player-copy input creation; heuristics/ties differ.",
+    "mcts": "Search at 32 iterations, rollout limit 4; algorithms/heuristics differ. Not a language ratio.",
+    "game": "Complete Random games through the uniform agent interface: actions from live state, observation/player-copy construction and actual Random agent selection in both engines. Blocks cover 32 fixed agent seeds (seed..seed+31). Includes setup; rule/trajectory differences remain.",
+    "retain_states": "Retain 1, 128 or 2048 exact prepared-state copies; sample initialized process baseline and loaded process.",
+    "game_direct": "Diagnostic full games with direct uniform index choice, omitting observation construction in both engines. Same 32-seed cycle as game; not the normal agent interface.",
+    "game_aligned": "Two-player Love Letter game with both winning-token targets set to six through Java's public parameter; otherwise the normal game path.",
+    "game_aligned_direct": "Aligned six-token Love Letter with direct choice and no observation construction.",
+    "validate": "Prepared legal-list enumeration and membership check; not every internal game validation instruction in isolation.",
+    "apply": "Checked in-place transition on inputs copied before each block timer; includes legality checks and automatic rule consequences.",
+    "apply_control": "Clock/loop floor for the prepared transition harness, 1000 blocks of 32 calls; never subtracted.",
+    "history_copy": "Love Letter retained current/last-round public/private knowledge buffers in Rust, action/text history lists in Java; differing contents and copy depth."
+  },
+  "comparison_classes": {
+    "matched_recorded_board_corpus": "Existing validated 32 complete games per placement game, all recorded prefixes; same terminal boards/results/actions verified before timing.",
+    "equivalent_initial_board_api": "Both placement games at the same empty default board: init/copy/observe/actions/transition/query/first/random. Includes public API/storage differences; RNG implementations differ.",
+    "semantic_difference": "Stochastic rules/knowledge/trajectories and OSLA/MCTS algorithms differ. Ratios, where shown, describe measured implementations/fixtures and are not equal-work language multipliers.",
+    "rust_only": "Numeric encoding, persistence, Python transfer/grouping, portable models, external neural evaluation and browser-adapter workloads; no equivalent Java adapter/model implementation is assumed."
+  },
+  "agent_coverage": {
+    "first_available": "All profiles; native and native browser-adapter probes.",
+    "random": "All profiles; prepared decisions and complete games.",
+    "osla": "Deterministic native placement OSLA; R=1 sampled native OSLA for stochastic games. Public Java OSLA measured separately.",
+    "external_osla": "Both placement games: Rust heuristic backend, Python heuristic backend, PyTorch observer-value backend, and grouped Python scoring.",
+    "native_mcts": "All profiles in Rust and Java with algorithm differences disclosed; Python and browser-adapter entry points also measured.",
+    "neural_mcts": "All profiles: Python/PyTorch independent trees, and local Rust inference through the native browser adapter. No Java neural baseline.",
+    "local_neural_osla": "Both placement games only; discounted observer-value model is separate from the full-vector MCTS model.",
+    "q_table": "Default Tic-Tac-Toe only, using the bundled test fixture; other games unsupported by this table example."
+  },
+  "measurement_limits": [
+    "Java and Rust seeds do not produce matching stochastic trajectories.",
+    "Cant Stop has approved action/rule differences; Love Letter has different 2-player winning-token threshold and tie/knowledge behavior.",
+    "OSLA heuristics/tie handling and MCTS traversal/expansion/evaluation differ; equal iteration limits are not identical search work.",
+    "The existing Java build/classpath is reused in its disposable writable workspace; the public reference stays untouched.",
+    "No new Java implementation, listener registry, decorator or neural backend is added for a benchmark.",
+    "Low-level probes take resolved integer seeds; run.py supports an integer or auto and records the resolved value.",
+    "Performance fixtures are deliberately seeded; small untrained neural models measure execution, not playing strength.",
+    "Public Java AbstractGameState.copy branches future RNGs using an internally unseeded stream; LoveLetterGameState also has a time-seeded redeterminization RNG. Setup/agent seed 42 does not make those Java search trajectories reproducible. The baseline is preserved; any displayed ratio is an observed fixture ratio, not an equal-work language comparison."
+  ],
+  "adapter_operations": {
+    "fork": "One fork of a separately imported prepared session; preparation/destruction excluded. Five batches of 16 independent sessions per process.",
+    "fork_and_continue": "The same fork plus one accepted First Available move through the native protocol.",
+    "history": "Export/import at actual cursors capped by termination, including controller/history validation."
+  }
+}

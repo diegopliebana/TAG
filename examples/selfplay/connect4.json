@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "game": "connect4",
+  "seed": 42,
+  "cycles": 10,
+  "games_per_cycle": 16,
+  "parallel_games": 4,
+  "search_config_file": "../mcts/neural.json",
+  "model": {"payloads": ["cells"], "hidden_sizes": [64, 64], "value_output": "observer"},
+  "exploration": {"move_policy": "visit_sampling", "temperature": 1.0, "sampling_moves": 10,
+    "root_noise": true, "noise_fraction": 0.25, "noise_alpha": 0.3},
+  "data": {"mode": "replay_buffer", "capacity": 10000, "max_bytes": 268435456},
+  "optimization": {"updates_per_cycle": 64, "batch_size": 64, "learning_rate": 0.001,
+    "policy_weight": 1.0, "value_weight": 1.0},
+  "evaluation": {"enabled": true, "games": 20, "positions": "rotate",
+    "opponent_search": {"schema_version": 1, "rollout_length": 0, "budgets": {"iterations": 64}}},
+  "output": {"model_file": "results/connect4-model.json", "checkpoint_file": "results/connect4-training.pt",
+    "report_file": "results/connect4-results.json"}
+}

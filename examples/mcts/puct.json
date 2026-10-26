@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "seed": 42,
+  "tree_policy": "puct",
+  "tree_depth": 30,
+  "rollout_length": 0,
+  "progressive_bias": {
+    "mode": "tag_blend",
+    "bias_visits": 4,
+    "evaluator": { "name": "uniform_actions" }
+  },
+  "puct_preferences": {
+    "source": "native_softmax",
+    "temperature": 1,
+    "evaluator": {
+      "name": "successor_state",
+      "parameters": {
+        "state_evaluator": { "name": "game_heuristic" }
+      }
+    }
+  },
+  "budgets": { "iterations": 100, "forward_model_calls": 10000 }
+}

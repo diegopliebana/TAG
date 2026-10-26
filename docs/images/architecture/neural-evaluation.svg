@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="603" viewBox="0 0 1240 603" role="img" aria-labelledby="title description">
+<title id="title">Neural MCTS: evaluate and resume</title>
+<desc id="description">Rust retains independent search trees and planning RNGs. Python batches compatible observation requests, evaluates a frozen PyTorch model, then resumes the searches. Each tree has at most one pending request; applying the final action is a separate step.</desc>
+<rect width="1240" height="603" fill="#f6f8fc"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect x="50" y="24" width="340" height="490" rx="18" fill="#eef2f8" stroke="none"/>
+<path d="M220 118 L220 521" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 7"/>
+<rect x="60" y="38" width="320" height="84" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="60" y="34" width="320" height="84" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="76" y="53" width="4" height="46" rx="2" fill="#3669ca" stroke="none"/>
+<text x="93" y="68" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Rust searches</text>
+<text x="93" y="95" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Independent trees + planning RNGs</text>
+<rect x="450" y="24" width="340" height="490" rx="18" fill="#eef2f8" stroke="none"/>
+<path d="M620 118 L620 521" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 7"/>
+<rect x="460" y="38" width="320" height="84" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="460" y="34" width="320" height="84" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="476" y="53" width="4" height="46" rx="2" fill="#7656b5" stroke="none"/>
+<text x="493" y="68" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Python coordinator</text>
+<text x="493" y="95" text-anchor="start" font-size="16" font-weight="400" fill="#526780">MctsBatch / owned request arrays</text>
+<rect x="850" y="24" width="340" height="490" rx="18" fill="#eef2f8" stroke="none"/>
+<path d="M1020 118 L1020 521" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 7"/>
+<rect x="860" y="38" width="320" height="84" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="860" y="34" width="320" height="84" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="876" y="53" width="4" height="46" rx="2" fill="#148579" stroke="none"/>
+<text x="893" y="68" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">PyTorch model</text>
+<text x="893" y="95" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Frozen policy/value network</text>
+<rect x="236" y="140" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="420" y="160" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Observation requests</text>
+<path d="M220 173 L620 173" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 173 L610.996 177.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 173 L610.996 168.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="420" y="196" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">one pending request per tree</text>
+<rect x="636" y="223" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="820" y="243" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Evaluate compatible batch</text>
+<path d="M620 256 L1020 256" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M1020 256 L1011 260.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M1020 256 L1011 251.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="820" y="279" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">observations + legal action mapping</text>
+<rect x="636" y="306" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="820" y="326" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Policy / player values</text>
+<path d="M1020 339 L620 339" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 339 L629.004 334.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 339 L629.004 343.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="820" y="362" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">explicit requested player perspectives</text>
+<rect x="236" y="389" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="420" y="409" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Validate replies + resume</text>
+<path d="M620 422 L220 422" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M220 422 L229.004 417.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M220 422 L229.004 426.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="420" y="445" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">Rust updates tree statistics</text>
+<rect x="236" y="472" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="420" y="492" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Actions + search reports</text>
+<path d="M220 505 L620 505" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 505 L610.996 509.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 505 L610.996 500.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="420" y="528" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">the real game is still unchanged</text>
+<path d="M44 542 L1196 542" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round"/>
+<text x="44" y="573" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Repeat request / evaluation / resume until the budget ends, then apply the selected action separately.</text>
+</g>
+</svg>

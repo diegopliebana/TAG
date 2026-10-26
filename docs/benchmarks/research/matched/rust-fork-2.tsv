@@ -1,0 +1,63 @@
+﻿rust	debug_assertions=false	passes=500
+corpus	ttt	games=32	prefixes=221	available_actions=1318
+warmup	ttt	init	passes=739750
+sample	rust	ttt	init	1	16000	41.663
+sample	rust	ttt	init	2	16000	52.987
+sample	rust	ttt	init	3	16000	42.281
+sample	rust	ttt	init	4	16000	41.869
+sample	rust	ttt	init	5	16000	41.775
+warmup	ttt	actions	passes=51070
+sample	rust	ttt	actions	1	110500	88.820
+sample	rust	ttt	actions	2	110500	86.323
+sample	rust	ttt	actions	3	110500	86.021
+sample	rust	ttt	actions	4	110500	88.061
+sample	rust	ttt	actions	5	110500	88.304
+warmup	ttt	copy	passes=162390
+sample	rust	ttt	copy	1	110500	61.132
+sample	rust	ttt	copy	2	110500	35.012
+sample	rust	ttt	copy	3	110500	28.839
+sample	rust	ttt	copy	4	110500	26.282
+sample	rust	ttt	copy	5	110500	35.946
+warmup	ttt	transition	passes=36400
+sample	rust	ttt	transition	1	110500	86.991
+sample	rust	ttt	transition	2	110500	77.556
+sample	rust	ttt	transition	3	110500	103.209
+sample	rust	ttt	transition	4	110500	67.732
+sample	rust	ttt	transition	5	110500	59.719
+warmup	ttt	replay	passes=23480
+sample	rust	ttt	replay	1	16000	1087.281
+sample	rust	ttt	replay	2	16000	1095.794
+sample	rust	ttt	replay	3	16000	1528.075
+sample	rust	ttt	replay	4	16000	1308.175
+sample	rust	ttt	replay	5	16000	1518.525
+corpus	c4	games=32	prefixes=648	available_actions=4381
+warmup	c4	init	passes=529260
+sample	rust	c4	init	1	16000	48.775
+sample	rust	c4	init	2	16000	47.144
+sample	rust	c4	init	3	16000	48.675
+sample	rust	c4	init	4	16000	46.725
+sample	rust	c4	init	5	16000	47.044
+warmup	c4	actions	passes=11850
+sample	rust	c4	actions	1	324000	88.753
+sample	rust	c4	actions	2	324000	81.319
+sample	rust	c4	actions	3	324000	97.275
+sample	rust	c4	actions	4	324000	86.915
+sample	rust	c4	actions	5	324000	95.483
+warmup	c4	copy	passes=31420
+sample	rust	c4	copy	1	324000	58.847
+sample	rust	c4	copy	2	324000	55.372
+sample	rust	c4	copy	3	324000	42.752
+sample	rust	c4	copy	4	324000	60.189
+sample	rust	c4	copy	5	324000	59.585
+warmup	c4	transition	passes=1570
+sample	rust	c4	transition	1	324000	814.138
+sample	rust	c4	transition	2	324000	752.424
+sample	rust	c4	transition	3	324000	799.620
+sample	rust	c4	transition	4	324000	720.267
+sample	rust	c4	transition	5	324000	641.552
+warmup	c4	replay	passes=1890
+sample	rust	c4	replay	1	16000	16769.819
+sample	rust	c4	replay	2	16000	15105.506
+sample	rust	c4	replay	3	16000	15863.119
+sample	rust	c4	replay	4	16000	19684.094
+sample	rust	c4	replay	5	16000	20108.700

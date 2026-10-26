@@ -1,0 +1,351 @@
+{
+  "kind": "tag-replay",
+  "versions": {
+    "format": 1,
+    "game": "connect4",
+    "rules": 1,
+    "agents": 1,
+    "evaluators": 1,
+    "rng": "chacha8-rand_chacha-0.9.0-rand_core-0.9.5"
+  },
+  "parameters": {
+    "width": 7,
+    "height": 6,
+    "winning_length": 4,
+    "limits": {
+      "max_cells": 1000000
+    }
+  },
+  "initial_state": {
+    "cells": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "current_player": 0,
+    "counters": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "outcome": {
+      "kind": "ongoing"
+    },
+    "winning_cells": []
+  },
+  "branches": [
+    {
+      "id": 0,
+      "parent": null,
+      "parent_position": 0,
+      "controllers": [
+        {
+          "kind": "osla",
+          "rng": {
+            "version": 1,
+            "initial_seed": "7",
+            "stream": "0",
+            "word_position": "0"
+          }
+        },
+        {
+          "kind": "osla",
+          "rng": {
+            "version": 1,
+            "initial_seed": "8",
+            "stream": "0",
+            "word_position": "0"
+          }
+        }
+      ],
+      "moves": [
+        {
+          "actor": 0,
+          "action": {
+            "column": 3
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "osla",
+            "rng": {
+              "version": 1,
+              "initial_seed": "7",
+              "stream": "0",
+              "word_position": "0"
+            }
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 3
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "osla",
+            "rng": {
+              "version": 1,
+              "initial_seed": "8",
+              "stream": "0",
+              "word_position": "0"
+            }
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "column": 2
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "osla",
+            "rng": {
+              "version": 1,
+              "initial_seed": "7",
+              "stream": "0",
+              "word_position": "2"
+            }
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 3
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "osla",
+            "rng": {
+              "version": 1,
+              "initial_seed": "8",
+              "stream": "0",
+              "word_position": "2"
+            }
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "column": 3
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "osla",
+            "rng": {
+              "version": 1,
+              "initial_seed": "7",
+              "stream": "0",
+              "word_position": "4"
+            }
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 2
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "osla",
+            "rng": {
+              "version": 1,
+              "initial_seed": "8",
+              "stream": "0",
+              "word_position": "2"
+            }
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "column": 1
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "osla",
+            "rng": {
+              "version": 1,
+              "initial_seed": "7",
+              "stream": "0",
+              "word_position": "6"
+            }
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 2
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "osla",
+            "rng": {
+              "version": 1,
+              "initial_seed": "8",
+              "stream": "0",
+              "word_position": "2"
+            }
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "column": 4
+          },
+          "next_player": null,
+          "controller_after": {
+            "kind": "osla",
+            "rng": {
+              "version": 1,
+              "initial_seed": "7",
+              "stream": "0",
+              "word_position": "8"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "parent": 0,
+      "parent_position": 2,
+      "controllers": [
+        {
+          "kind": "human"
+        },
+        {
+          "kind": "osla",
+          "rng": {
+            "version": 1,
+            "initial_seed": "8",
+            "stream": "0",
+            "word_position": "0"
+          }
+        }
+      ],
+      "moves": [
+        {
+          "actor": 0,
+          "action": {
+            "column": 0
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 3
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "osla",
+            "rng": {
+              "version": 1,
+              "initial_seed": "8",
+              "stream": "0",
+              "word_position": "0"
+            }
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "column": 0
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 3
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "osla",
+            "rng": {
+              "version": 1,
+              "initial_seed": "8",
+              "stream": "0",
+              "word_position": "0"
+            }
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "column": 0
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 3
+          },
+          "next_player": null,
+          "controller_after": {
+            "kind": "osla",
+            "rng": {
+              "version": 1,
+              "initial_seed": "8",
+              "stream": "0",
+              "word_position": "0"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "selected_branch": 1,
+  "cursor": 2,
+  "delay_ms": 250
+}

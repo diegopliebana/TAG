@@ -1,0 +1,7 @@
+# Publisher assets and licence notices must retain their recorded bytes.
+/web/assets/games/** -text
+/web/assets/shared/** -text
+/web/assets/licences/** -text
+
+# PDF cross-reference tables contain byte offsets and required record spacing.
+/docs/images/architecture/*.pdf binary

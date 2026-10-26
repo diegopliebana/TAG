@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "game": {"name": "connect4"},
+  "players": [
+    {"name": "neural-puct", "agent": {
+      "type": "neural_mcts",
+      "config_file": "../mcts/neural.json",
+      "model_file": "../selfplay/results/connect4-model.json"
+    }},
+    {"name": "osla", "agent": {"type": "osla"}}
+  ],
+  "games": 2,
+  "seed": 42,
+  "reporting": {"format": "json", "path": "results/neural-connect4.json", "include_actions": true}
+}

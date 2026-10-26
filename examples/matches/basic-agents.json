@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "game": {"name": "tictactoe"},
+  "players": [
+    {"name": "first", "agent": {"type": "first_available"}},
+    {"name": "random", "agent": {"type": "random"}}
+  ],
+  "games": 2,
+  "positions": "rotate",
+  "seed": 42
+}

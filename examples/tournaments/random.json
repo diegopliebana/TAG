@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "agents": [
+    {"name": "random", "agent": {"type": "random"}},
+    {"name": "osla", "agent": {"type": "osla"}},
+    {"name": "puct", "agent": {"type": "mcts", "config_file": "../mcts/puct.json"}}
+  ],
+  "games": [
+    {"id": "tictactoe", "name": "tictactoe"},
+    {"id": "connect4", "name": "connect4"}
+  ],
+  "mode": "random",
+  "matchups": 5,
+  "seat_allocation": "permutations",
+  "allow_self_play": false,
+  "ranking_metric": "win_rate",
+  "seed": 42,
+  "results_file": "results/random.json",
+  "game_logs": {
+    "mode": "separate",
+    "directory": "results/random-game-logs"
+  }
+}

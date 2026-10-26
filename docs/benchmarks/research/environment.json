@@ -1,0 +1,140 @@
+{
+  "recorded_at_utc": "2026-10-26T10:20:17Z",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+  "logical_cpus": 20,
+  "versions": {
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+    "java": "java version \"21.0.12\" 2026-07-21 LTS\nJava(TM) SE Runtime Environment (build 21.0.12+7-LTS-205)\nJava HotSpot(TM) 64-Bit Server VM (build 21.0.12+7-LTS-205, mixed mode, sharing)",
+    "javac": "javac 21.0.12",
+    "node": "v24.21.0",
+    "power_plan": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+    "python": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+    "packages": {
+      "numpy": "2.5.4",
+      "torch": "2.14.0+cpu",
+      "matplotlib": "3.11.2",
+      "maturin": "1.15.0"
+    }
+  },
+  "java_reference_revision": null,
+  "java_revision_metadata_available": false,
+  "java_source_checks": [
+    {
+      "path": "src/main/java/core/AbstractForwardModel.java",
+      "sha256": "0d19fa12a476fba5f22e7e67922a8ae0bfdc995b8bcc309f9c531e7f889871b0",
+      "disposable_source_matches": true
+    },
+    {
+      "path": "src/main/java/core/AbstractGameState.java",
+      "sha256": "cf27e3c37474f32e9e549565078b5d5ef4f435f54138e2f72614aa9c8c53cf2c",
+      "disposable_source_matches": true
+    },
+    {
+      "path": "src/main/java/players/mcts/MCTSPlayer.java",
+      "sha256": "c3db60f86105df956712d3a11a8d4e64eeef47303eeef3bbf982443cdfabd06f",
+      "disposable_source_matches": true
+    },
+    {
+      "path": "src/main/java/players/mcts/SingleTreeNode.java",
+      "sha256": "61ff3620fc7cfac98f5b5219d975c0ac9cb2787077536323eb558344f2affe1f",
+      "disposable_source_matches": true
+    },
+    {
+      "path": "src/main/java/players/simple/OSLAPlayer.java",
+      "sha256": "4186e354b5b820db76443982c153e0198ac5a51020bdf3e658428b609f66ac9c",
+      "disposable_source_matches": true
+    },
+    {
+      "path": "src/main/java/games/tictactoe/TicTacToeForwardModel.java",
+      "sha256": "32cd26a8830f6276033f2c0cae0d783edb50cd54825876f429ad88eb6952e785",
+      "disposable_source_matches": true
+    },
+    {
+      "path": "src/main/java/games/tictactoe/TicTacToeGameState.java",
+      "sha256": "b3b1467d04911ea580c9211791044205a31c6f4ecf6a41be238ead0b40522128",
+      "disposable_source_matches": true
+    },
+    {
+      "path": "src/main/java/games/connect4/Connect4ForwardModel.java",
+      "sha256": "5f8d923af175cb3e00a0c42d96c26c9aa16cf13e5e6a52a0ecee9bd9655c548c",
+      "disposable_source_matches": true
+    },
+    {
+      "path": "src/main/java/games/connect4/Connect4GameState.java",
+      "sha256": "feeb38fe4e1917521ef50020e0e31bc22eac18674ff4a0a57bc2bce1db38c4ac",
+      "disposable_source_matches": true
+    },
+    {
+      "path": "src/main/java/games/cantstop/CantStopForwardModel.java",
+      "sha256": "6155651d0125630555b6301a08dc0dca66f6be8fdd8d945ae7ea464db3d96e0a",
+      "disposable_source_matches": true
+    },
+    {
+      "path": "src/main/java/games/cantstop/CantStopGameState.java",
+      "sha256": "9caf47a5e3680d44371e31a738d66171a1378c7ca0210aac07a0a9a912f1d13a",
+      "disposable_source_matches": true
+    },
+    {
+      "path": "src/main/java/games/loveletter/LoveLetterForwardModel.java",
+      "sha256": "05d9382a2efee5235ce0e447939caa12cdcc2e925ae6f18a2ddcdadc8871b27a",
+      "disposable_source_matches": true
+    },
+    {
+      "path": "src/main/java/games/loveletter/LoveLetterGameState.java",
+      "sha256": "0f9282f22dc21bf76ab25a8a9de85515e160fccfbe7230f0c97a6959e880b7ff",
+      "disposable_source_matches": true
+    }
+  ],
+  "binaries": {
+    ".scratch/research-bench/minimal-features.exe": {
+      "bytes": 179712,
+      "sha256": "a7285de10bf72d30a0dc794b025407ad75f5528db4b63b67f5331e29b48bc899"
+    },
+    ".scratch/research-bench/optional-features.exe": {
+      "bytes": 184832,
+      "sha256": "aeb0738a7b4deef53cda7117592a76a32b061e67ca246a32bfc40c56e7bdb7fb"
+    },
+    ".scratch/research-bench/rust-memory.exe": {
+      "bytes": 1412096,
+      "sha256": "5f39edfebbfb9496c58d34aef42d6720f7629a78515f47c4c16c82b824affba0"
+    },
+    ".scratch/research-bench/rust-timing.exe": {
+      "bytes": 1375232,
+      "sha256": "ea9c5afd1d3a2908d6ca814c013feb4d78bc362d09bf7be052870637f0e358c3"
+    },
+    "target/release/examples/research_adapter.exe": {
+      "bytes": 4264448,
+      "sha256": "3ca8b4bbe8c86a4e405e6e95cede45a9dc5e028a7e313a1c35d08d0f1d25676e"
+    },
+    "target/release/examples/match_play.exe": {
+      "bytes": 1914880,
+      "sha256": "a12912556f7f26e33647c75695d1a2dbd5847176b08aec709aa7ce8e904a2b8e"
+    },
+    "target/release/examples/tournament.exe": {
+      "bytes": 2087424,
+      "sha256": "8f6251c9cc37111739cdd9a4e780fe38d7c212c15464e2aa8deb62c56cff0f7a"
+    },
+    "adapters/python/python/tag_rust/_engine.cp314-win_amd64.pyd": {
+      "bytes": 2677760,
+      "sha256": "1c0ae5a715e92a7244d036d22221602e0071ce02fb8682653d4363b893277639"
+    },
+    "target/release/examples/java_comparison_measure.exe": {
+      "bytes": 225792,
+      "sha256": "55b683f38c8868baffba4b838e112300a1236b8b2c70ca3f52eb64fe251f510e"
+    }
+  },
+  "rust_revision": "3c20859f7bce7f2f419fbddaf95ab37eb6101ffa",
+  "working_tree_dirty": true,
+  "seed": 42,
+  "primary_timing_processes": 720,
+  "workflow_timing_processes": 1026,
+  "workflow_allocation_processes": 326,
+  "collection_order": "Sequential phases; alternating engine order across three fresh process repetitions",
+  "primary_game_workflow": "Actions from state, own observation/player-copy, actual Random agent choice in both engines; 32 seeded agents cycled in complete blocks",
+  "java_rng_limits": "Reference copy branches internally unseeded chance; Love Letter redeterminization uses current time. No game implementation is modified.",
+  "notes": "Current source hashes identify uncommitted code; do not infer sources solely from Git HEAD. Native browser adapter is a host protocol probe, not browser rendering. Java classes are in a disposable writable copy.",
+  "collection_completed": true,
+  "report_location": "docs/benchmarks/research"
+}

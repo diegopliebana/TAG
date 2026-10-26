@@ -1,0 +1,7 @@
+tag-rust implements tabletop game simulation in Rust with Python integration.
+Public Java TabletopGames (MIT licensed) is a behavioral reference for adapted
+game/framework/search semantics. Its MIT permission and disclaimer are retained
+in LICENSE-MIT. Full per-component origins are recorded in docs/source-notices.md
+in the source distribution/repository. No third-party game artwork is embedded
+in this wheel. Rust dependency licence texts are preserved separately in
+RUST-DEPENDENCY-NOTICES.txt; their terms remain applicable.

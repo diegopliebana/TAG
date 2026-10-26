@@ -1,0 +1,77 @@
+[
+  {
+    "path": "docs/benchmarks/framework-size/data/generated-bindings.json",
+    "bytes": 825,
+    "sha256": "565e79f66689d5e9558fcfa2cb5ad9c97a90d342179e00e545fa8405aa2e6768"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/data/manifest.json",
+    "bytes": 245333,
+    "sha256": "dba19c66e885c40d0f5836817914231e203a2edb6d4ed78aac728ac2999c1ba8"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/data/summary.csv",
+    "bytes": 2758,
+    "sha256": "9843cbfd545f61284477229671e651b3abcbd14f52b9ca8b9a6b0a9fd89f59ba"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/data/summary.json",
+    "bytes": 10287,
+    "sha256": "22b911fb5e997c510c45eb175f14046f5e7acdcc19eabc9236f5ceaa01286eec"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/data/tables.md",
+    "bytes": 3451,
+    "sha256": "1e45d74627e00c4dbbf54b49d13a931ed4ef8bc746319869d9e4959ae0782616"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/data/tests.json",
+    "bytes": 121394,
+    "sha256": "cc525b48def8e26820333c5a9eb11ebf79a1e35a878fd0f83f7f9e0da567bd4b"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/plots/files.pdf",
+    "bytes": 18247,
+    "sha256": "d227aca9a4351cf8d6386088e9370214a5998b0cb21f94f21bc903808cacbc28"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/plots/files.png",
+    "bytes": 68843,
+    "sha256": "4bce815db8d01c0d3ae8e4f6659a2fa9be51af5de91404fc54294264f5714e24"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/plots/files.svg",
+    "bytes": 17735,
+    "sha256": "6266879bc0a61aece25f62a8af20ed2a8562b9e6feebe324bb9bcd02ef40b74c"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/plots/source-components.pdf",
+    "bytes": 18228,
+    "sha256": "02e304dcffc86ac163e6c5a404928b4db82247f5087e727c8fa38770b8cfe3d2"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/plots/source-components.png",
+    "bytes": 49797,
+    "sha256": "027c8e712bb24a01ed466c064216b745544e5338281c3f708264b6a3e7ee663a"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/plots/source-components.svg",
+    "bytes": 12535,
+    "sha256": "6b9a12c9169e9198528def02f1d774c467efcf55dbfd6167e235036352dac703"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/plots/source-languages.pdf",
+    "bytes": 16658,
+    "sha256": "fc8c81595ce1d3f487171ad577580be1113463040e6e372c2a5c2a171b9530c8"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/plots/source-languages.png",
+    "bytes": 37629,
+    "sha256": "c01d8dba53013443916542434ea915835ea45b99cb90a6f07d734c00d133be74"
+  },
+  {
+    "path": "docs/benchmarks/framework-size/plots/source-languages.svg",
+    "bytes": 12938,
+    "sha256": "e88568aa7bd7efbcbef631e2af67d3e6ae4b1abe336af8e3c24199ccc35393df"
+  }
+]

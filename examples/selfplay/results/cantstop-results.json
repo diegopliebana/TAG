@@ -1,0 +1,460 @@
+{
+  "format": "tag-mcts-selfplay-results",
+  "version": 1,
+  "algorithm": "mcts-selfplay",
+  "seed_derivation_version": 2,
+  "master_seed": 42,
+  "completed_cycles": 1,
+  "next_game_id": 3,
+  "updates": 8,
+  "initial_identity": "1251176f3734228b565ace3012c6bd68cb368256be3ff8a41cf95e9608381c47",
+  "settings": {
+    "schema_version": 1,
+    "game": "cantstop",
+    "parameters": {},
+    "players": 3,
+    "seed": 42,
+    "cycles": 2,
+    "games_per_cycle": 3,
+    "parallel_games": 3,
+    "search": {
+      "budgets": {
+        "forward_model_calls": null,
+        "iterations": 8,
+        "time_ms": null
+      },
+      "expansion": {
+        "order": "random"
+      },
+      "exploration_constant": 1.4142135623730951,
+      "final_selection": {
+        "policy": "most_visits"
+      },
+      "limits": {
+        "max_actions_per_decision": 4096,
+        "max_edges": 1000000,
+        "max_nodes": 100000,
+        "max_request_bytes": 67108864
+      },
+      "progressive_bias": {
+        "mode": "none"
+      },
+      "puct_preferences": {
+        "evaluator": {
+          "name": "network_policy",
+          "parameters": {}
+        },
+        "source": "probabilities"
+      },
+      "rollout": {
+        "policy": "random"
+      },
+      "rollout_length": 0,
+      "schema_version": 1,
+      "search_mode": "open_loop",
+      "seed": null,
+      "state_evaluator": {
+        "name": "network_value",
+        "parameters": {}
+      },
+      "tree_depth": 100,
+      "tree_policy": "puct",
+      "value_completion": "require_full_vector"
+    },
+    "model": {
+      "payloads": [
+        "permanent",
+        "temporary",
+        "owners",
+        "dice",
+        "context"
+      ],
+      "hidden_sizes": [
+        32,
+        32
+      ],
+      "value_output": "players",
+      "value_players": null,
+      "value_binding": "network_value",
+      "policy_binding": "network_policy",
+      "value_observers": null
+    },
+    "exploration": {
+      "move_policy": "visit_sampling",
+      "temperature": 1.0,
+      "sampling_moves": null,
+      "root_noise": true,
+      "noise_fraction": 0.25,
+      "noise_alpha": 0.3
+    },
+    "data": {
+      "mode": "replay_buffer",
+      "capacity": 10000,
+      "max_bytes": 268435456
+    },
+    "optimization": {
+      "updates_per_cycle": 8,
+      "batch_size": 16,
+      "learning_rate": 0.001,
+      "policy_weight": 1.0,
+      "value_weight": 1.0
+    },
+    "evaluation": {
+      "enabled": false,
+      "games": 20,
+      "positions": "rotate",
+      "candidate_seat": null,
+      "opponent_search": {
+        "budgets": {
+          "forward_model_calls": null,
+          "iterations": 64,
+          "time_ms": null
+        },
+        "expansion": {
+          "order": "random"
+        },
+        "exploration_constant": 1.4142135623730951,
+        "final_selection": {
+          "policy": "most_visits"
+        },
+        "limits": {
+          "max_actions_per_decision": 4096,
+          "max_edges": 1000000,
+          "max_nodes": 100000,
+          "max_request_bytes": 67108864
+        },
+        "progressive_bias": {
+          "mode": "none"
+        },
+        "puct_preferences": {
+          "source": "uniform"
+        },
+        "rollout": {
+          "policy": "random"
+        },
+        "rollout_length": 0,
+        "schema_version": 1,
+        "search_mode": "open_loop",
+        "seed": null,
+        "state_evaluator": {
+          "name": "game_heuristic",
+          "parameters": {}
+        },
+        "tree_depth": 100,
+        "tree_policy": "ucb1",
+        "value_completion": "require_full_vector"
+      }
+    },
+    "limits": {
+      "max_moves": 4096,
+      "max_cells": 4096,
+      "max_collection_positions": 100000,
+      "max_collection_bytes": 268435456,
+      "max_group_rows": 4096,
+      "max_request_bytes": 67108864,
+      "max_checkpoint_bytes": 536870912,
+      "max_model_parameters": 10000000,
+      "threads": 1
+    },
+    "output": {
+      "model_file": "C:\\Research\\TAG\\tag-rust\\examples\\selfplay\\results\\cantstop-model.json",
+      "checkpoint_file": "C:\\Research\\TAG\\tag-rust\\examples\\selfplay\\results\\cantstop-training.pt",
+      "report_file": "C:\\Research\\TAG\\tag-rust\\examples\\selfplay\\results\\cantstop-results.json"
+    }
+  },
+  "model_context": {
+    "observers": [
+      0,
+      1,
+      2
+    ],
+    "turn_context": "own_turn"
+  },
+  "history": [
+    {
+      "cycle": 1,
+      "before_identity": "1251176f3734228b565ace3012c6bd68cb368256be3ff8a41cf95e9608381c47",
+      "model_identity": "fb70b3d43e3db4c8c8bf2dabbd7d9d837674e1e1ff389d040a696a5388a0e204",
+      "first_game_id": 0,
+      "next_game_id": 3,
+      "updates": 8,
+      "games": [
+        {
+          "game_id": 0,
+          "outcomes": [
+            3,
+            3,
+            1
+          ],
+          "moves": 215,
+          "game_seed": 16813839899447826188
+        },
+        {
+          "game_id": 1,
+          "outcomes": [
+            3,
+            3,
+            1
+          ],
+          "moves": 282,
+          "game_seed": 11611866683536480430
+        },
+        {
+          "game_id": 2,
+          "outcomes": [
+            1,
+            3,
+            3
+          ],
+          "moves": 237,
+          "game_seed": 2454464094705458455
+        }
+      ],
+      "collection": {
+        "positions": 734,
+        "numeric_bytes": 1337394,
+        "inference_calls": 4735,
+        "inference_rows": 11714,
+        "max_batch_rows": 3,
+        "inference_ms": 3195.3945991699584,
+        "search_counters": {
+          "action_evaluations": 5878,
+          "completed_iterations": 5872,
+          "forward_model_calls": 11720,
+          "state_copies": 6606,
+          "state_evaluations": 5836
+        },
+        "generation_ms": 5359.576499962714
+      },
+      "optimization": [
+        {
+          "update": 1,
+          "policy_loss": 0.505341649055481,
+          "value_loss": 1.0975066423416138,
+          "loss": 1.6028482913970947,
+          "sample_indices": [
+            524,
+            295,
+            565,
+            342,
+            494,
+            487,
+            163,
+            357,
+            526,
+            124,
+            488,
+            355,
+            239,
+            507,
+            87,
+            74
+          ]
+        },
+        {
+          "update": 2,
+          "policy_loss": 0.5559223294258118,
+          "value_loss": 0.9779164791107178,
+          "loss": 1.5338387489318848,
+          "sample_indices": [
+            297,
+            733,
+            13,
+            311,
+            527,
+            461,
+            245,
+            542,
+            19,
+            34,
+            310,
+            177,
+            112,
+            283,
+            559,
+            728
+          ]
+        },
+        {
+          "update": 3,
+          "policy_loss": 0.57868891954422,
+          "value_loss": 0.8808689713478088,
+          "loss": 1.4595578908920288,
+          "sample_indices": [
+            407,
+            687,
+            542,
+            501,
+            185,
+            159,
+            226,
+            639,
+            65,
+            387,
+            330,
+            221,
+            602,
+            289,
+            235,
+            510
+          ]
+        },
+        {
+          "update": 4,
+          "policy_loss": 0.5435649752616882,
+          "value_loss": 0.8029138445854187,
+          "loss": 1.346478819847107,
+          "sample_indices": [
+            392,
+            240,
+            520,
+            198,
+            247,
+            528,
+            20,
+            309,
+            404,
+            670,
+            488,
+            293,
+            672,
+            518,
+            247,
+            101
+          ]
+        },
+        {
+          "update": 5,
+          "policy_loss": 0.5680224895477295,
+          "value_loss": 0.7235264182090759,
+          "loss": 1.2915489673614502,
+          "sample_indices": [
+            678,
+            724,
+            118,
+            231,
+            328,
+            622,
+            645,
+            119,
+            460,
+            139,
+            21,
+            616,
+            6,
+            486,
+            390,
+            171
+          ]
+        },
+        {
+          "update": 6,
+          "policy_loss": 0.5328522324562073,
+          "value_loss": 0.6627408862113953,
+          "loss": 1.1955931186676025,
+          "sample_indices": [
+            566,
+            607,
+            99,
+            305,
+            318,
+            564,
+            281,
+            30,
+            366,
+            412,
+            98,
+            706,
+            517,
+            392,
+            79,
+            42
+          ]
+        },
+        {
+          "update": 7,
+          "policy_loss": 0.5069858431816101,
+          "value_loss": 0.632551372051239,
+          "loss": 1.1395372152328491,
+          "sample_indices": [
+            403,
+            577,
+            225,
+            400,
+            204,
+            507,
+            89,
+            576,
+            0,
+            206,
+            421,
+            310,
+            648,
+            650,
+            146,
+            150
+          ]
+        },
+        {
+          "update": 8,
+          "policy_loss": 0.4965890049934387,
+          "value_loss": 0.6040930151939392,
+          "loss": 1.100682020187378,
+          "sample_indices": [
+            155,
+            559,
+            692,
+            364,
+            316,
+            543,
+            688,
+            708,
+            32,
+            669,
+            457,
+            706,
+            309,
+            102,
+            190,
+            453
+          ]
+        }
+      ],
+      "training_ms": 43.9143999828957,
+      "buffer_positions": 734,
+      "buffer_bytes": 1337394,
+      "dropped_positions": 0,
+      "buffer_digest": "90df5070cd80e468bd8dca0f952378094609d513a6ec8bf7f1631a1f378d6f2b",
+      "evaluation": {
+        "enabled": false
+      },
+      "elapsed_ms": 5534.849799994845,
+      "per_seat": [
+        {
+          "games": 3,
+          "wins": 1,
+          "draws": 0,
+          "losses": 2
+        },
+        {
+          "games": 3,
+          "wins": 0,
+          "draws": 0,
+          "losses": 3
+        },
+        {
+          "games": 3,
+          "wins": 2,
+          "draws": 0,
+          "losses": 1
+        }
+      ],
+      "combined": {
+        "games": 9,
+        "wins": 3,
+        "draws": 0,
+        "losses": 6
+      }
+    }
+  ]
+}

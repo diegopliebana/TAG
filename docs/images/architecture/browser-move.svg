@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="603" viewBox="0 0 1240 603" role="img" aria-labelledby="title description">
+<title id="title">A move across the browser boundary</title>
+<desc id="description">A player sends an action through the page to the worker&#x27;s Wasm session. Rust checks its position and applies it. The page displays permitted effects and conditionally shows Love Letter&#x27;s action information screen before continuing.</desc>
+<rect width="1240" height="603" fill="#f6f8fc"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect x="50" y="24" width="340" height="490" rx="18" fill="#eef2f8" stroke="none"/>
+<path d="M220 118 L220 521" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 7"/>
+<rect x="60" y="38" width="320" height="84" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="60" y="34" width="320" height="84" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="76" y="53" width="4" height="46" rx="2" fill="#7656b5" stroke="none"/>
+<text x="93" y="68" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Player</text>
+<text x="93" y="95" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Human input + result review</text>
+<rect x="450" y="24" width="340" height="490" rx="18" fill="#eef2f8" stroke="none"/>
+<path d="M620 118 L620 521" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 7"/>
+<rect x="460" y="38" width="320" height="84" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="460" y="34" width="320" height="84" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="476" y="53" width="4" height="46" rx="2" fill="#3669ca" stroke="none"/>
+<text x="493" y="68" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Page</text>
+<text x="493" y="95" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Main thread / display and input</text>
+<rect x="850" y="24" width="340" height="490" rx="18" fill="#eef2f8" stroke="none"/>
+<path d="M1020 118 L1020 521" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 7"/>
+<rect x="860" y="38" width="320" height="84" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="860" y="34" width="320" height="84" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="876" y="53" width="4" height="46" rx="2" fill="#148579" stroke="none"/>
+<text x="893" y="68" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Worker + Wasm</text>
+<text x="893" y="95" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Rules, session and AI controllers</text>
+<rect x="236" y="140" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="420" y="160" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Choose an action</text>
+<path d="M220 173 L620 173" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 173 L610.996 177.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 173 L610.996 168.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="420" y="196" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">from the displayed legal choices</text>
+<rect x="636" y="223" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="820" y="243" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Versioned command</text>
+<path d="M620 256 L1020 256" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M1020 256 L1011 260.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M1020 256 L1011 251.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="820" y="279" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">Rust checks position and applies move</text>
+<rect x="636" y="306" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="820" y="326" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">View + accepted effects</text>
+<path d="M1020 339 L620 339" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 339 L629.004 334.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 339 L629.004 343.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="820" y="362" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">projected for the chosen observer</text>
+<rect x="236" y="389" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="420" y="409" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Action information</text>
+<path d="M620 422 L220 422" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M220 422 L229.004 417.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M220 422 L229.004 426.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="420" y="445" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">Love Letter screen, when enabled</text>
+<rect x="236" y="472" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="420" y="492" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Continue presentation</text>
+<path d="M220 505 L620 505" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 505 L610.996 509.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 505 L610.996 500.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="420" y="528" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">rules have already resolved the move</text>
+<path d="M44 542 L1196 542" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round"/>
+<text x="44" y="573" text-anchor="start" font-size="16" font-weight="400" fill="#526780">AI path: prepare / poll a proposal, then commit only if current. Reveal mode changes presentation only.</text>
+</g>
+</svg>

@@ -1,0 +1,28 @@
+﻿Tic-Tac-Toe 3: 7 accepted moves
+  forward navigation (cache limit 4): 0.004 ms
+  backward navigation (cache limit 4): 0.003 ms
+  backward navigation (cache limit 64): 0.003 ms
+  100000 independent state copies: 3.607 ms
+  100 first-available games (700 moves): 0.195 ms
+  100 OSLA initial decisions (9 candidates each): 0.341 ms
+Tic-Tac-Toe 32: 993 accepted moves
+  forward navigation (cache limit 4): 73.075 ms
+  backward navigation (cache limit 4): 123.437 ms
+  backward navigation (cache limit 64): 72.585 ms
+  100000 independent state copies: 5.310 ms
+  100 first-available games (99300 moves): 1078.191 ms
+  100 OSLA initial decisions (1024 candidates each): 2060.576 ms
+Connect 4 standard: 19 accepted moves
+  forward navigation (cache limit 4): 0.077 ms
+  backward navigation (cache limit 4): 0.074 ms
+  backward navigation (cache limit 64): 0.073 ms
+  100000 independent state copies: 5.426 ms
+  100 first-available games (1900 moves): 1.385 ms
+  100 OSLA initial decisions (7 candidates each): 1.585 ms
+Connect 4 32x32 target32: 993 accepted moves
+  forward navigation (cache limit 4): 95.637 ms
+  backward navigation (cache limit 4): 186.124 ms
+  backward navigation (cache limit 64): 96.883 ms
+  100000 independent state copies: 23.385 ms
+  100 first-available games (99300 moves): 1217.707 ms
+  100 OSLA initial decisions (32 candidates each): 93.979 ms

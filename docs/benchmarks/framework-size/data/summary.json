@@ -1,0 +1,473 @@
+{
+  "tool_version": "1.0",
+  "groups": [
+    {
+      "category": "Benchmark tools",
+      "language": "JSON",
+      "files": 1,
+      "bytes": 7448,
+      "lines": 102,
+      "blank": 0,
+      "nonblank": 102
+    },
+    {
+      "category": "Benchmark tools",
+      "language": "Java",
+      "files": 5,
+      "bytes": 31388,
+      "lines": 509,
+      "blank": 8,
+      "nonblank": 501
+    },
+    {
+      "category": "Benchmark tools",
+      "language": "Markdown",
+      "files": 5,
+      "bytes": 25020,
+      "lines": 413,
+      "blank": 77,
+      "nonblank": 336
+    },
+    {
+      "category": "Benchmark tools",
+      "language": "PowerShell",
+      "files": 1,
+      "bytes": 2505,
+      "lines": 40,
+      "blank": 3,
+      "nonblank": 37
+    },
+    {
+      "category": "Benchmark tools",
+      "language": "Python",
+      "files": 23,
+      "bytes": 138888,
+      "lines": 2183,
+      "blank": 202,
+      "nonblank": 1981
+    },
+    {
+      "category": "Benchmark tools",
+      "language": "Rust",
+      "files": 3,
+      "bytes": 29916,
+      "lines": 816,
+      "blank": 8,
+      "nonblank": 808
+    },
+    {
+      "category": "Benchmark tools",
+      "language": "TSV",
+      "files": 1,
+      "bytes": 4776,
+      "lines": 65,
+      "blank": 0,
+      "nonblank": 65
+    },
+    {
+      "category": "Browser adapter",
+      "language": "Rust",
+      "files": 14,
+      "bytes": 156152,
+      "lines": 3975,
+      "blank": 49,
+      "nonblank": 3926
+    },
+    {
+      "category": "Browser artwork and audio",
+      "language": "Binary OGG",
+      "files": 6,
+      "bytes": 46599,
+      "lines": 0,
+      "blank": 0,
+      "nonblank": 0
+    },
+    {
+      "category": "Browser artwork and audio",
+      "language": "Binary PNG",
+      "files": 10,
+      "bytes": 123197,
+      "lines": 0,
+      "blank": 0,
+      "nonblank": 0
+    },
+    {
+      "category": "Browser artwork and audio",
+      "language": "JSON",
+      "files": 2,
+      "bytes": 8466,
+      "lines": 214,
+      "blank": 0,
+      "nonblank": 214
+    },
+    {
+      "category": "Browser artwork and audio",
+      "language": "Markdown",
+      "files": 1,
+      "bytes": 3684,
+      "lines": 68,
+      "blank": 16,
+      "nonblank": 52
+    },
+    {
+      "category": "Browser artwork and audio",
+      "language": "SVG",
+      "files": 6,
+      "bytes": 6687,
+      "lines": 49,
+      "blank": 0,
+      "nonblank": 49
+    },
+    {
+      "category": "Browser artwork and audio",
+      "language": "Text",
+      "files": 5,
+      "bytes": 2521,
+      "lines": 90,
+      "blank": 37,
+      "nonblank": 53
+    },
+    {
+      "category": "Browser frontend",
+      "language": "CSS",
+      "files": 2,
+      "bytes": 14277,
+      "lines": 163,
+      "blank": 2,
+      "nonblank": 161
+    },
+    {
+      "category": "Browser frontend",
+      "language": "HTML",
+      "files": 2,
+      "bytes": 11428,
+      "lines": 104,
+      "blank": 0,
+      "nonblank": 104
+    },
+    {
+      "category": "Browser frontend",
+      "language": "JavaScript",
+      "files": 19,
+      "bytes": 119537,
+      "lines": 1797,
+      "blank": 24,
+      "nonblank": 1773
+    },
+    {
+      "category": "Configuration, metadata and other assets",
+      "language": "JSON",
+      "files": 1,
+      "bytes": 83,
+      "lines": 1,
+      "blank": 0,
+      "nonblank": 1
+    },
+    {
+      "category": "Configuration, metadata and other assets",
+      "language": "Lockfile",
+      "files": 2,
+      "bytes": 15645,
+      "lines": 599,
+      "blank": 66,
+      "nonblank": 533
+    },
+    {
+      "category": "Configuration, metadata and other assets",
+      "language": "Markdown",
+      "files": 4,
+      "bytes": 11519,
+      "lines": 207,
+      "blank": 43,
+      "nonblank": 164
+    },
+    {
+      "category": "Configuration, metadata and other assets",
+      "language": "Other text",
+      "files": 2,
+      "bytes": 649,
+      "lines": 25,
+      "blank": 4,
+      "nonblank": 21
+    },
+    {
+      "category": "Configuration, metadata and other assets",
+      "language": "TOML",
+      "files": 4,
+      "bytes": 2787,
+      "lines": 115,
+      "blank": 22,
+      "nonblank": 93
+    },
+    {
+      "category": "Core runtime",
+      "language": "Rust",
+      "files": 94,
+      "bytes": 733534,
+      "lines": 18996,
+      "blank": 475,
+      "nonblank": 18521
+    },
+    {
+      "category": "Development and execution tools",
+      "language": "JavaScript",
+      "files": 2,
+      "bytes": 23054,
+      "lines": 260,
+      "blank": 2,
+      "nonblank": 258
+    },
+    {
+      "category": "Development and execution tools",
+      "language": "Markdown",
+      "files": 1,
+      "bytes": 4635,
+      "lines": 84,
+      "blank": 15,
+      "nonblank": 69
+    },
+    {
+      "category": "Development and execution tools",
+      "language": "PowerShell",
+      "files": 3,
+      "bytes": 2543,
+      "lines": 59,
+      "blank": 4,
+      "nonblank": 55
+    },
+    {
+      "category": "Development and execution tools",
+      "language": "Python",
+      "files": 13,
+      "bytes": 94828,
+      "lines": 1736,
+      "blank": 164,
+      "nonblank": 1572
+    },
+    {
+      "category": "Documentation",
+      "language": "Markdown",
+      "files": 105,
+      "bytes": 805439,
+      "lines": 13718,
+      "blank": 2625,
+      "nonblank": 11093
+    },
+    {
+      "category": "Documentation",
+      "language": "Text",
+      "files": 5,
+      "bytes": 4988,
+      "lines": 102,
+      "blank": 0,
+      "nonblank": 102
+    },
+    {
+      "category": "Documentation exports and measurement data",
+      "language": "Binary PDF",
+      "files": 24,
+      "bytes": 374450,
+      "lines": 0,
+      "blank": 0,
+      "nonblank": 0
+    },
+    {
+      "category": "Documentation exports and measurement data",
+      "language": "Binary PNG",
+      "files": 17,
+      "bytes": 1905267,
+      "lines": 0,
+      "blank": 0,
+      "nonblank": 0
+    },
+    {
+      "category": "Documentation exports and measurement data",
+      "language": "CSV",
+      "files": 3,
+      "bytes": 49852,
+      "lines": 601,
+      "blank": 0,
+      "nonblank": 601
+    },
+    {
+      "category": "Documentation exports and measurement data",
+      "language": "JSON",
+      "files": 29,
+      "bytes": 1410510,
+      "lines": 51785,
+      "blank": 0,
+      "nonblank": 51785
+    },
+    {
+      "category": "Documentation exports and measurement data",
+      "language": "JSON Lines",
+      "files": 11,
+      "bytes": 4191250,
+      "lines": 3263,
+      "blank": 0,
+      "nonblank": 3263
+    },
+    {
+      "category": "Documentation exports and measurement data",
+      "language": "SVG",
+      "files": 26,
+      "bytes": 1313568,
+      "lines": 35400,
+      "blank": 0,
+      "nonblank": 35400
+    },
+    {
+      "category": "Documentation exports and measurement data",
+      "language": "TSV",
+      "files": 14,
+      "bytes": 32331,
+      "lines": 790,
+      "blank": 0,
+      "nonblank": 790
+    },
+    {
+      "category": "Examples and fixtures",
+      "language": "JSON",
+      "files": 33,
+      "bytes": 41112,
+      "lines": 1829,
+      "blank": 0,
+      "nonblank": 1829
+    },
+    {
+      "category": "Examples and fixtures",
+      "language": "Markdown",
+      "files": 1,
+      "bytes": 3256,
+      "lines": 55,
+      "blank": 13,
+      "nonblank": 42
+    },
+    {
+      "category": "Examples and fixtures",
+      "language": "Python",
+      "files": 20,
+      "bytes": 51262,
+      "lines": 976,
+      "blank": 98,
+      "nonblank": 878
+    },
+    {
+      "category": "Examples and fixtures",
+      "language": "Rust",
+      "files": 40,
+      "bytes": 232056,
+      "lines": 6109,
+      "blank": 106,
+      "nonblank": 6003
+    },
+    {
+      "category": "Python adapter and library",
+      "language": "Python",
+      "files": 51,
+      "bytes": 272588,
+      "lines": 5213,
+      "blank": 564,
+      "nonblank": 4649
+    },
+    {
+      "category": "Python adapter and library",
+      "language": "Python interface",
+      "files": 1,
+      "bytes": 5497,
+      "lines": 124,
+      "blank": 17,
+      "nonblank": 107
+    },
+    {
+      "category": "Python adapter and library",
+      "language": "Rust",
+      "files": 16,
+      "bytes": 187694,
+      "lines": 4879,
+      "blank": 138,
+      "nonblank": 4741
+    },
+    {
+      "category": "Tests",
+      "language": "HTML",
+      "files": 3,
+      "bytes": 2357,
+      "lines": 25,
+      "blank": 0,
+      "nonblank": 25
+    },
+    {
+      "category": "Tests",
+      "language": "JSON",
+      "files": 24,
+      "bytes": 1451919,
+      "lines": 24351,
+      "blank": 0,
+      "nonblank": 24351
+    },
+    {
+      "category": "Tests",
+      "language": "JavaScript",
+      "files": 26,
+      "bytes": 158757,
+      "lines": 2229,
+      "blank": 64,
+      "nonblank": 2165
+    },
+    {
+      "category": "Tests",
+      "language": "Markdown",
+      "files": 3,
+      "bytes": 9665,
+      "lines": 159,
+      "blank": 29,
+      "nonblank": 130
+    },
+    {
+      "category": "Tests",
+      "language": "Python",
+      "files": 31,
+      "bytes": 329957,
+      "lines": 5727,
+      "blank": 426,
+      "nonblank": 5301
+    },
+    {
+      "category": "Tests",
+      "language": "Rust",
+      "files": 65,
+      "bytes": 602626,
+      "lines": 16433,
+      "blank": 356,
+      "nonblank": 16077
+    },
+    {
+      "category": "Tests",
+      "language": "TSV",
+      "files": 2,
+      "bytes": 2922846,
+      "lines": 8748,
+      "blank": 0,
+      "nonblank": 8748
+    },
+    {
+      "category": "Training outputs",
+      "language": "Binary PT",
+      "files": 4,
+      "bytes": 28360487,
+      "lines": 0,
+      "blank": 0,
+      "nonblank": 0
+    },
+    {
+      "category": "Training outputs",
+      "language": "JSON",
+      "files": 52,
+      "bytes": 11034501,
+      "lines": 60256,
+      "blank": 0,
+      "nonblank": 60256
+    }
+  ]
+}

@@ -1,0 +1,3514 @@
+{
+  "rust": [
+    {
+      "id": "browser::runtime::history_tests::browser_branch_depth_and_count_limits_reject_before_mutation",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::runtime::history_tests::stored_move_limit_and_oversized_osla_replacement_are_atomic",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::browser_adapter_matches_recorded_native_ai_games_move_by_move",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::cantstop::human_phases_and_chance_recordings_roundtrip_and_reject_tampering_atomically",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::cantstop::malformed_parameters_are_rejected_without_panicking_or_replacing_play",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::cantstop::stochastic_controllers_discard_resume_history_fork_and_reset",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::capabilities::human_runtime_uses_observations_without_public_reconstruction_or_persistence",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::capabilities::standalone_saves_support_non_clone_rules_without_evaluators_or_replay_agents",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::decoding_failures_keep_request_identity_and_typed_session_errors_keep_state",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::discarded_proposals_leave_rng_progress_unchanged_and_cannot_commit_twice",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::files::all_three_exports_restore_positions_controllers_and_exact_continuation",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::files::bad_files_and_limits_fail_atomically_and_file_channel_exceeds_command_capacity",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::files::branch_exports_drop_unused_ancestry_and_preserve_nested_takeover_boundaries",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::files::tournament_mcts_recordings_load_and_allow_navigation_in_the_browser",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::history::historical_views_and_nested_forks_preserve_every_position_and_agent_continuation",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::history::malformed_replacements_and_stale_proposals_cannot_cross_branches",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::learned::learned_proposals_forks_reset_and_self_contained_files_keep_exact_continuation",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::learned::malformed_models_and_bundles_leave_live_game_and_registry_unchanged",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::learned::neural_moves_match_python_traces_for_trained_and_controlled_zero_models",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::loveletter::effect_response_retains_one_participants_private_comparison_until_normal_view_is_requested",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::loveletter::every_native_view_matches_rules_and_switches_directly_between_humans",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::loveletter::private_history_spectator_forks_and_corrupt_files_keep_information_boundaries",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::loveletter::reveal_preserves_prepared_search_rng_and_complete_recordings_for_all_native_policies",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::mcts::native_mcts_yields_and_discard_restores_the_same_decision_in_both_games",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::mcts::neural_mcts_plays_both_heads_and_restores_self_contained_recordings",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::observers_and_malformed_commands_respect_permitted_input_boundaries",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::random::random_cancellation_forks_and_files_restore_exact_decisions_in_both_games",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::random::random_supports_large_boards_without_osla_constraints_and_legacy_files_stay_compatible",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "browser::tests::stale_requests_and_failed_replacements_preserve_live_session",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::checkpoints::checkpoints_preserve_stream_offsets_and_rejection_sampling_progress",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::checkpoints::generator_checkpoints_restore_exact_future_draws_across_buffer_boundaries",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::checkpoints::incompatible_rng_snapshots_are_rejected_instead_of_silently_wrapping",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::action_heuristics_charge_their_successor_transitions_and_preflight_whole_lists",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::cancellation_never_returns_a_selected_move",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::cancelling_after_simulated_actions_preserves_the_original_position",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::checked_in_json_files_load_and_effective_settings_round_trip",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::completion_is_explicit_for_all_players_and_rejects_malformed_outputs",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::deadline_discards_unfinished_expansion_even_at_transition_exhaustion",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::every_native_policy_combination_runs_and_restores_its_independent_evaluators",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::exhaustion_during_tree_replay_finishes_that_iteration_without_expansion",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::explicit_seed_does_not_call_automatic_source_and_native_source_records_its_seed",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::game_specific_terminal_rewards_are_not_replaced_by_win_loss_or_completion",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::internal_transition_error_aborts_search_without_reusing_the_failed_simulation",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::json_defaults_nulls_overrides_and_invalid_combinations_are_checked",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::local_search_drivers_preserve_reports_rng_and_discarded_work",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::native_scalar_outputs_use_the_configured_completion_policy",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::native_search_completes_both_games_in_both_seats",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::native_search_takes_an_immediate_win",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::open_loop_replays_actions_and_keeps_live_source_independent",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::opponent_selection_maximizes_its_own_value_instead_of_minimizing_root_value",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::puct_accepts_all_three_sources_and_rejects_zero_probability_mass",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::resource_limit_is_reported_without_inventing_root_visits",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::root_validation_and_output_limits_reject_invalid_decisions",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::snapshot_restores_next_search_and_resolves_seed_once",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::strict_transition_budget_completes_current_iteration_at_its_current_position",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::terminal_rewards_bypass_an_evaluator_that_would_fail",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::varying_actors_and_legality_do_not_replay_unavailable_actions",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts::zero_rollout_evaluates_expanded_leaf_and_depth_limit_skips_rollouts",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts_external::dropping_a_pending_future_invalidates_its_response_and_checkpoint_is_explicitly_unsupported",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts_external::external_values_match_native_statistics_without_replaying_transitions",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts_external::forward_model_exhaustion_completes_one_pending_iteration_and_cancel_invalidates_it",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts_external::policy_requests_identify_root_and_deeper_nodes_without_using_player_identity",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::mcts_external::waiting_timeouts_discard_expansion_and_replies_require_current_identity",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla::actual_game_observation_and_live_state_are_unchanged_by_planning",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla::empty_input_is_an_error_and_single_choice_is_evaluated",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla::equal_seeds_replay_and_other_agents_do_not_advance_each_others_streams",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla::evaluator_failure_keeps_prior_evaluator_progress_without_selection_draw",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla::finite_extreme_scales_select_correct_maximum",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla::independent_branches_are_evaluated_once_in_original_perspective",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla::nan_and_infinities_fail_instead_of_entering_tie_selection",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla::reconstruction_and_transition_errors_report_stage_and_preserve_rng",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla::tolerance_is_inclusive_and_compared_to_true_maximum_without_chaining",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla_python::candidates_use_independent_states_original_observer_and_bounded_global_selection",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla_python::external_agents_require_values_and_selection_uses_true_maximum_with_atomic_validation",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla_python::invalid_responses_cancellation_duplicate_and_cross_session_handles_preserve_progress",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla_python::native_batch_backends_match_osla_seeded_choices_and_rng_on_both_games",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla_python::open_line_backend_checks_descriptions_batches_and_terminal_perspective",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla_python::open_line_batches_match_native_scores_choices_and_rng",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla_python::ordinary_observation_copy_reset_and_human_input_do_not_require_reconstruction",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::osla_python::settled_copies_reset_and_controller_changes_manage_checkpoints_and_pending_work",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::random::random_headless_and_recorded_matches_agree_for_both_games_and_configured_boards",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::random::random_receives_normal_state_actions_and_preserves_exact_independent_checkpoints",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::randomness::agent_failure_preserves_prior_moves_and_rng_progress_then_resumes",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::randomness::baseline_owns_its_seed_but_does_not_draw_when_choosing",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::randomness::empty_and_single_choice_do_not_advance_rng",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::randomness::seeded_sequence_matches_the_pinned_generator_reference",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::agents::randomness::seeded_streams_are_reproducible_independent_and_bounded",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::components::counters_do_not_impose_turn_or_round_policy",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::components::grid_reports_limits_overflow_and_unrepresentable_allocation",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::components::grid_supports_rectangles_noncopy_cells_ordering_and_independent_snapshots",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::components::optional_single_winner_outcomes_validate_seats_without_assuming_two_players",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::components::ordered_line_helper_resets_at_gaps_and_returns_first_target_cells",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::evaluation::open_line_formula_counts_mixed_and_empty_windows_in_average",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::evaluation::terminal_wins_for_the_second_seat_override_position_estimates",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::evaluation::window_counts_match_independent_rectangle_formula",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::evaluation::windows_cover_four_directions_without_duplicate_single_cells",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::learning::descriptor_metadata_and_malformed_mapping_are_explicit",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::learning::encoded_windows_and_results_reproduce_native_evaluators",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::learning::encoding_is_owned_relative_and_source_observation_stays_unchanged",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::learning::full_columns_keep_stable_ids_and_terminal_draws_have_no_input",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::learning::general_descriptions_need_no_board_or_line_heuristic",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::learning::mapping_masks_and_grid_layout_follow_both_games_and_configurations",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::learning::payload_and_resource_errors_do_not_mutate_observations",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::learning::windows_are_ordered_complete_and_target_one_is_not_duplicated",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::public_simulation::connect4_reconstructs_independent_public_states",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::public_simulation::tictactoe_reconstructs_independent_public_states",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::execution::baseline_rejects_an_empty_action_list",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::execution::empty_offers_and_game_errors_stop_before_agent_or_state_changes",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::execution::first_available_agents_finish_tictactoe_with_expected_outcome",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::execution::generic_runner_follows_three_player_decisions_and_accepts_nonclone_actions",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::execution::human_submission_uses_state_actions_without_constructing_an_observation",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::execution::internal_transition_failure_stops_human_and_ai_sessions_after_partial_mutation",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::execution::invalid_choices_preserve_the_game_and_ongoing_result",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::execution::missing_controller_preserves_already_accepted_moves",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::execution::random_and_first_available_receive_the_same_observation_contract",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::observed::observer_receives_only_accepted_moves_and_their_updated_states",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::osla::baseline_and_osla_can_share_the_runner_in_either_seat",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::osla::osla_evaluator_failure_preserves_the_current_decision_then_resumes_both_games",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::osla::runner_applies_the_immediate_win_even_when_it_is_later_in_the_offer",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::osla::seeded_full_matches_replay_in_both_default_and_configured_games",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::osla::tied_winning_moves_use_the_acting_agents_seed_in_actual_matches",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::two_game_runner::connect4_execution_can_resume_after_a_missing_controller",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::two_game_runner::same_execution_handles_configured_wins_and_draws",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::runners::two_game_runner::unchanged_runner_and_baseline_complete_both_default_games",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::branches::delayed_human_input_is_rejected_after_forking_and_selecting_branches",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::branches::independent_nested_branches_preserve_history_seats_and_exact_ai_progress",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::branches::nested_branch_selection_replays_the_inherited_prefix_once_and_preserves_cache_limits",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::branches::switching_branches_invalidates_pending_proposals",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::execution::human_seats_and_ai_seats_advance_one_move_in_both_games",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::execution::seeded_mixed_ai_sessions_match_headless_execution_in_both_games",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::history::cancelled_stale_and_foreign_ai_proposals_preserve_live_progress",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::history::configurable_cache_limits_preserve_reconstructed_positions",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::history::controller_restoration_copies_only_the_final_snapshot_of_each_seat",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::history::corrupt_records_return_contextual_reconstruction_errors",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::history::every_recorded_position_restores_exact_ai_continuation_in_both_games",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::history::failed_preparation_discards_evaluator_changes_and_leaves_history_empty",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::history::headless_failure_keeps_accepted_records_and_live_agent_progress",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::history::mixed_human_history_restores_each_seats_identity_and_progress",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::history::recording_can_start_from_an_existing_position_and_controller_progress",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::history::recording_resumes_from_current_conditions_and_checks_cache_bound",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::history::restoration_failure_during_preparation_and_commit_preserves_live_game",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::persistence::checked_in_save_examples_load_and_continue_with_new_controllers",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::persistence::every_reachable_small_game_state_passes_independent_state_validation",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::persistence::exported_parameters_must_match_the_state_rules",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::persistence::incorrect_winning_cells_and_play_after_a_terminal_win_are_rejected",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::persistence::malformed_replays_versions_actions_progress_and_limits_are_rejected",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::persistence::replay_and_standalone_states_roundtrip_both_games_and_native_recordings",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::persistence::replay_branch_depth_and_state_work_limits_are_enforced",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::persistence::standalone_state_validation_rejects_gravity_counts_outcomes_and_metadata",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::validation::creation_checks_controllers_and_game_parameters",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::validation::generic_session_supports_three_seats_with_owned_nonclone_actions_and_state",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::validation::invalid_ai_selection_preserves_game_and_reports_the_offered_count",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::validation::invalid_requests_skip_ai_and_agent_failures_allow_resumption",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::validation::mixed_builtin_controller_preserves_osla_failure_context",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::validation::rejected_human_requests_preserve_state_and_position_version",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::core::sessions::validation::views_are_independent_and_terminal_requests_preserve_completion",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::cantstop_search_registries_validate_independent_evaluator_roles_and_budgets",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::decoded_allocations_preserve_constructor_invariants",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::forks_from_nonacting_views_and_terminal_views_preserve_public_facts",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::learning::tests::allocation_stop_bust_and_terminal_masks_follow_decisions_not_seat_alternation",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::learning::tests::descriptors_and_all_80_actions_have_stable_player_count_aware_meanings",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::learning::tests::encoding_limits_names_and_buffer_ownership_are_checked",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::learning::tests::exact_large_positions_and_privileged_rng_independence",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::persistence::tests::portable_positions_preserve_all_phases_and_future_rolls",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::persistence::tests::portable_validation_rejects_inconsistent_facts_and_private_simulation_streams",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::public_api_runner_and_exact_agent_game_continuation",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::sampled_osla_averages_each_action_instead_of_selecting_the_largest_sample",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::sampled_osla_forks_are_diverse_and_restore_both_random_streams",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::stochastic_mcts_samples_new_dice_and_preserves_player_vectors_and_checkpoints",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::stochastic_search_agents_complete_two_three_and_four_player_games",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::all_1296_rolls_match_independent_legality_oracle_on_representative_states",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::approved_heuristic_arithmetic_perspectives_and_extreme_weights",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::chance_stream_domains_and_snapshot_validation",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::claimed_columns_remove_opponents_and_terminal_bank_commits_all_columns",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::complete_seeded_matches_for_all_supported_player_counts",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::completed_columns_are_unavailable_and_same_space_as_opponent_is_allowed",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::compulsory_roll_pairing_order_banking_and_multiaction_turns",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::deterministic_simulation_forks_consume_no_randomness_and_keep_exact_state",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::exact_checkpoints_and_recorded_rolls_reproduce_continuation",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::illegal_input_preserves_position_and_chance_progress",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::marker_limits_and_required_pair_use_match_published_example",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::middle_of_turn_snapshots_preserve_pending_dice_and_random_progress",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::observations_do_not_depend_on_live_rng_and_forks_have_independent_reproducible_dice",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::player_cycles_are_not_implicitly_rounds",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::published_defaults_and_parameter_boundaries",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::cantstop::tests::repeated_sum_near_top_uses_one_step_then_bust_discards_entire_turn",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::evaluation::configured_connect4_prefixes_match_independent_formula_and_terminal_values",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::evaluation::connect4_known_position_counts_diagonal_potential_despite_gravity",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::initialization::default_connect4_initialization_is_empty_and_player_zero_acts",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::initialization::experimental_parameters_support_varied_board_shapes_and_targets",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::initialization::invalid_configurations_fail_before_allocating_the_board",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::java_comparison::recorded_positions_copies_actions_and_winning_lines_match_replays",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::observations::both_observers_see_the_same_facts_but_only_the_actor_has_choices",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::observations::draw_views_and_invalid_queries_preserve_the_state",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::observations::observations_and_their_clones_remain_independent_of_later_moves",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::replays::reproducible_replays_match_independent_rules_across_experimental_shapes",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::tests::observation_clones_own_their_board_and_winning_coordinates",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::tests::ordered_scan_covers_both_seats_all_directions_and_longer_runs",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::tests::simultaneous_lines_select_columns_before_rows_and_diagonal_start_order",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::tests::snapshots_own_board_and_winning_coordinates_independently",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::transitions::all_reachable_three_by_three_positions_match_independent_gravity_and_outcomes",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::transitions::gravity_actions_counters_terminal_timing_and_snapshots",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::transitions::rejected_moves_are_atomic_and_full_columns_disappear",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::connect4::transitions::target_one_wins_immediately_in_rectangles_and_single_cell_boards",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::learning::tests::all_action_ids_specs_masks_and_shapes_have_fixed_meanings",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::learning::tests::complete_games_preserve_history_privacy_terminal_results_and_source_independence",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::learning::tests::exact_numbers_versions_limits_and_owned_buffers_are_checked",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::learning::tests::exchange_and_comparison_values_stay_with_their_audiences_and_perspectives",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::learning::tests::priest_memory_stays_at_its_event_after_a_prince_replacement",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::native_runner_and_agent_checkpoints_preserve_complete_multiplayer_games",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::persistence::tests::controlled_and_shuffled_states_preserve_private_memory_and_exact_future_chance",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::persistence::tests::legacy_round_recipes_import_but_new_exports_contain_only_complete_snapshots",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::persistence::tests::malformed_and_excessive_proofs_fail_before_becoming_states",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::persistence::tests::snapshots_reject_forged_cards_memory_counters_rng_and_extra_fields",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::sampled_osla_and_existing_mcts_finish_games_and_resume_agent_streams",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::simulation_tests::heuristic_uses_only_own_information_and_keeps_shared_terminal_values",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::simulation_tests::initial_hidden_rank_pairs_match_an_independent_multiset_oracle",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::simulation_tests::sampled_rounds_replay_all_observer_knowledge_and_resume_exactly",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::simulation_tests::sampling_failure_is_atomic_and_unknown_removed_cards_vary",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::simulation_tests::search_inputs_and_choices_are_independent_of_the_actual_hidden_world",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::actions_are_complete_portable_and_do_not_prune_guard_guesses",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::countess_is_forced_only_with_prince_or_king_and_never_reveals_the_other_card",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::every_offered_initial_transition_preserves_the_classic_card_multiset",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::exact_snapshots_complete_seeded_games_and_preserve_future_round_chance",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::guard_hits_misses_and_round_elimination_are_distinct_from_game_results",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::inaccessible_worlds_rng_and_other_private_events_do_not_change_permitted_inputs",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::inspection_history_preserves_experiences_across_exchanges_and_replacement",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::internal_overflow_is_reported_without_rolling_back_legal_action_effects",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::invalid_actions_and_observers_leave_state_and_rng_unchanged",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::king_swaps_hands_and_each_participant_remembers_the_exchange",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::last_survivor_wins_without_exposing_their_hand_and_everybody_returns_next_round",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::priest_and_baron_private_experiences_have_exact_audiences",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::prince_replacement_self_target_and_princess_discard",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::protection_expires_at_next_turn_and_no_target_plays_are_explicit",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::public_effects_do_not_reveal_forced_countess_or_comparison_and_exchange_values",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::removed_card_is_consumed_exactly_once_and_not_revealed_until_rules_allow_it",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::selected_classic_deck_setup_domains_and_controlled_chance",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::shared_round_and_game_wins_ignore_discard_totals_and_do_not_create_a_draw",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::loveletter::tests::tied_round_starters_use_reproducible_chance_and_only_tied_winners",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::actions_are_complete_ordered_and_querying_does_not_change_state",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::completed_games_reject_moves_without_mutation",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::every_winning_line_is_detected_for_either_player",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::full_board_draw_keeps_final_actor_and_stops_play",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::initial_state_has_empty_board_player_zero_and_ongoing_results",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::invalid_moves_and_queries_are_rejected_without_mutation",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::invalid_observers_and_observation_queries_return_errors",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::invalid_queries_return_errors_without_changing_state",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::observations_preserve_both_player_views_and_remain_independent",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::simultaneous_diagonal_wins_select_the_first_line_and_return_owned_coordinates",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::terminal_observations_show_results_and_offer_no_moves",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::unsupported_configuration_is_rejected",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::behaviour::winning_on_ninth_move_takes_precedence_over_full_board_draw",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::evaluation::configured_tictactoe_prefixes_match_independent_formula_and_terminal_values",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::evaluation::tictactoe_draw_is_zero_for_both_players",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::evaluation::tictactoe_known_positions_use_explicit_perspective_and_leave_state_unchanged",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::exhaustive::every_reachable_position_and_transition_matches_independent_rules",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::java_comparison::java_positions_match_rust_replays",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::parameters::configurable_square_sizes_support_real_moves_and_wins",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::parameters::one_cell_game_wins_on_first_move_without_completing_a_turn",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::parameters::tictactoe_cell_limits_are_configurable_and_checked_before_allocation",
+      "executions": [
+        {
+          "context": "Running tests\\integration.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::games::tictactoe::tests::clone_has_independent_board_and_progress",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::inference::hash::tests::published_vectors",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::inference::tests::borrowed_model_inspection_preserves_independent_owned_exports",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::inference::tests::invalid_documents_and_configuration_fail_before_use",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::inference::tests::local_search_backs_up_each_declared_player_value_without_negation",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::inference::tests::q_scores_preserve_float64_rows_and_missing_rows_are_zero",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::inference::tests::selfplay_scalar_and_reordered_player_vectors_match_pytorch",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::inference::tests::trained_zero_and_combined_inputs_match_pytorch_in_both_seats",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::search::mcts::selection::tests::probability_conversion_is_stable_and_rejects_invalid_mass",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::search::mcts::selection::tests::selection_terms_match_independent_numeric_fixtures",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::session::evaluation::tests::copying_preserves_execution_stop_and_reset_to_valid_state_clears_it",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::session::recorded::tests::rejected_prepared_action_preserves_live_state_controller_and_history",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "core::session::tests::exhausted_position_version_rejects_before_applying_a_move",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::execution::capabilities::random_matches_do_not_require_optional_game_capabilities",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::both_games_run_mixed_agents_and_independent_mcts_configurations",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::cantstop_matches_rotate_all_seats_record_dice_and_report_truncation",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::cantstop_optional_capabilities_and_invalid_settings_fail_before_output",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::conflicting_report_and_recording_paths_fail_before_play",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::fixed_positions_and_nondefault_rules_use_the_same_runner",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::game_validation_and_unknown_factories_fail_before_outputs_are_created",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::later_failure_retains_completed_results_and_stops_the_schedule",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::loveletter_uses_shared_rotation_seed_reporting_and_capability_checks",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::malformed_and_unsupported_match_settings_are_rejected",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::missing_configuration_errors_identify_the_attempted_file",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::neural_matches_validate_models_and_run_both_heads_on_each_game",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::recording_failure_preserves_the_finished_games_outcome",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::relative_agent_files_and_output_paths_use_the_match_directory",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::runtime_evaluation_failure_is_not_a_game_loss",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::saved_recordings_reload_with_the_same_rules_and_controller_progress",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::seed_bases_remain_attached_to_agent_identity_when_seats_change",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::shared_file_reader_bounds_bytes_and_preserves_error_context",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::matches::tests::terminal_move_at_the_action_limit_takes_precedence_over_truncation",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\match_play.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::average_finishing_position_averages_ties_and_entries_and_sorts_lowest_first",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::cantstop_example_uses_one_twelve_game_sample_for_both_sorting_metrics",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::cantstop_tournaments_offer_both_points_systems_and_separate_truncations",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::exhaustive_schedules_match_independent_counts_and_include_all_seats",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::file_references_are_relative_to_the_tournament_file",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::game_entries_with_the_same_player_count_share_the_random_schedule",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::global_rates_use_equal_game_weights_and_shared_ranks",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::invalid_entries_and_agents_are_rejected_before_any_result_is_written",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::later_runtime_failure_preserves_completed_games_and_marks_unplayed_agents",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::logging_modes_preserve_outcomes_and_validate_configuration",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::loveletter_tournaments_preserve_shared_winners_and_split_outcome_points",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::neural_tournaments_select_models_by_entry_and_preserve_separate_replays",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::random_count_is_multiplied_by_seat_allocations_and_repetitions",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::random_groups_are_reproducible_and_independent_of_seat_allocation_work",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::random_seats_select_one_allocation_for_each_exhaustive_group",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::rank_points_follow_finishing_places_and_average_ties",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::runtime_failure_records_the_attempt_without_assigning_a_loss",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::schedule_limits_reject_complete_tournament_before_play",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::self_play_counts_each_independent_seat_appearance",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::separate_cantstop_logs_preserve_seed_rules_and_dice_without_a_browser_replay",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::separate_log_output_conflicts_fail_without_overwriting_files",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::separate_logs_reconstruct_both_games_and_cross_reference_the_report",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::sorting_metric_changes_order_and_missing_games_are_not_losses",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "shared-runner::tournaments::tests::two_games_produce_all_raw_results_and_three_reproducible_rankings",
+      "executions": [
+        {
+          "context": "Running tests\\matches.rs",
+          "status": "ok"
+        },
+        {
+          "context": "Running unittests examples\\tournament.rs",
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "python_adapter_rust": [
+    {
+      "id": "python-adapter::arrays::tests::general_description_crosses_python_without_board_or_heuristic",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "python-adapter::episode::tests::every_native_policy_matches_rule_transitions_and_rng_for_both_seats",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "python-adapter::episode::tests::failing_opponent_retains_the_learner_move_for_failed_episode_handling",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "python-adapter::episode::tests::later_encoding_failure_retains_moves_without_a_rollback_snapshot",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "python-adapter::episode::tests::learner_teacher_matches_original_osla_action_and_rng",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "python-adapter::episode::tests::rejects_unsupported_setup_and_predictable_limits",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "python-adapter::episode::tests::validation_does_not_advance_and_terminal_precedes_horizon",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "id": "python-adapter::episode_batch::tests::runtime_failure_retains_partial_moves_and_does_not_stop_a_peer",
+      "executions": [
+        {
+          "context": "Running unittests src\\lib.rs",
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "rust_doctests": [
+    "src\\search\\mcts\\mod.rs - search::mcts (line 59)"
+  ],
+  "python_methods": [
+    "test_cantstop.CantStopInterface.test_invalid_actions_tokens_and_optional_operations_preserve_state",
+    "test_cantstop.CantStopInterface.test_payload_ownership_limits_and_parameter_validation",
+    "test_cantstop.CantStopInterface.test_specs_seeds_and_legal_masks",
+    "test_cantstop.CantStopNativeComparison.test_complete_native_games_match_every_python_observation_and_action",
+    "test_cantstop.CantStopNativeComparison.test_midgame_copies_and_reset_preserve_exact_chance_continuation",
+    "test_cantstop_mcts.CantStopNeuralSearch.test_model_contract_rejections_before_search",
+    "test_cantstop_mcts.CantStopNeuralSearch.test_neural_policy_and_full_vectors_match_controlled_predictions",
+    "test_cantstop_mcts.CantStopSearch.test_batching_retry_and_polling_preserve_simulation_continuation_and_live_dice",
+    "test_cantstop_mcts.CantStopSearch.test_expired_pending_evaluation_adds_no_visits",
+    "test_cantstop_mcts.CantStopSearch.test_limits_cancellation_seed_reproduction_and_stale_positions",
+    "test_cantstop_mcts.CantStopSearch.test_native_and_external_search_match_native_reports_in_every_phase",
+    "test_cantstop_mcts.CantStopSearch.test_terminal_vectors_and_exact_transition_boundaries",
+    "test_cantstop_selfplay.CantStopSelfPlay.test_all_player_counts_train_export_and_resume_both_buffer_modes_exactly",
+    "test_cantstop_selfplay.CantStopSelfPlay.test_automatic_master_seed_resolves_once_and_repeats_explicit_run",
+    "test_cantstop_selfplay.CantStopSelfPlay.test_cli_exposes_automatic_seed_before_a_failed_collection",
+    "test_cantstop_selfplay.CantStopSelfPlay.test_collection_replays_actual_dice_and_is_independent_of_game_schedule",
+    "test_cantstop_selfplay.CantStopSelfPlay.test_contract_and_checkpoint_provenance_rejections",
+    "test_cantstop_selfplay.CantStopSelfPlay.test_incomplete_collection_and_update_failure_preserve_last_checkpoint",
+    "test_cantstop_selfplay.CantStopSelfPlay.test_versioned_seed_fixtures_and_unchanged_placement_recipe",
+    "test_collection.CollectionTests.test_complete_traces_match_individual_games_seats_and_seed_continuation",
+    "test_collection.CollectionTests.test_records_and_policy_inputs_have_independent_storage",
+    "test_collection.CollectionTests.test_reset_error_and_invalid_policy_produce_no_records",
+    "test_collection.CollectionTests.test_successful_peer_is_delivered_before_member_failure",
+    "test_collection.TabularTests.test_alternating_model_reload_repeats_and_fixed_overrides_report_unused_seat",
+    "test_collection.TabularTests.test_alternating_training_visits_both_seats_in_logical_game_order",
+    "test_collection.TabularTests.test_evaluation_accepts_other_opponents_and_training_retains_its_task",
+    "test_collection.TabularTests.test_evaluation_file_runs_exact_games_against_each_opponent_and_preserves_model",
+    "test_collection.TabularTests.test_exact_update_uses_legal_continuation_and_bootstraps_truncation",
+    "test_collection.TabularTests.test_exploration_and_greedy_choices_are_legal_and_evaluation_keeps_table",
+    "test_collection.TabularTests.test_legacy_fixed_model_evaluates_both_seats_and_training_checks_viewpoint",
+    "test_collection.TabularTests.test_saved_table_rejects_task_version_nonfinite_and_duplicate_rows",
+    "test_collection.TabularTests.test_terminal_target_is_final_reward_with_empty_legal_mask",
+    "test_collection.TabularTests.test_training_cli_defaults_to_shared_alternating_table_and_preserves_fixed_option",
+    "test_collection.TabularTests.test_training_save_reload_and_seeded_evaluation_match_for_both_seats",
+    "test_connection.NativeComparison.test_every_intermediate_position_matches_native",
+    "test_connection.OwnershipAndErrors.test_format_arrays_are_independent_of_cached_rust_description",
+    "test_connection.OwnershipAndErrors.test_full_column_and_terminal_input",
+    "test_connection.OwnershipAndErrors.test_large_board_and_context_manager",
+    "test_connection.OwnershipAndErrors.test_payloads_limits_and_strict_parameters",
+    "test_connection.OwnershipAndErrors.test_rejected_actions_leave_position_and_data_unchanged",
+    "test_connection.OwnershipAndErrors.test_snapshots_arrays_reset_and_close_are_independent",
+    "test_evaluation.EvaluationTests.test_all_candidates_chunks_and_seeded_games_match_native_executor",
+    "test_evaluation.EvaluationTests.test_cancel_reset_replacement_close_and_foreign_requests",
+    "test_evaluation.EvaluationTests.test_chunk_arrays_and_global_best_for_original_player",
+    "test_evaluation.EvaluationTests.test_clone_restore_reset_and_seed_preserve_exact_continuation",
+    "test_evaluation.EvaluationTests.test_human_ai_flow_and_shared_settings_create_independent_agents",
+    "test_evaluation.EvaluationTests.test_invalid_values_metadata_and_duplicate_replies_allow_retry",
+    "test_evaluation.EvaluationTests.test_limits_metadata_only_and_terminal_candidate",
+    "test_evaluation.EvaluationTests.test_os_seed_configuration_and_initial_validation",
+    "test_evaluation.EvaluationTests.test_pending_reset_and_old_chunks_are_invalidated",
+    "test_execution.ExecutionTests.test_error_after_native_move_keeps_position_and_recovery",
+    "test_execution.ExecutionTests.test_external_resume_chunks_limits_and_automatic_commit",
+    "test_execution.ExecutionTests.test_mixed_seats_and_human_stop_precede_move_limit",
+    "test_execution.ExecutionTests.test_native_advance_matches_every_manual_move_and_rng",
+    "test_execution.ExecutionTests.test_native_checkpoints_clone_reset_and_invalid_backend",
+    "test_execution.ExecutionTests.test_native_reference_owned_runs_match_python_calls",
+    "test_execution.ExecutionTests.test_requests_after_native_progress_foreign_handles_and_replacement",
+    "test_execution.ExecutionTests.test_retries_cancellation_stale_handles_and_budget_validation",
+    "test_grouping.GroupingTests.test_cancel_after_partial_chunks_restarts_without_rng_changes",
+    "test_grouping.GroupingTests.test_grouped_matches_each_move_and_rng",
+    "test_grouping.GroupingTests.test_invalid_group_is_retryable_without_any_moves_or_rng",
+    "test_grouping.GroupingTests.test_limits_duplicates_foreign_handles_and_original_lifetime",
+    "test_grouping.GroupingTests.test_mixed_players_settings_and_payloads",
+    "test_grouping.GroupingTests.test_native_human_errors_and_closed_members",
+    "test_grouping.GroupingTests.test_row_cap_separates_groups_and_returned_arrays_own_storage",
+    "test_grouping.GroupingTests.test_stale_member_rejects_all_and_cancel_preserves_new_work",
+    "test_gym.GymEpisodeTests.test_horizon_terminal_and_unmodified_checker_smoke",
+    "test_gym.GymEpisodeTests.test_input_errors_are_retryable_and_arrays_are_independent",
+    "test_gym.GymEpisodeTests.test_invalid_options_concurrency_and_action_rng",
+    "test_gym.GymEpisodeTests.test_output_failures_preserve_reset_but_poison_step_and_recover",
+    "test_gym.GymEpisodeTests.test_reseed_and_successive_reset_reproduce_outputs_and_rng",
+    "test_gym.GymEpisodeTests.test_spaces_passive_checks_and_complete_masked_games",
+    "test_gym.NativeEpisodeTests.test_configuration_restrictions_and_bounds",
+    "test_gym.NativeEpisodeTests.test_explicit_draw_and_both_learner_results",
+    "test_gym.NativeEpisodeTests.test_lifecycle_horizon_and_input_rejection",
+    "test_gym.NativeEpisodeTests.test_native_registry_both_games_and_seats",
+    "test_gym.NativeEpisodeTests.test_reset_is_staged_and_candidates_are_bound_to_owner",
+    "test_gym_batch.EpisodeBatchTests.test_aggregate_format_failure_marks_all_completed_steps_failed",
+    "test_gym_batch.EpisodeBatchTests.test_empty_selection_has_no_side_effects_and_bounds_member_count",
+    "test_gym_batch.EpisodeBatchTests.test_every_transition_and_rng_matches_individual_mixed_members",
+    "test_gym_batch.EpisodeBatchTests.test_foreign_stale_and_consumed_native_reset_candidates",
+    "test_gym_batch.EpisodeBatchTests.test_input_masks_limits_compatibility_and_lifetime",
+    "test_gym_batch.EpisodeBatchTests.test_lock_conflicts_and_closed_selected_members_are_preflight_errors",
+    "test_gym_batch.EpisodeBatchTests.test_maximum_distinct_member_count_and_partial_initial_reset",
+    "test_gym_batch.EpisodeBatchTests.test_reset_format_failure_preserves_old_board_and_seed_progression",
+    "test_gym_batch.EpisodeBatchTests.test_reset_seed_staging_failure_is_isolated_without_advancing_its_generator",
+    "test_gym_batch.EpisodeBatchTests.test_returned_arrays_survive_steps_resets_and_original_close",
+    "test_gym_batch.EpisodeBatchTests.test_step_format_failure_is_per_member_and_requires_reset",
+    "test_gym_batch.EpisodeBatchTests.test_whole_call_validation_preserves_all_members_and_seeds",
+    "test_heuristic.HeuristicComparison.test_python_calls_rust_validation_buffers_and_reuse",
+    "test_heuristic.HeuristicComparison.test_scores_and_seeded_games_match_native_osla",
+    "test_loveletter.LoveLetterComparison.test_every_native_view_matches_python_in_complete_games_and_shared_wins",
+    "test_loveletter.LoveLetterComparison.test_exact_copies_reset_stale_handles_and_owned_arrays",
+    "test_loveletter.LoveLetterInterface.test_distinct_actual_hidden_worlds_produce_identical_player_arrays",
+    "test_loveletter.LoveLetterInterface.test_specs_unknown_hands_seeds_limits_and_capability_errors",
+    "test_loveletter_evaluation.LoveLetterEvaluation.test_auto_seed_limits_shared_wins_and_failure_preserves_peers",
+    "test_loveletter_evaluation.LoveLetterEvaluation.test_complete_reproducible_games_all_counts_replay_and_keep_training_unchanged",
+    "test_loveletter_evaluation.LoveLetterEvaluation.test_configuration_rejects_invalid_lineups_and_incompatible_models",
+    "test_loveletter_evaluation.LoveLetterEvaluation.test_cycle_checkpoint_continuation_and_cli_export",
+    "test_loveletter_evaluation.LoveLetterEvaluation.test_evaluation_search_inputs_do_not_depend_on_actual_hidden_world",
+    "test_loveletter_evaluation.LoveLetterEvaluation.test_rotation_grid_fixed_overrides_mixed_and_default_opponents",
+    "test_loveletter_evaluation.LoveLetterNativeContinuation.test_all_native_types_match_direct_agents_at_every_seat_with_chunked_advancement",
+    "test_loveletter_evaluation.LoveLetterNativeContinuation.test_native_lineup_rejects_foreign_stale_and_invalid_candidate_actions_atomically",
+    "test_loveletter_mcts.LoveLetterNeuralSearch.test_native_and_neural_agents_finish_complete_multiplayer_games",
+    "test_loveletter_mcts.LoveLetterNeuralSearch.test_neural_contract_rejections_precede_search",
+    "test_loveletter_mcts.LoveLetterNeuralSearch.test_neural_policy_vectors_and_independent_batches_match_controlled_values",
+    "test_loveletter_mcts.LoveLetterNeuralSearch.test_nonconstant_neural_predictions_remain_independent_of_actual_hidden_cards",
+    "test_loveletter_mcts.LoveLetterSearch.test_actual_hidden_worlds_cannot_change_requests_or_root_statistics",
+    "test_loveletter_mcts.LoveLetterSearch.test_full_vector_contract_limits_cancellation_seeds_and_stale_positions",
+    "test_loveletter_mcts.LoveLetterSearch.test_native_and_external_search_match_rust_at_multiple_seats_and_histories",
+    "test_loveletter_mcts.LoveLetterSearch.test_suspended_batches_retry_without_advancing_game_or_simulation",
+    "test_loveletter_mcts.LoveLetterSearch.test_terminal_rewards_bypass_external_estimates",
+    "test_loveletter_selfplay.LoveLetterSelfPlay.test_actual_shared_win_supplies_multiple_positive_targets_and_reloads",
+    "test_loveletter_selfplay.LoveLetterSelfPlay.test_checkpoint_replay_rejects_forged_private_inputs_even_with_a_new_digest",
+    "test_loveletter_selfplay.LoveLetterSelfPlay.test_configuration_and_incomplete_collection_never_create_terminal_targets",
+    "test_loveletter_selfplay.LoveLetterSelfPlay.test_real_collection_rotates_starters_and_replays_every_private_input",
+    "test_loveletter_selfplay.LoveLetterSelfPlay.test_train_export_and_completed_cycle_resume_reproduce_both_buffer_modes",
+    "test_mcts.ExternalMcts.test_bad_group_reply_is_atomic_and_retry_then_duplicate_is_checked",
+    "test_mcts.ExternalMcts.test_configuration_uses_the_native_parser_before_binding_setup",
+    "test_mcts.ExternalMcts.test_grouping_and_single_search_have_identical_statistics_on_both_games",
+    "test_mcts.ExternalMcts.test_limits_incompatible_encodings_and_stale_root",
+    "test_mcts.ExternalMcts.test_native_path_zero_budget_and_successful_peer_survive_runtime_failure",
+    "test_mcts.ExternalMcts.test_policy_probabilities_and_action_order_are_checked_before_resume",
+    "test_mcts.ExternalMcts.test_scalar_completion_perspective_and_request_ownership",
+    "test_mcts.ExternalMcts.test_terminal_values_bypass_external_predictions_and_automatic_seed_is_exposed",
+    "test_mcts.NeuralMcts.test_frozen_full_vector_order_matches_mock_non_zero_sum_values",
+    "test_mcts.NeuralMcts.test_scalar_all_player_assembly_policy_and_contract_rejections",
+    "test_multiplayer_evaluation.MultiplayerEvaluation.test_automatic_seeds_repeat_and_runtime_failure_keeps_completed_peers",
+    "test_multiplayer_evaluation.MultiplayerEvaluation.test_every_player_count_rotates_and_replays_reports_without_modifying_training",
+    "test_multiplayer_evaluation.MultiplayerEvaluation.test_mixed_lineups_fixed_seats_and_rotations_continue_across_cycles",
+    "test_multiplayer_evaluation.MultiplayerEvaluation.test_post_cycle_evaluation_and_checkpoint_resume_keep_training_identical",
+    "test_multiplayer_evaluation.MultiplayerEvaluation.test_standalone_model_cli_infers_contract_and_records_owned_report",
+    "test_multiplayer_evaluation.MultiplayerEvaluation.test_tied_finishing_places_and_configuration_errors",
+    "test_multiplayer_evaluation.MultiplayerEvaluation.test_truncations_are_not_outcomes_and_terminal_action_at_limit_completes",
+    "test_multiplayer_evaluation.NativeOpponentContinuation.test_all_native_types_match_direct_agents_at_every_seat_with_chunked_advancement",
+    "test_multiplayer_evaluation.NativeOpponentContinuation.test_native_lineup_rejects_foreign_stale_and_invalid_candidate_actions_atomically",
+    "test_neural.NeuralInference.test_changed_board_and_terminal_inference",
+    "test_neural.NeuralInference.test_invalid_contract_buffers_outputs_and_devices",
+    "test_neural.NeuralInference.test_malformed_reference_network_outputs",
+    "test_neural.NeuralInference.test_masked_choices_and_seeded_sampling",
+    "test_neural.NeuralInference.test_reference_arithmetic_and_batch_equivalence",
+    "test_neural.NeuralInputs.test_changed_settings_and_bad_inputs",
+    "test_neural.NeuralInputs.test_optional_import",
+    "test_neural.NeuralInputs.test_shapes_seats_turns_and_ownership",
+    "test_neural.NeuralInputs.test_terminal_has_no_policy_choices",
+    "test_neural_collection.CollectionStreams.test_bulk_policy_gets_active_rows_once_and_bad_count_applies_no_action",
+    "test_neural_collection.CollectionStreams.test_exact_s1_seed_fixtures_and_purpose_separation",
+    "test_neural_collection.NeuralGroups.test_both_games_complete_teacher_neural_groups_and_retained_intermediates",
+    "test_neural_collection.NeuralGroups.test_partial_group_failure_retains_diagnostics_and_successful_records",
+    "test_neural_collection.NeuralGroups.test_seeded_groups_repeat_evaluation_isolated_fixed_seats_and_truncation",
+    "test_neural_episodes.IntermediateEpisodes.test_capture_preserves_both_game_traces_seats_and_opponent_rng",
+    "test_neural_episodes.IntermediateEpisodes.test_immediate_terminal_horizon_and_output_bounds",
+    "test_neural_episodes.IntermediateEpisodes.test_mixed_batches_inactive_rows_and_failed_intermediates",
+    "test_neural_episodes.TeacherEpisodes.test_bulk_teacher_preflight_and_reset_atomicity",
+    "test_neural_episodes.TeacherEpisodes.test_teacher_replay_separate_seeds_and_capture_parity",
+    "test_neural_general.GeneralInference.test_bounded_values_gradients_and_bad_vector_shape",
+    "test_neural_general.GeneralInference.test_candidate_scores_reference_order_padding_and_empty_batches",
+    "test_neural_general.GeneralInference.test_custom_inference_disables_dropout_and_restores_flags_after_failure",
+    "test_neural_general.GeneralInference.test_integer_precision_and_external_structured_model",
+    "test_neural_general.GeneralInference.test_multiplayer_values_have_explicit_order_and_no_zero_sum_conversion",
+    "test_neural_general.GeneralInputs.test_boardless_identity_multiple_types_and_private_views",
+    "test_neural_general.GeneralInputs.test_descriptions_are_part_of_compatibility",
+    "test_neural_general.GeneralInputs.test_padded_variable_candidates_and_ids",
+    "test_neural_general.GeneralInputs.test_real_combined_board_inputs",
+    "test_neural_play.FrozenModels.test_custom_models_require_declared_code_and_independent_state",
+    "test_neural_play.FrozenModels.test_digest_fixture_source_isolation_and_contract_identity",
+    "test_neural_play.NeuralOsla.test_all_terminal_rows_skip_model_and_keep_observer_rewards",
+    "test_neural_play.NeuralOsla.test_changed_snapshot_and_stale_request_leave_commit_checks_in_rust",
+    "test_neural_play.NeuralOsla.test_complete_real_games_and_controlled_chunk_rng_parity",
+    "test_neural_play.NeuralOsla.test_grouped_values_metadata_buffers_and_request_failures",
+    "test_neural_play.NeuralOsla.test_synthetic_three_player_values_and_candidate_model_value_only_path",
+    "test_neural_play.NeuralOsla.test_vector_values_select_original_observer_and_reward_mismatch_rejects",
+    "test_neural_training.NeuralTraining.test_artifact_identity_shape_and_checkpoint_runtime_rejections",
+    "test_neural_training.NeuralTraining.test_checkpoint_resume_exact_weights_optimizer_history_and_rng",
+    "test_neural_training.NeuralTraining.test_evaluation_does_not_change_training_weights_counters_or_rng",
+    "test_neural_training.NeuralTraining.test_failed_checkpoint_replacement_preserves_previous_file",
+    "test_neural_training.NeuralTraining.test_frozen_bootstrap_and_intermediate_targets_both_games_seats",
+    "test_neural_training.NeuralTraining.test_loss_formula_episode_mean_masks_and_detached_targets",
+    "test_neural_training.NeuralTraining.test_returns_numeric_fixtures_and_invalid_inputs",
+    "test_neural_training.NeuralTraining.test_rule_termination_has_zero_bootstrap_and_terminal_mid_is_omitted",
+    "test_neural_training.NeuralTraining.test_training_failure_blocks_checkpoint_and_settings_reject_invalid",
+    "test_neural_training.NeuralTraining.test_updates_teacher_and_actor_for_both_games_and_roundtrip_play",
+    "test_neural_training.PackageTopics.test_compatibility_imports_resolve_to_same_classes",
+    "test_randomness.RandomnessTests.test_automatic_collection_retains_its_master_seed",
+    "test_randomness.RandomnessTests.test_automatic_evaluation_reports_reproducible_seed",
+    "test_randomness.RandomnessTests.test_automatic_training_matches_explicit_seed_and_checkpoint_never_reseeds",
+    "test_randomness.RandomnessTests.test_os_entropy_explicit_seeds_and_errors",
+    "test_registry.GameRegistry.test_discovered_games_construct_and_unknown_names_report_the_registry",
+    "test_registry.GameRegistry.test_training_settings_accept_a_game_advertised_by_the_registry",
+    "test_selfplay.SelfPlayCycles.test_automatic_seed_and_incompatible_checkpoint_state_are_explicit",
+    "test_selfplay.SelfPlayCycles.test_both_games_train_export_reload_and_continue_from_latest_model",
+    "test_selfplay.SelfPlayCycles.test_checkpoint_resume_matches_weights_optimizer_samples_and_replay_order",
+    "test_selfplay.SelfPlayCycles.test_collection_is_identical_with_different_independent_game_schedules",
+    "test_selfplay.SelfPlayCycles.test_configuration_paths_limits_and_model_semantics_are_explicit",
+    "test_selfplay.SelfPlayCycles.test_evaluation_preserves_training_weights_data_and_random_streams",
+    "test_selfplay.SelfPlayCycles.test_failed_collection_blocks_checkpoint_and_preserves_prior_file",
+    "test_selfplay.SelfPlayCycles.test_full_vector_model_newest_group_and_seat_balanced_evaluation",
+    "test_selfplay.SelfPlayCycles.test_optimizer_failure_and_collection_limits_cannot_replace_a_checkpoint",
+    "test_selfplay.SelfPlayData.test_fifo_newest_group_byte_limits_and_sample_ownership",
+    "test_selfplay.SelfPlayData.test_loss_arithmetic_uses_distributions_and_absolute_player_values",
+    "test_selfplay.SelfPlayData.test_root_noise_is_seeded_root_only_and_aligned_once_by_action_id",
+    "test_selfplay.SelfPlayData.test_supervised_objective_decreases_on_a_fixed_batch",
+    "test_selfplay.SelfPlayData.test_visit_targets_reject_fallback_illegal_ids_and_nonfinite_labels",
+    "test_shared_learning_state.CheckpointTests.test_optimizer_validation_and_rng_ownership",
+    "test_shared_learning_state.OutcomeTests.test_independent_player_values_and_counts"
+  ],
+  "javascript_tests": [
+    "pause during calculation discards the proposal; resume prepares a fresh one",
+    "pause during delay wakes immediately and prevents commitment",
+    "pause during a suspended search discards its pending calculation",
+    "pause after dispatching commitment retains exactly the accepted move",
+    "automatic play waits for a human, respects readiness and stops on errors",
+    "Love Letter retains the result observer and awaits acknowledgement before another AI turn",
+    "board updates retain controls, use current actions and preserve available focus",
+    "Connect 4 columns retain identity and game changes rebuild their structure",
+    "candidate artwork updates existing layers and keeps empty pieces hidden",
+    "vector tracks, dice and shapes describe public progress and use only offered actions",
+    "Can't Stop move labels retain the repeated sum and explicit bust",
+    "actual Wasm Can't Stop public arrays, logits and full value vectors match PyTorch",
+    "actual Wasm multiplayer neural/native matches finish and retain both controller streams in bundled continuations",
+    "actual Wasm game seeds use exact strings or Web Crypto and invalid setup preserves the live game",
+    "actual Wasm suspends stochastic MCTS and rejects reversed simulation progress and mismatched model seats",
+    "actual S4c three-player default-rule export loads into local browser neural MCTS",
+    "worker readiness gates commands and wide identifiers remain strings",
+    "superseded replies cannot replace newer UI work",
+    "mismatched identities and worker failures reject pending work",
+    "oversized UTF-8 commands fail locally and leave no pending work",
+    "worker failure while awaiting readiness prevents dispatch",
+    "failed dispatch and uncorrelated errors settle all pending work",
+    "presentation epochs refresh stale private views without discarding a prepared AI identity",
+    "actual Wasm decoding errors reject their client request and permit subsequent play",
+    "actual Wasm AI scheduling preserves cancelled RNG and every seeded step/automatic position",
+    "presentation samples contain engine-produced initial, ongoing and terminal positions",
+    "actual Wasm history and forks preserve source continuations and reject historical moves",
+    "actual Wasm file channel roundtrips native files and leaves failed replacements intact",
+    "file byte limits preserve ordinary-command limits and settle without posting",
+    "terminating candidate worker rejects pending validation and late replies cannot revive it",
+    "Love Letter fits viewport width, zooms in scrollable mode and resets",
+    "bundle import preserves neural source text for later standalone-state candidate loading",
+    "actual Wasm inputs, logits and observer values match trained, zero and combined PyTorch fixtures",
+    "actual Wasm neural OSLA completes both seats with the Python fixture actions",
+    "actual Wasm Q-learning masks scores and learned bundles restore independent continuation",
+    "Love Letter cards, controls, alt text and private DOM are cleared when reveal is disabled",
+    "Love Letter setup and action labels follow classic ranks and separate target from Guard guess",
+    "TAG artwork files and original attribution retain their recorded hashes",
+    "actual Wasm Love Letter permitted inputs and full vector predictions match PyTorch",
+    "actual Wasm neural/native games finish, reveal preserves suspended search and bundled continuations",
+    "actual hidden-world equivalents have identical normal payloads and history excludes later facts",
+    "single human view remains during AI turns; multiple humans switch immediately",
+    "invalid Love Letter neural observer modes and completion settings preserve live play",
+    "shared round winners remain multiple browser game winners",
+    "forking a former human into AI retains the remaining human's own view",
+    "actual Wasm accepts a retained result observer without changing normal next-human selection",
+    "result screens require an active human unless always-show is explicitly enabled",
+    "the completed round's eligibility controls its result; screens resume for active humans in the new round",
+    "Guard results clearly distinguish hit/miss without revealing an incorrect guess's actual target hand",
+    "Baron uses private event-time comparison cards; other observers see only public discards",
+    "a round rollover retains the completed round's private result and announces shared tokens before the next round",
+    "Priest information is private and a self-targeted Prince distinguishes the played card from the discarded hand",
+    "result summaries ignore jumps and announce complete shared game wins",
+    "the result step waits for acknowledgement and removes private card DOM on close or cancellation",
+    "action information screens render played and guessed cards with accessible hit/miss overlays",
+    "actual Wasm self-play scalar/vector predictions agree with PyTorch",
+    "actual Wasm MCTS plays complete mixed games and resumes self-contained files",
+    "actual Wasm timed MCTS yields, cancels, and replays recorded choices",
+    "actual Wasm reset drops suspended MCTS and invalid configurations preserve the game",
+    "every candidate file and licence matches its recorded SHA-256 identity",
+    "mute, zero volume and cue changes preserve explicit audio controls",
+    "landing coordinates come from x-major differences in accepted views",
+    "actual Wasm Random checkpoints survive discard, forks and all file scopes",
+    "recording visits only recorded positions and stops at the end",
+    "pause wakes a recording delay and suppresses an outstanding display reply",
+    "recording errors stop playback without continuing into live execution",
+    "four-player setup preserves sampled OSLA work and exact seeds and filters neural models by game and seat count",
+    "learned seat controls preserve loaded identities, filtering, seeds and historical settings",
+    "model upload success and failure are visible without clearing prior valid choices",
+    "MCTS seat controls retain separate search and model-binding JSON",
+    "Can't Stop setup separates player count from rules and preserves exact dice seeds",
+    "configured setup preserves valid values and enforces browser limits",
+    "seeds preserve the full u64 range and automatic seeds use both OS-random words"
+  ],
+  "tool_unittests": [
+    {
+      "suite": "census-unit",
+      "id": "test_measure.CensusTests.test_physical_lines"
+    },
+    {
+      "suite": "census-unit",
+      "id": "test_measure.CensusTests.test_scope_and_overlapping_roles"
+    },
+    {
+      "suite": "census-unit",
+      "id": "test_measure.CensusTests.test_shared_runner_tests_merge_but_crates_remain_distinct"
+    },
+    {
+      "suite": "census-unit",
+      "id": "test_measure.CensusTests.test_totals_preserve_binary_files_without_inventing_lines"
+    },
+    {
+      "suite": "statistics-unit",
+      "id": "test_summary.ProcessStatistics.test_elapsed_time_is_normalized_by_completed_calls"
+    },
+    {
+      "suite": "statistics-unit",
+      "id": "test_summary.ProcessStatistics.test_process_medians_are_not_pooled_batch_median"
+    },
+    {
+      "suite": "statistics-unit",
+      "id": "test_summary.ProcessStatistics.test_repeated_batches_do_not_replace_independent_processes"
+    },
+    {
+      "suite": "statistics-unit",
+      "id": "test_workflows.GameMetrics.test_observation_calls_are_separate_from_turns"
+    },
+    {
+      "suite": "statistics-unit",
+      "id": "test_workflows.GameMetrics.test_rejects_incomplete_game_denominators"
+    },
+    {
+      "suite": "statistics-unit",
+      "id": "test_workflows.GameMetrics.test_uses_measured_work_not_warmup_or_a_fixed_length"
+    }
+  ],
+  "summary": {
+    "rust_unique": 316,
+    "rust_executions": 378,
+    "python_adapter_rust": 8,
+    "rust_doctests": 1,
+    "python_methods": 205,
+    "javascript_tests": 73,
+    "tool_unittests": 10,
+    "failed": 0,
+    "ignored_or_skipped": 0
+  },
+  "operational_checks": {
+    "match_cli": "passed",
+    "tournament_cli": "passed",
+    "graphical_browser": "unavailable: GPU process exit -1073741790 before page checks"
+  },
+  "operational_evidence_scope": "CLI/browser operational checks retained from the original census; not rerun for this size/test refresh."
+}

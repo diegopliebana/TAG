@@ -1,0 +1,2162 @@
+[
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "init",
+    "bytes_per_call": 9.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 9
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "init",
+    "bytes_per_call": 7520.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "copy",
+    "bytes_per_call": 9.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 9
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "copy",
+    "bytes_per_call": 11320.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "observe",
+    "bytes_per_call": 9.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 9
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "observe",
+    "bytes_per_call": 11344.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "actions",
+    "bytes_per_call": 448.0,
+    "calls_per_call": 3.0,
+    "peak_extra_live_bytes": 384
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "actions",
+    "bytes_per_call": 368.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "transition",
+    "bytes_per_call": 9.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 9
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "transition",
+    "bytes_per_call": 12040.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "fork",
+    "bytes_per_call": 9.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 9
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "fork",
+    "bytes_per_call": 11280.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "osla",
+    "bytes_per_call": 162.0,
+    "calls_per_call": 11.0,
+    "peak_extra_live_bytes": 90
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "osla",
+    "bytes_per_call": 134776.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "mcts",
+    "bytes_per_call": 69107.0,
+    "calls_per_call": 736.84375,
+    "peak_extra_live_bytes": 13040
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "mcts",
+    "bytes_per_call": 1037236.25,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "game",
+    "bytes_per_call": 1510.78125,
+    "calls_per_call": 22.9375,
+    "peak_extra_live_bytes": 393
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "game",
+    "bytes_per_call": 99713.5,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "offered",
+    "bytes_per_call": 448.0,
+    "calls_per_call": 3.0,
+    "peak_extra_live_bytes": 384
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "encode",
+    "bytes_per_call": 691.0,
+    "calls_per_call": 9.0,
+    "peak_extra_live_bytes": 456
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "save",
+    "bytes_per_call": 528.0,
+    "calls_per_call": 3.0,
+    "peak_extra_live_bytes": 528
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "load",
+    "bytes_per_call": 457.0,
+    "calls_per_call": 4.0,
+    "peak_extra_live_bytes": 384
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "init",
+    "bytes_per_call": 672.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 672
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "init",
+    "bytes_per_call": 8824.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "copy",
+    "bytes_per_call": 672.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 672
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "copy",
+    "bytes_per_call": 20840.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "observe",
+    "bytes_per_call": 672.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 672
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "observe",
+    "bytes_per_call": 20840.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "actions",
+    "bytes_per_call": 96.0,
+    "calls_per_call": 2.0,
+    "peak_extra_live_bytes": 96
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "actions",
+    "bytes_per_call": 304.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "transition",
+    "bytes_per_call": 672.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 672
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "transition",
+    "bytes_per_call": 21904.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "fork",
+    "bytes_per_call": 672.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 672
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "fork",
+    "bytes_per_call": 20840.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "osla",
+    "bytes_per_call": 5432.0,
+    "calls_per_call": 9.0,
+    "peak_extra_live_bytes": 1400
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "osla",
+    "bytes_per_call": 182600.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "mcts",
+    "bytes_per_call": 63854.0,
+    "calls_per_call": 728.0,
+    "peak_extra_live_bytes": 11678
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "mcts",
+    "bytes_per_call": 1452176.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "game",
+    "bytes_per_call": 16844.0,
+    "calls_per_call": 64.6875,
+    "peak_extra_live_bytes": 1408
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "game",
+    "bytes_per_call": 571213.25,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "offered",
+    "bytes_per_call": 96.0,
+    "calls_per_call": 2.0,
+    "peak_extra_live_bytes": 96
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "encode",
+    "bytes_per_call": 209.0,
+    "calls_per_call": 7.0,
+    "peak_extra_live_bytes": 168
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "save",
+    "bytes_per_call": 1568.0,
+    "calls_per_call": 4.0,
+    "peak_extra_live_bytes": 1440
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "load",
+    "bytes_per_call": 2656.0,
+    "calls_per_call": 6.0,
+    "peak_extra_live_bytes": 1696
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "init",
+    "bytes_per_call": 88.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 88
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "init",
+    "bytes_per_call": 7328.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "copy",
+    "bytes_per_call": 88.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 88
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "copy",
+    "bytes_per_call": 24984.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "observe",
+    "bytes_per_call": 88.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 88
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "observe",
+    "bytes_per_call": 24984.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "actions",
+    "bytes_per_call": 16.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 16
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "actions",
+    "bytes_per_call": 80.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "transition",
+    "bytes_per_call": 104.0,
+    "calls_per_call": 2.0,
+    "peak_extra_live_bytes": 104
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "transition",
+    "bytes_per_call": 25216.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "fork",
+    "bytes_per_call": 88.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 88
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "fork",
+    "bytes_per_call": 24984.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "osla",
+    "bytes_per_call": 368.0,
+    "calls_per_call": 8.0,
+    "peak_extra_live_bytes": 128
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "osla",
+    "bytes_per_call": 79128.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "mcts",
+    "bytes_per_call": 35122.5,
+    "calls_per_call": 973.140625,
+    "peak_extra_live_bytes": 16038
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "mcts",
+    "bytes_per_call": 1267535.25,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "game",
+    "bytes_per_call": 20246.0,
+    "calls_per_call": 590.71875,
+    "peak_extra_live_bytes": 208
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "game",
+    "bytes_per_call": 4673025.5,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "offered",
+    "bytes_per_call": 16.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 16
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "encode",
+    "bytes_per_call": 2019.0,
+    "calls_per_call": 39.0,
+    "peak_extra_live_bytes": 2003
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "save",
+    "bytes_per_call": 1006.0,
+    "calls_per_call": 7.0,
+    "peak_extra_live_bytes": 878
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "load",
+    "bytes_per_call": 390.0,
+    "calls_per_call": 7.0,
+    "peak_extra_live_bytes": 390
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "init",
+    "bytes_per_call": 132.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 132
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "init",
+    "bytes_per_call": 8184.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "copy",
+    "bytes_per_call": 132.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 132
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "copy",
+    "bytes_per_call": 25864.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "observe",
+    "bytes_per_call": 132.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 132
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "observe",
+    "bytes_per_call": 25864.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "actions",
+    "bytes_per_call": 16.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 16
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "actions",
+    "bytes_per_call": 80.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "transition",
+    "bytes_per_call": 148.0,
+    "calls_per_call": 2.0,
+    "peak_extra_live_bytes": 148
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "transition",
+    "bytes_per_call": 26128.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "fork",
+    "bytes_per_call": 132.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 132
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "fork",
+    "bytes_per_call": 25864.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "osla",
+    "bytes_per_call": 500.0,
+    "calls_per_call": 8.0,
+    "peak_extra_live_bytes": 172
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "osla",
+    "bytes_per_call": 81864.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "mcts",
+    "bytes_per_call": 37099.125,
+    "calls_per_call": 972.625,
+    "peak_extra_live_bytes": 16382
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "mcts",
+    "bytes_per_call": 1298314.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "game",
+    "bytes_per_call": 40903.5,
+    "calls_per_call": 869.125,
+    "peak_extra_live_bytes": 296
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "game",
+    "bytes_per_call": 6458869.5,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "offered",
+    "bytes_per_call": 16.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 16
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "encode",
+    "bytes_per_call": 2019.0,
+    "calls_per_call": 39.0,
+    "peak_extra_live_bytes": 2003
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "save",
+    "bytes_per_call": 1050.0,
+    "calls_per_call": 7.0,
+    "peak_extra_live_bytes": 922
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "load",
+    "bytes_per_call": 486.0,
+    "calls_per_call": 7.0,
+    "peak_extra_live_bytes": 486
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "init",
+    "bytes_per_call": 176.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 176
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "init",
+    "bytes_per_call": 8872.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "copy",
+    "bytes_per_call": 176.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 176
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "copy",
+    "bytes_per_call": 26624.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "observe",
+    "bytes_per_call": 176.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 176
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "observe",
+    "bytes_per_call": 26624.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "actions",
+    "bytes_per_call": 16.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 16
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "actions",
+    "bytes_per_call": 80.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "transition",
+    "bytes_per_call": 192.0,
+    "calls_per_call": 2.0,
+    "peak_extra_live_bytes": 192
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "transition",
+    "bytes_per_call": 26856.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "fork",
+    "bytes_per_call": 176.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 176
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "fork",
+    "bytes_per_call": 26784.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "osla",
+    "bytes_per_call": 632.0,
+    "calls_per_call": 8.0,
+    "peak_extra_live_bytes": 216
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "osla",
+    "bytes_per_call": 84144.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "mcts",
+    "bytes_per_call": 39088.75,
+    "calls_per_call": 972.265625,
+    "peak_extra_live_bytes": 16078
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "mcts",
+    "bytes_per_call": 1331076.5,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "game",
+    "bytes_per_call": 67405.25,
+    "calls_per_call": 1124.78125,
+    "peak_extra_live_bytes": 384
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "game",
+    "bytes_per_call": 8788636.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "offered",
+    "bytes_per_call": 16.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 16
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "encode",
+    "bytes_per_call": 2019.0,
+    "calls_per_call": 39.0,
+    "peak_extra_live_bytes": 2003
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "save",
+    "bytes_per_call": 1094.0,
+    "calls_per_call": 7.0,
+    "peak_extra_live_bytes": 966
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "load",
+    "bytes_per_call": 582.0,
+    "calls_per_call": 7.0,
+    "peak_extra_live_bytes": 582
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "init",
+    "bytes_per_call": 660.0,
+    "calls_per_call": 14.0,
+    "peak_extra_live_bytes": 660
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "init",
+    "bytes_per_call": 13456.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "copy",
+    "bytes_per_call": 515.0,
+    "calls_per_call": 14.0,
+    "peak_extra_live_bytes": 515
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "copy",
+    "bytes_per_call": 30128.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "observe",
+    "bytes_per_call": 337.0,
+    "calls_per_call": 8.0,
+    "peak_extra_live_bytes": 337
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "observe",
+    "bytes_per_call": 30472.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "actions",
+    "bytes_per_call": 64.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 64
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "actions",
+    "bytes_per_call": 672.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "transition",
+    "bytes_per_call": 1235.0,
+    "calls_per_call": 20.0,
+    "peak_extra_live_bytes": 963
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "transition",
+    "bytes_per_call": 30456.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "fork",
+    "bytes_per_call": 1863.2173913043478,
+    "calls_per_call": 63.51086956521739,
+    "peak_extra_live_bytes": 1925
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "fork",
+    "bytes_per_call": 30472.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "osla",
+    "bytes_per_call": 5804.0,
+    "calls_per_call": 148.0,
+    "peak_extra_live_bytes": 1861
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "osla",
+    "bytes_per_call": 108559.375,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "mcts",
+    "bytes_per_call": 412466.0625,
+    "calls_per_call": 4502.5,
+    "peak_extra_live_bytes": 24967
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "mcts",
+    "bytes_per_call": 2170343.5,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "game",
+    "bytes_per_call": 152649.125,
+    "calls_per_call": 930.5,
+    "peak_extra_live_bytes": 11926
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "game",
+    "bytes_per_call": 2042158.25,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "offered",
+    "bytes_per_call": 64.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 64
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "encode",
+    "bytes_per_call": 3762.0,
+    "calls_per_call": 44.0,
+    "peak_extra_live_bytes": 3698
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "save",
+    "bytes_per_call": 3018.0,
+    "calls_per_call": 22.0,
+    "peak_extra_live_bytes": 2634
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "load",
+    "bytes_per_call": 12995.0,
+    "calls_per_call": 93.0,
+    "peak_extra_live_bytes": 10186
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "init",
+    "bytes_per_call": 1306.0,
+    "calls_per_call": 16.0,
+    "peak_extra_live_bytes": 1306
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "init",
+    "bytes_per_call": 14880.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "copy",
+    "bytes_per_call": 697.0,
+    "calls_per_call": 15.0,
+    "peak_extra_live_bytes": 697
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "copy",
+    "bytes_per_call": 31568.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "observe",
+    "bytes_per_call": 420.0,
+    "calls_per_call": 7.0,
+    "peak_extra_live_bytes": 420
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "observe",
+    "bytes_per_call": 32224.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "actions",
+    "bytes_per_call": 64.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 64
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "actions",
+    "bytes_per_call": 832.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "transition",
+    "bytes_per_call": 1529.0,
+    "calls_per_call": 21.0,
+    "peak_extra_live_bytes": 1257
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "transition",
+    "bytes_per_call": 32040.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "fork",
+    "bytes_per_call": 3231.6176470588234,
+    "calls_per_call": 87.46507352941177,
+    "peak_extra_live_bytes": 3142
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "fork",
+    "bytes_per_call": 32096.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "osla",
+    "bytes_per_call": 17768.0,
+    "calls_per_call": 400.0,
+    "peak_extra_live_bytes": 3174
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "osla",
+    "bytes_per_call": 144348.33333333334,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "mcts",
+    "bytes_per_call": 508549.78125,
+    "calls_per_call": 5186.625,
+    "peak_extra_live_bytes": 22014
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "mcts",
+    "bytes_per_call": 2263732.75,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "game",
+    "bytes_per_call": 346789.0,
+    "calls_per_call": 1574.96875,
+    "peak_extra_live_bytes": 14690
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "game",
+    "bytes_per_call": 3082544.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "offered",
+    "bytes_per_call": 64.0,
+    "calls_per_call": 1.0,
+    "peak_extra_live_bytes": 64
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "encode",
+    "bytes_per_call": 3762.0,
+    "calls_per_call": 44.0,
+    "peak_extra_live_bytes": 3698
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "save",
+    "bytes_per_call": 5248.0,
+    "calls_per_call": 24.0,
+    "peak_extra_live_bytes": 4352
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "load",
+    "bytes_per_call": 16163.0,
+    "calls_per_call": 105.0,
+    "peak_extra_live_bytes": 11904
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "control",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "init",
+    "bytes_per_call": 1512.0,
+    "calls_per_call": 18.0,
+    "peak_extra_live_bytes": 1416
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "init",
+    "bytes_per_call": 16720.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "copy",
+    "bytes_per_call": 879.0,
+    "calls_per_call": 17.0,
+    "peak_extra_live_bytes": 879
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "copy",
+    "bytes_per_call": 33240.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "observe",
+    "bytes_per_call": 506.0,
+    "calls_per_call": 7.0,
+    "peak_extra_live_bytes": 506
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "observe",
+    "bytes_per_call": 33824.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "actions",
+    "bytes_per_call": 192.0,
+    "calls_per_call": 2.0,
+    "peak_extra_live_bytes": 192
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "actions",
+    "bytes_per_call": 4112.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "transition",
+    "bytes_per_call": 2055.0,
+    "calls_per_call": 26.0,
+    "peak_extra_live_bytes": 1551
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "transition",
+    "bytes_per_call": 33432.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "query",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "fork",
+    "bytes_per_call": 3959.8125,
+    "calls_per_call": 102.2421875,
+    "peak_extra_live_bytes": 3906
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "fork",
+    "bytes_per_call": 33664.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "first",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "random",
+    "bytes_per_call": 0.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "osla",
+    "bytes_per_call": 35249.0,
+    "calls_per_call": 686.0,
+    "peak_extra_live_bytes": 3954
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "osla",
+    "bytes_per_call": 866097.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "mcts",
+    "bytes_per_call": 660408.875,
+    "calls_per_call": 6122.21875,
+    "peak_extra_live_bytes": 23040
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "mcts",
+    "bytes_per_call": 3120255.0,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "game",
+    "bytes_per_call": 423679.9375,
+    "calls_per_call": 1807.3125,
+    "peak_extra_live_bytes": 14630
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "game",
+    "bytes_per_call": 3267535.5,
+    "calls_per_call": 0.0,
+    "peak_extra_live_bytes": 0
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "offered",
+    "bytes_per_call": 192.0,
+    "calls_per_call": 2.0,
+    "peak_extra_live_bytes": 192
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "encode",
+    "bytes_per_call": 3954.0,
+    "calls_per_call": 46.0,
+    "peak_extra_live_bytes": 3730
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "save",
+    "bytes_per_call": 5430.0,
+    "calls_per_call": 26.0,
+    "peak_extra_live_bytes": 4534
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "load",
+    "bytes_per_call": 18320.0,
+    "calls_per_call": 118.0,
+    "peak_extra_live_bytes": 13622
+  }
+]

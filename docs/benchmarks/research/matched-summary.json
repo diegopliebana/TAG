@@ -1,0 +1,462 @@
+[
+  {
+    "engine": "java",
+    "game": "c4",
+    "players": 2,
+    "operation": "actions",
+    "median_ns": 314.024,
+    "min_fork_ns": 290.177,
+    "max_fork_ns": 396.211,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 314.024
+      },
+      {
+        "fork": 2,
+        "median_ns": 396.211
+      },
+      {
+        "fork": 3,
+        "median_ns": 290.177
+      }
+    ]
+  },
+  {
+    "engine": "java",
+    "game": "c4",
+    "players": 2,
+    "operation": "copy",
+    "median_ns": 7593.859,
+    "min_fork_ns": 7310.434,
+    "max_fork_ns": 7692.917,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 7692.917
+      },
+      {
+        "fork": 2,
+        "median_ns": 7310.434
+      },
+      {
+        "fork": 3,
+        "median_ns": 7593.859
+      }
+    ]
+  },
+  {
+    "engine": "java",
+    "game": "c4",
+    "players": 2,
+    "operation": "init",
+    "median_ns": 3774.35,
+    "min_fork_ns": 3190.244,
+    "max_fork_ns": 4096.188,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 3190.244
+      },
+      {
+        "fork": 2,
+        "median_ns": 3774.35
+      },
+      {
+        "fork": 3,
+        "median_ns": 4096.188
+      }
+    ]
+  },
+  {
+    "engine": "java",
+    "game": "c4",
+    "players": 2,
+    "operation": "replay",
+    "median_ns": 47945.044,
+    "min_fork_ns": 43939.419,
+    "max_fork_ns": 47968.881,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 43939.419
+      },
+      {
+        "fork": 2,
+        "median_ns": 47968.881
+      },
+      {
+        "fork": 3,
+        "median_ns": 47945.044
+      }
+    ]
+  },
+  {
+    "engine": "java",
+    "game": "c4",
+    "players": 2,
+    "operation": "transition",
+    "median_ns": 3240.85,
+    "min_fork_ns": 3035.689,
+    "max_fork_ns": 3358.592,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 3240.85
+      },
+      {
+        "fork": 2,
+        "median_ns": 3035.689
+      },
+      {
+        "fork": 3,
+        "median_ns": 3358.592
+      }
+    ]
+  },
+  {
+    "engine": "java",
+    "game": "ttt",
+    "players": 2,
+    "operation": "actions",
+    "median_ns": 129.545,
+    "min_fork_ns": 128.548,
+    "max_fork_ns": 131.434,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 131.434
+      },
+      {
+        "fork": 2,
+        "median_ns": 128.548
+      },
+      {
+        "fork": 3,
+        "median_ns": 129.545
+      }
+    ]
+  },
+  {
+    "engine": "java",
+    "game": "ttt",
+    "players": 2,
+    "operation": "copy",
+    "median_ns": 3186.467,
+    "min_fork_ns": 3033.532,
+    "max_fork_ns": 4137.91,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 4137.91
+      },
+      {
+        "fork": 2,
+        "median_ns": 3186.467
+      },
+      {
+        "fork": 3,
+        "median_ns": 3033.532
+      }
+    ]
+  },
+  {
+    "engine": "java",
+    "game": "ttt",
+    "players": 2,
+    "operation": "init",
+    "median_ns": 1812.994,
+    "min_fork_ns": 1795.15,
+    "max_fork_ns": 1813.075,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 1812.994
+      },
+      {
+        "fork": 2,
+        "median_ns": 1813.075
+      },
+      {
+        "fork": 3,
+        "median_ns": 1795.15
+      }
+    ]
+  },
+  {
+    "engine": "java",
+    "game": "ttt",
+    "players": 2,
+    "operation": "replay",
+    "median_ns": 7401.938,
+    "min_fork_ns": 6085.688,
+    "max_fork_ns": 7770.525,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 6085.688
+      },
+      {
+        "fork": 2,
+        "median_ns": 7770.525
+      },
+      {
+        "fork": 3,
+        "median_ns": 7401.938
+      }
+    ]
+  },
+  {
+    "engine": "java",
+    "game": "ttt",
+    "players": 2,
+    "operation": "transition",
+    "median_ns": 770.62,
+    "min_fork_ns": 733.61,
+    "max_fork_ns": 797.492,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 770.62
+      },
+      {
+        "fork": 2,
+        "median_ns": 733.61
+      },
+      {
+        "fork": 3,
+        "median_ns": 797.492
+      }
+    ]
+  },
+  {
+    "engine": "rust",
+    "game": "c4",
+    "players": 2,
+    "operation": "actions",
+    "median_ns": 88.753,
+    "min_fork_ns": 88.259,
+    "max_fork_ns": 138.705,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 138.705
+      },
+      {
+        "fork": 2,
+        "median_ns": 88.753
+      },
+      {
+        "fork": 3,
+        "median_ns": 88.259
+      }
+    ]
+  },
+  {
+    "engine": "rust",
+    "game": "c4",
+    "players": 2,
+    "operation": "copy",
+    "median_ns": 60.061,
+    "min_fork_ns": 58.847,
+    "max_fork_ns": 64.603,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 60.061
+      },
+      {
+        "fork": 2,
+        "median_ns": 58.847
+      },
+      {
+        "fork": 3,
+        "median_ns": 64.603
+      }
+    ]
+  },
+  {
+    "engine": "rust",
+    "game": "c4",
+    "players": 2,
+    "operation": "init",
+    "median_ns": 47.144,
+    "min_fork_ns": 42.513,
+    "max_fork_ns": 65.138,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 65.138
+      },
+      {
+        "fork": 2,
+        "median_ns": 47.144
+      },
+      {
+        "fork": 3,
+        "median_ns": 42.513
+      }
+    ]
+  },
+  {
+    "engine": "rust",
+    "game": "c4",
+    "players": 2,
+    "operation": "replay",
+    "median_ns": 18573.888,
+    "min_fork_ns": 16769.819,
+    "max_fork_ns": 22945.769,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 22945.769
+      },
+      {
+        "fork": 2,
+        "median_ns": 16769.819
+      },
+      {
+        "fork": 3,
+        "median_ns": 18573.888
+      }
+    ]
+  },
+  {
+    "engine": "rust",
+    "game": "c4",
+    "players": 2,
+    "operation": "transition",
+    "median_ns": 800.172,
+    "min_fork_ns": 752.424,
+    "max_fork_ns": 822.764,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 800.172
+      },
+      {
+        "fork": 2,
+        "median_ns": 752.424
+      },
+      {
+        "fork": 3,
+        "median_ns": 822.764
+      }
+    ]
+  },
+  {
+    "engine": "rust",
+    "game": "ttt",
+    "players": 2,
+    "operation": "actions",
+    "median_ns": 88.061,
+    "min_fork_ns": 83.674,
+    "max_fork_ns": 89.491,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 83.674
+      },
+      {
+        "fork": 2,
+        "median_ns": 88.061
+      },
+      {
+        "fork": 3,
+        "median_ns": 89.491
+      }
+    ]
+  },
+  {
+    "engine": "rust",
+    "game": "ttt",
+    "players": 2,
+    "operation": "copy",
+    "median_ns": 35.012,
+    "min_fork_ns": 34.857,
+    "max_fork_ns": 55.399,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 55.399
+      },
+      {
+        "fork": 2,
+        "median_ns": 35.012
+      },
+      {
+        "fork": 3,
+        "median_ns": 34.857
+      }
+    ]
+  },
+  {
+    "engine": "rust",
+    "game": "ttt",
+    "players": 2,
+    "operation": "init",
+    "median_ns": 41.869,
+    "min_fork_ns": 40.969,
+    "max_fork_ns": 42.163,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 40.969
+      },
+      {
+        "fork": 2,
+        "median_ns": 41.869
+      },
+      {
+        "fork": 3,
+        "median_ns": 42.163
+      }
+    ]
+  },
+  {
+    "engine": "rust",
+    "game": "ttt",
+    "players": 2,
+    "operation": "replay",
+    "median_ns": 1308.175,
+    "min_fork_ns": 1091.925,
+    "max_fork_ns": 1407.55,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 1407.55
+      },
+      {
+        "fork": 2,
+        "median_ns": 1308.175
+      },
+      {
+        "fork": 3,
+        "median_ns": 1091.925
+      }
+    ]
+  },
+  {
+    "engine": "rust",
+    "game": "ttt",
+    "players": 2,
+    "operation": "transition",
+    "median_ns": 78.322,
+    "min_fork_ns": 77.556,
+    "max_fork_ns": 109.474,
+    "forks": [
+      {
+        "fork": 1,
+        "median_ns": 109.474
+      },
+      {
+        "fork": 2,
+        "median_ns": 77.556
+      },
+      {
+        "fork": 3,
+        "median_ns": 78.322
+      }
+    ]
+  }
+]

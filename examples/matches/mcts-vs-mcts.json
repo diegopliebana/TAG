@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "game": {"name": "tictactoe"},
+  "players": [
+    {"name": "ucb1", "agent": {"type": "mcts", "config_file": "../mcts/basic.json"}},
+    {"name": "puct", "agent": {"type": "mcts", "config_file": "../mcts/puct.json"}}
+  ],
+  "games": 2,
+  "seed": 42
+}

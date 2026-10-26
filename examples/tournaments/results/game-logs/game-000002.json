@@ -1,0 +1,140 @@
+{
+  "agents": [
+    {
+      "algorithm": "random",
+      "base_seed": 42,
+      "name": "random",
+      "settings": {
+        "evaluator": "none"
+      }
+    },
+    {
+      "algorithm": "mcts",
+      "base_seed": 42,
+      "name": "puct",
+      "settings": {
+        "budgets": {
+          "forward_model_calls": 10000,
+          "iterations": 100,
+          "time_ms": null
+        },
+        "expansion": {
+          "order": "random"
+        },
+        "exploration_constant": 1.4142135623730951,
+        "final_selection": {
+          "policy": "most_visits"
+        },
+        "limits": {
+          "max_actions_per_decision": 4096,
+          "max_edges": 1000000,
+          "max_nodes": 100000,
+          "max_request_bytes": 67108864
+        },
+        "progressive_bias": {
+          "bias_visits": 4.0,
+          "evaluator": {
+            "name": "uniform_actions",
+            "parameters": {}
+          },
+          "mode": "tag_blend"
+        },
+        "puct_preferences": {
+          "evaluator": {
+            "name": "successor_state",
+            "parameters": {
+              "state_evaluator": {
+                "name": "game_heuristic"
+              }
+            }
+          },
+          "source": "native_softmax",
+          "temperature": 1.0
+        },
+        "rollout": {
+          "policy": "random"
+        },
+        "rollout_length": 0,
+        "schema_version": 1,
+        "search_mode": "open_loop",
+        "seed": 42,
+        "state_evaluator": {
+          "name": "game_heuristic",
+          "parameters": {}
+        },
+        "tree_depth": 30,
+        "tree_policy": "puct",
+        "value_completion": "require_full_vector"
+      }
+    }
+  ],
+  "engine_version": "0.1.0",
+  "game": "tictactoe",
+  "master_seed": 42,
+  "parameters": {
+    "grid_size": 3,
+    "limits": {
+      "max_cells": 1000000
+    }
+  },
+  "record": {
+    "agent_names": [
+      "random",
+      "puct"
+    ],
+    "agent_seeds": [
+      10362746003638588716,
+      5351275353782320870
+    ],
+    "agents_by_seat": [
+      0,
+      1
+    ],
+    "allocation": 0,
+    "entry_index": 0,
+    "error": null,
+    "game_id": "tictactoe",
+    "game_log": null,
+    "index": 2,
+    "outcome": {
+      "accepted_moves": 6,
+      "agent_seeds": [
+        10362746003638588716,
+        5351275353782320870
+      ],
+      "game_seed": null,
+      "index": 2,
+      "mcts": [
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        },
+        {
+          "completed_iterations": 300,
+          "forward_model_calls": 2865
+        }
+      ],
+      "recording": null,
+      "results": [
+        "loss",
+        "win"
+      ],
+      "seats": [
+        0,
+        1
+      ]
+    },
+    "pairing": 1,
+    "points": [
+      0.0,
+      1.0
+    ],
+    "repetition": 0,
+    "replay_file": "game-logs\\game-000002.tag-replay.json"
+  },
+  "replay_file": "game-000002.tag-replay.json",
+  "results_file": "..\\separate-logs.json",
+  "rules_version": 1,
+  "schema_version": 1,
+  "tournament_id": "620f476a76e5bf56"
+}

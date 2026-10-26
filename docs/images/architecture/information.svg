@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="560" viewBox="0 0 1240 560" role="img" aria-labelledby="title description">
+<title id="title">Keep actual state separate from hypotheses</title>
+<desc id="description">Love Letter&#x27;s rules project a permitted observation from actual state. Search samples a consistent possible world using the observation and a separate planning RNG; actual hidden cards and game RNG do not enter sampling.</desc>
+<rect width="1240" height="560" fill="#f6f8fc"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect x="44" y="43" width="352" height="400" rx="20" fill="#fcf4e6" stroke="none"/>
+<text x="66" y="75" text-anchor="start" font-size="13" font-weight="700" fill="#a46c18">ACTUAL GAME</text>
+<rect x="444" y="43" width="352" height="400" rx="20" fill="#eaf6f3" stroke="none"/>
+<text x="466" y="75" text-anchor="start" font-size="13" font-weight="700" fill="#148579">PLAYER INPUT</text>
+<rect x="844" y="43" width="352" height="400" rx="20" fill="#edf3fd" stroke="none"/>
+<text x="866" y="75" text-anchor="start" font-size="13" font-weight="700" fill="#3669ca">SEARCH SIMULATION</text>
+<rect x="62" y="106" width="316" height="121" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="62" y="102" width="316" height="121" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="78" y="121" width="4" height="83" rx="2" fill="#a46c18" stroke="none"/>
+<text x="95" y="136" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Full rules state</text>
+<text x="95" y="163" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Hands, deck, turn and effects</text>
+<text x="95" y="186" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Includes hidden information</text>
+<rect x="462" y="106" width="316" height="121" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="462" y="102" width="316" height="121" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="478" y="121" width="4" height="83" rx="2" fill="#148579" stroke="none"/>
+<text x="495" y="136" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Player observation</text>
+<text x="495" y="163" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Own card and public facts</text>
+<text x="495" y="186" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Permitted retained knowledge</text>
+<rect x="862" y="106" width="316" height="121" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="862" y="102" width="316" height="121" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="878" y="121" width="4" height="83" rx="2" fill="#3669ca" stroke="none"/>
+<text x="895" y="136" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Sampled world</text>
+<text x="895" y="163" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Unknown cards filled consistently</text>
+<text x="895" y="186" text-anchor="start" font-size="16" font-weight="400" fill="#526780">One hypothesis for simulation</text>
+<path d="M378 159 L462 159" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M462 159 L452.996 163.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M462 159 L452.996 154.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="420" y="147" text-anchor="middle" font-size="15" font-weight="400" fill="#526780">observe</text>
+<path d="M778 159 L862 159" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M862 159 L852.996 163.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M862 159 L852.996 154.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="820" y="147" text-anchor="middle" font-size="15" font-weight="400" fill="#526780">sample</text>
+<rect x="62" y="296" width="316" height="90" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="62" y="292" width="316" height="90" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="78" y="311" width="4" height="52" rx="2" fill="#a46c18" stroke="none"/>
+<text x="95" y="326" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Game RNG</text>
+<text x="95" y="353" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Advances real chance outcomes</text>
+<path d="M220 292 L220 227" fill="none" stroke="#a46c18" stroke-width="2" stroke-linecap="round"/>
+<path d="M220 227 L224.35 236.004" fill="none" stroke="#a46c18" stroke-width="2" stroke-linecap="round"/>
+<path d="M220 227 L215.65 236.004" fill="none" stroke="#a46c18" stroke-width="2" stroke-linecap="round"/>
+<rect x="862" y="296" width="316" height="90" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="862" y="292" width="316" height="90" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="878" y="311" width="4" height="52" rx="2" fill="#3669ca" stroke="none"/>
+<text x="895" y="326" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Planning RNG</text>
+<text x="895" y="353" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Sampling + simulated future chance</text>
+<path d="M1020 292 L1020 227" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M1020 227 L1024.35 236.004" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M1020 227 L1015.65 236.004" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="620" y="298" text-anchor="middle" font-size="17" font-weight="700" fill="#148579">Used by agents and encoders</text>
+<text x="620" y="327" text-anchor="middle" font-size="16" font-weight="400" fill="#526780">Permitted facts only</text>
+<path d="M44 499 L1196 499" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round"/>
+<text x="44" y="530" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Separate RNG streams preserve real-game progress while search explores possible continuations.</text>
+</g>
+</svg>

@@ -1,0 +1,188 @@
+{
+  "version": 1,
+  "verified_at": "14-10-2026 09:49 (Europe/Paris)",
+  "status": "candidate-for-review",
+  "author": "Kenney / Kenney Vleugels",
+  "licence": "CC0-1.0",
+  "sources": {
+    "boardgame": {
+      "title": "Board Game Pack v2",
+      "url": "https://kenney.nl/assets/boardgame-pack",
+      "archive": "kenney_boardgame-pack.zip",
+      "archive_sha256": "3b6a7dd5af658d1ffa0071429d5dde10ff63121e88bd06d4904e721e60b2c398",
+      "licence_path": "licences/boardgame.txt",
+      "licence_sha256": "1b8accb01e28c856ae16b16e03a47fbdd9272aaf8b9e6b95127186073264c65b"
+    },
+    "ui": {
+      "title": "UI Pack 2.0",
+      "url": "https://kenney.nl/assets/ui-pack",
+      "archive": "kenney_ui-pack.zip",
+      "archive_sha256": "a8a14a234911eb648c062622915c93e79e94e97cb7f9f375a70f6617f1174318",
+      "licence_path": "licences/ui.txt",
+      "licence_sha256": "69f7eaa5e05913b4d09cf5848f75390b5c3c9a409ef8555777803d9ca0c171fb"
+    },
+    "interface": {
+      "title": "Interface Sounds 1.0",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "archive": "kenney_interface-sounds.zip",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "licence_path": "licences/interface.txt",
+      "licence_sha256": "f7966c773bbed0eca6a9c75081c44a178b38eae112724dbb5fdfbd4192d118a9"
+    },
+    "impact": {
+      "title": "Impact Sounds 1.0",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "archive": "kenney_impact-sounds.zip",
+      "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "licence_path": "licences/impact.txt",
+      "licence_sha256": "b49aa9c56b04528b95913de13e506a0f7c5e807b9925db9bfef86af1f91120db"
+    }
+  },
+  "assets": [
+    {
+      "id": "mark-o",
+      "source": "boardgame",
+      "entry": "PNG/Pieces (Red)/pieceRed_single11.png",
+      "path": "games/tictactoe/o.png",
+      "role": "Red O mark",
+      "bytes": 2054,
+      "sha256": "ad146dd3830f21e99b1c7ce8ae47e904bed388038d7da7d25c353561d3883348",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation",
+      "width": 64,
+      "height": 64
+    },
+    {
+      "id": "sound-land",
+      "source": "boardgame",
+      "entry": "Bonus/chipsCollide1.ogg",
+      "path": "shared/land.ogg",
+      "role": "Piece landing candidate",
+      "bytes": 10670,
+      "sha256": "4b5aa8e6e7cd409c5e3deb497e54a021d953352fccb3920cb2e6c84a37896060",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation"
+    },
+    {
+      "id": "mark-x",
+      "source": "ui",
+      "entry": "Vector/Blue/icon_cross.svg",
+      "path": "games/tictactoe/x.svg",
+      "role": "Blue X mark",
+      "bytes": 1403,
+      "sha256": "08cbeece658c877682faed0921266a2789dc02409418cfaf7e8eec0105165411",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation"
+    },
+    {
+      "id": "ttt-cell",
+      "source": "ui",
+      "entry": "Vector/Blue/button_square_border.svg",
+      "path": "games/tictactoe/cell.svg",
+      "role": "Repeatable cell",
+      "bytes": 1074,
+      "sha256": "be5b68b5234605e26ea563723bafedb4c28364ccba6c0f46bf669fdbfef2cf7a",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation"
+    },
+    {
+      "id": "c4-cell",
+      "source": "ui",
+      "entry": "Vector/Blue/button_square_flat.svg",
+      "path": "games/connect4/cell.svg",
+      "role": "Repeatable blue cell",
+      "bytes": 1207,
+      "sha256": "ca6248ee05921c2c27913b9d7df580afc7b41ed2334c6f26c5a747389f6f2e55",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation"
+    },
+    {
+      "id": "c4-socket",
+      "source": "ui",
+      "entry": "Vector/Blue/check_round_grey.svg",
+      "path": "games/connect4/socket.svg",
+      "role": "Empty socket",
+      "bytes": 985,
+      "sha256": "4053bd73b4944d2d7eaac9d4ff66cd7f36df2d14e364677f34f6048108059242",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation"
+    },
+    {
+      "id": "c4-red",
+      "source": "ui",
+      "entry": "Vector/Red/button_round_flat.svg",
+      "path": "games/connect4/red.svg",
+      "role": "Player 0 piece",
+      "bytes": 1009,
+      "sha256": "d375413b9c4e0da62246b822965aa45d2fe744aa470d30cd73b27009d6f7f886",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation"
+    },
+    {
+      "id": "c4-yellow",
+      "source": "ui",
+      "entry": "Vector/Yellow/button_round_flat.svg",
+      "path": "games/connect4/yellow.svg",
+      "role": "Player 1 piece",
+      "bytes": 1009,
+      "sha256": "8e665229e26624b951cb41a7c4db851b9e088207100180be11866b4b42cfe24b",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation"
+    },
+    {
+      "id": "sound-mark",
+      "source": "interface",
+      "entry": "Audio/click_003.ogg",
+      "path": "shared/mark.ogg",
+      "role": "Mark placement candidate",
+      "bytes": 4371,
+      "sha256": "2fa929138bc3a0f432696588f66eac94b8f6d463905ec8808c6461ce4b054292",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation"
+    },
+    {
+      "id": "sound-win",
+      "source": "interface",
+      "entry": "Audio/confirmation_001.ogg",
+      "path": "shared/win.ogg",
+      "role": "Win candidate",
+      "bytes": 8968,
+      "sha256": "063564703b6094d70718a3e787a55cc9141611e4ecd6b6637f8828f79b4a8c3a",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation"
+    },
+    {
+      "id": "sound-draw",
+      "source": "interface",
+      "entry": "Audio/bong_001.ogg",
+      "path": "shared/draw.ogg",
+      "role": "Draw candidate",
+      "bytes": 4848,
+      "sha256": "d21d0f0b782445db579d11e2506b24cd1ac9d664ee33aeaf807761aa7b6fd710",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation"
+    },
+    {
+      "id": "sound-win-alternative",
+      "source": "interface",
+      "entry": "Audio/confirmation_004.ogg",
+      "path": "shared/win-alternative.ogg",
+      "role": "Alternative win cue",
+      "bytes": 12391,
+      "sha256": "568967a3d9f8a8f6af54ea01729c4882284308f2a27d78c07ffd7ee0d6951661",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation"
+    },
+    {
+      "id": "sound-land-alternative",
+      "source": "impact",
+      "entry": "Audio/impactSoft_medium_000.ogg",
+      "path": "shared/land-alternative.ogg",
+      "role": "Alternative landing cue",
+      "bytes": 5351,
+      "sha256": "7d3ba0bb5e60a11b5d3e558c141303dcf494256675fbf753c0d252d2cf0481e3",
+      "content_changes": "none",
+      "presentation": "layout, display scaling, opacity and position animation"
+    }
+  ]
+}

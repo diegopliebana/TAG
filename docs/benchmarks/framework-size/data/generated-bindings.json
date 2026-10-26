@@ -1,0 +1,27 @@
+[
+  {
+    "path": "adapters/python/python/tag_rust/_engine.cp314-win_amd64.pyd",
+    "bytes": 2677760,
+    "sha256": "1c0ae5a715e92a7244d036d22221602e0071ce02fb8682653d4363b893277639"
+  },
+  {
+    "path": "web/pkg/tag_browser.d.ts",
+    "bytes": 3533,
+    "sha256": "424c1868e220543c7abc7d915524f4d2ca117a6c5c73159aebc8210b9306e941"
+  },
+  {
+    "path": "web/pkg/tag_browser.js",
+    "bytes": 10858,
+    "sha256": "a44ea5aff485492d3a0b65b7c3862afdbfbc3f4125912e0953b40710aa4af291"
+  },
+  {
+    "path": "web/pkg/tag_browser_bg.wasm",
+    "bytes": 3321585,
+    "sha256": "a73dde3dd4cc649788ea527d195114264457b443b909f0f569391ab31266ebde"
+  },
+  {
+    "path": "web/pkg/tag_browser_bg.wasm.d.ts",
+    "bytes": 841,
+    "sha256": "b1c5a5d3c406272e6a73f656126847e4cff2a9882e81ef2ecef0487f7203de80"
+  }
+]

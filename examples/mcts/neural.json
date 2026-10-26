@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "seed": null,
+  "tree_policy": "puct",
+  "rollout_length": 0,
+  "budgets": {"iterations": 64},
+  "state_evaluator": {"name": "network_value"},
+  "puct_preferences": {
+    "source": "probabilities",
+    "evaluator": {"name": "network_policy"}
+  },
+  "value_completion": "require_full_vector"
+}

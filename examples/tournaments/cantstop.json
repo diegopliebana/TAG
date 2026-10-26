@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "agents": [
+    {
+      "name": "random",
+      "agent": {
+        "type": "random"
+      }
+    },
+    {
+      "name": "osla-r4",
+      "agent": {
+        "type": "osla",
+        "repetitions_per_action": 4
+      }
+    },
+    {
+      "name": "mcts",
+      "agent": {
+        "type": "mcts",
+        "config": {
+          "schema_version": 1,
+          "budgets": {
+            "iterations": 32,
+            "forward_model_calls": 512
+          },
+          "rollout_length": 12,
+          "state_evaluator": {
+            "name": "progress",
+            "parameters": {
+              "alpha": 0.5,
+              "beta": 0.25
+            }
+          }
+        }
+      }
+    }
+  ],
+  "games": [
+    {
+      "id": "cantstop",
+      "name": "cantstop",
+      "player_count": 3,
+      "ranking": "score",
+      "max_actions": 5000
+    }
+  ],
+  "mode": "exhaustive",
+  "seat_allocation": "permutations",
+  "allow_self_play": false,
+  "repetitions": 2,
+  "ranking_metric": "points_rate",
+  "seed": null,
+  "results_file": "results/cantstop.json",
+  "game_logs": {
+    "mode": "inline"
+  },
+  "max_games": 1000
+}

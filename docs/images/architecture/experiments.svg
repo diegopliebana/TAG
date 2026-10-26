@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="510" viewBox="0 0 1240 510" role="img" aria-labelledby="title description">
+<title id="title">Turn a configuration into evidence</title>
+<desc id="description">Experiment configuration creates a seat and seed schedule. Games execute with independent RNG streams, then reports retain per-seat and combined outcomes. Optional action records support later analysis.</desc>
+<rect width="1240" height="510" fill="#f6f8fc"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect x="44" y="65" width="252" height="136" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="44" y="61" width="252" height="136" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="60" y="80" width="4" height="98" rx="2" fill="#3669ca" stroke="none"/>
+<text x="77" y="95" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Configure</text>
+<text x="77" y="122" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Game rules + agent settings</text>
+<text x="77" y="145" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Budgets, seeds and limits</text>
+<rect x="344" y="65" width="252" height="136" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="344" y="61" width="252" height="136" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="360" y="80" width="4" height="98" rx="2" fill="#7656b5" stroke="none"/>
+<text x="377" y="95" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Schedule</text>
+<text x="377" y="122" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Rotate or fix player seats</text>
+<text x="377" y="145" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Per-game RNG streams</text>
+<rect x="644" y="65" width="252" height="136" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="644" y="61" width="252" height="136" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="660" y="80" width="4" height="98" rx="2" fill="#148579" stroke="none"/>
+<text x="677" y="95" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Run games</text>
+<text x="677" y="122" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Apply accepted decisions</text>
+<text x="677" y="145" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Outcomes + truncations</text>
+<rect x="944" y="65" width="252" height="136" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="944" y="61" width="252" height="136" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="960" y="80" width="4" height="98" rx="2" fill="#a46c18" stroke="none"/>
+<text x="977" y="95" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Report</text>
+<text x="977" y="122" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Per-seat + combined results</text>
+<text x="977" y="145" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Chosen ranking convention</text>
+<path d="M296 127 L344 127" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M344 127 L334.996 131.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M344 127 L334.996 122.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M596 127 L644 127" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M644 127 L634.996 131.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M644 127 L634.996 122.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M896 127 L944 127" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M944 127 L934.996 131.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M944 127 L934.996 122.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<rect x="580" y="299" width="394" height="120" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="580" y="295" width="394" height="120" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="596" y="314" width="4" height="82" rx="2" fill="#148579" stroke="none"/>
+<text x="613" y="329" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Optional action records</text>
+<text x="613" y="356" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Accepted moves, in their recorded order</text>
+<text x="613" y="379" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Selected with reporting.include_actions</text>
+<path d="M770 201 L770 295" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M770 295 L765.65 285.996" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M770 295 L774.35 285.996" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="770" y="236" text-anchor="middle" font-size="15" font-weight="400" fill="#526780">trace</text>
+<text x="66" y="301" text-anchor="start" font-size="13" font-weight="700" fill="#3669ca">REPRODUCIBILITY</text>
+<text x="66" y="333" text-anchor="start" font-size="18" font-weight="700" fill="#172b46">Keep resolved seeds and configuration</text>
+<text x="66" y="360" text-anchor="start" font-size="17" font-weight="400" fill="#526780">alongside model identity and results.</text>
+<path d="M44 449 L1196 449" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round"/>
+<text x="44" y="480" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Keep settings, seat assignments, seeds and outcome definitions with the recorded experiment results.</text>
+</g>
+</svg>

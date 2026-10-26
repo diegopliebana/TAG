@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="852" viewBox="0 0 1240 852" role="img" aria-labelledby="title description">
+<title id="title">From observation to accepted move</title>
+<desc id="description">The runner projects permitted input, asks the agent for an index, then applies the selected action through the forward model. Agents also receive shared rules; OSLA and MCTS use them on independent simulation states. The caller retains actual state and controllers.</desc>
+<rect width="1240" height="852" fill="#f6f8fc"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect x="50" y="24" width="340" height="739" rx="18" fill="#eef2f8" stroke="none"/>
+<path d="M220 118 L220 770" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 7"/>
+<rect x="60" y="38" width="320" height="84" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="60" y="34" width="320" height="84" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="76" y="53" width="4" height="46" rx="2" fill="#7656b5" stroke="none"/>
+<text x="93" y="68" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Agent</text>
+<text x="93" y="95" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Own memory + choice RNG</text>
+<rect x="450" y="24" width="340" height="739" rx="18" fill="#eef2f8" stroke="none"/>
+<path d="M620 118 L620 770" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 7"/>
+<rect x="460" y="38" width="320" height="84" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="460" y="34" width="320" height="84" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="476" y="53" width="4" height="46" rx="2" fill="#3669ca" stroke="none"/>
+<text x="493" y="68" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Runner</text>
+<text x="493" y="95" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Borrows state + controllers</text>
+<rect x="850" y="24" width="340" height="739" rx="18" fill="#eef2f8" stroke="none"/>
+<path d="M1020 118 L1020 770" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 7"/>
+<rect x="860" y="38" width="320" height="84" rx="14" fill="#e7edf5" stroke="none"/>
+<rect x="860" y="34" width="320" height="84" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="876" y="53" width="4" height="46" rx="2" fill="#148579" stroke="none"/>
+<text x="893" y="68" text-anchor="start" font-size="21" font-weight="700" fill="#172b46">Forward model</text>
+<text x="893" y="95" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Shared rules operating on states</text>
+<rect x="636" y="140" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="820" y="160" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">List actions + observe</text>
+<path d="M620 173 L1020 173" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M1020 173 L1011 177.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M1020 173 L1011 168.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="820" y="196" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">separate queries on live state</text>
+<rect x="636" y="223" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="820" y="243" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Observation + choices</text>
+<path d="M1020 256 L620 256" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 256 L629.004 251.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 256 L629.004 260.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="820" y="279" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">owned player view and action list</text>
+<rect x="236" y="306" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="420" y="326" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">choose(...)</text>
+<path d="M620 339 L220 339" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M220 339 L229.004 334.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M220 339 L229.004 343.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="420" y="362" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">rules + player observation + choices</text>
+<rect x="236" y="389" width="768" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="620" y="409" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Build / advance simulations</text>
+<path d="M220 422 L1020 422" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M1020 422 L1011 426.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M1020 422 L1011 417.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="620" y="445" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">OSLA / MCTS use independent states</text>
+<rect x="236" y="472" width="768" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="620" y="492" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Simulated successors</text>
+<path d="M1020 505 L220 505" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M220 505 L229.004 500.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M220 505 L229.004 509.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="620" y="528" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">repeat within the search budget</text>
+<rect x="236" y="555" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="420" y="575" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Selected list index</text>
+<path d="M220 588 L620 588" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 588 L610.996 592.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 588 L610.996 583.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="420" y="611" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">runner checks the index</text>
+<rect x="636" y="638" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="820" y="658" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Apply selected action</text>
+<path d="M620 671 L1020 671" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M1020 671 L1011 675.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M1020 671 L1011 666.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="820" y="694" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">rules resolve effects and chance</text>
+<rect x="636" y="721" width="368" height="58" rx="10" fill="#f6f8fc" stroke="none"/>
+<text x="820" y="741" text-anchor="middle" font-size="18" font-weight="700" fill="#172b46">Transition complete</text>
+<path d="M1020 754 L620 754" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 754 L629.004 749.65" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<path d="M620 754 L629.004 758.35" fill="none" stroke="#3669ca" stroke-width="2" stroke-linecap="round"/>
+<text x="820" y="777" text-anchor="middle" font-size="14" font-weight="400" fill="#526780">next player, results or completion</text>
+<path d="M44 791 L1196 791" fill="none" stroke="#dce5ef" stroke-width="2" stroke-linecap="round"/>
+<text x="44" y="822" text-anchor="start" font-size="16" font-weight="400" fill="#526780">Agents use shared rules for simulation; the runner updates the authoritative game state.</text>
+</g>
+</svg>

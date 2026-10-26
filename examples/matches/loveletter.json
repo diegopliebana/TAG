@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "game": {"name": "loveletter"},
+  "players": [
+    {"name": "random", "agent": {"type": "random"}},
+    {"name": "osla-r4", "agent": {"type": "osla", "repetitions_per_action": 4}},
+    {"name": "mcts", "agent": {"type": "mcts", "config": {
+      "schema_version": 1,
+      "budgets": {"iterations": 32, "forward_model_calls": 512},
+      "rollout_length": 12,
+      "state_evaluator": {"name": "game_heuristic"}
+    }}}
+  ],
+  "games": 3,
+  "seed": null,
+  "positions": "rotate",
+  "max_actions": 5000,
+  "reporting": {"format": "summary", "include_actions": true}
+}

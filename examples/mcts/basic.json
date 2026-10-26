@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "seed": null,
+  "tree_policy": "ucb1",
+  "tree_depth": 100,
+  "rollout_length": 10,
+  "value_completion": "require_full_vector",
+  "budgets": {
+    "time_ms": null,
+    "iterations": 1000,
+    "forward_model_calls": null
+  }
+}

@@ -1,0 +1,18 @@
+/target
+/.scratch/
+
+# Local IDE and Codex configuration
+/.idea/
+/.codex/
+
+# Generated browser bindings
+/web/pkg/
+
+# Local Python development environment and compiled extension
+/.venv*/
+__pycache__/
+*.pyc
+/adapters/python/python/tag_rust/*.pyd
+/adapters/python/python/tag_rust/*.pdb
+/adapters/python/python/tag_rust/*.so
+/adapters/python/target/

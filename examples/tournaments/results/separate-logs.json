@@ -1,0 +1,1316 @@
+{
+  "schema_version": 1,
+  "engine_version": "0.1.0",
+  "rng_algorithm": "ChaCha8",
+  "rng_version": 1,
+  "points_rule": "two-player: win=1, draw=0.5, loss=0",
+  "seed_derivation_version": 1,
+  "master_seed": 42,
+  "mode": "random",
+  "configured_matchups": 5,
+  "seat_allocation": "permutations",
+  "repetitions": 1,
+  "allow_self_play": false,
+  "max_games": 100000,
+  "include_actions": false,
+  "game_log_mode": "separate",
+  "tournament_id": "620f476a76e5bf56",
+  "agents": [
+    {
+      "name": "random",
+      "algorithm": "random",
+      "base_seed": 42,
+      "settings": {
+        "evaluator": "none"
+      }
+    },
+    {
+      "name": "puct",
+      "algorithm": "mcts",
+      "base_seed": 42,
+      "settings": {
+        "budgets": {
+          "forward_model_calls": 10000,
+          "iterations": 100,
+          "time_ms": null
+        },
+        "expansion": {
+          "order": "random"
+        },
+        "exploration_constant": 1.4142135623730951,
+        "final_selection": {
+          "policy": "most_visits"
+        },
+        "limits": {
+          "max_actions_per_decision": 4096,
+          "max_edges": 1000000,
+          "max_nodes": 100000,
+          "max_request_bytes": 67108864
+        },
+        "progressive_bias": {
+          "bias_visits": 4.0,
+          "evaluator": {
+            "name": "uniform_actions",
+            "parameters": {}
+          },
+          "mode": "tag_blend"
+        },
+        "puct_preferences": {
+          "evaluator": {
+            "name": "successor_state",
+            "parameters": {
+              "state_evaluator": {
+                "name": "game_heuristic"
+              }
+            }
+          },
+          "source": "native_softmax",
+          "temperature": 1.0
+        },
+        "rollout": {
+          "policy": "random"
+        },
+        "rollout_length": 0,
+        "schema_version": 1,
+        "search_mode": "open_loop",
+        "seed": 42,
+        "state_evaluator": {
+          "name": "game_heuristic",
+          "parameters": {}
+        },
+        "tree_depth": 30,
+        "tree_policy": "puct",
+        "value_completion": "require_full_vector"
+      }
+    }
+  ],
+  "game_entries": [
+    {
+      "id": "tictactoe",
+      "name": "tictactoe",
+      "player_count": 2,
+      "parameters": {
+        "grid_size": 3,
+        "limits": {
+          "max_cells": 1000000
+        }
+      },
+      "rules_version": 1,
+      "schedule_seed": 9280320133700328078,
+      "planned_pairings": 5,
+      "planned_games": 10
+    },
+    {
+      "id": "connect4",
+      "name": "connect4",
+      "player_count": 2,
+      "parameters": {
+        "height": 6,
+        "limits": {
+          "max_cells": 1000000
+        },
+        "width": 7,
+        "winning_length": 4
+      },
+      "rules_version": 1,
+      "schedule_seed": 9280320133700328078,
+      "planned_pairings": 5,
+      "planned_games": 10
+    }
+  ],
+  "planned_games": 20,
+  "completed_games": 20,
+  "failure": null,
+  "games": [
+    {
+      "index": 0,
+      "entry_index": 0,
+      "game_id": "tictactoe",
+      "pairing": 0,
+      "allocation": 0,
+      "repetition": 0,
+      "agents_by_seat": [
+        0,
+        1
+      ],
+      "agent_names": [
+        "random",
+        "puct"
+      ],
+      "agent_seeds": [
+        5517949708372933865,
+        13285559759348339330
+      ],
+      "outcome": {
+        "index": 0,
+        "game_seed": null,
+        "agent_seeds": [
+          5517949708372933865,
+          13285559759348339330
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "loss",
+          "win"
+        ],
+        "accepted_moves": 6,
+        "mcts": [
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          },
+          {
+            "completed_iterations": 300,
+            "forward_model_calls": 2890
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        0.0,
+        1.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000000.json",
+      "replay_file": "game-logs\\game-000000.tag-replay.json"
+    },
+    {
+      "index": 1,
+      "entry_index": 0,
+      "game_id": "tictactoe",
+      "pairing": 0,
+      "allocation": 1,
+      "repetition": 0,
+      "agents_by_seat": [
+        1,
+        0
+      ],
+      "agent_names": [
+        "puct",
+        "random"
+      ],
+      "agent_seeds": [
+        16508759317283943217,
+        8817748861405300458
+      ],
+      "outcome": {
+        "index": 1,
+        "game_seed": null,
+        "agent_seeds": [
+          16508759317283943217,
+          8817748861405300458
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "win",
+          "loss"
+        ],
+        "accepted_moves": 5,
+        "mcts": [
+          {
+            "completed_iterations": 300,
+            "forward_model_calls": 2973
+          },
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        1.0,
+        0.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000001.json",
+      "replay_file": "game-logs\\game-000001.tag-replay.json"
+    },
+    {
+      "index": 2,
+      "entry_index": 0,
+      "game_id": "tictactoe",
+      "pairing": 1,
+      "allocation": 0,
+      "repetition": 0,
+      "agents_by_seat": [
+        0,
+        1
+      ],
+      "agent_names": [
+        "random",
+        "puct"
+      ],
+      "agent_seeds": [
+        10362746003638588716,
+        5351275353782320870
+      ],
+      "outcome": {
+        "index": 2,
+        "game_seed": null,
+        "agent_seeds": [
+          10362746003638588716,
+          5351275353782320870
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "loss",
+          "win"
+        ],
+        "accepted_moves": 6,
+        "mcts": [
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          },
+          {
+            "completed_iterations": 300,
+            "forward_model_calls": 2865
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        0.0,
+        1.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000002.json",
+      "replay_file": "game-logs\\game-000002.tag-replay.json"
+    },
+    {
+      "index": 3,
+      "entry_index": 0,
+      "game_id": "tictactoe",
+      "pairing": 1,
+      "allocation": 1,
+      "repetition": 0,
+      "agents_by_seat": [
+        1,
+        0
+      ],
+      "agent_names": [
+        "puct",
+        "random"
+      ],
+      "agent_seeds": [
+        10085709568206747140,
+        5016696832427281524
+      ],
+      "outcome": {
+        "index": 3,
+        "game_seed": null,
+        "agent_seeds": [
+          10085709568206747140,
+          5016696832427281524
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "win",
+          "loss"
+        ],
+        "accepted_moves": 5,
+        "mcts": [
+          {
+            "completed_iterations": 300,
+            "forward_model_calls": 2991
+          },
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        1.0,
+        0.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000003.json",
+      "replay_file": "game-logs\\game-000003.tag-replay.json"
+    },
+    {
+      "index": 4,
+      "entry_index": 0,
+      "game_id": "tictactoe",
+      "pairing": 2,
+      "allocation": 0,
+      "repetition": 0,
+      "agents_by_seat": [
+        0,
+        1
+      ],
+      "agent_names": [
+        "random",
+        "puct"
+      ],
+      "agent_seeds": [
+        15843396260741140777,
+        5067864851827660990
+      ],
+      "outcome": {
+        "index": 4,
+        "game_seed": null,
+        "agent_seeds": [
+          15843396260741140777,
+          5067864851827660990
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "loss",
+          "win"
+        ],
+        "accepted_moves": 6,
+        "mcts": [
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          },
+          {
+            "completed_iterations": 300,
+            "forward_model_calls": 2885
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        0.0,
+        1.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000004.json",
+      "replay_file": "game-logs\\game-000004.tag-replay.json"
+    },
+    {
+      "index": 5,
+      "entry_index": 0,
+      "game_id": "tictactoe",
+      "pairing": 2,
+      "allocation": 1,
+      "repetition": 0,
+      "agents_by_seat": [
+        1,
+        0
+      ],
+      "agent_names": [
+        "puct",
+        "random"
+      ],
+      "agent_seeds": [
+        12784035612588490767,
+        4800536727317632990
+      ],
+      "outcome": {
+        "index": 5,
+        "game_seed": null,
+        "agent_seeds": [
+          12784035612588490767,
+          4800536727317632990
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "win",
+          "loss"
+        ],
+        "accepted_moves": 5,
+        "mcts": [
+          {
+            "completed_iterations": 300,
+            "forward_model_calls": 2991
+          },
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        1.0,
+        0.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000005.json",
+      "replay_file": "game-logs\\game-000005.tag-replay.json"
+    },
+    {
+      "index": 6,
+      "entry_index": 0,
+      "game_id": "tictactoe",
+      "pairing": 3,
+      "allocation": 0,
+      "repetition": 0,
+      "agents_by_seat": [
+        0,
+        1
+      ],
+      "agent_names": [
+        "random",
+        "puct"
+      ],
+      "agent_seeds": [
+        7635061693205047949,
+        14418030330730333267
+      ],
+      "outcome": {
+        "index": 6,
+        "game_seed": null,
+        "agent_seeds": [
+          7635061693205047949,
+          14418030330730333267
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "loss",
+          "win"
+        ],
+        "accepted_moves": 6,
+        "mcts": [
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          },
+          {
+            "completed_iterations": 300,
+            "forward_model_calls": 2870
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        0.0,
+        1.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000006.json",
+      "replay_file": "game-logs\\game-000006.tag-replay.json"
+    },
+    {
+      "index": 7,
+      "entry_index": 0,
+      "game_id": "tictactoe",
+      "pairing": 3,
+      "allocation": 1,
+      "repetition": 0,
+      "agents_by_seat": [
+        1,
+        0
+      ],
+      "agent_names": [
+        "puct",
+        "random"
+      ],
+      "agent_seeds": [
+        2536268334881278214,
+        14524964759462645507
+      ],
+      "outcome": {
+        "index": 7,
+        "game_seed": null,
+        "agent_seeds": [
+          2536268334881278214,
+          14524964759462645507
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "win",
+          "loss"
+        ],
+        "accepted_moves": 5,
+        "mcts": [
+          {
+            "completed_iterations": 300,
+            "forward_model_calls": 2961
+          },
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        1.0,
+        0.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000007.json",
+      "replay_file": "game-logs\\game-000007.tag-replay.json"
+    },
+    {
+      "index": 8,
+      "entry_index": 0,
+      "game_id": "tictactoe",
+      "pairing": 4,
+      "allocation": 0,
+      "repetition": 0,
+      "agents_by_seat": [
+        0,
+        1
+      ],
+      "agent_names": [
+        "random",
+        "puct"
+      ],
+      "agent_seeds": [
+        13189957731879862202,
+        5394321924003512562
+      ],
+      "outcome": {
+        "index": 8,
+        "game_seed": null,
+        "agent_seeds": [
+          13189957731879862202,
+          5394321924003512562
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "loss",
+          "win"
+        ],
+        "accepted_moves": 6,
+        "mcts": [
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          },
+          {
+            "completed_iterations": 300,
+            "forward_model_calls": 3139
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        0.0,
+        1.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000008.json",
+      "replay_file": "game-logs\\game-000008.tag-replay.json"
+    },
+    {
+      "index": 9,
+      "entry_index": 0,
+      "game_id": "tictactoe",
+      "pairing": 4,
+      "allocation": 1,
+      "repetition": 0,
+      "agents_by_seat": [
+        1,
+        0
+      ],
+      "agent_names": [
+        "puct",
+        "random"
+      ],
+      "agent_seeds": [
+        16523713602081765756,
+        10441696770578050424
+      ],
+      "outcome": {
+        "index": 9,
+        "game_seed": null,
+        "agent_seeds": [
+          16523713602081765756,
+          10441696770578050424
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "win",
+          "loss"
+        ],
+        "accepted_moves": 5,
+        "mcts": [
+          {
+            "completed_iterations": 300,
+            "forward_model_calls": 2979
+          },
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        1.0,
+        0.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000009.json",
+      "replay_file": "game-logs\\game-000009.tag-replay.json"
+    },
+    {
+      "index": 10,
+      "entry_index": 1,
+      "game_id": "connect4",
+      "pairing": 0,
+      "allocation": 0,
+      "repetition": 0,
+      "agents_by_seat": [
+        0,
+        1
+      ],
+      "agent_names": [
+        "random",
+        "puct"
+      ],
+      "agent_seeds": [
+        17786372946816982315,
+        4169085987676542146
+      ],
+      "outcome": {
+        "index": 10,
+        "game_seed": null,
+        "agent_seeds": [
+          17786372946816982315,
+          4169085987676542146
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "loss",
+          "win"
+        ],
+        "accepted_moves": 12,
+        "mcts": [
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          },
+          {
+            "completed_iterations": 600,
+            "forward_model_calls": 6678
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        0.0,
+        1.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000010.json",
+      "replay_file": "game-logs\\game-000010.tag-replay.json"
+    },
+    {
+      "index": 11,
+      "entry_index": 1,
+      "game_id": "connect4",
+      "pairing": 0,
+      "allocation": 1,
+      "repetition": 0,
+      "agents_by_seat": [
+        1,
+        0
+      ],
+      "agent_names": [
+        "puct",
+        "random"
+      ],
+      "agent_seeds": [
+        422911928013078737,
+        6900471650003115619
+      ],
+      "outcome": {
+        "index": 11,
+        "game_seed": null,
+        "agent_seeds": [
+          422911928013078737,
+          6900471650003115619
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "win",
+          "loss"
+        ],
+        "accepted_moves": 9,
+        "mcts": [
+          {
+            "completed_iterations": 500,
+            "forward_model_calls": 5535
+          },
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        1.0,
+        0.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000011.json",
+      "replay_file": "game-logs\\game-000011.tag-replay.json"
+    },
+    {
+      "index": 12,
+      "entry_index": 1,
+      "game_id": "connect4",
+      "pairing": 1,
+      "allocation": 0,
+      "repetition": 0,
+      "agents_by_seat": [
+        0,
+        1
+      ],
+      "agent_names": [
+        "random",
+        "puct"
+      ],
+      "agent_seeds": [
+        6072362738893470011,
+        11928558178605648207
+      ],
+      "outcome": {
+        "index": 12,
+        "game_seed": null,
+        "agent_seeds": [
+          6072362738893470011,
+          11928558178605648207
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "loss",
+          "win"
+        ],
+        "accepted_moves": 8,
+        "mcts": [
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          },
+          {
+            "completed_iterations": 400,
+            "forward_model_calls": 4339
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        0.0,
+        1.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000012.json",
+      "replay_file": "game-logs\\game-000012.tag-replay.json"
+    },
+    {
+      "index": 13,
+      "entry_index": 1,
+      "game_id": "connect4",
+      "pairing": 1,
+      "allocation": 1,
+      "repetition": 0,
+      "agents_by_seat": [
+        1,
+        0
+      ],
+      "agent_names": [
+        "puct",
+        "random"
+      ],
+      "agent_seeds": [
+        12067862256109990727,
+        462872823651760872
+      ],
+      "outcome": {
+        "index": 13,
+        "game_seed": null,
+        "agent_seeds": [
+          12067862256109990727,
+          462872823651760872
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "win",
+          "loss"
+        ],
+        "accepted_moves": 9,
+        "mcts": [
+          {
+            "completed_iterations": 500,
+            "forward_model_calls": 5535
+          },
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        1.0,
+        0.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000013.json",
+      "replay_file": "game-logs\\game-000013.tag-replay.json"
+    },
+    {
+      "index": 14,
+      "entry_index": 1,
+      "game_id": "connect4",
+      "pairing": 2,
+      "allocation": 0,
+      "repetition": 0,
+      "agents_by_seat": [
+        0,
+        1
+      ],
+      "agent_names": [
+        "random",
+        "puct"
+      ],
+      "agent_seeds": [
+        12926619458751747532,
+        8678553588222153618
+      ],
+      "outcome": {
+        "index": 14,
+        "game_seed": null,
+        "agent_seeds": [
+          12926619458751747532,
+          8678553588222153618
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "loss",
+          "win"
+        ],
+        "accepted_moves": 8,
+        "mcts": [
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          },
+          {
+            "completed_iterations": 400,
+            "forward_model_calls": 4339
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        0.0,
+        1.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000014.json",
+      "replay_file": "game-logs\\game-000014.tag-replay.json"
+    },
+    {
+      "index": 15,
+      "entry_index": 1,
+      "game_id": "connect4",
+      "pairing": 2,
+      "allocation": 1,
+      "repetition": 0,
+      "agents_by_seat": [
+        1,
+        0
+      ],
+      "agent_names": [
+        "puct",
+        "random"
+      ],
+      "agent_seeds": [
+        15653997077561002636,
+        5265023031634909123
+      ],
+      "outcome": {
+        "index": 15,
+        "game_seed": null,
+        "agent_seeds": [
+          15653997077561002636,
+          5265023031634909123
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "win",
+          "loss"
+        ],
+        "accepted_moves": 7,
+        "mcts": [
+          {
+            "completed_iterations": 400,
+            "forward_model_calls": 4339
+          },
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        1.0,
+        0.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000015.json",
+      "replay_file": "game-logs\\game-000015.tag-replay.json"
+    },
+    {
+      "index": 16,
+      "entry_index": 1,
+      "game_id": "connect4",
+      "pairing": 3,
+      "allocation": 0,
+      "repetition": 0,
+      "agents_by_seat": [
+        0,
+        1
+      ],
+      "agent_names": [
+        "random",
+        "puct"
+      ],
+      "agent_seeds": [
+        1699726486037605435,
+        17182303867896366255
+      ],
+      "outcome": {
+        "index": 16,
+        "game_seed": null,
+        "agent_seeds": [
+          1699726486037605435,
+          17182303867896366255
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "loss",
+          "win"
+        ],
+        "accepted_moves": 10,
+        "mcts": [
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          },
+          {
+            "completed_iterations": 500,
+            "forward_model_calls": 5535
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        0.0,
+        1.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000016.json",
+      "replay_file": "game-logs\\game-000016.tag-replay.json"
+    },
+    {
+      "index": 17,
+      "entry_index": 1,
+      "game_id": "connect4",
+      "pairing": 3,
+      "allocation": 1,
+      "repetition": 0,
+      "agents_by_seat": [
+        1,
+        0
+      ],
+      "agent_names": [
+        "puct",
+        "random"
+      ],
+      "agent_seeds": [
+        11473507449064992302,
+        3152615267075189908
+      ],
+      "outcome": {
+        "index": 17,
+        "game_seed": null,
+        "agent_seeds": [
+          11473507449064992302,
+          3152615267075189908
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "win",
+          "loss"
+        ],
+        "accepted_moves": 11,
+        "mcts": [
+          {
+            "completed_iterations": 600,
+            "forward_model_calls": 6744
+          },
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        1.0,
+        0.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000017.json",
+      "replay_file": "game-logs\\game-000017.tag-replay.json"
+    },
+    {
+      "index": 18,
+      "entry_index": 1,
+      "game_id": "connect4",
+      "pairing": 4,
+      "allocation": 0,
+      "repetition": 0,
+      "agents_by_seat": [
+        0,
+        1
+      ],
+      "agent_names": [
+        "random",
+        "puct"
+      ],
+      "agent_seeds": [
+        6675656730225210273,
+        11136770941836653287
+      ],
+      "outcome": {
+        "index": 18,
+        "game_seed": null,
+        "agent_seeds": [
+          6675656730225210273,
+          11136770941836653287
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "loss",
+          "win"
+        ],
+        "accepted_moves": 14,
+        "mcts": [
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          },
+          {
+            "completed_iterations": 700,
+            "forward_model_calls": 7918
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        0.0,
+        1.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000018.json",
+      "replay_file": "game-logs\\game-000018.tag-replay.json"
+    },
+    {
+      "index": 19,
+      "entry_index": 1,
+      "game_id": "connect4",
+      "pairing": 4,
+      "allocation": 1,
+      "repetition": 0,
+      "agents_by_seat": [
+        1,
+        0
+      ],
+      "agent_names": [
+        "puct",
+        "random"
+      ],
+      "agent_seeds": [
+        16660829577723793902,
+        14726038957262245143
+      ],
+      "outcome": {
+        "index": 19,
+        "game_seed": null,
+        "agent_seeds": [
+          16660829577723793902,
+          14726038957262245143
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "results": [
+          "win",
+          "loss"
+        ],
+        "accepted_moves": 9,
+        "mcts": [
+          {
+            "completed_iterations": 500,
+            "forward_model_calls": 5535
+          },
+          {
+            "completed_iterations": 0,
+            "forward_model_calls": 0
+          }
+        ],
+        "recording": null
+      },
+      "points": [
+        1.0,
+        0.0
+      ],
+      "error": null,
+      "game_log": "game-logs\\game-000019.json",
+      "replay_file": "game-logs\\game-000019.tag-replay.json"
+    }
+  ],
+  "rankings": {
+    "sort_by": "win_rate",
+    "global_weighting": "equal_game_weight_over_observed_entries",
+    "per_game": [
+      {
+        "game_id": "tictactoe",
+        "rows": [
+          {
+            "rank": 1,
+            "agent": "puct",
+            "appearances": 10,
+            "wins": 10,
+            "draws": 0,
+            "losses": 0,
+            "win_rate": 1.0,
+            "points_rate": 1.0,
+            "games_covered": 1,
+            "game_entries": 1
+          },
+          {
+            "rank": 2,
+            "agent": "random",
+            "appearances": 10,
+            "wins": 0,
+            "draws": 0,
+            "losses": 10,
+            "win_rate": 0.0,
+            "points_rate": 0.0,
+            "games_covered": 1,
+            "game_entries": 1
+          }
+        ]
+      },
+      {
+        "game_id": "connect4",
+        "rows": [
+          {
+            "rank": 1,
+            "agent": "puct",
+            "appearances": 10,
+            "wins": 10,
+            "draws": 0,
+            "losses": 0,
+            "win_rate": 1.0,
+            "points_rate": 1.0,
+            "games_covered": 1,
+            "game_entries": 1
+          },
+          {
+            "rank": 2,
+            "agent": "random",
+            "appearances": 10,
+            "wins": 0,
+            "draws": 0,
+            "losses": 10,
+            "win_rate": 0.0,
+            "points_rate": 0.0,
+            "games_covered": 1,
+            "game_entries": 1
+          }
+        ]
+      }
+    ],
+    "global": [
+      {
+        "rank": 1,
+        "agent": "puct",
+        "appearances": 20,
+        "wins": 20,
+        "draws": 0,
+        "losses": 0,
+        "win_rate": 1.0,
+        "points_rate": 1.0,
+        "games_covered": 2,
+        "game_entries": 2
+      },
+      {
+        "rank": 2,
+        "agent": "random",
+        "appearances": 20,
+        "wins": 0,
+        "draws": 0,
+        "losses": 20,
+        "win_rate": 0.0,
+        "points_rate": 0.0,
+        "games_covered": 2,
+        "game_entries": 2
+      }
+    ]
+  }
+}

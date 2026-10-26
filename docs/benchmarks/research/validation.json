@@ -1,0 +1,11 @@
+{
+  "timing_processes": 720,
+  "allocations_processes": 240,
+  "retention_processes": 144,
+  "python_processes": 3,
+  "native_adapter_processes": 3,
+  "tree_memory_processes": 96,
+  "cli_game_executions": 3480,
+  "standalone_figures": 12,
+  "standalone_exports": 36
+}

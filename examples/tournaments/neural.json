@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "agents": [
+    {"name": "neural-puct", "agent": {
+      "type": "neural_mcts",
+      "config_file": "../mcts/neural.json",
+      "model_files": {
+        "ttt": "../selfplay/results/tictactoe-model.json",
+        "c4": "../selfplay/results/connect4-model.json"
+      }
+    }},
+    {"name": "osla", "agent": {"type": "osla"}},
+    {"name": "ucb1", "agent": {"type": "mcts", "config_file": "../mcts/basic.json"}}
+  ],
+  "games": [{"id": "ttt", "name": "tictactoe"}, {"id": "c4", "name": "connect4"}],
+  "mode": "exhaustive",
+  "seat_allocation": "permutations",
+  "allow_self_play": false,
+  "ranking_metric": "win_rate",
+  "seed": 42,
+  "results_file": "results/neural.json",
+  "game_logs": {"mode": "separate", "directory": "results/neural-game-logs"}
+}

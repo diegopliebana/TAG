@@ -1,0 +1,27 @@
+{
+  "source": "Original tag-rust geometric symbols",
+  "license": "MIT",
+  "cards": {
+    "guard": "guard.svg",
+    "priest": "priest.svg",
+    "baron": "baron.svg",
+    "handmaid": "handmaid.svg",
+    "prince": "prince.svg",
+    "king": "king.svg",
+    "countess": "countess.svg",
+    "princess": "princess.svg",
+    "back": "back.svg"
+  },
+  "sha256": {
+    "back.svg": "79300e677c25ac3f6a84bd5dd1bfbe2eb370efdcec8390abb79f7fff9a8fad69",
+    "baron.svg": "81e65f65519151bdcb1ef299f5cfb7404f25658205de2305c877bbcdce1e67e7",
+    "countess.svg": "64258e1f7f44fa9ffd0cf92023840cc7c9a70c6aedfe8ddb3f87c9e5faea8357",
+    "guard.svg": "e7ed6c6ce455441a1f38937d5637dda80e3b788ff58336f3bddd52510d2bc7c6",
+    "handmaid.svg": "314e41b63c28c371fd3b31c99b6cfc04a77313a15c5108309a8229535e9b3b09",
+    "king.svg": "fd18403a89d2bfe0b06aab5b19e1b9ed97f796b397c1ee1f6441696f5b273483",
+    "priest.svg": "a514b3babcf31c5b8cffa931a03e512b51b0c444464d01b7018873250960e7e5",
+    "prince.svg": "09b016475aac7c9d12879c9515c207a046240cadc46a6ca1831892f1847b4f38",
+    "princess.svg": "9a65718c6bdc6f94f55b845ba16e7d59fd13bc3ef6ad06edd7ce580e02b43655",
+    "attributions.txt": "b8e6a9e632238b6d8eda10f46d20bd3fc80bc17b0a3d6b8d8cb32fb0ba07d335"
+  }
+}

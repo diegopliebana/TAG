@@ -1,0 +1,1346 @@
+[
+  {
+    "fork": 1,
+    "game": "tictactoe",
+    "players": 2,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4014080,
+        "peak_working_set": 4014080,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4014080,
+        "peak_working_set": 4014080,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "tictactoe",
+    "players": 2,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 3993600,
+        "peak_working_set": 3993600,
+        "private_bytes": 630784,
+        "pagefile": 630784,
+        "peak_pagefile": 630784
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 3993600,
+        "peak_working_set": 3993600,
+        "private_bytes": 630784,
+        "pagefile": 630784,
+        "peak_pagefile": 630784
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "connect4",
+    "players": 2,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 671744,
+        "pagefile": 671744,
+        "peak_pagefile": 671744
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 671744,
+        "pagefile": 671744,
+        "peak_pagefile": 671744
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "connect4",
+    "players": 2,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "cantstop",
+    "players": 2,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4001792,
+        "peak_working_set": 4001792,
+        "private_bytes": 626688,
+        "pagefile": 626688,
+        "peak_pagefile": 626688
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4001792,
+        "peak_working_set": 4001792,
+        "private_bytes": 626688,
+        "pagefile": 626688,
+        "peak_pagefile": 626688
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "cantstop",
+    "players": 2,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "cantstop",
+    "players": 3,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 671744,
+        "pagefile": 671744,
+        "peak_pagefile": 671744
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 671744,
+        "pagefile": 671744,
+        "peak_pagefile": 671744
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "cantstop",
+    "players": 3,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "cantstop",
+    "players": 4,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "cantstop",
+    "players": 4,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "loveletter",
+    "players": 2,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "loveletter",
+    "players": 2,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4034560,
+        "peak_working_set": 4034560,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4034560,
+        "peak_working_set": 4034560,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "loveletter",
+    "players": 3,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "loveletter",
+    "players": 3,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4030464,
+        "peak_working_set": 4030464,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4030464,
+        "peak_working_set": 4030464,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "loveletter",
+    "players": 4,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 1,
+    "game": "loveletter",
+    "players": 4,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "tictactoe",
+    "players": 2,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 671744,
+        "pagefile": 671744,
+        "peak_pagefile": 671744
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 671744,
+        "pagefile": 671744,
+        "peak_pagefile": 671744
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "tictactoe",
+    "players": 2,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4014080,
+        "peak_working_set": 4014080,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4014080,
+        "peak_working_set": 4014080,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "connect4",
+    "players": 2,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "connect4",
+    "players": 2,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4030464,
+        "peak_working_set": 4030464,
+        "private_bytes": 671744,
+        "pagefile": 671744,
+        "peak_pagefile": 671744
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4030464,
+        "peak_working_set": 4030464,
+        "private_bytes": 671744,
+        "pagefile": 671744,
+        "peak_pagefile": 671744
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "cantstop",
+    "players": 2,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "cantstop",
+    "players": 2,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "cantstop",
+    "players": 3,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "cantstop",
+    "players": 3,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4034560,
+        "peak_working_set": 4034560,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4034560,
+        "peak_working_set": 4034560,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "cantstop",
+    "players": 4,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4014080,
+        "peak_working_set": 4014080,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4014080,
+        "peak_working_set": 4014080,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "cantstop",
+    "players": 4,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "loveletter",
+    "players": 2,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "loveletter",
+    "players": 2,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4034560,
+        "peak_working_set": 4034560,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4034560,
+        "peak_working_set": 4034560,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "loveletter",
+    "players": 3,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "loveletter",
+    "players": 3,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "loveletter",
+    "players": 4,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 2,
+    "game": "loveletter",
+    "players": 4,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "tictactoe",
+    "players": 2,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4014080,
+        "peak_working_set": 4014080,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4014080,
+        "peak_working_set": 4014080,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "tictactoe",
+    "players": 2,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4009984,
+        "peak_working_set": 4009984,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4009984,
+        "peak_working_set": 4009984,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "connect4",
+    "players": 2,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "connect4",
+    "players": 2,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "cantstop",
+    "players": 2,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "cantstop",
+    "players": 2,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4030464,
+        "peak_working_set": 4030464,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4030464,
+        "peak_working_set": 4030464,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "cantstop",
+    "players": 3,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 659456,
+        "pagefile": 659456,
+        "peak_pagefile": 659456
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "cantstop",
+    "players": 3,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "cantstop",
+    "players": 4,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4018176,
+        "peak_working_set": 4018176,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "cantstop",
+    "players": 4,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4026368,
+        "peak_working_set": 4026368,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "loveletter",
+    "players": 2,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "loveletter",
+    "players": 2,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 655360,
+        "pagefile": 655360,
+        "peak_pagefile": 655360
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "loveletter",
+    "players": 3,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "loveletter",
+    "players": 3,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4034560,
+        "peak_working_set": 4034560,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4034560,
+        "peak_working_set": 4034560,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "loveletter",
+    "players": 4,
+    "profile": "minimal-features",
+    "binary_bytes": 179712,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4022272,
+        "peak_working_set": 4022272,
+        "private_bytes": 667648,
+        "pagefile": 667648,
+        "peak_pagefile": 667648
+      }
+    }
+  },
+  {
+    "fork": 3,
+    "game": "loveletter",
+    "players": 4,
+    "profile": "optional-features",
+    "binary_bytes": 184832,
+    "idle": {
+      "phase": "idle",
+      "process": {
+        "working_set": 4030464,
+        "peak_working_set": 4030464,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    },
+    "loaded": {
+      "phase": "loaded",
+      "count": 1,
+      "process": {
+        "working_set": 4030464,
+        "peak_working_set": 4030464,
+        "private_bytes": 663552,
+        "pagefile": 663552,
+        "peak_pagefile": 663552
+      }
+    }
+  }
+]

@@ -1,0 +1,2941 @@
+{
+  "schema_version": 1,
+  "seed_derivation_version": 1,
+  "master_seed": 14984475461503488689,
+  "game": "connect4",
+  "parameters": {
+    "height": 6,
+    "limits": {
+      "max_cells": 1000000
+    },
+    "width": 7,
+    "winning_length": 4
+  },
+  "positions": "rotate",
+  "requested_games": 20,
+  "completed_games": 20,
+  "agents": [
+    {
+      "name": "ucb1",
+      "algorithm": "mcts",
+      "base_seed": 14984475461503488689,
+      "settings": {
+        "budgets": {
+          "forward_model_calls": null,
+          "iterations": 1000,
+          "time_ms": null
+        },
+        "expansion": {
+          "order": "random"
+        },
+        "exploration_constant": 1.4142135623730951,
+        "final_selection": {
+          "policy": "most_visits"
+        },
+        "limits": {
+          "max_actions_per_decision": 4096,
+          "max_edges": 1000000,
+          "max_nodes": 100000,
+          "max_request_bytes": 67108864
+        },
+        "progressive_bias": {
+          "mode": "none"
+        },
+        "puct_preferences": {
+          "source": "uniform"
+        },
+        "rollout": {
+          "policy": "random"
+        },
+        "rollout_length": 10,
+        "schema_version": 1,
+        "search_mode": "open_loop",
+        "seed": 14984475461503488689,
+        "state_evaluator": {
+          "name": "game_heuristic",
+          "parameters": {}
+        },
+        "tree_depth": 100,
+        "tree_policy": "ucb1",
+        "value_completion": "require_full_vector"
+      },
+      "combined": {
+        "games": 20,
+        "wins": 19,
+        "draws": 0,
+        "losses": 1
+      },
+      "by_seat": [
+        {
+          "games": 10,
+          "wins": 9,
+          "draws": 0,
+          "losses": 1
+        },
+        {
+          "games": 10,
+          "wins": 10,
+          "draws": 0,
+          "losses": 0
+        }
+      ]
+    },
+    {
+      "name": "osla",
+      "algorithm": "osla",
+      "base_seed": 14984475461503488689,
+      "settings": {
+        "evaluator": "game_heuristic"
+      },
+      "combined": {
+        "games": 20,
+        "wins": 1,
+        "draws": 0,
+        "losses": 19
+      },
+      "by_seat": [
+        {
+          "games": 10,
+          "wins": 0,
+          "draws": 0,
+          "losses": 10
+        },
+        {
+          "games": 10,
+          "wins": 1,
+          "draws": 0,
+          "losses": 9
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "index": 0,
+      "game_seed": null,
+      "agent_seeds": [
+        10572550177982211496,
+        16246000459421410792
+      ],
+      "seats": [
+        0,
+        1
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 9,
+      "mcts": [
+        {
+          "completed_iterations": 5000,
+          "forward_model_calls": 50558
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 1,
+      "game_seed": null,
+      "agent_seeds": [
+        14076915577818850496,
+        4521151204413534889
+      ],
+      "seats": [
+        1,
+        0
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 38,
+      "mcts": [
+        {
+          "completed_iterations": 19000,
+          "forward_model_calls": 159034
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 2,
+      "game_seed": null,
+      "agent_seeds": [
+        16648347029804203642,
+        17958188045763370588
+      ],
+      "seats": [
+        0,
+        1
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 7,
+      "mcts": [
+        {
+          "completed_iterations": 4000,
+          "forward_model_calls": 34031
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 3,
+      "game_seed": null,
+      "agent_seeds": [
+        889169346054476529,
+        5369944369015391464
+      ],
+      "seats": [
+        1,
+        0
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 32,
+      "mcts": [
+        {
+          "completed_iterations": 16000,
+          "forward_model_calls": 141304
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 4,
+      "game_seed": null,
+      "agent_seeds": [
+        4995754724233917700,
+        15196126943512412592
+      ],
+      "seats": [
+        0,
+        1
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 7,
+      "mcts": [
+        {
+          "completed_iterations": 4000,
+          "forward_model_calls": 33962
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 5,
+      "game_seed": null,
+      "agent_seeds": [
+        12862807845425100229,
+        18165413162556838005
+      ],
+      "seats": [
+        1,
+        0
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 20,
+      "mcts": [
+        {
+          "completed_iterations": 10000,
+          "forward_model_calls": 110105
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 6,
+      "game_seed": null,
+      "agent_seeds": [
+        17363631687036771649,
+        5282701716804040864
+      ],
+      "seats": [
+        0,
+        1
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 7,
+      "mcts": [
+        {
+          "completed_iterations": 4000,
+          "forward_model_calls": 38923
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 7,
+      "game_seed": null,
+      "agent_seeds": [
+        9985637346258043677,
+        1221273773747791609
+      ],
+      "seats": [
+        1,
+        0
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 28,
+      "mcts": [
+        {
+          "completed_iterations": 14000,
+          "forward_model_calls": 133583
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 8,
+      "game_seed": null,
+      "agent_seeds": [
+        4940368741215378659,
+        6298807974644826350
+      ],
+      "seats": [
+        0,
+        1
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 7,
+      "mcts": [
+        {
+          "completed_iterations": 4000,
+          "forward_model_calls": 34245
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 9,
+      "game_seed": null,
+      "agent_seeds": [
+        6791461183797292814,
+        10110839925731951730
+      ],
+      "seats": [
+        1,
+        0
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 18,
+      "mcts": [
+        {
+          "completed_iterations": 9000,
+          "forward_model_calls": 90639
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 10,
+      "game_seed": null,
+      "agent_seeds": [
+        7176787655706455564,
+        7734070522485974873
+      ],
+      "seats": [
+        0,
+        1
+      ],
+      "results": [
+        "loss",
+        "win"
+      ],
+      "accepted_moves": 36,
+      "mcts": [
+        {
+          "completed_iterations": 18000,
+          "forward_model_calls": 184317
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 11,
+      "game_seed": null,
+      "agent_seeds": [
+        5091014032594791999,
+        14899397825707973093
+      ],
+      "seats": [
+        1,
+        0
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 34,
+      "mcts": [
+        {
+          "completed_iterations": 17000,
+          "forward_model_calls": 158211
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 12,
+      "game_seed": null,
+      "agent_seeds": [
+        15293200639826167960,
+        16588948955283006373
+      ],
+      "seats": [
+        0,
+        1
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 7,
+      "mcts": [
+        {
+          "completed_iterations": 4000,
+          "forward_model_calls": 33957
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 13,
+      "game_seed": null,
+      "agent_seeds": [
+        18017524595570913392,
+        14368642824564618243
+      ],
+      "seats": [
+        1,
+        0
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 32,
+      "mcts": [
+        {
+          "completed_iterations": 16000,
+          "forward_model_calls": 136279
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 14,
+      "game_seed": null,
+      "agent_seeds": [
+        16823471659484619833,
+        14169602302721842174
+      ],
+      "seats": [
+        0,
+        1
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 7,
+      "mcts": [
+        {
+          "completed_iterations": 4000,
+          "forward_model_calls": 33633
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 15,
+      "game_seed": null,
+      "agent_seeds": [
+        3645671870339975751,
+        17595255181295690185
+      ],
+      "seats": [
+        1,
+        0
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 20,
+      "mcts": [
+        {
+          "completed_iterations": 10000,
+          "forward_model_calls": 109222
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 16,
+      "game_seed": null,
+      "agent_seeds": [
+        11729077831240227458,
+        11836121918548296813
+      ],
+      "seats": [
+        0,
+        1
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 7,
+      "mcts": [
+        {
+          "completed_iterations": 4000,
+          "forward_model_calls": 34226
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 17,
+      "game_seed": null,
+      "agent_seeds": [
+        840870387656984147,
+        9081179376781840141
+      ],
+      "seats": [
+        1,
+        0
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 32,
+      "mcts": [
+        {
+          "completed_iterations": 16000,
+          "forward_model_calls": 153223
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 6
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 1
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 18,
+      "game_seed": null,
+      "agent_seeds": [
+        10803243818591845250,
+        5982829758504292214
+      ],
+      "seats": [
+        0,
+        1
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 7,
+      "mcts": [
+        {
+          "completed_iterations": 4000,
+          "forward_model_calls": 34092
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 1
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 0
+          }
+        }
+      ],
+      "recording": null
+    },
+    {
+      "index": 19,
+      "game_seed": null,
+      "agent_seeds": [
+        4543263604967846762,
+        5652447147831624311
+      ],
+      "seats": [
+        1,
+        0
+      ],
+      "results": [
+        "win",
+        "loss"
+      ],
+      "accepted_moves": 16,
+      "mcts": [
+        {
+          "completed_iterations": 8000,
+          "forward_model_calls": 87752
+        },
+        {
+          "completed_iterations": 0,
+          "forward_model_calls": 0
+        }
+      ],
+      "actions": [
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 2
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 3
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 5
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 0,
+          "action": {
+            "column": 4
+          }
+        },
+        {
+          "seat": 1,
+          "action": {
+            "column": 4
+          }
+        }
+      ],
+      "recording": null
+    }
+  ],
+  "failure": null
+}

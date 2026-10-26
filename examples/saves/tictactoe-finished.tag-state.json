@@ -1,0 +1,42 @@
+{
+  "kind": "tag-state",
+  "versions": {
+    "format": 1,
+    "game": "tictactoe",
+    "rules": 1,
+    "agents": 1,
+    "evaluators": 1,
+    "rng": "chacha8-rand_chacha-0.9.0-rand_core-0.9.5"
+  },
+  "parameters": {
+    "grid_size": 3,
+    "limits": {
+      "max_cells": 1000000
+    }
+  },
+  "state": {
+    "cells": [
+      0,
+      0,
+      null,
+      null,
+      0,
+      null,
+      1,
+      1,
+      1
+    ],
+    "current_player": 1,
+    "counters": [
+      6,
+      5,
+      5,
+      0
+    ],
+    "outcome": {
+      "kind": "won",
+      "player": 1
+    },
+    "winning_cells": []
+  }
+}

@@ -1,0 +1,5 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Browser bridge checks</title></head><body><p id="result">Running?</p><script type="module">
+import { runBrowserChecks } from "./browser-cases.js";
+window.browserChecks = runBrowserChecks();
+window.browserChecks.then(result => document.querySelector("#result").textContent = JSON.stringify(result)).catch(error => document.querySelector("#result").textContent = error.stack);
+</script></body></html>

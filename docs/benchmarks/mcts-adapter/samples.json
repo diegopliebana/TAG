@@ -1,0 +1,345 @@
+{
+  "samples": [
+    {
+      "actions": [
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        }
+      ],
+      "decision_total_ms": 25.2701,
+      "decisions": 20,
+      "game": "tictactoe",
+      "iterations": 256,
+      "model_id": "91678a7ec49471b8b97709e38e656635919cce5c2fa1735502a587322edc5450",
+      "neural": false,
+      "poll_chunks": 320,
+      "prediction_requests": 100,
+      "prediction_total_ms": 1.5314,
+      "source": "target/m8-stage5-proof/tictactoe-model.json"
+    },
+    {
+      "actions": [
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        }
+      ],
+      "decision_total_ms": 97.97019999999999,
+      "decisions": 20,
+      "game": "tictactoe",
+      "iterations": 256,
+      "model_id": "91678a7ec49471b8b97709e38e656635919cce5c2fa1735502a587322edc5450",
+      "neural": true,
+      "poll_chunks": 320,
+      "prediction_requests": 100,
+      "prediction_total_ms": 1.428,
+      "source": "target/m8-stage5-proof/tictactoe-model.json"
+    },
+    {
+      "actions": [
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        },
+        {
+          "column": 2
+        }
+      ],
+      "decision_total_ms": 47.190999999999995,
+      "decisions": 20,
+      "game": "connect4",
+      "iterations": 256,
+      "model_id": "1f99a1dcd619dfda3e684a4bf6ee3ed25d38c0694e99b2aaf4220b007db9cc7c",
+      "neural": false,
+      "poll_chunks": 320,
+      "prediction_requests": 100,
+      "prediction_total_ms": 1.7305000000000001,
+      "source": "target/m8-stage5-proof/connect4-model.json"
+    },
+    {
+      "actions": [
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        },
+        {
+          "column": 3
+        }
+      ],
+      "decision_total_ms": 123.27459999999999,
+      "decisions": 20,
+      "game": "connect4",
+      "iterations": 256,
+      "model_id": "1f99a1dcd619dfda3e684a4bf6ee3ed25d38c0694e99b2aaf4220b007db9cc7c",
+      "neural": true,
+      "poll_chunks": 320,
+      "prediction_requests": 100,
+      "prediction_total_ms": 1.6322999999999999,
+      "source": "target/m8-stage5-proof/connect4-model.json"
+    }
+  ],
+  "scope": "native browser adapter; prediction includes validation/JSON; decision includes polling/JSON; no worker transport",
+  "date": "2026-10-23",
+  "cpu": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+  "rust": "rustc 1.99.0 (b940084d7 2026-09-28)",
+  "configuration": "Four self-play games per game, parallel_games=2, eight Adam updates, batch_size=16, evaluation disabled; remaining values from examples/selfplay/*.json, seed=42; 64/64 CPU networks."
+}

@@ -1,0 +1,21 @@
+[build-system]
+requires = ["maturin==1.15.0"]
+build-backend = "maturin"
+
+[project]
+name = "tag-rust"
+version = "0.1.0"
+license = "MIT"
+license-files = ["LICENSE-MIT", "NOTICE", "RUST-DEPENDENCY-NOTICES.txt"]
+description = "Rust tabletop games with player-visible NumPy observations"
+requires-python = ">=3.14,<3.15"
+dependencies = ["numpy==2.5.4"]
+
+[project.optional-dependencies]
+gym = ["gymnasium==1.4.0"]
+neural = ["torch==2.14.0"]
+
+[tool.maturin]
+python-source = "python"
+module-name = "tag_rust._engine"
+features = ["extension-module"]

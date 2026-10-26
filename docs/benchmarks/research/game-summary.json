@@ -1,0 +1,1622 @@
+[
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 980339.5833333334,
+        "actions_per_game": 170.0625,
+        "turns_per_game": 57.09375,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 170.0625,
+        "ns_per_action": 5764.584098983217,
+        "ns_per_turn": 17170.698777595328
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 979206.25,
+        "actions_per_game": 170.0625,
+        "turns_per_game": 57.09375,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 170.0625,
+        "ns_per_action": 5757.919882396178,
+        "ns_per_turn": 17150.848385331145
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 964542.7083333334,
+        "actions_per_game": 170.0625,
+        "turns_per_game": 57.09375,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 170.0625,
+        "ns_per_action": 5671.695455102291,
+        "ns_per_turn": 16894.015690567416
+      }
+    ],
+    "ns_per_game": 979206.25,
+    "actions_per_game": 170.0625,
+    "turns_per_game": 57.09375,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 170.0625,
+    "ns_per_action": 5757.919882396178,
+    "ns_per_turn": 17150.848385331145
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 109529.75543478261,
+        "actions_per_game": 170.0625,
+        "turns_per_game": 57.09375,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 644.0558937730693,
+        "ns_per_turn": 1918.4193617476976
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 112274.72826086957,
+        "actions_per_game": 170.0625,
+        "turns_per_game": 57.09375,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 660.1968585718166,
+        "ns_per_turn": 1966.4977035291877
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 111150.40760869565,
+        "actions_per_game": 170.0625,
+        "turns_per_game": 57.09375,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 653.5856382723742,
+        "ns_per_turn": 1946.8051688441494
+      }
+    ],
+    "ns_per_game": 111150.40760869565,
+    "actions_per_game": 170.0625,
+    "turns_per_game": 57.09375,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 0.0,
+    "ns_per_action": 653.5856382723742,
+    "ns_per_turn": 1946.8051688441494
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 1374390.625,
+        "actions_per_game": 225.28125,
+        "turns_per_game": 74.96875,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 225.28125,
+        "ns_per_action": 6100.776806769316,
+        "ns_per_turn": 18332.847019591496
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 1363951.5625,
+        "actions_per_game": 225.28125,
+        "turns_per_game": 74.96875,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 225.28125,
+        "ns_per_action": 6054.438895824664,
+        "ns_per_turn": 18193.60150062526
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 1397092.1875,
+        "actions_per_game": 225.28125,
+        "turns_per_game": 74.96875,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 225.28125,
+        "ns_per_action": 6201.546677763906,
+        "ns_per_turn": 18635.66069195498
+      }
+    ],
+    "ns_per_game": 1374390.625,
+    "actions_per_game": 225.28125,
+    "turns_per_game": 74.96875,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 225.28125,
+    "ns_per_action": 6100.776806769316,
+    "ns_per_turn": 18332.847019591496
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 145801.90972222222,
+        "actions_per_game": 225.28125,
+        "turns_per_game": 74.96875,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 647.1994882939536,
+        "ns_per_turn": 1944.835811217637
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 153517.64705882352,
+        "actions_per_game": 225.28125,
+        "turns_per_game": 74.96875,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 681.4488425415942,
+        "ns_per_turn": 2047.7551921143613
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 152749.63235294117,
+        "actions_per_game": 225.28125,
+        "turns_per_game": 74.96875,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 678.0397052703728,
+        "ns_per_turn": 2037.510727509011
+      }
+    ],
+    "ns_per_game": 152749.63235294117,
+    "actions_per_game": 225.28125,
+    "turns_per_game": 74.96875,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 0.0,
+    "ns_per_action": 678.0397052703728,
+    "ns_per_turn": 2037.510727509011
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 1870603.125,
+        "actions_per_game": 294.1875,
+        "turns_per_game": 98.15625,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 294.1875,
+        "ns_per_action": 6358.540471637986,
+        "ns_per_turn": 19057.40210124164
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 2107798.4375,
+        "actions_per_game": 294.1875,
+        "turns_per_game": 98.15625,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 294.1875,
+        "ns_per_action": 7164.813044401954,
+        "ns_per_turn": 21473.909582935372
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 1861434.375,
+        "actions_per_game": 294.1875,
+        "turns_per_game": 98.15625,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 294.1875,
+        "ns_per_action": 6327.374123645634,
+        "ns_per_turn": 18963.992359121297
+      }
+    ],
+    "ns_per_game": 1870603.125,
+    "actions_per_game": 294.1875,
+    "turns_per_game": 98.15625,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 294.1875,
+    "ns_per_action": 6358.540471637986,
+    "ns_per_turn": 19057.40210124164
+  },
+  {
+    "engine": "java",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 205366.34615384616,
+        "actions_per_game": 294.1875,
+        "turns_per_game": 98.15625,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 698.0797829746205,
+        "ns_per_turn": 2092.2391203193497
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 209707.29166666666,
+        "actions_per_game": 294.1875,
+        "turns_per_game": 98.15625,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 712.8354932370229,
+        "ns_per_turn": 2136.4639711344585
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 194209.85576923078,
+        "actions_per_game": 294.1875,
+        "turns_per_game": 98.15625,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 660.156722393816,
+        "ns_per_turn": 1978.5786006416379
+      }
+    ],
+    "ns_per_game": 205366.34615384616,
+    "actions_per_game": 294.1875,
+    "turns_per_game": 98.15625,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 0.0,
+    "ns_per_action": 698.0797829746205,
+    "ns_per_turn": 2092.2391203193497
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 146893.40277777778,
+        "actions_per_game": 21.59375,
+        "turns_per_game": 21.59375,
+        "rounds_per_game": 10.09375,
+        "observations_per_game": 21.59375,
+        "ns_per_action": 6802.588840649622,
+        "ns_per_turn": 6802.588840649622
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 146420.65972222222,
+        "actions_per_game": 21.59375,
+        "turns_per_game": 21.59375,
+        "rounds_per_game": 10.09375,
+        "observations_per_game": 21.59375,
+        "ns_per_action": 6780.696253416948,
+        "ns_per_turn": 6780.696253416948
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 148561.0294117647,
+        "actions_per_game": 21.59375,
+        "turns_per_game": 21.59375,
+        "rounds_per_game": 10.09375,
+        "observations_per_game": 21.59375,
+        "ns_per_action": 6879.816123265515,
+        "ns_per_turn": 6879.816123265515
+      }
+    ],
+    "ns_per_game": 146893.40277777778,
+    "actions_per_game": 21.59375,
+    "turns_per_game": 21.59375,
+    "rounds_per_game": 10.09375,
+    "observations_per_game": 21.59375,
+    "ns_per_action": 6802.588840649622,
+    "ns_per_turn": 6802.588840649622
+  },
+  {
+    "engine": "java",
+    "game": "connect4",
+    "players": 2,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 38639.855769230766,
+        "actions_per_game": 21.59375,
+        "turns_per_game": 21.59375,
+        "rounds_per_game": 10.09375,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1789.399977735723,
+        "ns_per_turn": 1789.399977735723
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 42715.41313559322,
+        "actions_per_game": 21.59375,
+        "turns_per_game": 21.59375,
+        "rounds_per_game": 10.09375,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1978.1378007800045,
+        "ns_per_turn": 1978.1378007800045
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 40027.430555555555,
+        "actions_per_game": 21.59375,
+        "turns_per_game": 21.59375,
+        "rounds_per_game": 10.09375,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1853.6581443962052,
+        "ns_per_turn": 1853.6581443962052
+      }
+    ],
+    "ns_per_game": 40027.430555555555,
+    "actions_per_game": 21.59375,
+    "turns_per_game": 21.59375,
+    "rounds_per_game": 10.09375,
+    "observations_per_game": 0.0,
+    "ns_per_action": 1853.6581443962052,
+    "ns_per_turn": 1853.6581443962052
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 509210.0,
+        "actions_per_game": 59.90625,
+        "turns_per_game": 59.90625,
+        "rounds_per_game": 11.40625,
+        "observations_per_game": 59.90625,
+        "ns_per_action": 8500.114762649973,
+        "ns_per_turn": 8500.114762649973
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 503526.875,
+        "actions_per_game": 59.90625,
+        "turns_per_game": 59.90625,
+        "rounds_per_game": 11.40625,
+        "observations_per_game": 59.90625,
+        "ns_per_action": 8405.247782994262,
+        "ns_per_turn": 8405.247782994262
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 939309.375,
+        "actions_per_game": 59.90625,
+        "turns_per_game": 59.90625,
+        "rounds_per_game": 11.40625,
+        "observations_per_game": 59.90625,
+        "ns_per_action": 15679.655712050078,
+        "ns_per_turn": 15679.655712050078
+      }
+    ],
+    "ns_per_game": 509210.0,
+    "actions_per_game": 59.90625,
+    "turns_per_game": 59.90625,
+    "rounds_per_game": 11.40625,
+    "observations_per_game": 59.90625,
+    "ns_per_action": 8500.114762649973,
+    "ns_per_turn": 8500.114762649973
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "game_aligned",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 441078.125,
+        "actions_per_game": 48.03125,
+        "turns_per_game": 48.03125,
+        "rounds_per_game": 9.5625,
+        "observations_per_game": 48.03125,
+        "ns_per_action": 9183.148991541964,
+        "ns_per_turn": 9183.148991541964
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 528192.5,
+        "actions_per_game": 48.03125,
+        "turns_per_game": 48.03125,
+        "rounds_per_game": 9.5625,
+        "observations_per_game": 48.03125,
+        "ns_per_action": 10996.851008458036,
+        "ns_per_turn": 10996.851008458036
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 421632.2916666667,
+        "actions_per_game": 48.03125,
+        "turns_per_game": 48.03125,
+        "rounds_per_game": 9.5625,
+        "observations_per_game": 48.03125,
+        "ns_per_action": 8778.291043157666,
+        "ns_per_turn": 8778.291043157666
+      }
+    ],
+    "ns_per_game": 441078.125,
+    "actions_per_game": 48.03125,
+    "turns_per_game": 48.03125,
+    "rounds_per_game": 9.5625,
+    "observations_per_game": 48.03125,
+    "ns_per_action": 9183.148991541964,
+    "ns_per_turn": 9183.148991541964
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "game_aligned_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 50117.5625,
+        "actions_per_game": 48.03125,
+        "turns_per_game": 48.03125,
+        "rounds_per_game": 9.5625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1043.4365647364996,
+        "ns_per_turn": 1043.4365647364996
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 73818.10661764706,
+        "actions_per_game": 48.03125,
+        "turns_per_game": 48.03125,
+        "rounds_per_game": 9.5625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1536.8766504650005,
+        "ns_per_turn": 1536.8766504650005
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 52594.856770833336,
+        "actions_per_game": 48.03125,
+        "turns_per_game": 48.03125,
+        "rounds_per_game": 9.5625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1095.0132834526132,
+        "ns_per_turn": 1095.0132834526132
+      }
+    ],
+    "ns_per_game": 52594.856770833336,
+    "actions_per_game": 48.03125,
+    "turns_per_game": 48.03125,
+    "rounds_per_game": 9.5625,
+    "observations_per_game": 0.0,
+    "ns_per_action": 1095.0132834526132,
+    "ns_per_turn": 1095.0132834526132
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 62039.86280487805,
+        "actions_per_game": 59.90625,
+        "turns_per_game": 59.90625,
+        "rounds_per_game": 11.40625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1035.6158632008855,
+        "ns_per_turn": 1035.6158632008855
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 74536.67279411765,
+        "actions_per_game": 59.90625,
+        "turns_per_game": 59.90625,
+        "rounds_per_game": 11.40625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1244.221976740618,
+        "ns_per_turn": 1244.221976740618
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 65035.416666666664,
+        "actions_per_game": 59.90625,
+        "turns_per_game": 59.90625,
+        "rounds_per_game": 11.40625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1085.619892192662,
+        "ns_per_turn": 1085.619892192662
+      }
+    ],
+    "ns_per_game": 65035.416666666664,
+    "actions_per_game": 59.90625,
+    "turns_per_game": 59.90625,
+    "rounds_per_game": 11.40625,
+    "observations_per_game": 0.0,
+    "ns_per_action": 1085.619892192662,
+    "ns_per_turn": 1085.619892192662
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 807232.8125,
+        "actions_per_game": 87.09375,
+        "turns_per_game": 87.09375,
+        "rounds_per_game": 9.90625,
+        "observations_per_game": 87.09375,
+        "ns_per_action": 9268.550412630068,
+        "ns_per_turn": 9268.550412630068
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 817868.75,
+        "actions_per_game": 87.09375,
+        "turns_per_game": 87.09375,
+        "rounds_per_game": 9.90625,
+        "observations_per_game": 87.09375,
+        "ns_per_action": 9390.670972371727,
+        "ns_per_turn": 9390.670972371727
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 1074144.7916666667,
+        "actions_per_game": 87.09375,
+        "turns_per_game": 87.09375,
+        "rounds_per_game": 9.90625,
+        "observations_per_game": 87.09375,
+        "ns_per_action": 12333.20177012319,
+        "ns_per_turn": 12333.20177012319
+      }
+    ],
+    "ns_per_game": 817868.75,
+    "actions_per_game": 87.09375,
+    "turns_per_game": 87.09375,
+    "rounds_per_game": 9.90625,
+    "observations_per_game": 87.09375,
+    "ns_per_action": 9390.670972371727,
+    "ns_per_turn": 9390.670972371727
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 94693.40277777778,
+        "actions_per_game": 87.09375,
+        "turns_per_game": 87.09375,
+        "rounds_per_game": 9.90625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1087.2583024359128,
+        "ns_per_turn": 1087.2583024359128
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 94380.90277777778,
+        "actions_per_game": 87.09375,
+        "turns_per_game": 87.09375,
+        "rounds_per_game": 9.90625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1083.6702148865766,
+        "ns_per_turn": 1083.6702148865766
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 97988.34134615384,
+        "actions_per_game": 87.09375,
+        "turns_per_game": 87.09375,
+        "rounds_per_game": 9.90625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1125.0903922055697,
+        "ns_per_turn": 1125.0903922055697
+      }
+    ],
+    "ns_per_game": 94693.40277777778,
+    "actions_per_game": 87.09375,
+    "turns_per_game": 87.09375,
+    "rounds_per_game": 9.90625,
+    "observations_per_game": 0.0,
+    "ns_per_action": 1087.2583024359128,
+    "ns_per_turn": 1087.2583024359128
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 849737.5,
+        "actions_per_game": 86.4375,
+        "turns_per_game": 86.4375,
+        "rounds_per_game": 9.0,
+        "observations_per_game": 86.4375,
+        "ns_per_action": 9830.65798987708,
+        "ns_per_turn": 9830.65798987708
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 896710.4166666666,
+        "actions_per_game": 86.4375,
+        "turns_per_game": 86.4375,
+        "rounds_per_game": 9.0,
+        "observations_per_game": 86.4375,
+        "ns_per_action": 10374.09014220294,
+        "ns_per_turn": 10374.09014220294
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 976834.375,
+        "actions_per_game": 86.4375,
+        "turns_per_game": 86.4375,
+        "rounds_per_game": 9.0,
+        "observations_per_game": 86.4375,
+        "ns_per_action": 11301.048445408533,
+        "ns_per_turn": 11301.048445408533
+      }
+    ],
+    "ns_per_game": 896710.4166666666,
+    "actions_per_game": 86.4375,
+    "turns_per_game": 86.4375,
+    "rounds_per_game": 9.0,
+    "observations_per_game": 86.4375,
+    "ns_per_action": 10374.09014220294,
+    "ns_per_turn": 10374.09014220294
+  },
+  {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 112908.83152173914,
+        "actions_per_game": 86.4375,
+        "turns_per_game": 86.4375,
+        "rounds_per_game": 9.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1306.2482316325568,
+        "ns_per_turn": 1306.2482316325568
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 125160.0,
+        "actions_per_game": 86.4375,
+        "turns_per_game": 86.4375,
+        "rounds_per_game": 9.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1447.9826464208243,
+        "ns_per_turn": 1447.9826464208243
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 121721.875,
+        "actions_per_game": 86.4375,
+        "turns_per_game": 86.4375,
+        "rounds_per_game": 9.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 1408.2067968185104,
+        "ns_per_turn": 1408.2067968185104
+      }
+    ],
+    "ns_per_game": 121721.875,
+    "actions_per_game": 86.4375,
+    "turns_per_game": 86.4375,
+    "rounds_per_game": 9.0,
+    "observations_per_game": 0.0,
+    "ns_per_action": 1408.2067968185104,
+    "ns_per_turn": 1408.2067968185104
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 27007.25806451613,
+        "actions_per_game": 7.09375,
+        "turns_per_game": 7.09375,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 7.09375,
+        "ns_per_action": 3807.190564160864,
+        "ns_per_turn": 3807.190564160864
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 26919.880319148935,
+        "actions_per_game": 7.09375,
+        "turns_per_game": 7.09375,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 7.09375,
+        "ns_per_action": 3794.8729965320085,
+        "ns_per_turn": 3794.8729965320085
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 26522.302631578947,
+        "actions_per_game": 7.09375,
+        "turns_per_game": 7.09375,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 7.09375,
+        "ns_per_action": 3738.8268026895435,
+        "ns_per_turn": 3738.8268026895435
+      }
+    ],
+    "ns_per_game": 26919.880319148935,
+    "actions_per_game": 7.09375,
+    "turns_per_game": 7.09375,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 7.09375,
+    "ns_per_action": 3794.8729965320085,
+    "ns_per_turn": 3794.8729965320085
+  },
+  {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 5970.636933174224,
+        "actions_per_game": 7.09375,
+        "turns_per_game": 7.09375,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 841.675691020155,
+        "ns_per_turn": 841.675691020155
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 6054.123789346247,
+        "actions_per_game": 7.09375,
+        "turns_per_game": 7.09375,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 853.4447632558586,
+        "ns_per_turn": 853.4447632558586
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 6549.410994764398,
+        "actions_per_game": 7.09375,
+        "turns_per_game": 7.09375,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 923.2649860460825,
+        "ns_per_turn": 923.2649860460825
+      }
+    ],
+    "ns_per_game": 6054.123789346247,
+    "actions_per_game": 7.09375,
+    "turns_per_game": 7.09375,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 0.0,
+    "ns_per_action": 853.4447632558586,
+    "ns_per_turn": 853.4447632558586
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 37688.852611940296,
+        "actions_per_game": 175.03125,
+        "turns_per_game": 36.40625,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 175.03125,
+        "ns_per_action": 215.32642092163712,
+        "ns_per_turn": 1035.2302863365576
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 37975.331439393936,
+        "actions_per_game": 175.03125,
+        "turns_per_game": 36.40625,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 175.03125,
+        "ns_per_action": 216.96315051965829,
+        "ns_per_turn": 1043.0992326700482
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 37907.10227272727,
+        "actions_per_game": 175.03125,
+        "turns_per_game": 36.40625,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 175.03125,
+        "ns_per_action": 216.57333917644576,
+        "ns_per_turn": 1041.2251268045259
+      }
+    ],
+    "ns_per_game": 37907.10227272727,
+    "actions_per_game": 175.03125,
+    "turns_per_game": 36.40625,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 175.03125,
+    "ns_per_action": 216.57333917644576,
+    "ns_per_turn": 1041.2251268045259
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 2,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 40897.6310483871,
+        "actions_per_game": 175.03125,
+        "turns_per_game": 36.40625,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 233.65902402220803,
+        "ns_per_turn": 1123.3684064793022
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 42086.041666666664,
+        "actions_per_game": 175.03125,
+        "turns_per_game": 36.40625,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 240.44872939356068,
+        "ns_per_turn": 1156.011444921316
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 42107.5,
+        "actions_per_game": 175.03125,
+        "turns_per_game": 36.40625,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 240.57132654883057,
+        "ns_per_turn": 1156.6008583690987
+      }
+    ],
+    "ns_per_game": 42086.041666666664,
+    "actions_per_game": 175.03125,
+    "turns_per_game": 36.40625,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 0.0,
+    "ns_per_action": 240.44872939356068,
+    "ns_per_turn": 1156.011444921316
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 61254.49695121951,
+        "actions_per_game": 255.5625,
+        "turns_per_game": 52.75,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 255.5625,
+        "ns_per_action": 239.68499662986358,
+        "ns_per_turn": 1161.2226910183795
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 78251.171875,
+        "actions_per_game": 255.5625,
+        "turns_per_game": 52.75,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 255.5625,
+        "ns_per_action": 306.19191733920275,
+        "ns_per_turn": 1483.4345379146919
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 58902.979651162794,
+        "actions_per_game": 255.5625,
+        "turns_per_game": 52.75,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 255.5625,
+        "ns_per_action": 230.48365723125573,
+        "ns_per_turn": 1116.6441640030862
+      }
+    ],
+    "ns_per_game": 61254.49695121951,
+    "actions_per_game": 255.5625,
+    "turns_per_game": 52.75,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 255.5625,
+    "ns_per_action": 239.68499662986358,
+    "ns_per_turn": 1161.2226910183795
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 3,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 66841.52960526316,
+        "actions_per_game": 255.5625,
+        "turns_per_game": 52.75,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 261.5467042514577,
+        "ns_per_turn": 1267.1380019955102
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 63827.421875,
+        "actions_per_game": 255.5625,
+        "turns_per_game": 52.75,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 249.75269014428955,
+        "ns_per_turn": 1209.998518957346
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 62970.0,
+        "actions_per_game": 255.5625,
+        "turns_per_game": 52.75,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 246.39765223771093,
+        "ns_per_turn": 1193.744075829384
+      }
+    ],
+    "ns_per_game": 63827.421875,
+    "actions_per_game": 255.5625,
+    "turns_per_game": 52.75,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 0.0,
+    "ns_per_action": 249.75269014428955,
+    "ns_per_turn": 1209.998518957346
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 76235.22727272728,
+        "actions_per_game": 330.03125,
+        "turns_per_game": 68.03125,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 330.03125,
+        "ns_per_action": 230.99396579180691,
+        "ns_per_turn": 1120.591305800309
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 76798.10606060606,
+        "actions_per_game": 330.03125,
+        "turns_per_game": 68.03125,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 330.03125,
+        "ns_per_action": 232.69949757971725,
+        "ns_per_turn": 1128.8651327236537
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 77489.58333333333,
+        "actions_per_game": 330.03125,
+        "turns_per_game": 68.03125,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 330.03125,
+        "ns_per_action": 234.79468484676326,
+        "ns_per_turn": 1139.0292451385699
+      }
+    ],
+    "ns_per_game": 76798.10606060606,
+    "actions_per_game": 330.03125,
+    "turns_per_game": 68.03125,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 330.03125,
+    "ns_per_action": 232.69949757971725,
+    "ns_per_turn": 1128.8651327236537
+  },
+  {
+    "engine": "rust",
+    "game": "cantstop",
+    "players": 4,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 81234.97983870968,
+        "actions_per_game": 330.03125,
+        "turns_per_game": 68.03125,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 246.14329654755323,
+        "ns_per_turn": 1194.0833049328019
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 86055.625,
+        "actions_per_game": 330.03125,
+        "turns_per_game": 68.03125,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 260.74992898399773,
+        "ns_per_turn": 1264.9425815342215
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 83921.14583333333,
+        "actions_per_game": 330.03125,
+        "turns_per_game": 68.03125,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 254.28242275037087,
+        "ns_per_turn": 1233.56760067371
+      }
+    ],
+    "ns_per_game": 83921.14583333333,
+    "actions_per_game": 330.03125,
+    "turns_per_game": 68.03125,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 0.0,
+    "ns_per_action": 254.28242275037087,
+    "ns_per_turn": 1233.56760067371
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 16272.42288961039,
+        "actions_per_game": 21.0,
+        "turns_per_game": 21.0,
+        "rounds_per_game": 9.8125,
+        "observations_per_game": 21.0,
+        "ns_per_action": 774.8772804576377,
+        "ns_per_turn": 774.8772804576377
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 16262.012987012988,
+        "actions_per_game": 21.0,
+        "turns_per_game": 21.0,
+        "rounds_per_game": 9.8125,
+        "observations_per_game": 21.0,
+        "ns_per_action": 774.3815708101422,
+        "ns_per_turn": 774.3815708101422
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 16651.738410596026,
+        "actions_per_game": 21.0,
+        "turns_per_game": 21.0,
+        "rounds_per_game": 9.8125,
+        "observations_per_game": 21.0,
+        "ns_per_action": 792.9399243140965,
+        "ns_per_turn": 792.9399243140965
+      }
+    ],
+    "ns_per_game": 16272.42288961039,
+    "actions_per_game": 21.0,
+    "turns_per_game": 21.0,
+    "rounds_per_game": 9.8125,
+    "observations_per_game": 21.0,
+    "ns_per_action": 774.8772804576377,
+    "ns_per_turn": 774.8772804576377
+  },
+  {
+    "engine": "rust",
+    "game": "connect4",
+    "players": 2,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 15638.14453125,
+        "actions_per_game": 21.0,
+        "turns_per_game": 21.0,
+        "rounds_per_game": 9.8125,
+        "observations_per_game": 0.0,
+        "ns_per_action": 744.6735491071429,
+        "ns_per_turn": 744.6735491071429
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 18518.958333333332,
+        "actions_per_game": 21.0,
+        "turns_per_game": 21.0,
+        "rounds_per_game": 9.8125,
+        "observations_per_game": 0.0,
+        "ns_per_action": 881.8551587301587,
+        "ns_per_turn": 881.8551587301587
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 15855.696202531646,
+        "actions_per_game": 21.0,
+        "turns_per_game": 21.0,
+        "rounds_per_game": 9.8125,
+        "observations_per_game": 0.0,
+        "ns_per_action": 755.033152501507,
+        "ns_per_turn": 755.033152501507
+      }
+    ],
+    "ns_per_game": 15855.696202531646,
+    "actions_per_game": 21.0,
+    "turns_per_game": 21.0,
+    "rounds_per_game": 9.8125,
+    "observations_per_game": 0.0,
+    "ns_per_action": 755.033152501507,
+    "ns_per_turn": 755.033152501507
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 55624.51388888889,
+        "actions_per_game": 46.96875,
+        "turns_per_game": 46.96875,
+        "rounds_per_game": 9.0625,
+        "observations_per_game": 46.96875,
+        "ns_per_action": 1184.2877208545872,
+        "ns_per_turn": 1184.2877208545872
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 57515.838068181816,
+        "actions_per_game": 46.96875,
+        "turns_per_game": 46.96875,
+        "rounds_per_game": 9.0625,
+        "observations_per_game": 46.96875,
+        "ns_per_action": 1224.5554345853748,
+        "ns_per_turn": 1224.5554345853748
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 68437.16216216216,
+        "actions_per_game": 46.96875,
+        "turns_per_game": 46.96875,
+        "rounds_per_game": 9.0625,
+        "observations_per_game": 46.96875,
+        "ns_per_action": 1457.0786355217492,
+        "ns_per_turn": 1457.0786355217492
+      }
+    ],
+    "ns_per_game": 57515.838068181816,
+    "actions_per_game": 46.96875,
+    "turns_per_game": 46.96875,
+    "rounds_per_game": 9.0625,
+    "observations_per_game": 46.96875,
+    "ns_per_action": 1224.5554345853748,
+    "ns_per_turn": 1224.5554345853748
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "game_aligned",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 58555.813953488374,
+        "actions_per_game": 46.96875,
+        "turns_per_game": 46.96875,
+        "rounds_per_game": 9.0625,
+        "observations_per_game": 46.96875,
+        "ns_per_action": 1246.697303068282,
+        "ns_per_turn": 1246.697303068282
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 86430.92672413793,
+        "actions_per_game": 46.96875,
+        "turns_per_game": 46.96875,
+        "rounds_per_game": 9.0625,
+        "observations_per_game": 46.96875,
+        "ns_per_action": 1840.1794112923578,
+        "ns_per_turn": 1840.1794112923578
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 69908.33333333333,
+        "actions_per_game": 46.96875,
+        "turns_per_game": 46.96875,
+        "rounds_per_game": 9.0625,
+        "observations_per_game": 46.96875,
+        "ns_per_action": 1488.4009758261254,
+        "ns_per_turn": 1488.4009758261254
+      }
+    ],
+    "ns_per_game": 69908.33333333333,
+    "actions_per_game": 46.96875,
+    "turns_per_game": 46.96875,
+    "rounds_per_game": 9.0625,
+    "observations_per_game": 46.96875,
+    "ns_per_action": 1488.4009758261254,
+    "ns_per_turn": 1488.4009758261254
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "game_aligned_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 19005.25568181818,
+        "actions_per_game": 46.96875,
+        "turns_per_game": 46.96875,
+        "rounds_per_game": 9.0625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 404.63618218109235,
+        "ns_per_turn": 404.63618218109235
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 21525.90811965812,
+        "actions_per_game": 46.96875,
+        "turns_per_game": 46.96875,
+        "rounds_per_game": 9.0625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 458.30276768400523,
+        "ns_per_turn": 458.30276768400523
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 19378.533653846152,
+        "actions_per_game": 46.96875,
+        "turns_per_game": 46.96875,
+        "rounds_per_game": 9.0625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 412.5835508470239,
+        "ns_per_turn": 412.5835508470239
+      }
+    ],
+    "ns_per_game": 19378.533653846152,
+    "actions_per_game": 46.96875,
+    "turns_per_game": 46.96875,
+    "rounds_per_game": 9.0625,
+    "observations_per_game": 0.0,
+    "ns_per_action": 412.5835508470239,
+    "ns_per_turn": 412.5835508470239
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 2,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 19186.736641221374,
+        "actions_per_game": 46.96875,
+        "turns_per_game": 46.96875,
+        "rounds_per_game": 9.0625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 408.50004824955687,
+        "ns_per_turn": 408.50004824955687
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 23241.724537037036,
+        "actions_per_game": 46.96875,
+        "turns_per_game": 46.96875,
+        "rounds_per_game": 9.0625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 494.83378921170004,
+        "ns_per_turn": 494.83378921170004
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 21226.853813559323,
+        "actions_per_game": 46.96875,
+        "turns_per_game": 46.96875,
+        "rounds_per_game": 9.0625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 451.9356766692604,
+        "ns_per_turn": 451.9356766692604
+      }
+    ],
+    "ns_per_game": 21226.853813559323,
+    "actions_per_game": 46.96875,
+    "turns_per_game": 46.96875,
+    "rounds_per_game": 9.0625,
+    "observations_per_game": 0.0,
+    "ns_per_action": 451.9356766692604,
+    "ns_per_turn": 451.9356766692604
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 130896.71875,
+        "actions_per_game": 80.03125,
+        "turns_per_game": 80.03125,
+        "rounds_per_game": 10.0625,
+        "observations_per_game": 80.03125,
+        "ns_per_action": 1635.5700898086684,
+        "ns_per_turn": 1635.5700898086684
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 123638.69047619047,
+        "actions_per_game": 80.03125,
+        "turns_per_game": 80.03125,
+        "rounds_per_game": 10.0625,
+        "observations_per_game": 80.03125,
+        "ns_per_action": 1544.8801621390453,
+        "ns_per_turn": 1544.8801621390453
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 143036.28472222222,
+        "actions_per_game": 80.03125,
+        "turns_per_game": 80.03125,
+        "rounds_per_game": 10.0625,
+        "observations_per_game": 80.03125,
+        "ns_per_action": 1787.2554123823159,
+        "ns_per_turn": 1787.2554123823159
+      }
+    ],
+    "ns_per_game": 130896.71875,
+    "actions_per_game": 80.03125,
+    "turns_per_game": 80.03125,
+    "rounds_per_game": 10.0625,
+    "observations_per_game": 80.03125,
+    "ns_per_action": 1635.5700898086684,
+    "ns_per_turn": 1635.5700898086684
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 35372.31514084507,
+        "actions_per_game": 80.03125,
+        "turns_per_game": 80.03125,
+        "rounds_per_game": 10.0625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 441.9812903190325,
+        "ns_per_turn": 441.9812903190325
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 33894.21452702703,
+        "actions_per_game": 80.03125,
+        "turns_per_game": 80.03125,
+        "rounds_per_game": 10.0625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 423.512247116308,
+        "ns_per_turn": 423.512247116308
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 38096.875,
+        "actions_per_game": 80.03125,
+        "turns_per_game": 80.03125,
+        "rounds_per_game": 10.0625,
+        "observations_per_game": 0.0,
+        "ns_per_action": 476.0249902381882,
+        "ns_per_turn": 476.0249902381882
+      }
+    ],
+    "ns_per_game": 35372.31514084507,
+    "actions_per_game": 80.03125,
+    "turns_per_game": 80.03125,
+    "rounds_per_game": 10.0625,
+    "observations_per_game": 0.0,
+    "ns_per_action": 441.9812903190325,
+    "ns_per_turn": 441.9812903190325
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 134374.01315789475,
+        "actions_per_game": 81.71875,
+        "turns_per_game": 81.71875,
+        "rounds_per_game": 8.84375,
+        "observations_per_game": 81.71875,
+        "ns_per_action": 1644.3473885478516,
+        "ns_per_turn": 1644.3473885478516
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 136564.1447368421,
+        "actions_per_game": 81.71875,
+        "turns_per_game": 81.71875,
+        "rounds_per_game": 8.84375,
+        "observations_per_game": 81.71875,
+        "ns_per_action": 1671.1482338734024,
+        "ns_per_turn": 1671.1482338734024
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 143839.75694444444,
+        "actions_per_game": 81.71875,
+        "turns_per_game": 81.71875,
+        "rounds_per_game": 8.84375,
+        "observations_per_game": 81.71875,
+        "ns_per_action": 1760.1805821117484,
+        "ns_per_turn": 1760.1805821117484
+      }
+    ],
+    "ns_per_game": 136564.1447368421,
+    "actions_per_game": 81.71875,
+    "turns_per_game": 81.71875,
+    "rounds_per_game": 8.84375,
+    "observations_per_game": 81.71875,
+    "ns_per_action": 1671.1482338734024,
+    "ns_per_turn": 1671.1482338734024
+  },
+  {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 41097.02868852459,
+        "actions_per_game": 81.71875,
+        "turns_per_game": 81.71875,
+        "rounds_per_game": 8.84375,
+        "observations_per_game": 0.0,
+        "ns_per_action": 502.9081904523086,
+        "ns_per_turn": 502.9081904523086
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 48270.73317307692,
+        "actions_per_game": 81.71875,
+        "turns_per_game": 81.71875,
+        "rounds_per_game": 8.84375,
+        "observations_per_game": 0.0,
+        "ns_per_action": 590.6934843359318,
+        "ns_per_turn": 590.6934843359318
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 42722.08686440678,
+        "actions_per_game": 81.71875,
+        "turns_per_game": 81.71875,
+        "rounds_per_game": 8.84375,
+        "observations_per_game": 0.0,
+        "ns_per_action": 522.7941796026834,
+        "ns_per_turn": 522.7941796026834
+      }
+    ],
+    "ns_per_game": 42722.08686440678,
+    "actions_per_game": 81.71875,
+    "turns_per_game": 81.71875,
+    "rounds_per_game": 8.84375,
+    "observations_per_game": 0.0,
+    "ns_per_action": 522.7941796026834,
+    "ns_per_turn": 522.7941796026834
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "game",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 1425.4362535612536,
+        "actions_per_game": 7.53125,
+        "turns_per_game": 7.53125,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 7.53125,
+        "ns_per_action": 189.26954404132826,
+        "ns_per_turn": 189.26954404132826
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 1449.2069814600231,
+        "actions_per_game": 7.53125,
+        "turns_per_game": 7.53125,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 7.53125,
+        "ns_per_action": 192.42582326440143,
+        "ns_per_turn": 192.42582326440143
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 1459.692425569177,
+        "actions_per_game": 7.53125,
+        "turns_per_game": 7.53125,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 7.53125,
+        "ns_per_action": 193.8180814033762,
+        "ns_per_turn": 193.8180814033762
+      }
+    ],
+    "ns_per_game": 1449.2069814600231,
+    "actions_per_game": 7.53125,
+    "turns_per_game": 7.53125,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 7.53125,
+    "ns_per_action": 192.42582326440143,
+    "ns_per_turn": 192.42582326440143
+  },
+  {
+    "engine": "rust",
+    "game": "tictactoe",
+    "players": 2,
+    "operation": "game_direct",
+    "forks": [
+      {
+        "fork": 1,
+        "ns_per_game": 1193.5710023866347,
+        "actions_per_game": 7.53125,
+        "turns_per_game": 7.53125,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 158.48245674843284,
+        "ns_per_turn": 158.48245674843284
+      },
+      {
+        "fork": 2,
+        "ns_per_game": 1157.834201388889,
+        "actions_per_game": 7.53125,
+        "turns_per_game": 7.53125,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 153.7373213462425,
+        "ns_per_turn": 153.7373213462425
+      },
+      {
+        "fork": 3,
+        "ns_per_game": 1324.9834393216747,
+        "actions_per_game": 7.53125,
+        "turns_per_game": 7.53125,
+        "rounds_per_game": 0.0,
+        "observations_per_game": 0.0,
+        "ns_per_action": 175.93141103026386,
+        "ns_per_turn": 175.93141103026386
+      }
+    ],
+    "ns_per_game": 1193.5710023866347,
+    "actions_per_game": 7.53125,
+    "turns_per_game": 7.53125,
+    "rounds_per_game": 0.0,
+    "observations_per_game": 0.0,
+    "ns_per_action": 158.48245674843284,
+    "ns_per_turn": 158.48245674843284
+  }
+]

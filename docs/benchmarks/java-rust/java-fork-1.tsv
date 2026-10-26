@@ -1,0 +1,65 @@
+﻿java	version=21.0.12	vm=Java HotSpot(TM) 64-Bit Server VM	passes=500
+corpus	ttt	games=32	prefixes=221	available_actions=1318
+settings	ttt	competitionMode=false	seed=123
+warmup	ttt	init	passes=12980
+sample	java	ttt	init	1	16000	1891.556
+sample	java	ttt	init	2	16000	1916.050
+sample	java	ttt	init	3	16000	1909.100
+sample	java	ttt	init	4	16000	1870.463
+sample	java	ttt	init	5	16000	1924.994
+warmup	ttt	actions	passes=28830
+sample	java	ttt	actions	1	110500	142.281
+sample	java	ttt	actions	2	110500	144.949
+sample	java	ttt	actions	3	110500	162.532
+sample	java	ttt	actions	4	110500	151.494
+sample	java	ttt	actions	5	110500	143.386
+warmup	ttt	copy	passes=1090
+sample	java	ttt	copy	1	110500	3701.300
+sample	java	ttt	copy	2	110500	3614.858
+sample	java	ttt	copy	3	110500	3432.549
+sample	java	ttt	copy	4	110500	3932.007
+sample	java	ttt	copy	5	110500	5032.215
+warmup	ttt	transition	passes=670
+sample	java	ttt	transition	1	110500	905.804
+sample	java	ttt	transition	2	110500	748.593
+sample	java	ttt	transition	3	110500	812.231
+sample	java	ttt	transition	4	110500	779.475
+sample	java	ttt	transition	5	110500	815.650
+warmup	ttt	replay	passes=3710
+sample	java	ttt	replay	1	16000	7317.094
+sample	java	ttt	replay	2	16000	6136.525
+sample	java	ttt	replay	3	16000	7171.263
+sample	java	ttt	replay	4	16000	7453.206
+sample	java	ttt	replay	5	16000	8294.681
+corpus	c4	games=32	prefixes=648	available_actions=4381
+settings	c4	competitionMode=false	seed=123
+warmup	c4	init	passes=9060
+sample	java	c4	init	1	16000	3086.194
+sample	java	c4	init	2	16000	2718.131
+sample	java	c4	init	3	16000	3457.981
+sample	java	c4	init	4	16000	3803.419
+sample	java	c4	init	5	16000	3718.750
+warmup	c4	actions	passes=3680
+sample	java	c4	actions	1	324000	341.080
+sample	java	c4	actions	2	324000	359.916
+sample	java	c4	actions	3	324000	339.919
+sample	java	c4	actions	4	324000	399.288
+sample	java	c4	actions	5	324000	457.441
+warmup	c4	copy	passes=200
+sample	java	c4	copy	1	324000	8262.327
+sample	java	c4	copy	2	324000	8981.027
+sample	java	c4	copy	3	324000	8783.560
+sample	java	c4	copy	4	324000	9488.647
+sample	java	c4	copy	5	324000	8138.085
+warmup	c4	transition	passes=200
+sample	java	c4	transition	1	324000	3858.169
+sample	java	c4	transition	2	324000	3689.475
+sample	java	c4	transition	3	324000	3123.929
+sample	java	c4	transition	4	324000	3083.175
+sample	java	c4	transition	5	324000	3127.426
+warmup	c4	replay	passes=670
+sample	java	c4	replay	1	16000	49464.681
+sample	java	c4	replay	2	16000	43144.269
+sample	java	c4	replay	3	16000	44426.781
+sample	java	c4	replay	4	16000	46322.656
+sample	java	c4	replay	5	16000	49779.406

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rust TAG</title><link rel="stylesheet" href="presentation/style.css"><link rel="stylesheet" href="styles.css"></head>
+<body data-theme="dark"><main>
+  <header class="page-header"><div><p class="eyebrow">RUST TAG</p><h1>A seat at the table.</h1><p>Play Tic-Tac-Toe, Connect 4, Can't Stop or Love Letter.</p></div></header>
+  <section class="toolbar" aria-label="Game controls">
+    <button id="new-game" type="button" disabled>New game</button><button id="reset" type="button" disabled>Reset</button>
+    <button id="play-pause" type="button" disabled>Play</button><button id="ai-step" type="button" disabled>AI step</button>
+    <label>Move delay (ms)<input id="ai-delay" type="number" min="0" max="5000" step="1" value="500"></label>
+    <div class="toolbar-menus"><details class="file-menu"><summary>Files</summary><div class="settings-menu">
+      <button id="save-session" type="button" disabled>Save whole session</button>
+      <button id="save-branch" type="button" disabled>Save current branch</button>
+      <button id="save-state" type="button" disabled>Save current state</button>
+      <button id="load-file" type="button" disabled>Load file</button>
+      <input id="file-input" type="file" accept=".json,application/json" hidden>
+    </div></details>
+    <details class="presentation-settings"><summary>Settings</summary><div class="settings-menu">
+    <label>Board display<select id="board-display"><option value="fit" selected>Fit</option><option value="scrollable">Scrollable</option></select></label>
+    <label class="zoom-control">Zoom <output id="board-zoom-value" for="board-zoom">100%</output><input id="board-zoom" type="range" min="25" max="200" step="5" value="100" disabled></label>
+    <button id="board-zoom-reset" type="button" disabled>Reset zoom to 100%</button>
+    <label id="observer-controls" hidden>View<select id="observer-view"><option value="auto">Current human</option><option value="public">Public spectator</option></select></label>
+    <label id="reveal-controls" hidden><input id="reveal-hidden" type="checkbox"> Reveal hidden information (privileged)</label>
+    <label id="action-results-controls" hidden><input id="always-action-results" type="checkbox"> Always show action information screens</label>
+    <label>Theme<select id="theme"><option value="light">Light table</option><option value="dark" selected>Dark table</option></select></label>
+    <label class="check"><input id="reduced" type="checkbox">Reduced motion</label><label class="check"><input id="mute" type="checkbox">Mute</label>
+    <label>Volume<input id="volume" type="range" min="0" max="100" value="35" aria-label="Sound volume"></label><button id="enable-sound" type="button" disabled>Test sound</button>
+    </div></details>
+    </div><p id="status" class="status" role="status" aria-live="polite">Loading the game engine and artwork...</p>
+  </section>
+  <div class="table-layout"><section class="game-panel" aria-label="Current game">
+    <div class="game-header"><div><p class="eyebrow" id="game-name">YOUR TABLE</p><h2 id="match-title">Your game, your players</h2></div><span class="pill" id="result">Choose a game</span></div>
+    <div id="players" class="players"></div><div id="board" class="board-scroll"></div><p id="details" class="caption"></p><p id="audio-status" class="caption" role="status"></p>
+  </section><aside class="side-panel review-panel" aria-label="Game review">
+    <p class="eyebrow">HISTORY AND CONTINUATIONS</p><h2>Review your game</h2>
+    <label>Branch<select id="branch" disabled></select></label>
+    <p id="review-position" role="status">No game yet</p><p id="branch-ancestry" class="caption"></p>
+    <div class="review-controls"><button id="previous" type="button" disabled>Previous</button><button id="next" type="button" disabled>Next</button><button id="branch-end" type="button" disabled>Branch end</button><button id="fork" type="button" disabled>Fork</button></div>
+    <ol id="history-moves" aria-label="Recorded moves"></ol>
+  </aside></div>
+  <dialog id="setup"><form id="setup-form">
+    <p class="eyebrow">CHOOSE YOUR PLAYERS</p><h2>A new game</h2>
+    <label>Game<select id="game"><option value="tictactoe">Tic-Tac-Toe</option><option value="connect4">Connect 4</option><option value="cantstop">Can't Stop</option><option value="loveletter">Love Letter</option></select></label>
+    <p>Player 0 starts. Games with a human enable automatic AI turns. AI-only games start paused. Pause to use AI step.</p>
+    <div id="setup-seats" class="setup-seats"></div>
+    <details id="parameter-section"><summary>Change game parameters</summary><div id="setup-parameters"></div><button id="defaults" type="button">Use defaults</button></details>
+    <p class="caption">Boards support up to 128 cells per dimension and 4,096 cells total. Use Settings to choose Fit or Scrollable display.</p><p id="setup-error" role="alert"></p>
+    <div class="sample-controls"><button id="setup-load" type="button" disabled>Load file</button><button id="setup-cancel" type="button">Cancel</button><button id="create" class="primary" type="submit" disabled>Start game</button></div>
+  </form></dialog>
+  <dialog id="action-result" aria-labelledby="action-result-title"><form method="dialog">
+    <h2 id="action-result-title"></h2><div id="action-result-body"></div>
+    <div class="sample-controls"><button id="action-result-pause" type="button">Pause</button><button id="action-result-continue" value="continue" autofocus>Continue</button></div>
+  </form></dialog>
+  <dialog id="discard-dialog"><form method="dialog"><h2>Replace this session?</h2><p>The current game and its preserved continuations will be discarded. Save requests a download before continuing.</p><div class="sample-controls"><button value="cancel" autofocus>Cancel</button><button value="save">Save session and continue</button><button value="discard">Discard</button></div></form></dialog>
+  <dialog id="file-progress"><h2>Loading file</h2><p id="file-progress-status" role="status">Validating the recording...</p><button id="file-cancel" type="button">Cancel</button></dialog>
+  <dialog id="state-setup"><form id="state-form"><h2>Continue from saved state</h2><p id="state-summary"></p><p>Parameters come from the file. Choose fresh controllers and seeds. The game will start paused.</p><div id="state-seats" class="setup-seats"></div><p id="state-error" role="alert"></p><div class="sample-controls"><button id="state-cancel" type="button">Cancel</button><button type="submit">Load state</button></div></form></dialog>
+  <dialog id="fork-dialog"><form id="fork-form"><p class="eyebrow">PRESERVE AND CONTINUE</p><h2 id="fork-title">Fork this position</h2><p>Unchanged controllers keep their exact progress. Changing a controller or seed starts a replacement here.</p><div id="fork-seats" class="setup-seats"></div><p id="fork-error" role="alert"></p><div class="sample-controls"><button id="fork-cancel" type="button">Cancel</button><button id="fork-create" class="primary" type="submit">Create fork</button></div></form></dialog>
+  <footer><p>Local play powered by Rust.</p><a href="presentation.html">Presentation preview</a></footer>
+</main><script type="module" src="app.js"></script><script type="module" src="layout.js"></script></body></html>

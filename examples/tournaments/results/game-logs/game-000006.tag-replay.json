@@ -1,0 +1,127 @@
+{
+  "kind": "tag-replay",
+  "versions": {
+    "format": 1,
+    "game": "tictactoe",
+    "rules": 1,
+    "agents": 1,
+    "evaluators": 1,
+    "rng": "chacha8-rand_chacha-0.9.0-rand_core-0.9.5"
+  },
+  "parameters": {
+    "grid_size": 3,
+    "limits": {
+      "max_cells": 1000000
+    }
+  },
+  "initial_state": {
+    "cells": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "current_player": 0,
+    "counters": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "outcome": {
+      "kind": "ongoing"
+    },
+    "winning_cells": []
+  },
+  "branches": [
+    {
+      "id": 0,
+      "parent": null,
+      "parent_position": 0,
+      "controllers": [
+        {
+          "kind": "human"
+        },
+        {
+          "kind": "human"
+        }
+      ],
+      "moves": [
+        {
+          "actor": 0,
+          "action": {
+            "x": 2,
+            "y": 2
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "x": 1,
+            "y": 1
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "x": 0,
+            "y": 0
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "x": 1,
+            "y": 2
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "x": 2,
+            "y": 1
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "x": 1,
+            "y": 0
+          },
+          "next_player": null,
+          "controller_after": {
+            "kind": "human"
+          }
+        }
+      ]
+    }
+  ],
+  "selected_branch": 0,
+  "cursor": 6,
+  "delay_ms": 0
+}

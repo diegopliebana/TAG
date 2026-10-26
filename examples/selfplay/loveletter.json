@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "game": "loveletter",
+  "players": 3,
+  "seed": 42,
+  "cycles": 2,
+  "games_per_cycle": 3,
+  "parallel_games": 3,
+  "search": {
+    "schema_version": 1,
+    "tree_policy": "puct",
+    "rollout_length": 0,
+    "budgets": {"iterations": 8},
+    "state_evaluator": {"name": "network_value"},
+    "puct_preferences": {"source": "probabilities", "evaluator": {"name": "network_policy"}}
+  },
+  "model": {
+    "payloads": ["hands", "players", "reserve", "discards", "context", "public_history", "private_history", "last_public_history", "last_tokens"],
+    "hidden_sizes": [32, 32],
+    "value_output": "players"
+  },
+  "exploration": {"move_policy": "visit_sampling", "sampling_moves": null, "root_noise": true},
+  "data": {"mode": "replay_buffer", "capacity": 10000},
+  "optimization": {"updates_per_cycle": 8, "batch_size": 16, "learning_rate": 0.001},
+  "evaluation": {"enabled": false},
+  "limits": {"max_moves": 4096},
+  "output": {
+    "model_file": "../../results/loveletter-model.json",
+    "checkpoint_file": "../../results/loveletter-training.pt",
+    "report_file": "../../results/loveletter-results.json"
+  }
+}

@@ -1,0 +1,3278 @@
+[
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "tictactoe",
+    "players": 2,
+    "include_actions": false,
+    "elapsed_ns": 218864400,
+    "completed_games": 64,
+    "accepted_moves": 476,
+    "stdout_bytes": 40740,
+    "work_checksum": "17296c0835ef4f5c6a203b92374dc8222fbefc35525747740811aa6ac79a5b48",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "tictactoe"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "tictactoe",
+    "players": 2,
+    "include_actions": true,
+    "elapsed_ns": 18739300,
+    "completed_games": 64,
+    "accepted_moves": 476,
+    "stdout_bytes": 97208,
+    "work_checksum": "17296c0835ef4f5c6a203b92374dc8222fbefc35525747740811aa6ac79a5b48",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "tictactoe"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 1,
+    "game": "tictactoe",
+    "players": 2,
+    "elapsed_ns": 202718200,
+    "completed_games": 4,
+    "stdout_bytes": 945,
+    "report_bytes": 8339,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "tictactoe",
+          "name": "tictactoe",
+          "player_count": 2
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-1-tictactoe-2.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "connect4",
+    "players": 2,
+    "include_actions": false,
+    "elapsed_ns": 27757100,
+    "completed_games": 64,
+    "accepted_moves": 1379,
+    "stdout_bytes": 40829,
+    "work_checksum": "5fe4f16ab4133b71be2a7ab142875beac5dba5c3b779064f7fc878f15d65c2b4",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "connect4"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "connect4",
+    "players": 2,
+    "include_actions": true,
+    "elapsed_ns": 15253600,
+    "completed_games": 64,
+    "accepted_moves": 1379,
+    "stdout_bytes": 180457,
+    "work_checksum": "5fe4f16ab4133b71be2a7ab142875beac5dba5c3b779064f7fc878f15d65c2b4",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "connect4"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 1,
+    "game": "connect4",
+    "players": 2,
+    "elapsed_ns": 19027600,
+    "completed_games": 4,
+    "stdout_bytes": 942,
+    "report_bytes": 8377,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "connect4",
+          "name": "connect4",
+          "player_count": 2
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-1-connect4-2.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "cantstop",
+    "players": 2,
+    "include_actions": false,
+    "elapsed_ns": 22796200,
+    "completed_games": 64,
+    "accepted_moves": 11323,
+    "stdout_bytes": 40356,
+    "work_checksum": "24bf98606b681d3cca8cd4d32826e221cbe30a5a3bfc4a5125a178f0359c8e77",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "cantstop",
+    "players": 2,
+    "include_actions": true,
+    "elapsed_ns": 47943200,
+    "completed_games": 64,
+    "accepted_moves": 11323,
+    "stdout_bytes": 2126313,
+    "work_checksum": "24bf98606b681d3cca8cd4d32826e221cbe30a5a3bfc4a5125a178f0359c8e77",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 1,
+    "game": "cantstop",
+    "players": 2,
+    "elapsed_ns": 139446900,
+    "completed_games": 4,
+    "stdout_bytes": 959,
+    "report_bytes": 8394,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "cantstop",
+          "name": "cantstop",
+          "player_count": 2
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-1-cantstop-2.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "cantstop",
+    "players": 3,
+    "include_actions": false,
+    "elapsed_ns": 21908900,
+    "completed_games": 64,
+    "accepted_moves": 16198,
+    "stdout_bytes": 50902,
+    "work_checksum": "f31124def4d1a64500cf77e378808dd385094f5b4dae3dab6a6f6bc95d1a86db",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "cantstop",
+    "players": 3,
+    "include_actions": true,
+    "elapsed_ns": 51187000,
+    "completed_games": 64,
+    "accepted_moves": 16198,
+    "stdout_bytes": 3041206,
+    "work_checksum": "f31124def4d1a64500cf77e378808dd385094f5b4dae3dab6a6f6bc95d1a86db",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 1,
+    "game": "cantstop",
+    "players": 3,
+    "elapsed_ns": 32557000,
+    "completed_games": 12,
+    "stdout_bytes": 1066,
+    "report_bytes": 21754,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "cantstop",
+          "name": "cantstop",
+          "player_count": 3
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-1-cantstop-3.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "cantstop",
+    "players": 4,
+    "include_actions": false,
+    "elapsed_ns": 43164100,
+    "completed_games": 64,
+    "accepted_moves": 21343,
+    "stdout_bytes": 61719,
+    "work_checksum": "320b3cd95bb6368272ed46cf0fa9f43571b63ed4f0de22b4d5f895722adab826",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "cantstop",
+    "players": 4,
+    "include_actions": true,
+    "elapsed_ns": 48625900,
+    "completed_games": 64,
+    "accepted_moves": 21343,
+    "stdout_bytes": 3992619,
+    "work_checksum": "320b3cd95bb6368272ed46cf0fa9f43571b63ed4f0de22b4d5f895722adab826",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 1,
+    "game": "cantstop",
+    "players": 4,
+    "elapsed_ns": 20032700,
+    "completed_games": 48,
+    "stdout_bytes": 1169,
+    "report_bytes": 84647,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "cantstop",
+          "name": "cantstop",
+          "player_count": 4
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-1-cantstop-4.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "loveletter",
+    "players": 2,
+    "include_actions": false,
+    "elapsed_ns": 25352200,
+    "completed_games": 64,
+    "accepted_moves": 2585,
+    "stdout_bytes": 40179,
+    "work_checksum": "102faf8367540fff5f2b5ca05ebec08368efb6592eee91163d738b7a6f79a07e",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "loveletter",
+    "players": 2,
+    "include_actions": true,
+    "elapsed_ns": 35939400,
+    "completed_games": 64,
+    "accepted_moves": 2585,
+    "stdout_bytes": 437518,
+    "work_checksum": "102faf8367540fff5f2b5ca05ebec08368efb6592eee91163d738b7a6f79a07e",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 1,
+    "game": "loveletter",
+    "players": 2,
+    "elapsed_ns": 32701900,
+    "completed_games": 4,
+    "stdout_bytes": 965,
+    "report_bytes": 8253,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "loveletter",
+          "name": "loveletter",
+          "player_count": 2
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-1-loveletter-2.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "loveletter",
+    "players": 3,
+    "include_actions": false,
+    "elapsed_ns": 35448100,
+    "completed_games": 64,
+    "accepted_moves": 4769,
+    "stdout_bytes": 50727,
+    "work_checksum": "b4fe3f7b0c9bc94e473eb91b495a0cdc9a7860322ede74e2303a598cfdc465b1",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "loveletter",
+    "players": 3,
+    "include_actions": true,
+    "elapsed_ns": 30168400,
+    "completed_games": 64,
+    "accepted_moves": 4769,
+    "stdout_bytes": 792569,
+    "work_checksum": "b4fe3f7b0c9bc94e473eb91b495a0cdc9a7860322ede74e2303a598cfdc465b1",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 1,
+    "game": "loveletter",
+    "players": 3,
+    "elapsed_ns": 23960200,
+    "completed_games": 12,
+    "stdout_bytes": 1072,
+    "report_bytes": 21622,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "loveletter",
+          "name": "loveletter",
+          "player_count": 3
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-1-loveletter-3.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "loveletter",
+    "players": 4,
+    "include_actions": false,
+    "elapsed_ns": 20464200,
+    "completed_games": 64,
+    "accepted_moves": 4895,
+    "stdout_bytes": 61550,
+    "work_checksum": "2a2234f444985f49c35276df95f78a4721fd3c1e41072bc6c76894230881b5a3",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 1,
+    "game": "loveletter",
+    "players": 4,
+    "include_actions": true,
+    "elapsed_ns": 45445000,
+    "completed_games": 64,
+    "accepted_moves": 4895,
+    "stdout_bytes": 837296,
+    "work_checksum": "2a2234f444985f49c35276df95f78a4721fd3c1e41072bc6c76894230881b5a3",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 1,
+    "game": "loveletter",
+    "players": 4,
+    "elapsed_ns": 40504600,
+    "completed_games": 48,
+    "stdout_bytes": 1175,
+    "report_bytes": 84616,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "loveletter",
+          "name": "loveletter",
+          "player_count": 4
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-1-loveletter-4.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "tictactoe",
+    "players": 2,
+    "include_actions": true,
+    "elapsed_ns": 11428100,
+    "completed_games": 64,
+    "accepted_moves": 476,
+    "stdout_bytes": 97208,
+    "work_checksum": "17296c0835ef4f5c6a203b92374dc8222fbefc35525747740811aa6ac79a5b48",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "tictactoe"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "tictactoe",
+    "players": 2,
+    "include_actions": false,
+    "elapsed_ns": 11936600,
+    "completed_games": 64,
+    "accepted_moves": 476,
+    "stdout_bytes": 40740,
+    "work_checksum": "17296c0835ef4f5c6a203b92374dc8222fbefc35525747740811aa6ac79a5b48",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "tictactoe"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 2,
+    "game": "tictactoe",
+    "players": 2,
+    "elapsed_ns": 31659600,
+    "completed_games": 4,
+    "stdout_bytes": 945,
+    "report_bytes": 8339,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "tictactoe",
+          "name": "tictactoe",
+          "player_count": 2
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-2-tictactoe-2.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "connect4",
+    "players": 2,
+    "include_actions": true,
+    "elapsed_ns": 18484700,
+    "completed_games": 64,
+    "accepted_moves": 1379,
+    "stdout_bytes": 180457,
+    "work_checksum": "5fe4f16ab4133b71be2a7ab142875beac5dba5c3b779064f7fc878f15d65c2b4",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "connect4"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "connect4",
+    "players": 2,
+    "include_actions": false,
+    "elapsed_ns": 10628800,
+    "completed_games": 64,
+    "accepted_moves": 1379,
+    "stdout_bytes": 40829,
+    "work_checksum": "5fe4f16ab4133b71be2a7ab142875beac5dba5c3b779064f7fc878f15d65c2b4",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "connect4"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 2,
+    "game": "connect4",
+    "players": 2,
+    "elapsed_ns": 25572000,
+    "completed_games": 4,
+    "stdout_bytes": 942,
+    "report_bytes": 8377,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "connect4",
+          "name": "connect4",
+          "player_count": 2
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-2-connect4-2.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "cantstop",
+    "players": 2,
+    "include_actions": true,
+    "elapsed_ns": 38048100,
+    "completed_games": 64,
+    "accepted_moves": 11323,
+    "stdout_bytes": 2126313,
+    "work_checksum": "24bf98606b681d3cca8cd4d32826e221cbe30a5a3bfc4a5125a178f0359c8e77",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "cantstop",
+    "players": 2,
+    "include_actions": false,
+    "elapsed_ns": 10526400,
+    "completed_games": 64,
+    "accepted_moves": 11323,
+    "stdout_bytes": 40356,
+    "work_checksum": "24bf98606b681d3cca8cd4d32826e221cbe30a5a3bfc4a5125a178f0359c8e77",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 2,
+    "game": "cantstop",
+    "players": 2,
+    "elapsed_ns": 19160700,
+    "completed_games": 4,
+    "stdout_bytes": 959,
+    "report_bytes": 8394,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "cantstop",
+          "name": "cantstop",
+          "player_count": 2
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-2-cantstop-2.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "cantstop",
+    "players": 3,
+    "include_actions": true,
+    "elapsed_ns": 45002500,
+    "completed_games": 64,
+    "accepted_moves": 16198,
+    "stdout_bytes": 3041206,
+    "work_checksum": "f31124def4d1a64500cf77e378808dd385094f5b4dae3dab6a6f6bc95d1a86db",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "cantstop",
+    "players": 3,
+    "include_actions": false,
+    "elapsed_ns": 11280300,
+    "completed_games": 64,
+    "accepted_moves": 16198,
+    "stdout_bytes": 50902,
+    "work_checksum": "f31124def4d1a64500cf77e378808dd385094f5b4dae3dab6a6f6bc95d1a86db",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 2,
+    "game": "cantstop",
+    "players": 3,
+    "elapsed_ns": 22976600,
+    "completed_games": 12,
+    "stdout_bytes": 1066,
+    "report_bytes": 21754,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "cantstop",
+          "name": "cantstop",
+          "player_count": 3
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-2-cantstop-3.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "cantstop",
+    "players": 4,
+    "include_actions": true,
+    "elapsed_ns": 40841900,
+    "completed_games": 64,
+    "accepted_moves": 21343,
+    "stdout_bytes": 3992619,
+    "work_checksum": "320b3cd95bb6368272ed46cf0fa9f43571b63ed4f0de22b4d5f895722adab826",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "cantstop",
+    "players": 4,
+    "include_actions": false,
+    "elapsed_ns": 13240700,
+    "completed_games": 64,
+    "accepted_moves": 21343,
+    "stdout_bytes": 61719,
+    "work_checksum": "320b3cd95bb6368272ed46cf0fa9f43571b63ed4f0de22b4d5f895722adab826",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 2,
+    "game": "cantstop",
+    "players": 4,
+    "elapsed_ns": 33497800,
+    "completed_games": 48,
+    "stdout_bytes": 1169,
+    "report_bytes": 84647,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "cantstop",
+          "name": "cantstop",
+          "player_count": 4
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-2-cantstop-4.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "loveletter",
+    "players": 2,
+    "include_actions": true,
+    "elapsed_ns": 20993700,
+    "completed_games": 64,
+    "accepted_moves": 2585,
+    "stdout_bytes": 437518,
+    "work_checksum": "102faf8367540fff5f2b5ca05ebec08368efb6592eee91163d738b7a6f79a07e",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "loveletter",
+    "players": 2,
+    "include_actions": false,
+    "elapsed_ns": 11699700,
+    "completed_games": 64,
+    "accepted_moves": 2585,
+    "stdout_bytes": 40179,
+    "work_checksum": "102faf8367540fff5f2b5ca05ebec08368efb6592eee91163d738b7a6f79a07e",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 2,
+    "game": "loveletter",
+    "players": 2,
+    "elapsed_ns": 26939300,
+    "completed_games": 4,
+    "stdout_bytes": 965,
+    "report_bytes": 8253,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "loveletter",
+          "name": "loveletter",
+          "player_count": 2
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-2-loveletter-2.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "loveletter",
+    "players": 3,
+    "include_actions": true,
+    "elapsed_ns": 20309100,
+    "completed_games": 64,
+    "accepted_moves": 4769,
+    "stdout_bytes": 792569,
+    "work_checksum": "b4fe3f7b0c9bc94e473eb91b495a0cdc9a7860322ede74e2303a598cfdc465b1",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "loveletter",
+    "players": 3,
+    "include_actions": false,
+    "elapsed_ns": 17340600,
+    "completed_games": 64,
+    "accepted_moves": 4769,
+    "stdout_bytes": 50727,
+    "work_checksum": "b4fe3f7b0c9bc94e473eb91b495a0cdc9a7860322ede74e2303a598cfdc465b1",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 2,
+    "game": "loveletter",
+    "players": 3,
+    "elapsed_ns": 15215000,
+    "completed_games": 12,
+    "stdout_bytes": 1072,
+    "report_bytes": 21622,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "loveletter",
+          "name": "loveletter",
+          "player_count": 3
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-2-loveletter-3.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "loveletter",
+    "players": 4,
+    "include_actions": true,
+    "elapsed_ns": 20319800,
+    "completed_games": 64,
+    "accepted_moves": 4895,
+    "stdout_bytes": 837296,
+    "work_checksum": "2a2234f444985f49c35276df95f78a4721fd3c1e41072bc6c76894230881b5a3",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 2,
+    "game": "loveletter",
+    "players": 4,
+    "include_actions": false,
+    "elapsed_ns": 15578800,
+    "completed_games": 64,
+    "accepted_moves": 4895,
+    "stdout_bytes": 61550,
+    "work_checksum": "2a2234f444985f49c35276df95f78a4721fd3c1e41072bc6c76894230881b5a3",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 2,
+    "game": "loveletter",
+    "players": 4,
+    "elapsed_ns": 21904000,
+    "completed_games": 48,
+    "stdout_bytes": 1175,
+    "report_bytes": 84616,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "loveletter",
+          "name": "loveletter",
+          "player_count": 4
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-2-loveletter-4.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "tictactoe",
+    "players": 2,
+    "include_actions": false,
+    "elapsed_ns": 8916900,
+    "completed_games": 64,
+    "accepted_moves": 476,
+    "stdout_bytes": 40740,
+    "work_checksum": "17296c0835ef4f5c6a203b92374dc8222fbefc35525747740811aa6ac79a5b48",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "tictactoe"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "tictactoe",
+    "players": 2,
+    "include_actions": true,
+    "elapsed_ns": 7710800,
+    "completed_games": 64,
+    "accepted_moves": 476,
+    "stdout_bytes": 97208,
+    "work_checksum": "17296c0835ef4f5c6a203b92374dc8222fbefc35525747740811aa6ac79a5b48",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "tictactoe"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 3,
+    "game": "tictactoe",
+    "players": 2,
+    "elapsed_ns": 25823300,
+    "completed_games": 4,
+    "stdout_bytes": 945,
+    "report_bytes": 8339,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "tictactoe",
+          "name": "tictactoe",
+          "player_count": 2
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-3-tictactoe-2.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "connect4",
+    "players": 2,
+    "include_actions": false,
+    "elapsed_ns": 12621900,
+    "completed_games": 64,
+    "accepted_moves": 1379,
+    "stdout_bytes": 40829,
+    "work_checksum": "5fe4f16ab4133b71be2a7ab142875beac5dba5c3b779064f7fc878f15d65c2b4",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "connect4"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "connect4",
+    "players": 2,
+    "include_actions": true,
+    "elapsed_ns": 9801600,
+    "completed_games": 64,
+    "accepted_moves": 1379,
+    "stdout_bytes": 180457,
+    "work_checksum": "5fe4f16ab4133b71be2a7ab142875beac5dba5c3b779064f7fc878f15d65c2b4",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "connect4"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 3,
+    "game": "connect4",
+    "players": 2,
+    "elapsed_ns": 21564700,
+    "completed_games": 4,
+    "stdout_bytes": 942,
+    "report_bytes": 8377,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "connect4",
+          "name": "connect4",
+          "player_count": 2
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-3-connect4-2.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "cantstop",
+    "players": 2,
+    "include_actions": false,
+    "elapsed_ns": 18683500,
+    "completed_games": 64,
+    "accepted_moves": 11323,
+    "stdout_bytes": 40356,
+    "work_checksum": "24bf98606b681d3cca8cd4d32826e221cbe30a5a3bfc4a5125a178f0359c8e77",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "cantstop",
+    "players": 2,
+    "include_actions": true,
+    "elapsed_ns": 25670000,
+    "completed_games": 64,
+    "accepted_moves": 11323,
+    "stdout_bytes": 2126313,
+    "work_checksum": "24bf98606b681d3cca8cd4d32826e221cbe30a5a3bfc4a5125a178f0359c8e77",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 3,
+    "game": "cantstop",
+    "players": 2,
+    "elapsed_ns": 24493400,
+    "completed_games": 4,
+    "stdout_bytes": 959,
+    "report_bytes": 8394,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "cantstop",
+          "name": "cantstop",
+          "player_count": 2
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-3-cantstop-2.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "cantstop",
+    "players": 3,
+    "include_actions": false,
+    "elapsed_ns": 19363200,
+    "completed_games": 64,
+    "accepted_moves": 16198,
+    "stdout_bytes": 50902,
+    "work_checksum": "f31124def4d1a64500cf77e378808dd385094f5b4dae3dab6a6f6bc95d1a86db",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "cantstop",
+    "players": 3,
+    "include_actions": true,
+    "elapsed_ns": 34466800,
+    "completed_games": 64,
+    "accepted_moves": 16198,
+    "stdout_bytes": 3041206,
+    "work_checksum": "f31124def4d1a64500cf77e378808dd385094f5b4dae3dab6a6f6bc95d1a86db",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 3,
+    "game": "cantstop",
+    "players": 3,
+    "elapsed_ns": 18709000,
+    "completed_games": 12,
+    "stdout_bytes": 1066,
+    "report_bytes": 21754,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "cantstop",
+          "name": "cantstop",
+          "player_count": 3
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-3-cantstop-3.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "cantstop",
+    "players": 4,
+    "include_actions": false,
+    "elapsed_ns": 25251900,
+    "completed_games": 64,
+    "accepted_moves": 21343,
+    "stdout_bytes": 61719,
+    "work_checksum": "320b3cd95bb6368272ed46cf0fa9f43571b63ed4f0de22b4d5f895722adab826",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "cantstop",
+    "players": 4,
+    "include_actions": true,
+    "elapsed_ns": 39034600,
+    "completed_games": 64,
+    "accepted_moves": 21343,
+    "stdout_bytes": 3992619,
+    "work_checksum": "320b3cd95bb6368272ed46cf0fa9f43571b63ed4f0de22b4d5f895722adab826",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "cantstop"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 3,
+    "game": "cantstop",
+    "players": 4,
+    "elapsed_ns": 30137200,
+    "completed_games": 48,
+    "stdout_bytes": 1169,
+    "report_bytes": 84647,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "cantstop",
+          "name": "cantstop",
+          "player_count": 4
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-3-cantstop-4.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "loveletter",
+    "players": 2,
+    "include_actions": false,
+    "elapsed_ns": 16688700,
+    "completed_games": 64,
+    "accepted_moves": 2585,
+    "stdout_bytes": 40179,
+    "work_checksum": "102faf8367540fff5f2b5ca05ebec08368efb6592eee91163d738b7a6f79a07e",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "loveletter",
+    "players": 2,
+    "include_actions": true,
+    "elapsed_ns": 19245900,
+    "completed_games": 64,
+    "accepted_moves": 2585,
+    "stdout_bytes": 437518,
+    "work_checksum": "102faf8367540fff5f2b5ca05ebec08368efb6592eee91163d738b7a6f79a07e",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 3,
+    "game": "loveletter",
+    "players": 2,
+    "elapsed_ns": 20425100,
+    "completed_games": 4,
+    "stdout_bytes": 965,
+    "report_bytes": 8253,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "loveletter",
+          "name": "loveletter",
+          "player_count": 2
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-3-loveletter-2.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "loveletter",
+    "players": 3,
+    "include_actions": false,
+    "elapsed_ns": 29877000,
+    "completed_games": 64,
+    "accepted_moves": 4769,
+    "stdout_bytes": 50727,
+    "work_checksum": "b4fe3f7b0c9bc94e473eb91b495a0cdc9a7860322ede74e2303a598cfdc465b1",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "loveletter",
+    "players": 3,
+    "include_actions": true,
+    "elapsed_ns": 23529800,
+    "completed_games": 64,
+    "accepted_moves": 4769,
+    "stdout_bytes": 792569,
+    "work_checksum": "b4fe3f7b0c9bc94e473eb91b495a0cdc9a7860322ede74e2303a598cfdc465b1",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 3,
+    "game": "loveletter",
+    "players": 3,
+    "elapsed_ns": 24930100,
+    "completed_games": 12,
+    "stdout_bytes": 1072,
+    "report_bytes": 21622,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "loveletter",
+          "name": "loveletter",
+          "player_count": 3
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-3-loveletter-3.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "loveletter",
+    "players": 4,
+    "include_actions": false,
+    "elapsed_ns": 21900900,
+    "completed_games": 64,
+    "accepted_moves": 4895,
+    "stdout_bytes": 61550,
+    "work_checksum": "2a2234f444985f49c35276df95f78a4721fd3c1e41072bc6c76894230881b5a3",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": false
+      }
+    }
+  },
+  {
+    "operation": "match_cli",
+    "fork": 3,
+    "game": "loveletter",
+    "players": 4,
+    "include_actions": true,
+    "elapsed_ns": 21664500,
+    "completed_games": 64,
+    "accepted_moves": 4895,
+    "stdout_bytes": 837296,
+    "work_checksum": "2a2234f444985f49c35276df95f78a4721fd3c1e41072bc6c76894230881b5a3",
+    "configuration": {
+      "schema_version": 1,
+      "game": {
+        "name": "loveletter"
+      },
+      "players": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": 64,
+      "positions": "rotate",
+      "seed": 42,
+      "reporting": {
+        "format": "json",
+        "include_actions": true
+      }
+    }
+  },
+  {
+    "operation": "tournament_cli",
+    "fork": 3,
+    "game": "loveletter",
+    "players": 4,
+    "elapsed_ns": 30258500,
+    "completed_games": 48,
+    "stdout_bytes": 1175,
+    "report_bytes": 84616,
+    "configuration": {
+      "schema_version": 1,
+      "agents": [
+        {
+          "name": "0",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "1",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "2",
+          "agent": {
+            "type": "random"
+          }
+        },
+        {
+          "name": "3",
+          "agent": {
+            "type": "random"
+          }
+        }
+      ],
+      "games": [
+        {
+          "id": "loveletter",
+          "name": "loveletter",
+          "player_count": 4
+        }
+      ],
+      "mode": "random",
+      "matchups": 2,
+      "seat_allocation": "permutations",
+      "allow_self_play": false,
+      "repetitions": 1,
+      "ranking_metric": "points_rate",
+      "seed": 42,
+      "results_file": "tournament-3-loveletter-4.json",
+      "game_logs": {
+        "mode": "off"
+      }
+    }
+  }
+]

@@ -1,0 +1,9 @@
+views 16x16, 2000 requests: 157.560 ms
+views 64x64, 2000 requests: 2528.579 ms
+branches 900/600 moves, 20 round trips: 129.559 ms
+views 16x16, 2000 requests: 149.343 ms
+views 64x64, 2000 requests: 2146.333 ms
+branches 900/600 moves, 20 round trips: 135.387 ms
+views 16x16, 2000 requests: 101.446 ms
+views 64x64, 2000 requests: 2155.380 ms
+branches 900/600 moves, 20 round trips: 142.951 ms

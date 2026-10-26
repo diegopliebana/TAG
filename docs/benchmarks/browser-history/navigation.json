@@ -1,0 +1,12 @@
+{
+  "recorded_at": "14-10-2026 13:04 (Europe/Paris)",
+  "source": "User-run tools/browser/test-browser.mjs output",
+  "browser": "Chrome/154.0.8037.99",
+  "platform": "Windows",
+  "hardware": "not recorded",
+  "workload": { "game": "tictactoe", "grid_size": 32, "accepted_moves": 31, "branch_count": 1, "reduced_motion": true, "muted": true, "cursor_sequence": [0, 10, 20, 31, 10, 0, 31, 20] },
+  "runs_ms": [
+    [17.900000005960464, 15.699999988079071, 13.400000005960464, 9.599999994039536, 13.700000017881393, 9.699999988079071, 10.5, 13.800000011920929],
+    [17.799999982118607, 15, 15, 32.80000001192093, 22.099999994039536, 26.099999994039536, 13.300000011920929, 12.299999982118607]
+  ]
+}

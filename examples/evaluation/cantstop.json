@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "game": "cantstop",
+  "players": 3,
+  "seed": 42,
+  "search": {
+    "schema_version": 1,
+    "tree_policy": "puct",
+    "rollout_length": 0,
+    "budgets": {"iterations": 8},
+    "state_evaluator": {"name": "network_value"},
+    "puct_preferences": {"source": "probabilities", "evaluator": {"name": "network_policy"}}
+  },
+  "evaluation": {
+    "enabled": true,
+    "games": 6,
+    "positions": "rotate",
+    "opponents": [
+      {"name": "random", "agent": {"type": "random"}},
+      {"name": "osla-r4", "agent": {"type": "osla", "repetitions_per_action": 4}}
+    ],
+    "ranking": "score",
+    "max_actions": 2000
+  },
+  "output": {"report_file": "results/cantstop-evaluation.json"}
+}

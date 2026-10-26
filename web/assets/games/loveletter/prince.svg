@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="260" viewBox="0 0 200 260">
+<title>Prince</title><rect x="4" y="4" width="192" height="252" rx="18" fill="#fff8ea" stroke="#8b3650" stroke-width="5"/>
+<rect x="15" y="15" width="170" height="230" rx="12" fill="none" stroke="#d8b477"/>
+<g fill="none" stroke="#8b3650" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M65 118 L58 71 L84 91 L100 57 L116 91 L142 71 L135 118 Z M65 135 H135"/><circle cx="100" cy="109" r="5"/></g>
+<text x="28" y="45" font-family="serif" font-size="27" fill="#8b3650">5</text>
+<text x="100" y="201" text-anchor="middle" font-family="serif" font-size="23" fill="#532a36">Prince</text>
+<path d="M65 220 H135" stroke="#d8b477" stroke-width="2"/></svg>

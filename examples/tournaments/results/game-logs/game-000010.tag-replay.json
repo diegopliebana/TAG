@@ -1,0 +1,216 @@
+{
+  "kind": "tag-replay",
+  "versions": {
+    "format": 1,
+    "game": "connect4",
+    "rules": 1,
+    "agents": 1,
+    "evaluators": 1,
+    "rng": "chacha8-rand_chacha-0.9.0-rand_core-0.9.5"
+  },
+  "parameters": {
+    "width": 7,
+    "height": 6,
+    "winning_length": 4,
+    "limits": {
+      "max_cells": 1000000
+    }
+  },
+  "initial_state": {
+    "cells": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "current_player": 0,
+    "counters": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "outcome": {
+      "kind": "ongoing"
+    },
+    "winning_cells": []
+  },
+  "branches": [
+    {
+      "id": 0,
+      "parent": null,
+      "parent_position": 0,
+      "controllers": [
+        {
+          "kind": "human"
+        },
+        {
+          "kind": "human"
+        }
+      ],
+      "moves": [
+        {
+          "actor": 0,
+          "action": {
+            "column": 3
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 3
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "column": 2
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 2
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "column": 4
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 5
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "column": 0
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 1
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "column": 6
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 1
+          },
+          "next_player": 0,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 0,
+          "action": {
+            "column": 0
+          },
+          "next_player": 1,
+          "controller_after": {
+            "kind": "human"
+          }
+        },
+        {
+          "actor": 1,
+          "action": {
+            "column": 4
+          },
+          "next_player": null,
+          "controller_after": {
+            "kind": "human"
+          }
+        }
+      ]
+    }
+  ],
+  "selected_branch": 0,
+  "cursor": 12,
+  "delay_ms": 0
+}

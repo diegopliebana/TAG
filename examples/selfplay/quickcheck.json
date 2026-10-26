@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "game": "tictactoe",
+  "players": 2,
+  "seed": 42,
+  "cycles": 2,
+  "games_per_cycle": 2,
+  "parallel_games": 2,
+  "search": {
+    "schema_version": 1,
+    "tree_policy": "puct",
+    "rollout_length": 0,
+    "budgets": {
+      "iterations": 4
+    },
+    "state_evaluator": {
+      "name": "network_value"
+    },
+    "puct_preferences": {
+      "source": "probabilities",
+      "evaluator": {
+        "name": "network_policy"
+      }
+    }
+  },
+  "model": {
+    "payloads": [
+      "cells"
+    ],
+    "hidden_sizes": [
+      8
+    ],
+    "value_output": "observer"
+  },
+  "exploration": {
+    "root_noise": false
+  },
+  "data": {
+    "mode": "replay_buffer",
+    "capacity": 256
+  },
+  "optimization": {
+    "updates_per_cycle": 1,
+    "batch_size": 4
+  },
+  "evaluation": {
+    "enabled": false
+  },
+  "output": {
+    "model_file": "results/quickcheck-model.json",
+    "checkpoint_file": "results/quickcheck-training.pt",
+    "report_file": "results/quickcheck-results.json"
+  }
+}

@@ -1,0 +1,442 @@
+[
+  {
+    "operation": "learner_collection",
+    "game": "tictactoe",
+    "phase": "teacher",
+    "episodes": 1,
+    "fork": 2,
+    "samples": [
+      {
+        "calls": 60,
+        "elapsed_ns": 50855700
+      },
+      {
+        "calls": 78,
+        "elapsed_ns": 50004900
+      },
+      {
+        "calls": 81,
+        "elapsed_ns": 50358400
+      },
+      {
+        "calls": 75,
+        "elapsed_ns": 50144200
+      },
+      {
+        "calls": 73,
+        "elapsed_ns": 50360500
+      }
+    ],
+    "next_episode_id": 1,
+    "outcomes": {
+      "combined": {
+        "episodes": 1,
+        "wins": 0,
+        "draws": 1,
+        "losses": 0,
+        "truncated": 0
+      },
+      "per_seat": {
+        "0": {
+          "episodes": 1,
+          "wins": 0,
+          "draws": 1,
+          "losses": 0,
+          "truncated": 0
+        },
+        "1": {
+          "episodes": 0,
+          "wins": 0,
+          "draws": 0,
+          "losses": 0,
+          "truncated": 0
+        }
+      }
+    }
+  },
+  {
+    "operation": "learner_collection",
+    "game": "tictactoe",
+    "phase": "teacher",
+    "episodes": 16,
+    "fork": 2,
+    "samples": [
+      {
+        "calls": 9,
+        "elapsed_ns": 52338300
+      },
+      {
+        "calls": 9,
+        "elapsed_ns": 54692000
+      },
+      {
+        "calls": 9,
+        "elapsed_ns": 52935400
+      },
+      {
+        "calls": 9,
+        "elapsed_ns": 50066500
+      },
+      {
+        "calls": 9,
+        "elapsed_ns": 55394500
+      }
+    ],
+    "next_episode_id": 16,
+    "outcomes": {
+      "combined": {
+        "episodes": 16,
+        "wins": 0,
+        "draws": 16,
+        "losses": 0,
+        "truncated": 0
+      },
+      "per_seat": {
+        "0": {
+          "episodes": 8,
+          "wins": 0,
+          "draws": 8,
+          "losses": 0,
+          "truncated": 0
+        },
+        "1": {
+          "episodes": 8,
+          "wins": 0,
+          "draws": 8,
+          "losses": 0,
+          "truncated": 0
+        }
+      }
+    }
+  },
+  {
+    "operation": "learner_collection",
+    "game": "tictactoe",
+    "phase": "actor_critic",
+    "episodes": 1,
+    "fork": 2,
+    "samples": [
+      {
+        "calls": 13,
+        "elapsed_ns": 52827500
+      },
+      {
+        "calls": 17,
+        "elapsed_ns": 51321900
+      },
+      {
+        "calls": 17,
+        "elapsed_ns": 52743800
+      },
+      {
+        "calls": 15,
+        "elapsed_ns": 50794600
+      },
+      {
+        "calls": 16,
+        "elapsed_ns": 51524700
+      }
+    ],
+    "next_episode_id": 1,
+    "outcomes": {
+      "combined": {
+        "episodes": 1,
+        "wins": 1,
+        "draws": 0,
+        "losses": 0,
+        "truncated": 0
+      },
+      "per_seat": {
+        "0": {
+          "episodes": 1,
+          "wins": 1,
+          "draws": 0,
+          "losses": 0,
+          "truncated": 0
+        },
+        "1": {
+          "episodes": 0,
+          "wins": 0,
+          "draws": 0,
+          "losses": 0,
+          "truncated": 0
+        }
+      }
+    }
+  },
+  {
+    "operation": "learner_collection",
+    "game": "tictactoe",
+    "phase": "actor_critic",
+    "episodes": 16,
+    "fork": 2,
+    "samples": [
+      {
+        "calls": 4,
+        "elapsed_ns": 63299100
+      },
+      {
+        "calls": 4,
+        "elapsed_ns": 61939100
+      },
+      {
+        "calls": 4,
+        "elapsed_ns": 57880000
+      },
+      {
+        "calls": 4,
+        "elapsed_ns": 65849200
+      },
+      {
+        "calls": 3,
+        "elapsed_ns": 50416400
+      }
+    ],
+    "next_episode_id": 16,
+    "outcomes": {
+      "combined": {
+        "episodes": 16,
+        "wins": 7,
+        "draws": 3,
+        "losses": 6,
+        "truncated": 0
+      },
+      "per_seat": {
+        "0": {
+          "episodes": 8,
+          "wins": 2,
+          "draws": 2,
+          "losses": 4,
+          "truncated": 0
+        },
+        "1": {
+          "episodes": 8,
+          "wins": 5,
+          "draws": 1,
+          "losses": 2,
+          "truncated": 0
+        }
+      }
+    }
+  },
+  {
+    "operation": "learner_collection",
+    "game": "connect4",
+    "phase": "teacher",
+    "episodes": 1,
+    "fork": 2,
+    "samples": [
+      {
+        "calls": 22,
+        "elapsed_ns": 50541600
+      },
+      {
+        "calls": 15,
+        "elapsed_ns": 50151400
+      },
+      {
+        "calls": 14,
+        "elapsed_ns": 51320800
+      },
+      {
+        "calls": 16,
+        "elapsed_ns": 52036400
+      },
+      {
+        "calls": 26,
+        "elapsed_ns": 50917700
+      }
+    ],
+    "next_episode_id": 1,
+    "outcomes": {
+      "combined": {
+        "episodes": 1,
+        "wins": 1,
+        "draws": 0,
+        "losses": 0,
+        "truncated": 0
+      },
+      "per_seat": {
+        "0": {
+          "episodes": 1,
+          "wins": 1,
+          "draws": 0,
+          "losses": 0,
+          "truncated": 0
+        },
+        "1": {
+          "episodes": 0,
+          "wins": 0,
+          "draws": 0,
+          "losses": 0,
+          "truncated": 0
+        }
+      }
+    }
+  },
+  {
+    "operation": "learner_collection",
+    "game": "connect4",
+    "phase": "teacher",
+    "episodes": 16,
+    "fork": 2,
+    "samples": [
+      {
+        "calls": 4,
+        "elapsed_ns": 54254100
+      },
+      {
+        "calls": 4,
+        "elapsed_ns": 58624100
+      },
+      {
+        "calls": 4,
+        "elapsed_ns": 55551200
+      },
+      {
+        "calls": 4,
+        "elapsed_ns": 53199800
+      },
+      {
+        "calls": 3,
+        "elapsed_ns": 52678300
+      }
+    ],
+    "next_episode_id": 16,
+    "outcomes": {
+      "combined": {
+        "episodes": 16,
+        "wins": 10,
+        "draws": 0,
+        "losses": 6,
+        "truncated": 0
+      },
+      "per_seat": {
+        "0": {
+          "episodes": 8,
+          "wins": 8,
+          "draws": 0,
+          "losses": 0,
+          "truncated": 0
+        },
+        "1": {
+          "episodes": 8,
+          "wins": 2,
+          "draws": 0,
+          "losses": 6,
+          "truncated": 0
+        }
+      }
+    }
+  },
+  {
+    "operation": "learner_collection",
+    "game": "connect4",
+    "phase": "actor_critic",
+    "episodes": 1,
+    "fork": 2,
+    "samples": [
+      {
+        "calls": 3,
+        "elapsed_ns": 50242400
+      },
+      {
+        "calls": 3,
+        "elapsed_ns": 52993200
+      },
+      {
+        "calls": 3,
+        "elapsed_ns": 59228800
+      },
+      {
+        "calls": 4,
+        "elapsed_ns": 59826000
+      },
+      {
+        "calls": 4,
+        "elapsed_ns": 66940600
+      }
+    ],
+    "next_episode_id": 1,
+    "outcomes": {
+      "combined": {
+        "episodes": 1,
+        "wins": 0,
+        "draws": 0,
+        "losses": 1,
+        "truncated": 0
+      },
+      "per_seat": {
+        "0": {
+          "episodes": 1,
+          "wins": 0,
+          "draws": 0,
+          "losses": 1,
+          "truncated": 0
+        },
+        "1": {
+          "episodes": 0,
+          "wins": 0,
+          "draws": 0,
+          "losses": 0,
+          "truncated": 0
+        }
+      }
+    }
+  },
+  {
+    "operation": "learner_collection",
+    "game": "connect4",
+    "phase": "actor_critic",
+    "episodes": 16,
+    "fork": 2,
+    "samples": [
+      {
+        "calls": 2,
+        "elapsed_ns": 112351100
+      },
+      {
+        "calls": 1,
+        "elapsed_ns": 73677000
+      },
+      {
+        "calls": 1,
+        "elapsed_ns": 50512400
+      },
+      {
+        "calls": 1,
+        "elapsed_ns": 60040800
+      },
+      {
+        "calls": 1,
+        "elapsed_ns": 61575100
+      }
+    ],
+    "next_episode_id": 16,
+    "outcomes": {
+      "combined": {
+        "episodes": 16,
+        "wins": 11,
+        "draws": 0,
+        "losses": 5,
+        "truncated": 0
+      },
+      "per_seat": {
+        "0": {
+          "episodes": 8,
+          "wins": 5,
+          "draws": 0,
+          "losses": 3,
+          "truncated": 0
+        },
+        "1": {
+          "episodes": 8,
+          "wins": 6,
+          "draws": 0,
+          "losses": 2,
+          "truncated": 0
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="260" viewBox="0 0 200 260">
+<title>Countess</title><rect x="4" y="4" width="192" height="252" rx="18" fill="#fff8ea" stroke="#8b3650" stroke-width="5"/>
+<rect x="15" y="15" width="170" height="230" rx="12" fill="none" stroke="#d8b477"/>
+<g fill="none" stroke="#8b3650" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M100 46 L137 94 L100 144 L63 94 Z M63 94 H137 M100 46 L85 94 L100 144 L115 94 Z"/></g>
+<text x="28" y="45" font-family="serif" font-size="27" fill="#8b3650">8</text>
+<text x="100" y="201" text-anchor="middle" font-family="serif" font-size="23" fill="#532a36">Countess</text>
+<path d="M65 220 H135" stroke="#d8b477" stroke-width="2"/></svg>

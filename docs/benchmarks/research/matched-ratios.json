@@ -1,0 +1,72 @@
+[
+  {
+    "game": "ttt",
+    "operation": "init",
+    "java_over_rust": 43.301583510473144,
+    "min_pair_ratio": 42.576429570950836,
+    "max_pair_ratio": 44.25282530693939
+  },
+  {
+    "game": "ttt",
+    "operation": "actions",
+    "java_over_rust": 1.4710825450539964,
+    "min_pair_ratio": 1.4475757338726798,
+    "max_pair_ratio": 1.5707866242799435
+  },
+  {
+    "game": "ttt",
+    "operation": "copy",
+    "java_over_rust": 91.01071061350395,
+    "min_pair_ratio": 74.69286449213884,
+    "max_pair_ratio": 91.01071061350395
+  },
+  {
+    "game": "ttt",
+    "operation": "transition",
+    "java_over_rust": 9.839125660733893,
+    "min_pair_ratio": 7.039297002027879,
+    "max_pair_ratio": 10.182222108730624
+  },
+  {
+    "game": "ttt",
+    "operation": "replay",
+    "java_over_rust": 5.6582169816729415,
+    "min_pair_ratio": 4.323603424389898,
+    "max_pair_ratio": 6.77879707855393
+  },
+  {
+    "game": "c4",
+    "operation": "init",
+    "java_over_rust": 80.0600288477855,
+    "min_pair_ratio": 48.976695630814575,
+    "max_pair_ratio": 96.35142191800156
+  },
+  {
+    "game": "c4",
+    "operation": "actions",
+    "java_over_rust": 3.538178991132694,
+    "min_pair_ratio": 2.2639702966727944,
+    "max_pair_ratio": 4.464198393293748
+  },
+  {
+    "game": "c4",
+    "operation": "copy",
+    "java_over_rust": 126.43577363014269,
+    "min_pair_ratio": 117.54653808646658,
+    "max_pair_ratio": 128.08506351875593
+  },
+  {
+    "game": "c4",
+    "operation": "transition",
+    "java_over_rust": 4.050191708782611,
+    "min_pair_ratio": 4.034545681690111,
+    "max_pair_ratio": 4.0820842914857725
+  },
+  {
+    "game": "c4",
+    "operation": "replay",
+    "java_over_rust": 2.5813143699369783,
+    "min_pair_ratio": 1.914924664324826,
+    "max_pair_ratio": 2.8604292628322345
+  }
+]
