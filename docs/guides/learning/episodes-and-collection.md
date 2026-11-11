@@ -34,8 +34,35 @@ finally:
     env.close()
 ```
 
-`action_mask` marks fixed action IDs currently offered to the learner. A step can
-include the learner move and an opponent reply. `terminated` means the rules
+The same runner supports a three-player stochastic game. This complete example
+chooses the first legal learner action and lets Random opponents play between
+learner decisions:
+
+```python
+import numpy as np
+from tag_rust.episodes.gym import GameEnv
+
+for name in ("cantstop", "loveletter"):
+    env = GameEnv(name, players=3, learner=2, opponent="random")
+    try:
+        observation, info = env.reset(seed=42)
+        while True:
+            action = int(np.flatnonzero(observation["action_mask"])[0])
+            observation, reward, terminated, truncated, info = env.step(action)
+            if terminated or truncated:
+                print(name, info["learner_steps"], info["underlying_moves"], reward)
+                break
+    finally:
+        env.close()
+```
+
+With the current engine and fixed seed, this prints `cantstop 233 399 -1.0`
+and `loveletter 20 59 -1.0`. `underlying_moves` counts every applied action;
+`learner_steps` counts only the learner's actions.
+
+`action_mask` marks fixed action IDs currently offered to the learner. A step
+includes the learner move and any opponent decisions before the learner's next
+decision, even across a Love Letter round boundary. `terminated` means the rules
 ended the game. `truncated` means an external horizon ended collection; it does
 not create a game winner. Reset before stepping again after either flag. Retain
 the final observation when calculating learning targets.
@@ -44,7 +71,7 @@ the final observation when calculating learning targets.
 
 | Setting | Meaning |
 |---|---|
-| `learner` | Seat 0 or 1; choose seats explicitly when creating environments |
+| `players`, `learner` | Supported player count and learner seat; choose seats explicitly when creating environments |
 | `opponent` | `first_available`, `random`, `osla`, `osla_python` where registered |
 | `opponent_settings` | Validated configuration for that opponent; see reference |
 | `payloads` | Requested numeric observation representations |

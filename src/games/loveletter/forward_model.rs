@@ -1,7 +1,8 @@
 //! Classic rules; shuffled decks and tied starters use real-game chance.
 use super::*;
 use crate::core::{
-    Decision, ForwardModel, PlayerId, PlayerResult, progress::TurnCounters, random::ChanceRng,
+    Decision, ForwardModel, PlayerId, PlayerResult, cards, progress::TurnCounters,
+    random::ChanceRng,
 };
 
 #[derive(Clone, Copy, Debug, Default)]
@@ -18,11 +19,7 @@ impl LoveLetterForwardModel {
         players: usize,
         top_first: &[Card; 16],
     ) -> Result<LoveLetterState, LoveLetterError> {
-        let mut expected = Card::DECK;
-        expected.sort();
-        let mut actual = *top_first;
-        actual.sort();
-        if actual != expected {
+        if !cards::same_multiset(&Card::DECK, top_first) {
             return Err(LoveLetterError::InvalidDeck);
         }
         self.initialize(p, players, Some(top_first))
@@ -212,7 +209,7 @@ fn receive(s: &mut LoveLetterState, p: PlayerId, card: Card, source: DrawSource)
     private(s, p, event, PrivateInformation::Received { card, source });
 }
 fn draw(s: &mut LoveLetterState, p: PlayerId) -> Result<(), LoveLetterError> {
-    let (card, source) = if let Some(card) = s.pile.pop_front() {
+    let (card, source) = if let Some(card) = cards::draw(&mut s.pile) {
         (card, DrawSource::Pile)
     } else {
         (
@@ -250,18 +247,19 @@ fn start_round(
     s.hands.iter_mut().for_each(Vec::clear);
     s.public.discards.iter_mut().for_each(Vec::clear);
     s.public.reserve.clear();
-    let mut deck = Card::DECK;
-    for i in (1..deck.len()).rev() {
-        let j = s.random.index(i + 1).expect("nonempty shuffle");
-        deck.swap(i, j);
-    }
-    s.pile = supplied.unwrap_or(&deck).iter().copied().collect();
-    s.removed = s.pile.pop_front();
+    let deck = cards::prepare_deck(
+        &Card::DECK,
+        supplied.map(<[Card; 16]>::as_slice),
+        &mut s.random,
+    )
+    .map_err(|_| LoveLetterError::InvalidDeck)?;
+    s.pile = deck.into();
+    s.removed = cards::draw(&mut s.pile);
     if n == 2 {
         for _ in 0..3 {
             s.public
                 .reserve
-                .push(s.pile.pop_front().expect("classic reserve"));
+                .push(cards::draw(&mut s.pile).expect("classic reserve"));
         }
     }
     emit(
@@ -272,7 +270,7 @@ fn start_round(
         },
     );
     for seat in 0..n {
-        let card = s.pile.pop_front().expect("classic deal");
+        let card = cards::draw(&mut s.pile).expect("classic deal");
         receive(s, PlayerId::new(seat), card, DrawSource::Deal);
     }
     draw(s, starter)?;
@@ -314,11 +312,8 @@ fn apply(
     }
     emit(s, PublicEvent::Played { actor, action });
     let card = action.played_card();
-    let index = s.hands[actor.index()]
-        .iter()
-        .position(|c| *c == card)
+    cards::take_one(&mut s.hands[actor.index()], &card)
         .ok_or(LoveLetterError::InvalidState("played card missing"))?;
-    s.hands[actor.index()].remove(index);
     discard(s, actor, card);
     match action {
         LoveLetterAction::Guess {

@@ -20,6 +20,7 @@ pub enum SessionError<G, A> {
     PositionVersionExhausted,
     GameFinished,
     GameStopped,
+    SimultaneousRequiresJointSession,
     WrongActor {
         expected: PlayerId,
         actual: PlayerId,
@@ -53,6 +54,9 @@ impl<G: fmt::Display, A: fmt::Display> fmt::Display for SessionError<G, A> {
                 f,
                 "game stopped after a rule execution error; reset or restore a valid position before continuing"
             ),
+            Self::SimultaneousRequiresJointSession => {
+                write!(f, "simultaneous decision requires JointSession")
+            }
             Self::WrongActor { expected, actual } => write!(
                 f,
                 "player {} must act, received player {}",

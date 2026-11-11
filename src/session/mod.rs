@@ -7,6 +7,7 @@ mod branches;
 mod controllers;
 mod error;
 mod evaluation;
+mod joint;
 mod recorded;
 mod recording_error;
 mod recording_types;
@@ -24,6 +25,7 @@ pub use error::SessionError;
 pub use evaluation::{
     EvaluationKey, EvaluationProposal, EvaluationRequest, EvaluationSession, EvaluationStatus,
 };
+pub use joint::{AcceptedJointDecision, JointSession, JointSessionError, JointSessionSnapshot};
 pub use recorded::RecordedSession;
 pub use recording_error::RecordingError;
 pub use recording_types::{PreparedAi, PreparedAiResult, RecordingParts, RecordingResult};
@@ -179,7 +181,7 @@ impl<F: ForwardModel, A: Agent<F>> Session<F, A> {
         observer: PlayerId, // Copied observing seat.
     ) -> Result<DecisionView<F::Observation, F::Action>, F::Error> {
         let observation = self.model.observe(&self.state, observer)?;
-        let actions = if self.next_player() == Decision::Player(observer) {
+        let actions = if self.model.decision_players(&self.state) == vec![observer] {
             self.model.available_actions(&self.state, observer)?
         } else {
             vec![]
@@ -198,6 +200,9 @@ impl<F: ForwardModel, A: Agent<F>> Session<F, A> {
     ) -> Result<(PlayerId, u64), SessionError<F::Error, A::Error>> {
         if self.stopped {
             return Err(SessionError::GameStopped);
+        }
+        if self.model.decision_players(&self.state).len() > 1 {
+            return Err(SessionError::SimultaneousRequiresJointSession);
         }
         if expected_position_version != self.position_version {
             return Err(SessionError::StalePositionVersion {

@@ -119,6 +119,7 @@ remembered information. Unknown opponents' cards have value -1; historical
 revelations describe their event time. Use `seed=None` or omit it for OS
 randomness. The game handle and `game.seed` are privileged experiment data;
 acting policies receive only their permitted observations.
+For learner-step play across match rounds, use the [Gym episode guide](../learning/episodes-and-collection.md).
 
 ```powershell
 .\.venv\Scripts\python.exe adapters/python/examples/sampled_mcts.py --game loveletter --players 3 --searches 3 --seed 42 --native
@@ -152,9 +153,9 @@ model's rules and player count must match. Every shared winner counts as a win.
 Recorded seeds can reproduce private deals, so reports are privileged. Small
 runs demonstrate execution; use larger independent experiments to assess strength.
 The [evaluation manual](../learning/evaluate-mcts-models.md) explains opponent
-configuration and report interpretation. Attached controllers and learner-step
-Gym episodes are not registered; native local-neural match CLI registration is
-also absent, separate from supported Python/browser neural MCTS.
+configuration and report interpretation. [Learner-step Gym episodes](../learning/episodes-and-collection.md)
+are available. Attached controllers and native local-neural match CLI
+registration remain absent; Python/browser neural MCTS are supported.
 
 ## Reference
 

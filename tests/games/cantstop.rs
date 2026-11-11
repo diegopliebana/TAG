@@ -217,7 +217,7 @@ fn stochastic_mcts_samples_new_dice_and_preserves_player_vectors_and_checkpoints
             state: &CantStopState,
             _: &mut SimulationContext<'_, CantStopForwardModel>,
         ) -> tag_rust::search::mcts::Result<StateValues> {
-            let dice = state.position().dice().unwrap();
+            let dice = state.position().dice().unwrap_or([0; 4]);
             self.0.borrow_mut().push(dice);
             Ok(StateValues::Full(vec![
                 dice.iter().map(|&v| f64::from(v)).sum::<f64>() / 24.0,
@@ -228,7 +228,7 @@ fn stochastic_mcts_samples_new_dice_and_preserves_player_vectors_and_checkpoints
         }
     }
     let model = CantStopForwardModel;
-    let state = model
+    let mut state = model
         .init_state(
             &CantStopParameters {
                 seed: 55,
@@ -237,10 +237,15 @@ fn stochastic_mcts_samples_new_dice_and_preserves_player_vectors_and_checkpoints
             4,
         )
         .unwrap();
-    let before = state.snapshot();
     let actor = PlayerId::new(0);
+    let opening = model.observe(&state, actor).unwrap();
+    let forced_actions = model.offered_actions(&opening);
+    assert_eq!(forced_actions.len(), 1);
+    model.next(&mut state, actor, &forced_actions[0]).unwrap();
+    let before = state.snapshot();
     let observation = model.observe(&state, actor).unwrap();
     let actions = model.offered_actions(&observation);
+    assert!(actions.len() > 1);
     let dice = Rc::new(RefCell::new(Vec::new()));
     let mut registry = EvaluatorRegistry::default();
     let shared = dice.clone();
@@ -249,7 +254,7 @@ fn stochastic_mcts_samples_new_dice_and_preserves_player_vectors_and_checkpoints
         .unwrap();
     let mut settings = Settings {
         seed: Some(42),
-        tree_depth: Some(1),
+        tree_depth: Some(3),
         rollout_length: Some(0),
         ..Settings::default()
     };
@@ -258,10 +263,16 @@ fn stochastic_mcts_samples_new_dice_and_preserves_player_vectors_and_checkpoints
     let mut agent = MctsAgent::new(settings.clone(), &registry).unwrap();
     let report = agent.search(&model, actor, &observation, &actions).unwrap();
     assert_eq!(report.counters.completed_iterations, 64);
-    assert_eq!(report.counters.forward_model_calls, 64);
+    assert!(report.counters.forward_model_calls >= 64);
     assert!(dice.borrow().iter().any(|roll| *roll != dice.borrow()[0]));
     for (index, expected) in [(1, 0.2), (2, 0.3), (3, 0.4)] {
-        assert!((report.root_actions[0].mean_values[index] - expected).abs() < 1e-12);
+        assert!(
+            report
+                .root_actions
+                .iter()
+                .filter(|row| row.visits > 0)
+                .all(|row| (row.mean_values[index] - expected).abs() < 1e-12)
+        );
     }
     assert_eq!(state, before);
     let registry = CantStopForwardModel::native_evaluators();

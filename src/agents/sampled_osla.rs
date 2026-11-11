@@ -1,5 +1,6 @@
 //! Estimate each action by averaging independently sampled successor values.
 use super::{Agent, OslaError};
+use crate::core::joint::{self, JointError};
 use crate::core::random::{AgentRng, AgentRngSnapshot, SimulationRng, SimulationRngSnapshot};
 use crate::core::simulation::SimulationModel;
 use crate::core::{PlayerId, checkpoint::Checkpoint, evaluation::Evaluator};
@@ -67,7 +68,10 @@ where
     }
 }
 
-impl<F: SimulationModel, E: Evaluator<F::State>> Agent<F> for SampledOslaAgent<E> {
+impl<F: SimulationModel, E: Evaluator<F::State>> Agent<F> for SampledOslaAgent<E>
+where
+    F::Action: Clone + PartialEq,
+{
     type Error = OslaError<F::Error, E::Error>;
     fn rng(&self) -> &AgentRng {
         &self.rng
@@ -94,9 +98,23 @@ impl<F: SimulationModel, E: Evaluator<F::State>> Agent<F> for SampledOslaAgent<E
                 let mut successor = model
                     .simulation_fork(observation, &mut self.simulation_rng)
                     .map_err(OslaError::Reconstruction)?;
-                model
-                    .next(&mut successor, actor, action)
-                    .map_err(|error| OslaError::Transition { candidate, error })?;
+                if model.decision_players(&successor).len() > 1 {
+                    let choices = joint::complete_with(model, &successor, actor, action, |count| {
+                        self.rng.index(count).expect("nonempty simulated offer")
+                    })
+                    .map_err(|error| match error {
+                        JointError::Rule(error) => OslaError::Transition { candidate, error },
+                        JointError::Invalid(message) => OslaError::Joint { candidate, message },
+                    })?;
+                    joint::apply(model, &mut successor, &choices).map_err(|error| match error {
+                        JointError::Rule(error) => OslaError::Transition { candidate, error },
+                        JointError::Invalid(message) => OslaError::Joint { candidate, message },
+                    })?;
+                } else {
+                    model
+                        .next(&mut successor, actor, action)
+                        .map_err(|error| OslaError::Transition { candidate, error })?;
+                }
                 self.last_transitions += 1;
                 let value = self
                     .evaluator

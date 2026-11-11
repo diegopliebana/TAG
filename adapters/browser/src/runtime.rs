@@ -421,6 +421,12 @@ impl<F: BrowserGame> Runtime<F> {
                 self.pending = None;
                 None
             }
+            Command::CancelJoint => {
+                return Err(BridgeError::new(
+                    "invalid_request",
+                    "this game has no joint decision",
+                ));
+            }
             Command::Create { .. }
             | Command::View { .. }
             | Command::History { .. }

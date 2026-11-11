@@ -21,7 +21,7 @@ if HAS_TORCH:
     from tag_rust.learning.selfplay import SelfPlaySettings,SelfPlaySession,save_checkpoint,load_checkpoint
     from tag_rust.learning.selfplay.settings import DataSettings,ExplorationSettings
     from tag_rust.learning.selfplay.collection import collect_games
-    from tag_rust.learning.selfplay.data import PositionExample,ReplayBuffer,visit_target,owned_observation
+    from tag_rust.learning.selfplay.data import PositionExample,ReplayBuffer,visit_target,owned_observation,validate_example
     from tag_rust.learning.selfplay.loss import loss_terms
     from tag_rust.learning.selfplay.noise import RootNoiseEvaluator
     from tag_rust.learning.selfplay.seeds import derive_seed,generator
@@ -67,6 +67,22 @@ def fixture(*,players=2,vector=False):
 
 @unittest.skipUnless(HAS_TORCH,"optional PyTorch not installed")
 class SelfPlayData(unittest.TestCase):
+    def test_forced_action_has_one_hot_policy_and_zero_actual_visits(self):
+        contract,example=fixture()
+        observer=example.observations[0]
+        mask=np.zeros_like(observer.action_mask);mask[0]=True
+        only=replace(observer,action_mask=mask,offered_action_ids=np.array([0],dtype=np.int64))
+        report={"action_id":0,"root_actions":[{"action_id":0,"visits":0}],
+                "forced":True,"fallback":False}
+        visits,policy=visit_target(only,report)
+        self.assertEqual(int(visits.sum()),0)
+        self.assertEqual(float(policy[0]),1.)
+        recorded=replace(example,observations=(only,example.observations[1]),visits=visits,
+                         policy=policy,search_report={"settings":{"seed":42},"forced":True})
+        validate_example(recorded,contract,max_bytes=64*1024*1024)
+        with self.assertRaisesRegex(ValueError,"completed root visit"):
+            visit_target(only,{**report,"forced":False})
+
     def test_loss_arithmetic_uses_distributions_and_absolute_player_values(self):
         contract,example = fixture(players=3)
         model = zero_model(contract)

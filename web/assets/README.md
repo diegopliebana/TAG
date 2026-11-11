@@ -1,12 +1,12 @@
 # Presentation assets
 
-Assets are the image and sound files displayed by the browser. The manifest is an index recording each file's origin, role and content hash; original licence text must stay unchanged.
+Assets are the image and sound files displayed by the browser. The manifest is an index recording each file's origin, role and content hash; original licence text must stay unchanged. [Sushi Go! card images](sushigo/README.md) have their own public TAG manifest and notice.
 
 
 The browser uses the recorded graphics and default sounds; alternative cues
 remain in the preview. The [manifest](manifest.json) owns the per-file source,
 archive entry, role, size and SHA-256 identity. Original licence text is retained
-under licences/. All 13 graphic/audio files are copied byte-for-byte from the
+under licences/. The 13 presentation graphic/audio files are copied byte-for-byte from the
 publisher packs; no artwork or sound was created or edited.
 
 ## Open and review

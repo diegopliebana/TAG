@@ -47,6 +47,7 @@ impl<E: std::error::Error + 'static> std::error::Error for OslaRestoreError<E> {
 
 pub enum OslaError<G, E> {
     EmptyActions,
+    Joint { candidate: usize, message: String },
     Reconstruction(G),
     Transition { candidate: usize, error: G },
     Evaluation { candidate: usize, error: E },
@@ -58,6 +59,9 @@ impl<G: fmt::Display, E: fmt::Display> fmt::Display for OslaError<G, E> {
         // Shared error borrow; exclusive formatter borrow.
         match self {
             Self::EmptyActions => EmptyActionList.fmt(f),
+            Self::Joint { candidate, message } => {
+                write!(f, "candidate {candidate} joint decision failed: {message}")
+            }
             Self::Reconstruction(error) => write!(f, "simulation reconstruction failed: {error}"),
             Self::Transition { candidate, error } => {
                 write!(f, "candidate {candidate} transition failed: {error}")
@@ -80,7 +84,7 @@ impl<G: std::error::Error + 'static, E: std::error::Error + 'static> std::error:
         match self {
             Self::Reconstruction(error) | Self::Transition { error, .. } => Some(error),
             Self::Evaluation { error, .. } => Some(error),
-            Self::EmptyActions | Self::NonfiniteValue { .. } => None,
+            Self::EmptyActions | Self::Joint { .. } | Self::NonfiniteValue { .. } => None,
         }
     }
 }
@@ -179,10 +183,15 @@ where
         for (candidate, action) in actions.iter().enumerate() {
             // Every move starts from the same position in an independently owned branch.
             let mut branch = base.clone();
-            model.next(&mut branch, actor, action).map_err(|error| {
-                // Identify the offered move whose simulated application failed.
-                OslaError::Transition { candidate, error }
-            })?;
+            if model.decision_players(&branch).len() > 1 {
+                return Err(OslaError::Joint {
+                    candidate,
+                    message: "use sampled OSLA for simultaneous decisions".into(),
+                });
+            }
+            model
+                .next(&mut branch, actor, action)
+                .map_err(|error| OslaError::Transition { candidate, error })?;
             let value = self.evaluator.evaluate(&branch, actor).map_err(|error| {
                 // Identify the successor whose evaluation failed.
                 OslaError::Evaluation { candidate, error }

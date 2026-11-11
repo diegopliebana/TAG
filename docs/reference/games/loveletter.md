@@ -382,7 +382,13 @@ guess remains offered regardless of the actual unknown target card.
 arrays/indices; metadata-only requests avoid allocating histories. Unknown or
 duplicate array names fail explicitly. `spec().heuristic` is absent: it describes
 the placement-game open-lines facility, not Love Letter's native heuristic.
-Attached evaluation controllers and learner episodes remain unsupported. The search contract follows below.
+Single and batched Gym episodes advance native opponents through decisions and
+round boundaries until the learner can act again or the match finishes. Reset
+initializes real deals from the resolved environment seed; observations and masks
+retain the learner's private information boundary. Random, first-available and
+sampled OSLA opponents are supported. [Episode rewards and seeds](../python/gym-episodes.md)
+are defined separately from attached evaluation controllers, which remain
+unsupported. The search contract follows below.
 
 ## Python native and neural MCTS
 
@@ -471,8 +477,8 @@ complete-game self-play, frozen-model evaluation and browser integration.
 
 The existing `SelfPlaySession`, `collect_games`, training buffer, policy/value
 losses, CPU Adam updates, model export and completed-cycle checkpoint workflow
-support Love Letter with 2–4 players. No separate game-specific learner, Gym
-environment or search algorithm was added. The
+support Love Letter with 2–4 players. The shared Gym environment also supports
+learner-step episodes; no new search algorithm was added. The
 [shared manual](../../guides/learning/mcts-selfplay.md#train-love-letter)
 owns commands; [self-play reference](../learning/mcts-selfplay.md) owns common options.
 

@@ -131,8 +131,9 @@ def _integer(value, label):
 class Game:
     """Own a Rust game. Use create() to choose the game and parameters.
 
-    Each accepted action/reset changes position. apply() requires the token from
-    the observation being used, so old and cross-game decisions are rejected.
+    Each completed transition/reset changes position. In simultaneous games,
+    all participants share the original token until their choices resolve.
+    apply() requires the token from the observation being used.
     """
     def __init__(self, native):
         self._native = native

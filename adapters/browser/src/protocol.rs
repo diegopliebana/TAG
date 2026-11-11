@@ -43,6 +43,7 @@ pub enum GameKind {
     Connect4,
     Cantstop,
     Loveletter,
+    Sushigo,
 }
 /// Explicit seat policy; AI randomness is initialized independently per seat.
 #[derive(Clone, Debug, Serialize, Deserialize)] // Clone: owned seed strings.
@@ -112,6 +113,7 @@ pub enum Command {
         action: Value,
         observer: Option<usize>,
     },
+    CancelJoint,
     Presentation {
         observer: Option<usize>,
         public_only: bool,
@@ -160,6 +162,8 @@ pub struct BoardView {
     pub cantstop: Option<Value>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub loveletter: Option<Value>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sushigo: Option<Value>,
     pub width: usize,
     pub height: usize,
     pub cells: Vec<Option<usize>>,
@@ -177,6 +181,8 @@ pub struct PublicView {
     pub branch: usize,
     pub observer: usize,
     pub next_player: Option<usize>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub waiting_seats: Option<Vec<usize>>,
     pub controllers: Vec<SeatSetup>,
     pub board: BoardView,
     pub actions: Vec<Value>,

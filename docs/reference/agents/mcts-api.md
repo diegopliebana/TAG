@@ -26,6 +26,35 @@ values for every player without assuming a two-player zero-sum game.
 The [parameter reference](mcts-configuration.md) owns every setting,
 allowed value and default.
 
+## Simultaneous search
+
+When several players choose from one state, each open-loop tree edge stores
+their complete ordered joint action. The focal player chooses through UCB1;
+simulated opponents use `joint_opponent_policy` (`uniform_random` by default or
+`first_available`) on their own observations of a state sampled from the focal
+player's view. No real pending choice or hidden hand enters the search. Rollouts
+sample complete decisions. One joint transition consumes one
+`forward_model_calls` unit, and tree depth and rollout length each count complete
+decisions. A completed iteration back-propagates one value per absolute seat.
+Root visits for one focal action aggregate all explored joint edges containing
+that action.
+
+Opponent observations are constructed inside a hypothetical state sampled from
+the focal observation. The focal policy never receives those observations or
+the real opponents' hidden information. Since tree paths store complete joint
+actions, this search mode requires every joint choice to become public before
+the next decision. `joint_actions_public_after` declares that rule, and search
+rejects simultaneous decisions that do not satisfy it. The game must verify
+the declaration with observation tests; hidden-action games need an
+information-set tree instead.
+
+Joint search currently supports UCB1 with random expansion and random rollouts;
+it rejects PUCT, progressive bias and heuristic expansion for a simultaneous
+decision. A native or externally supplied state evaluator may still estimate
+the complete successor. The explicit joint-action tree can branch by the
+product of participants' offered action counts; resource limits bound explored
+nodes and edges. Sequential games retain their existing search settings.
+
 ## Run a JSON-configured agent
 
 For configurable opponents, rule parameters and agent-versus-agent experiments,
@@ -110,6 +139,13 @@ iteration evaluates its current position and completes back-propagation without 
 action. At a deadline unfinished statistics are discarded. A native evaluator
 cannot be interrupted while its function is executing. If no root action acquired
 a completed visit, the agent returns a reported seeded random legal fallback.
+When the validated root has exactly one action, MCTS returns it immediately.
+The report sets `forced=true`, `fallback=false`, one root action with zero visits,
+one root node, no edges or stop reasons, and zero iterations, transitions and
+evaluator calls. Its mean-value entries are zero because no state was evaluated.
+Root validation still makes one permitted simulation copy;
+the agent/search RNGs do not advance. This applies to native, Python and browser
+consumers of the shared search engine.
 
 `search_controlled` accepts `BudgetOverrides`, a `Clock` and a cancellation probe.
 For JSON overrides use `BudgetOverrides::from_json`: an omitted field retains the

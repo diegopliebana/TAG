@@ -14,6 +14,7 @@ pub(crate) enum GameSession {
     Connect4(Runtime<Connect4ForwardModel>),
     Cantstop(Box<Runtime<CantStopForwardModel>>),
     Loveletter(Box<Runtime<LoveLetterForwardModel>>),
+    Sushigo(Box<crate::joint_runtime::JointRuntime>),
 }
 impl GameSession {
     fn import(
@@ -27,6 +28,10 @@ impl GameSession {
             Some("loveletter") => {
                 Runtime::import_with_models(text, LoveLetterForwardModel, controllers, models)
                     .map(|(r, d, n)| (Self::Loveletter(Box::new(r)), d, n))
+            }
+            Some("sushigo") => {
+                crate::joint_runtime::JointRuntime::import(text, controllers, models)
+                    .map(|(r, d, n)| (Self::Sushigo(Box::new(r)), d, n))
             }
             Some("cantstop") => {
                 Runtime::import_with_models(text, CantStopForwardModel, controllers, models)
@@ -57,6 +62,7 @@ impl GameSession {
             Self::Connect4(r) => r.export(scope, cursor, delay),
             Self::Cantstop(r) => r.export(scope, cursor, delay),
             Self::Loveletter(r) => r.export(scope, cursor, delay),
+            Self::Sushigo(r) => r.export(scope, cursor, delay),
         }
     }
     fn file_data(&mut self) -> Result<(PublicView, PublicView, serde_json::Value), BridgeError> {
@@ -65,6 +71,7 @@ impl GameSession {
             Self::Connect4(r) => Ok((r.file_display()?, r.view(None)?, r.file_parameters()?)),
             Self::Cantstop(r) => Ok((r.file_display()?, r.view(None)?, r.file_parameters()?)),
             Self::Loveletter(r) => Ok((r.file_display()?, r.view(None)?, r.file_parameters()?)),
+            Self::Sushigo(r) => r.file_data(),
         }
     }
     fn create(
@@ -77,6 +84,10 @@ impl GameSession {
             GameKind::Loveletter => {
                 Runtime::create_with_models(LoveLetterForwardModel, parameters, controllers, models)
                     .map(|r| Self::Loveletter(Box::new(r)))
+            }
+            GameKind::Sushigo => {
+                crate::joint_runtime::JointRuntime::create(parameters, controllers, models)
+                    .map(|r| Self::Sushigo(Box::new(r)))
             }
             GameKind::Cantstop => {
                 Runtime::create_with_models(CantStopForwardModel, parameters, controllers, models)
@@ -98,6 +109,7 @@ impl GameSession {
             Self::Connect4(g) => g.view(None),
             Self::Cantstop(g) => g.view(None),
             Self::Loveletter(g) => g.view(None),
+            Self::Sushigo(g) => g.view(None),
         }
     }
     fn execute(
@@ -110,6 +122,7 @@ impl GameSession {
             Self::Connect4(g) => g.execute(command, version),
             Self::Cantstop(g) => g.execute(command, version),
             Self::Loveletter(g) => g.execute(command, version),
+            Self::Sushigo(g) => g.execute(command, version),
         }
     }
 }
@@ -269,6 +282,7 @@ impl BrowserEngine {
                             GameSession::Connect4(r) => r.predict_model(&model_id, observer)?,
                             GameSession::Cantstop(r) => r.predict_model(&model_id, observer)?,
                             GameSession::Loveletter(r) => r.predict_model(&model_id, observer)?,
+                            GameSession::Sushigo(r) => r.predict_model(&model_id, observer)?,
                         }
                         .to_string(),
                     );
@@ -389,6 +403,7 @@ impl GameSession {
             Self::Connect4(r) => r.models = models.clone(),
             Self::Cantstop(r) => r.models = models.clone(),
             Self::Loveletter(r) => r.models = models.clone(),
+            Self::Sushigo(r) => r.update_models(models),
         }
     }
 }

@@ -2,6 +2,7 @@
 import { controllerName } from "./seat-fields.js";
 import { loveLetterActionLabel } from "./loveletter-board.js";
 import { cantStopActionLabel } from "./cantstop-board.js";
+import { sushiActionLabel } from "./sushigo-board.js";
 export function branchLabel(branch) {
   if (branch.parent === null) return `Original · ${branch.move_count} moves`;
   const name = branch.origin === "reset" ? `Reset ${branch.id}` : `Branch ${branch.id}`;
@@ -9,6 +10,7 @@ export function branchLabel(branch) {
 }
 export function moveLabel(move) {
   const action = move.action;
+  if (Array.isArray(action)) return `${move.position}. ${action.map(choice=>`Player ${choice.actor}: ${sushiActionLabel(choice.action)}`).join("; ")}`;
   const choice = typeof action === "string" || action.Allocate ? cantStopActionLabel(action) : (action.play || action.target || action.guess) ? loveLetterActionLabel(action) : "column" in action ? `column ${action.column + 1}` : `row ${action.y + 1}, column ${action.x + 1}`;
   const source = controllerName(move.controller.kind);
   return `${move.position}. Player ${move.actor}: ${choice} · ${source}`;

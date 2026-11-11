@@ -32,6 +32,53 @@ fn human(e: &mut BrowserEngine, v: &Value, a: Value) -> Value {
     r["view"].clone()
 }
 #[test]
+fn busting_roll_announces_lost_progress_without_an_acknowledgement_move() {
+    for n in 2..=4 {
+        let mut e = BrowserEngine::new();
+        let mut view = create(&mut e, n, "human");
+        let mut found = false;
+        for _ in 0..500 {
+            let action = view["actions"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .find(|action| **action == "Roll")
+                .unwrap_or(&view["actions"][0])
+                .clone();
+            let actor = view["next_player"].clone();
+            let cursor = view["cursor"].as_u64().unwrap();
+            view = human(&mut e, &view, action.clone());
+            assert!(!view["actions"].as_array().unwrap().contains(&json!("Bust")));
+            if !view["board"]["cantstop"]["bust_player"].is_null() {
+                assert_eq!(action, "Roll");
+                assert_eq!(view["board"]["cantstop"]["bust_player"], actor);
+                assert_ne!(view["next_player"], actor);
+                assert_eq!(view["cursor"], cursor + 1);
+                assert_eq!(view["actions"], json!(["Roll"]));
+                let saved = file(
+                    &mut e,
+                    "1",
+                    json!({"type":"export","scope":"session","cursor":view["cursor"],"delay_ms":0}),
+                    "",
+                );
+                let mut restored = BrowserEngine::new();
+                let loaded = file(
+                    &mut restored,
+                    "0",
+                    json!({"type":"import","controllers":null}),
+                    saved["text"].as_str().unwrap(),
+                );
+                assert!(loaded["error"].is_null(), "{loaded}");
+                assert_eq!(loaded["view"]["board"], view["board"]);
+                found = true;
+                break;
+            }
+        }
+        assert!(found);
+    }
+}
+
+#[test]
 fn human_phases_and_chance_recordings_roundtrip_and_reject_tampering_atomically() {
     for n in 2..=4 {
         let mut e = BrowserEngine::new();

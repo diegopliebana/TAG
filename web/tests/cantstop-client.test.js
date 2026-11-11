@@ -107,11 +107,14 @@ test("actual Wasm suspends stochastic MCTS and rejects reversed simulation progr
   try {
     const long = { kind: "mcts", seed: "42", configuration: { ...native, budgets: { iterations: 100000 } } };
     let v = command(e, "0", null, { type: "create", game: "cantstop", parameters: { seed: "42" }, controllers: [long, long] }).view;
-    const before = file(e, "1", { type: "export", scope: "session", cursor: 0, delay_ms: 0 }).text;
+    const forced = command(e, "1", v, { type: "prepare_ai" }).proposal;
+    assert.equal(forced.pending, false); // Opening Roll has one legal action.
+    v = command(e, "1", v, { type: "commit_ai", proposal: forced.id }).view;
+    const before = file(e, "1", { type: "export", scope: "session", cursor: 1, delay_ms: 0 }).text;
     const p = command(e, "1", v, { type: "prepare_ai" }).proposal;
     assert.equal(p.pending, true);
     command(e, "1", v, { type: "discard_ai", proposal: p.id });
-    assert.equal(file(e, "1", { type: "export", scope: "session", cursor: 0, delay_ms: 0 }).text, before);
+    assert.equal(file(e, "1", { type: "export", scope: "session", cursor: 1, delay_ms: 0 }).text, before);
     const f = fixtures[0], model_id = loadModelAfterCreation(e, f);
     const wrong = { kind: "neural_mcts", seed: "7", model_id, configuration: neural };
     const bad = JSON.parse(e.handle(JSON.stringify({ request_id: "2", generation: "1", position_version: null,

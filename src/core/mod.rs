@@ -5,9 +5,11 @@
 //! actions, observations, settings and errors. PlayerResult describes win/loss/draw;
 //! it is separate from a numeric game score or a learned estimate.
 
+pub mod cards;
 pub mod checkpoint;
 pub mod evaluation;
 pub mod grid;
+pub mod joint;
 pub mod outcomes;
 pub mod players;
 pub mod progress;
@@ -128,6 +130,47 @@ pub trait ForwardModel {
         &self,               // Shared borrow of model.
         state: &Self::State, // Shared borrow; caller keeps the state.
     ) -> Decision; // Returns a decision by value (Decision is Copy).
+
+    /// Seats choosing from the same pre-decision state, in deterministic order.
+    /// Existing sequential games inherit their one-seat decision. A completed
+    /// game returns an empty list. Simultaneous games override this method.
+    fn decision_players(&self, state: &Self::State) -> Vec<PlayerId> {
+        match self.next_player(state) {
+            Decision::Player(actor) => vec![actor],
+            Decision::Finished => Vec::new(),
+        }
+    }
+
+    /// Whether every choice in this decision becomes identifiable to every
+    /// player before the next decision. A search tree keyed by complete joint
+    /// actions may branch on those choices only when this is true. Games whose
+    /// choices stay hidden use a different information-set search design.
+    fn joint_actions_public_after(&self, _state: &Self::State) -> bool {
+        false
+    }
+
+    /// Resolve a complete, already validated decision. Call `joint::apply` for
+    /// external actions: it checks every seat and action before calling this
+    /// method. The default forwards a sequential decision to `next`.
+    fn resolve_decision(
+        &self,
+        state: &mut Self::State,
+        choices: &[(PlayerId, Self::Action)],
+    ) -> Result<(), joint::JointError<Self::Error>>
+    where
+        Self::Action: PartialEq,
+        Self: Sized,
+    {
+        joint::validate(self, state, choices)?;
+        if choices.len() != 1 {
+            return Err(joint::JointError::Invalid(
+                "model does not resolve simultaneous decisions".into(),
+            ));
+        }
+        let (actor, action) = &choices[0];
+        self.next(state, *actor, action)
+            .map_err(joint::JointError::Rule)
+    }
 
     /// Create the information the requested player is allowed to see.
     ///

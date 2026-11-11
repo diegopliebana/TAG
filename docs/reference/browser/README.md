@@ -18,6 +18,12 @@ only if it is still current. Privileged reveal is a separate display choice and
 does not change ordinary agent inputs. The [protocol](protocol.md) defines checks
 and messages omitted from this overview.
 
+Sushi Go! submits choices for all waiting seats against the same rule state.
+Rust applies one complete joint transition after the last submission. The
+browser hides the previous human's hand before passing the device; the
+[Sushi Go! manual](../../guides/games/sushigo.md#play-in-the-browser) explains
+the controls.
+
 A rule execution failure reports its original error and stops the live session.
 Further move requests return `game_stopped`; reset or restore a valid recorded
 position to continue. This is separate from a normal win, draw or loss. Invalid

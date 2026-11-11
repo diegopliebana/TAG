@@ -12,6 +12,7 @@ impl Engine {
             Self::Connect4(g) => g.session.has_pending(),
             Self::CantStop(g) => g.session.has_pending(),
             Self::LoveLetter(g) => g.session.has_pending(),
+            Self::SushiGo(g) => g.session.has_pending(),
         }
     }
 
@@ -32,6 +33,7 @@ impl Engine {
                     "external evaluation",
                 ));
             }
+            Self::SushiGo(_) => return Err(crate::engine::unsupported_game("Sushi Go!", "external evaluation")),
         }
         Ok(())
     }
@@ -44,6 +46,7 @@ impl Engine {
             Self::Connect4(game) => &game.description,
             Self::CantStop(game) => &game.description,
             Self::LoveLetter(game) => &game.description,
+            Self::SushiGo(game) => &game.description,
         };
         let mut rows_max = 0;
         let mut bytes_max = 0;

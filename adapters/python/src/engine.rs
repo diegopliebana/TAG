@@ -4,8 +4,8 @@ use tag_rust::agents::{
     EvaluatorIdentity, OpenLinesBatchEvaluator, OslaPythonAgent, OslaPythonError,
     OslaPythonSnapshot,
 };
-use tag_rust::core::{Decision, PlayerId, checkpoint::Checkpoint};
-use tag_rust::games::{cantstop as cs, connect4 as c4, loveletter as ll, tictactoe as ttt};
+use tag_rust::core::{PlayerId, checkpoint::Checkpoint, joint};
+use tag_rust::games::{cantstop as cs, connect4 as c4, loveletter as ll, sushigo as sg, tictactoe as ttt};
 use tag_rust::learning::{
     EncodedObservation, LearningError, LearningGame, LearningLimits, LearningSpec,
 };
@@ -53,6 +53,9 @@ where
     pub(super) limits: LearningLimits,
     // Formats depend on fixed parameters, so retain the validated description.
     pub(super) description: LearningSpec,
+    pub(super) joint_pending: Vec<(PlayerId, F::Action)>,
+    pub(super) joint_resolutions: u64,
+    pub(super) joint_submissions: u64,
 }
 impl<F> Game<F>
 where
@@ -76,7 +79,15 @@ where
             parameters,
             limits,
             description,
+            joint_pending: Vec::new(),
+            joint_resolutions: 0,
+            joint_submissions: 0,
         })
+    }
+
+    pub(super) fn next_player(&self) -> Option<PlayerId> {
+        self.session.model().decision_players(self.session.state()).into_iter()
+            .find(|seat| !self.joint_pending.iter().any(|(chosen, _)| chosen == seat))
     }
 
     pub(super) fn observe(
@@ -89,18 +100,49 @@ where
             .model()
             .observe(self.session.state(), PlayerId::new(observer))
             .map_err(invalid)?;
-        Ok(self
+        let mut encoded = self
             .session
             .model()
-            .encode(&observation, names, self.limits)?)
+            .encode(&observation, names, self.limits)?;
+        if self.joint_pending.iter().any(|(seat, _)| seat.index() == observer) {
+            encoded.action_mask.fill(false);
+            encoded.offered_action_ids.clear();
+        }
+        Ok(encoded)
     }
 
     pub(super) fn apply(&mut self, id: usize, actor: Option<usize>) -> Result<(), Error> {
-        let next = match self.session.next_player() {
-            Decision::Player(player) => player,
-            Decision::Finished => return Err(Error::Invalid("the game has finished".into())),
-        };
+        let next = self.next_player().ok_or_else(|| Error::Invalid("the game has finished".into()))?;
         let actor = actor.map(PlayerId::new).unwrap_or(next);
+        if self.session.model().decision_players(self.session.state()).len() > 1 {
+            if !self.session.model().decision_players(self.session.state()).contains(&actor)
+                || self.joint_pending.iter().any(|(seat, _)| *seat == actor) {
+                return Err(invalid("seat has already chosen or is inactive"));
+            }
+            let observation = self.session.model().observe(self.session.state(), actor).map_err(invalid)?;
+            let action = self.session.model().action_from_id(&observation, id)?;
+            let offered = self.session.model().available_actions(self.session.state(), actor).map_err(invalid)?;
+            if !offered.contains(&action) { return Err(invalid("action is not offered")); }
+            let next_submission = self.joint_submissions.checked_add(1)
+                .ok_or_else(|| invalid("joint submission counter exhausted"))?;
+            let mut complete = self.joint_pending.clone();
+            complete.push((actor, action));
+            if complete.len() == self.session.model().decision_players(self.session.state()).len() {
+                let next_resolution = self.joint_resolutions.checked_add(1)
+                    .ok_or_else(|| invalid("joint decision counter exhausted"))?;
+                complete.sort_by_key(|(seat, _)| seat.index());
+                let mut next_state = self.session.state().clone();
+                joint::apply(self.session.model(), &mut next_state, &complete).map_err(invalid)?;
+                self.session.reset_state(next_state)?;
+                self.joint_pending.clear();
+                self.joint_resolutions = next_resolution;
+                self.joint_submissions = next_submission;
+            } else {
+                self.joint_pending = complete;
+                self.joint_submissions = next_submission;
+            }
+            return Ok(());
+        }
         let observation = self
             .session
             .model()
@@ -122,16 +164,23 @@ where
             )
             .map_err(invalid)?;
         self.session.reset_state(state)?;
+        self.joint_pending.clear();
         Ok(())
     }
 
     fn snapshot(&self) -> Result<Self, Error> {
+        if !self.joint_pending.is_empty() {
+            return Err(invalid("snapshot requires a complete joint decision boundary"));
+        }
         Ok(Self {
             session: self.session.snapshot()?,
             native_evaluators: self.native_evaluators.clone(),
             parameters: self.parameters.clone(),
             limits: self.limits,
             description: self.description.clone(),
+            joint_pending: Vec::new(),
+            joint_resolutions: self.joint_resolutions,
+            joint_submissions: self.joint_submissions,
         })
     }
 }
@@ -147,6 +196,7 @@ pub enum Engine {
     // The stochastic session is larger; Box keeps the engine enum compact.
     CantStop(Box<Game<cs::CantStopForwardModel>>),
     LoveLetter(Box<Game<ll::LoveLetterForwardModel>>),
+    SushiGo(Box<Game<sg::SushiGoForwardModel>>),
 }
 
 // A game is registered once for construction and name discovery. Its typed
@@ -157,6 +207,7 @@ struct GameRegistration {
     create: GameFactory,
 }
 const GAME_REGISTRY: &[GameRegistration] = &[
+    GameRegistration { name: "sushigo", create: create_sushigo },
     GameRegistration {
         name: "loveletter",
         create: create_loveletter,
@@ -263,6 +314,19 @@ fn create_loveletter(
         limits,
     )?)))
 }
+fn create_sushigo(
+    mut parameters: serde_json::Value,
+    players: usize,
+    limits: LearningLimits,
+) -> Result<Engine, Error> {
+    resolve_game_seed(&mut parameters)?;
+    let mut fields: BTreeMap<String, u64> = serde_json::from_value(parameters).map_err(invalid)?;
+    let seed = fields.remove("seed").ok_or_else(|| invalid("missing game seed"))?;
+    if let Some(key) = fields.keys().next() { return Err(invalid(format!("unknown parameter: {key}"))); }
+    Ok(Engine::SushiGo(Box::new(Game::new(
+        sg::SushiGoForwardModel, sg::Parameters { seed }, players, limits,
+    )?)))
+}
 pub(crate) fn unsupported_game(game: &str, operation: &str) -> Error {
     invalid(format!(
         "{game} does not support {operation} in this Python adapter"
@@ -310,6 +374,7 @@ impl Engine {
         match self {
             Self::CantStop(game) => Some(game.parameters.seed),
             Self::LoveLetter(game) => Some(game.parameters.seed),
+            Self::SushiGo(game) => Some(game.parameters.seed),
             _ => None,
         }
     }
@@ -319,6 +384,7 @@ impl Engine {
             Self::Connect4(g) => &g.description,
             Self::CantStop(g) => &g.description,
             Self::LoveLetter(g) => &g.description,
+            Self::SushiGo(g) => &g.description,
         };
         description.payloads.iter().map(|p| p.name()).collect()
     }
@@ -330,21 +396,19 @@ impl Engine {
             Self::Connect4(game) => Ok(game.description.clone()),
             Self::CantStop(game) => Ok(game.description.clone()),
             Self::LoveLetter(game) => Ok(game.description.clone()),
+            Self::SushiGo(game) => Ok(game.description.clone()),
         }
     }
 
     /// Identify the player who may act, or completion.
     pub fn next_player(&self) -> Option<usize> {
-        let decision = match self {
-            Self::TicTacToe(game) => game.session.next_player(),
-            Self::Connect4(game) => game.session.next_player(),
-            Self::CantStop(game) => game.session.next_player(),
-            Self::LoveLetter(game) => game.session.next_player(),
-        };
-        match decision {
-            Decision::Player(player) => Some(player.index()),
-            Decision::Finished => None,
-        }
+        match self {
+            Self::TicTacToe(game) => game.next_player(),
+            Self::Connect4(game) => game.next_player(),
+            Self::CantStop(game) => game.next_player(),
+            Self::LoveLetter(game) => game.next_player(),
+            Self::SushiGo(game) => game.next_player(),
+        }.map(PlayerId::index)
     }
 
     /// Read an observer's information and create independent requested arrays.
@@ -354,6 +418,7 @@ impl Engine {
             Self::Connect4(game) => game.observe(observer, names),
             Self::CantStop(game) => game.observe(observer, names),
             Self::LoveLetter(game) => game.observe(observer, names),
+            Self::SushiGo(game) => game.observe(observer, names),
         }
     }
 
@@ -364,6 +429,7 @@ impl Engine {
             Self::Connect4(game) => game.apply(id, actor),
             Self::CantStop(game) => game.apply(id, actor),
             Self::LoveLetter(game) => game.apply(id, actor),
+            Self::SushiGo(game) => game.apply(id, actor),
         }
     }
 
@@ -374,6 +440,7 @@ impl Engine {
             Self::Connect4(game) => game.reset(),
             Self::CantStop(game) => game.reset(),
             Self::LoveLetter(game) => game.reset(),
+            Self::SushiGo(game) => game.reset(),
         }
     }
 
@@ -384,6 +451,7 @@ impl Engine {
             Self::Connect4(game) => Ok(Self::Connect4(game.snapshot()?)),
             Self::CantStop(game) => Ok(Self::CantStop(Box::new(game.snapshot()?))),
             Self::LoveLetter(game) => Ok(Self::LoveLetter(Box::new(game.snapshot()?))),
+            Self::SushiGo(game) => Ok(Self::SushiGo(Box::new(game.snapshot()?))),
         }
     }
 
@@ -400,10 +468,12 @@ impl Engine {
         snapshot: Option<OslaPythonSnapshot>,
         execution: &str,
     ) -> Result<(), Error> {
-        if matches!(self, Self::CantStop(_) | Self::LoveLetter(_)) && snapshot.is_some() {
+        if matches!(self, Self::CantStop(_) | Self::LoveLetter(_) | Self::SushiGo(_)) && snapshot.is_some() {
             return Err(unsupported_game(
                 if matches!(self, Self::LoveLetter(_)) {
                     "Love Letter"
+                } else if matches!(self, Self::SushiGo(_)) {
+                    "Sushi Go!"
                 } else {
                     "Can't Stop"
                 },
@@ -447,6 +517,10 @@ impl Engine {
             Self::LoveLetter(game) => {
                 game.session.set_controller(PlayerId::new(player), None)?;
             }
+            Self::SushiGo(game) => {
+                if !game.joint_pending.is_empty() { return Err(invalid("cancel pending joint choices before changing controllers")); }
+                game.session.set_controller(PlayerId::new(player), None)?;
+            }
         }
         Ok(())
     }
@@ -456,6 +530,7 @@ impl Engine {
             Self::Connect4(game) => game.native_evaluators.get(player),
             Self::CantStop(game) => game.native_evaluators.get(player),
             Self::LoveLetter(game) => game.native_evaluators.get(player),
+            Self::SushiGo(game) => game.native_evaluators.get(player),
         }
         .ok_or_else(|| Error::Invalid("unknown controller seat".into()))?;
         Ok(if backend.is_some() {
@@ -470,6 +545,7 @@ impl Engine {
             Self::Connect4(game) => game.session.checkpoint(PlayerId::new(player))?,
             Self::CantStop(game) => game.session.checkpoint(PlayerId::new(player))?,
             Self::LoveLetter(game) => game.session.checkpoint(PlayerId::new(player))?,
+            Self::SushiGo(game) => game.session.checkpoint(PlayerId::new(player))?,
         })
     }
     pub fn prepare(&mut self) -> Result<EvaluationRequest, Error> {
@@ -487,6 +563,7 @@ impl Engine {
             Self::LoveLetter(_) => {
                 return Err(unsupported_game("Love Letter", "external evaluation"));
             }
+            Self::SushiGo(_) => return Err(unsupported_game("Sushi Go!", "external evaluation")),
         })
     }
     pub fn finish(
@@ -503,6 +580,7 @@ impl Engine {
             Self::LoveLetter(_) => {
                 return Err(unsupported_game("Love Letter", "external evaluation"));
             }
+            Self::SushiGo(_) => return Err(unsupported_game("Sushi Go!", "external evaluation")),
         })
     }
     pub fn commit(&mut self, key: &EvaluationKey) -> Result<(), Error> {
@@ -511,6 +589,7 @@ impl Engine {
             Self::Connect4(game) => game.session.commit(key)?,
             Self::CantStop(game) => game.session.commit(key)?,
             Self::LoveLetter(game) => game.session.commit(key)?,
+            Self::SushiGo(game) => game.session.commit(key)?,
         }
         Ok(())
     }
@@ -520,6 +599,7 @@ impl Engine {
             Self::Connect4(game) => game.session.cancel(key)?,
             Self::CantStop(game) => game.session.cancel(key)?,
             Self::LoveLetter(game) => game.session.cancel(key)?,
+            Self::SushiGo(game) => game.session.cancel(key)?,
         }
         Ok(())
     }
@@ -530,4 +610,59 @@ fn check_keys(parameters: &BTreeMap<String, usize>) -> Result<(), Error> {
         return Err(Error::Invalid(format!("unknown parameter: {name}")));
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod sushigo_tests {
+    use super::*;
+
+    #[test]
+    fn joint_choices_keep_observations_fixed_until_every_seat_submits() {
+        let mut game = Engine::create_value(
+            "sushigo", serde_json::json!({"seed": 12}), 3, LearningLimits::default(),
+        ).unwrap();
+        assert_eq!(game.seed(), Some(12));
+        assert_eq!(game.next_player(), Some(0));
+        let names = ["hand", "known_hands", "last_reveal", "played"];
+        let before = (0..3).map(|seat| game.observe(seat, &names).unwrap()).collect::<Vec<_>>();
+        let first = before[0].offered_action_ids[0];
+        game.apply(first, Some(0)).unwrap();
+        assert_eq!(game.next_player(), Some(1));
+        assert!(game.snapshot().is_err());
+        for (seat, expected) in before.iter().enumerate() {
+            let observed = game.observe(seat, &names).unwrap();
+            assert_eq!(observed.tensors, expected.tensors);
+            assert_eq!(observed.progress, expected.progress);
+        }
+        assert!(game.observe(0, &[]).unwrap().offered_action_ids.is_empty());
+        assert!(game.apply(first, Some(0)).is_err());
+        for (seat, view) in before.iter().enumerate().skip(1) {
+            let id = view.offered_action_ids[0];
+            game.apply(id, Some(seat)).unwrap();
+        }
+        assert_eq!(game.next_player(), Some(0));
+        let after = game.observe(0, &names).unwrap();
+        assert_eq!(after.progress[1], 1);
+        assert_ne!(after.tensors, before[0].tensors);
+        assert_eq!(after.tensors[2].values.len(), 9);
+        assert!(game.snapshot().is_ok());
+        game.reset().unwrap();
+        assert_eq!(game.observe(0, &names).unwrap().tensors, before[0].tensors);
+    }
+
+    #[test]
+    fn submission_order_does_not_change_joint_successor() {
+        let mut ordered = Engine::create_value(
+            "sushigo", serde_json::json!({"seed": 77}), 3, LearningLimits::default(),
+        ).unwrap();
+        let mut reversed = ordered.snapshot().unwrap();
+        let ids = (0..3).map(|seat| ordered.observe(seat, &[]).unwrap().offered_action_ids[0])
+            .collect::<Vec<_>>();
+        for seat in [0, 1, 2] { ordered.apply(ids[seat], Some(seat)).unwrap(); }
+        for seat in [2, 0, 1] { reversed.apply(ids[seat], Some(seat)).unwrap(); }
+        for seat in 0..3 {
+            assert_eq!(ordered.observe(seat, &["hand", "played", "last_reveal"]).unwrap(),
+                       reversed.observe(seat, &["hand", "played", "last_reveal"]).unwrap());
+        }
+    }
 }

@@ -50,6 +50,14 @@ pub(crate) fn insert(models: &mut Registry, text: &str) -> Result<String, ModelE
                 limits,
             )
         }
+        Some("sushigo") => {
+            let (parameters, players) = crate::sushigo::model_parameters(&model)?;
+            tag_rust::games::sushigo::SushiGoForwardModel.learning_spec_for_players(
+                &parameters,
+                players,
+                limits,
+            )
+        }
         _ => {
             return Err(error("unsupported browser learned-model game"));
         }

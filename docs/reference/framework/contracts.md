@@ -52,6 +52,42 @@ player. A forced pass is an explicit action. A terminal state has no next decisi
 maker even if it retains the last actor as metadata. Round elimination, temporary
 inactivity and whole-game elimination have game-specific meanings.
 
+## Simultaneous decisions
+
+`ForwardModel::decision_players` returns every seat choosing from one unchanged
+state, in a stable order. Existing sequential games return one seat, and a
+terminal game returns none. For a simultaneous game, each actor's observation
+and offered actions come from that same state. `core::joint::apply` checks the
+complete ordered choice list before calling the game's `resolve_decision`; an
+invalid external choice leaves the state unchanged. A rule failure during the
+transition aborts that execution and can leave partial internal effects.
+
+`run_joint_game` collects all agent choices before applying one transition.
+`JointSession` stores unfinished choices privately. Its position version stays
+fixed while actors submit; it exposes only the seats still waiting, and it
+increments the version after resolution or cancellation. Invalid submissions
+can be retried without losing earlier valid choices. Reset clears pending work
+and invalidates old input. A snapshot requires a complete, valid decision
+boundary; restoring creates a new session and adapters issue fresh request
+handles. `RecordedJointDecision` stores one ordered choice list, the complete
+post-transition state and every controller's progress. Existing per-move
+recording and session APIs continue to serve sequential games.
+
+Search starts from a state sampled from the focal player's observation. Other
+participants choose through a declared simulation policy using observations of
+that sampled state. A tree edge and a forward-model transition each mean one
+complete decision. Values stay in absolute seat order. The
+[MCTS reference](../agents/mcts-api.md#simultaneous-search) defines the current
+joint search policies and limits.
+
+An explicit joint-action tree records every participant's choice in its path.
+It is valid only when those choices become identifiable to every player before
+the next decision. A game declares this through
+`ForwardModel::joint_actions_public_after` and must test that its observations
+actually reveal the choices. Search rejects a simultaneous decision whose
+choices stay hidden. Such a game needs a tree grouped by what the focal player
+can observe, rather than by hidden joint-action history.
+
 ## Observations and hypothetical states
 
 ![Actual state produces a permitted player observation; a planning RNG and that observation produce a possible world for search.](../../images/architecture/information.svg)

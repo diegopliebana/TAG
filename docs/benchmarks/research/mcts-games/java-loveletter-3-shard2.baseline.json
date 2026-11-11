@@ -1,0 +1,122 @@
+{
+  "identity": {
+    "engine": "java",
+    "game": "loveletter",
+    "players": 3,
+    "shard": 2,
+    "games": 50,
+    "seed": 242,
+    "settings": {
+      "games_per_profile": 250,
+      "shards": 3,
+      "iterations": 5000,
+      "rollout_length": 10,
+      "warmup_decisions": 6,
+      "sampling_stride": 1024,
+      "seed": 42,
+      "aligned": "true",
+      "seed_copies": "true",
+      "skip_forced": "true",
+      "memory_interval_ms": 50,
+      "java_heap": "-Xms64m -Xmx512m",
+      "rules": {
+        "tictactoe": {
+          "grid_size": 3
+        },
+        "connect4": {
+          "width": 7,
+          "height": 6,
+          "winning_length": 4
+        },
+        "cantstop": {
+          "column_heights": [
+            3,
+            5,
+            7,
+            9,
+            11,
+            13,
+            11,
+            9,
+            7,
+            5,
+            3
+          ],
+          "markers": 3,
+          "columns_to_win": 3
+        },
+        "loveletter": {
+          "classic_cards": 16,
+          "winning_tokens": [
+            6,
+            5,
+            4
+          ]
+        }
+      },
+      "agent_seed_derivation": "4 * game_seed + 100000 + absolute_seat (wrapping 64-bit)",
+      "shard_sizes": [
+        100,
+        100,
+        50
+      ],
+      "probe_build_sha256": "1a4c2a81e3b4cc8aa7c1d2960de6623b621cfb4000b81335c64ab5b86c563105"
+    }
+  },
+  "command": [
+    "C:\\Program Files\\Java\\jdk-21.0.12\\bin\\java.exe",
+    "-Xms64m",
+    "-Xmx512m",
+    "-cp",
+    "C:\\Research\\TAG\\tag-rust\\.scratch\\mcts-games\\classes;C:\\Research\\TAG\\tag-rust\\.scratch\\java-comparison\\target\\classes;C:\\Users\\Diego\\.m2\\repository\\com\\googlecode\\json-simple\\json-simple\\1.1.1\\json-simple-1.1.1.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\code\\gson\\gson\\2.10\\gson-2.10.jar;C:\\Users\\Diego\\.m2\\repository\\com\\github\\davidmoten\\guava-mini\\0.1.3\\guava-mini-0.1.3.jar;C:\\Users\\Diego\\.m2\\repository\\commons-logging\\commons-logging\\1.2\\commons-logging-1.2.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-lang3\\3.18.0\\commons-lang3-3.18.0.jar;C:\\Users\\Diego\\.m2\\repository\\commons-codec\\commons-codec\\1.19.0\\commons-codec-1.19.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-compress\\1.28.0\\commons-compress-1.28.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-math3\\3.6.1\\commons-math3-3.6.1.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-text\\1.14.0\\commons-text-1.14.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-collections4\\4.5.0\\commons-collections4-4.5.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-crypto\\1.1.0\\commons-crypto-1.1.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\codehaus\\janino\\commons-compiler\\3.1.9\\commons-compiler-3.1.9.jar;C:\\Users\\Diego\\.m2\\repository\\com\\sun\\istack\\istack-commons-runtime\\4.1.2\\istack-commons-runtime-4.1.2.jar;C:\\Users\\Diego\\.m2\\repository\\commons-io\\commons-io\\2.14.0\\commons-io-2.14.0.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\guava\\guava\\30.0-jre\\guava-30.0-jre.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\guava\\failureaccess\\1.0.2\\failureaccess-1.0.2.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\guava\\listenablefuture\\9999.0-empty-to-avoid-conflict-with-guava\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\http-client\\google-http-client-gson\\1.47.0\\google-http-client-gson-1.47.0.jar",
+    "BenchmarkMctsGames",
+    "loveletter",
+    "3",
+    "50",
+    "5000",
+    "242",
+    "1024",
+    "true",
+    "true",
+    "true",
+    "6"
+  ],
+  "segments": [
+    {
+      "first_game_id": 0,
+      "command": [
+        "C:\\Program Files\\Java\\jdk-21.0.12\\bin\\java.exe",
+        "-Xms64m",
+        "-Xmx512m",
+        "-cp",
+        "C:\\Research\\TAG\\tag-rust\\.scratch\\mcts-games\\classes;C:\\Research\\TAG\\tag-rust\\.scratch\\java-comparison\\target\\classes;C:\\Users\\Diego\\.m2\\repository\\com\\googlecode\\json-simple\\json-simple\\1.1.1\\json-simple-1.1.1.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\code\\gson\\gson\\2.10\\gson-2.10.jar;C:\\Users\\Diego\\.m2\\repository\\com\\github\\davidmoten\\guava-mini\\0.1.3\\guava-mini-0.1.3.jar;C:\\Users\\Diego\\.m2\\repository\\commons-logging\\commons-logging\\1.2\\commons-logging-1.2.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-lang3\\3.18.0\\commons-lang3-3.18.0.jar;C:\\Users\\Diego\\.m2\\repository\\commons-codec\\commons-codec\\1.19.0\\commons-codec-1.19.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-compress\\1.28.0\\commons-compress-1.28.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-math3\\3.6.1\\commons-math3-3.6.1.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-text\\1.14.0\\commons-text-1.14.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-collections4\\4.5.0\\commons-collections4-4.5.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-crypto\\1.1.0\\commons-crypto-1.1.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\codehaus\\janino\\commons-compiler\\3.1.9\\commons-compiler-3.1.9.jar;C:\\Users\\Diego\\.m2\\repository\\com\\sun\\istack\\istack-commons-runtime\\4.1.2\\istack-commons-runtime-4.1.2.jar;C:\\Users\\Diego\\.m2\\repository\\commons-io\\commons-io\\2.14.0\\commons-io-2.14.0.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\guava\\guava\\30.0-jre\\guava-30.0-jre.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\guava\\failureaccess\\1.0.2\\failureaccess-1.0.2.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\guava\\listenablefuture\\9999.0-empty-to-avoid-conflict-with-guava\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\http-client\\google-http-client-gson\\1.47.0\\google-http-client-gson-1.47.0.jar",
+        "BenchmarkMctsGames",
+        "loveletter",
+        "3",
+        "50",
+        "5000",
+        "242",
+        "1024",
+        "true",
+        "true",
+        "true",
+        "6"
+      ],
+      "baseline": {
+        "working_set": 450142208,
+        "peak_working_set": 462942208,
+        "private_bytes": 505487360,
+        "pagefile": 505487360,
+        "peak_pagefile": 530440192
+      },
+      "ready": {
+        "phase": "ready",
+        "game": "loveletter",
+        "engine": "java",
+        "players": 3,
+        "timer_control_ns": 139.0605
+      },
+      "started_utc": "2026-10-30T13:32:56.924620+00:00"
+    }
+  ]
+}

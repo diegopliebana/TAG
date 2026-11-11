@@ -82,6 +82,7 @@ impl BrowserGame for TinyGame {
         BoardView {
             cantstop: None,
             loveletter: None,
+            sushigo: None,
             width: 1,
             height: 1,
             cells: vec![finished.then_some(0)],

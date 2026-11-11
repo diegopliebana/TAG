@@ -35,7 +35,7 @@ fn invalid(text: impl Into<String>) -> PersistenceError {
 impl PersistableGame for CantStopForwardModel {
     type SavedState = CantStopSavedState;
     const GAME_ID: &'static str = "cantstop";
-    const RULES_VERSION: u32 = 1;
+    const RULES_VERSION: u32 = 2;
     fn storage_units(_: &CantStopParameters) -> Option<usize> {
         Some(44)
     }
@@ -75,7 +75,7 @@ impl PersistableGame for CantStopForwardModel {
             || in_round != turns
             || moves == usize::MAX
             || turns == usize::MAX
-            || turns.checked_mul(2).is_none_or(|v| v > moves)
+            || turns > moves
         {
             return Err(invalid("Can't Stop actor/counters disagree"));
         }
@@ -166,11 +166,7 @@ impl PersistableGame for CantStopForwardModel {
                 CantStopPhase::Decision => 2,
             }
         };
-        if turns
-            .checked_mul(2)
-            .and_then(|v| v.checked_add(extra))
-            .is_none_or(|v| v > moves)
-        {
+        if turns.checked_add(extra).is_none_or(|v| v > moves) {
             return Err(invalid("phase exceeds accepted actions"));
         }
         state.position = state::CantStopPosition {
@@ -188,6 +184,14 @@ impl PersistableGame for CantStopForwardModel {
         };
         state.random = ChanceRng::from_snapshot(&ChanceRngSnapshot { generator: rng })
             .map_err(|e| invalid(e.to_string()))?;
+        if state.position.phase == CantStopPhase::Allocation
+            && self
+                .available_actions(&state, state.position.current_player)
+                .map_err(|e| invalid(e.to_string()))?
+                .is_empty()
+        {
+            return Err(invalid("unusable roll must already have ended the turn"));
+        }
         Ok(state)
     }
 }
@@ -229,6 +233,37 @@ mod tests {
     use super::*;
     use crate::core::{Decision, random::AgentRng};
     use crate::replay::{ReplayLimits, export_state, import_state};
+
+    #[test]
+    fn automatic_bust_roundtrips_and_old_rules_versions_are_rejected() {
+        let model = CantStopForwardModel;
+        let parameters = CantStopParameters {
+            rules: CantStopRules {
+                markers: 1,
+                ..Default::default()
+            },
+            ..Default::default()
+        };
+        let mut state = model.init_state(&parameters, 2).unwrap();
+        let actor = PlayerId::new(0);
+        model.next_with_roll(&mut state, actor, [1; 4]).unwrap();
+        model
+            .next(
+                &mut state,
+                actor,
+                &CantStopAction::Allocate(Allocation::pair(2, 2).unwrap()),
+            )
+            .unwrap();
+        model.next_with_roll(&mut state, actor, [6; 4]).unwrap();
+        assert_eq!(state.position.counters.move_count(), 3);
+        assert_eq!(state.position.counters.completed_turn_count(), 1);
+        let text = export_state(&model, &parameters, &state).unwrap();
+        let (_, restored) = import_state(&text, &model, ReplayLimits::default()).unwrap();
+        assert_eq!(restored, state);
+        let mut old: serde_json::Value = serde_json::from_str(&text).unwrap();
+        old["rules_version"] = serde_json::json!(1);
+        assert!(import_state(&old.to_string(), &model, ReplayLimits::default()).is_err());
+    }
 
     #[test]
     fn portable_positions_preserve_all_phases_and_future_rolls() {

@@ -4,6 +4,7 @@ use std::rc::Rc;
 use tag_rust::agents::Agent;
 use tag_rust::core::checkpoint::Checkpoint;
 use tag_rust::core::{Decision, ForwardModel, PlayerId, PlayerResult, PublicInformationModel};
+use tag_rust::games::cantstop::{CantStopForwardModel, CantStopParameters};
 use tag_rust::games::connect4::{Connect4ForwardModel, Connect4Parameters};
 use tag_rust::games::tictactoe::{PlaceMark, TicTacToeForwardModel, TicTacToeParameters};
 use tag_rust::search::mcts::*;
@@ -18,6 +19,41 @@ fn settings(iterations: u64) -> Settings {
         },
         ..Settings::default()
     }
+}
+
+#[test]
+fn forced_root_returns_validated_action_without_search_or_rng_progress() {
+    let model = CantStopForwardModel;
+    let state = model
+        .init_state(
+            &CantStopParameters {
+                seed: 73,
+                ..Default::default()
+            },
+            3,
+        )
+        .unwrap();
+    let actor = PlayerId::new(0);
+    let observation = model.observe(&state, actor).unwrap();
+    let actions = model.offered_actions(&observation);
+    assert_eq!(actions.len(), 1);
+    let mut config = settings(0);
+    config.budgets.forward_model_calls = Some(0);
+    let mut agent = MctsAgent::new(config, &CantStopForwardModel::native_evaluators()).unwrap();
+    let checkpoint = agent.snapshot().unwrap();
+    let report = agent.search(&model, actor, &observation, &actions).unwrap();
+    assert_eq!(report.selected_index, 0);
+    assert!(report.forced);
+    assert!(!report.fallback);
+    assert_eq!(report.root_actions[0].visits, 0);
+    assert_eq!(report.counters.completed_iterations, 0);
+    assert_eq!(report.counters.forward_model_calls, 0);
+    assert_eq!(report.counters.state_evaluations, 0);
+    assert_eq!(report.counters.action_evaluations, 0);
+    assert_eq!(report.counters.state_copies, 1); // A permitted root still validates the action.
+    assert_eq!((report.nodes, report.edges), (1, 0));
+    assert_eq!(agent.snapshot().unwrap(), checkpoint);
+    assert_eq!(model.observe(&state, actor).unwrap(), observation);
 }
 
 #[test]
@@ -121,7 +157,7 @@ impl ForwardModel for Model {
         if self.next_player(state) == Decision::Finished {
             vec![]
         } else if state.depth == 0 {
-            vec![0]
+            vec![0, 1]
         } else if self.opponent_choice {
             vec![10, 11]
         } else {
@@ -211,7 +247,7 @@ fn run(model: &Model, config: Settings) -> SearchReport<usize> {
                 depth: 0,
                 branch: 0,
             },
-            &[0],
+            &[0, 1],
         )
         .unwrap()
 }
@@ -223,8 +259,16 @@ fn zero_rollout_evaluates_expanded_leaf_and_depth_limit_skips_rollouts() {
     config.rollout_length = Some(0);
     let report = run(&model, config.clone());
     assert_eq!(report.counters.forward_model_calls, 1);
-    assert_eq!(report.root_actions[0].visits, 1);
-    assert_eq!(report.root_actions[0].mean_values, vec![0.8, 0.6, 0.1]);
+    assert_eq!(report.root_actions.iter().map(|a| a.visits).sum::<u64>(), 1);
+    assert_eq!(
+        report
+            .root_actions
+            .iter()
+            .find(|a| a.visits == 1)
+            .unwrap()
+            .mean_values,
+        vec![0.8, 0.6, 0.1]
+    );
     config.tree_depth = Some(1);
     config.rollout_length = None;
     assert_eq!(run(&model, config.clone()).counters.forward_model_calls, 1);
@@ -239,11 +283,11 @@ fn open_loop_replays_actions_and_keeps_live_source_independent() {
     let mut config = settings(3);
     config.rollout_length = Some(0);
     let report = run(&model, config);
-    // Three simulations traverse one, two and three actions from the root.
-    assert_eq!(report.counters.forward_model_calls, 6);
-    assert_eq!(model.transitions.get(), 6);
+    // The first two iterations expand distinct root actions; the third continues one branch.
+    assert_eq!(report.counters.forward_model_calls, 4);
+    assert_eq!(model.transitions.get(), 4);
     assert_eq!(report.counters.state_copies, 4);
-    assert_eq!(report.root_actions[0].visits, 3);
+    assert_eq!(report.root_actions.iter().map(|a| a.visits).sum::<u64>(), 3);
     assert_eq!(report.nodes, 4);
 }
 
@@ -258,7 +302,10 @@ fn varying_actors_and_legality_do_not_replay_unavailable_actions() {
     let report = run(&model, config);
     assert_eq!(report.counters.completed_iterations, 50);
     assert_eq!(report.counters.forward_model_calls, model.transitions.get());
-    assert_eq!(report.root_actions[0].visits, 50);
+    assert_eq!(
+        report.root_actions.iter().map(|a| a.visits).sum::<u64>(),
+        50
+    );
 }
 
 #[test]
@@ -275,7 +322,12 @@ fn strict_transition_budget_completes_current_iteration_at_its_current_position(
         assert_eq!(report.fallback, cap == 0);
         assert_eq!(report.counters.completed_iterations, u64::from(cap > 0));
         if cap == 20 {
-            assert_eq!(report.root_actions[0].mean_values, vec![1.0, 0.0, -1.0]);
+            assert!(
+                report
+                    .root_actions
+                    .iter()
+                    .any(|a| a.mean_values == vec![1.0, 0.0, -1.0])
+            );
         }
     }
 }
@@ -320,10 +372,18 @@ fn terminal_rewards_bypass_an_evaluator_that_would_fail() {
                 depth: 0,
                 branch: 0,
             },
-            &[0],
+            &[0, 1],
         )
         .unwrap();
-    assert_eq!(report.root_actions[0].mean_values, vec![1.0, 0.0, -1.0]);
+    assert_eq!(
+        report
+            .root_actions
+            .iter()
+            .find(|a| a.visits == 1)
+            .unwrap()
+            .mean_values,
+        vec![1.0, 0.0, -1.0]
+    );
     assert_eq!(report.counters.state_evaluations, 0);
 }
 
@@ -368,7 +428,7 @@ fn deadline_discards_unfinished_expansion_even_at_transition_exhaustion() {
                 depth: 0,
                 branch: 0,
             },
-            &[0],
+            &[0, 1],
             &BudgetOverrides::default(),
             &ManualClock(clock),
             &|| false,
@@ -396,7 +456,7 @@ fn cancellation_never_returns_a_selected_move() {
                 depth: 0,
                 branch: 0
             },
-            &[0],
+            &[0, 1],
             &BudgetOverrides::default(),
             &ManualClock(Rc::new(Cell::new(0.0))),
             &|| true
@@ -599,7 +659,7 @@ fn opponent_selection_maximizes_its_own_value_instead_of_minimizing_root_value()
                 depth: 0,
                 branch: 0,
             },
-            &[0],
+            &[0, 1],
         )
         .unwrap();
     // Player 1 favors the .8 outcome, which also gives Player 0 .9. A paranoid
@@ -749,10 +809,18 @@ fn native_scalar_outputs_use_the_configured_completion_policy() {
                     depth: 0,
                     branch: 0,
                 },
-                &[0],
+                &[0, 1],
             )
             .unwrap();
-        assert_eq!(report.root_actions[0].mean_values, expected);
+        assert_eq!(
+            report
+                .root_actions
+                .iter()
+                .find(|a| a.visits == 1)
+                .unwrap()
+                .mean_values,
+            expected
+        );
         assert_eq!(report.effective_settings.value_completion, policy);
     }
     let mut config = settings(1);
@@ -767,7 +835,7 @@ fn native_scalar_outputs_use_the_configured_completion_policy() {
                     depth: 0,
                     branch: 0
                 },
-                &[0]
+                &[0, 1]
             )
             .is_err()
     );
@@ -811,10 +879,18 @@ fn game_specific_terminal_rewards_are_not_replaced_by_win_loss_or_completion() {
                 depth: 0,
                 branch: 0,
             },
-            &[0],
+            &[0, 1],
         )
         .unwrap();
-    assert_eq!(report.root_actions[0].mean_values, vec![5.0, 2.0, 1.0]);
+    assert_eq!(
+        report
+            .root_actions
+            .iter()
+            .find(|a| a.visits == 1)
+            .unwrap()
+            .mean_values,
+        vec![5.0, 2.0, 1.0]
+    );
 }
 
 #[test]
@@ -826,8 +902,8 @@ fn exhaustion_during_tree_replay_finishes_that_iteration_without_expansion() {
     let report = run(&model, config);
     assert_eq!(report.counters.completed_iterations, 2);
     assert_eq!(report.counters.forward_model_calls, 2);
-    assert_eq!(report.root_actions[0].visits, 2);
-    assert_eq!(report.edges, 1);
+    assert_eq!(report.root_actions.iter().map(|a| a.visits).sum::<u64>(), 2);
+    assert_eq!(report.edges, 2);
 }
 
 #[test]
@@ -842,7 +918,7 @@ fn cancelling_after_simulated_actions_preserves_the_original_position() {
         &model,
         PlayerId::new(0),
         &observation,
-        &[0],
+        &[0, 1],
         &BudgetOverrides::default(),
         &ManualClock(Rc::new(Cell::new(0.0))),
         &|| model.transitions.get() >= 3,
@@ -867,7 +943,7 @@ fn root_validation_and_output_limits_reject_invalid_decisions() {
         branch: 0,
     };
     let mut agent = MctsAgent::new(settings(5), &registry()).unwrap();
-    for actions in [vec![], vec![0, 0], vec![1]] {
+    for actions in [vec![], vec![0, 0], vec![2]] {
         assert!(
             agent
                 .search(&model, PlayerId::new(0), &observation, &actions)
@@ -876,7 +952,7 @@ fn root_validation_and_output_limits_reject_invalid_decisions() {
     }
     assert!(
         agent
-            .search(&model, PlayerId::new(1), &observation, &[0])
+            .search(&model, PlayerId::new(1), &observation, &[0, 1])
             .is_err()
     );
     let mut config = settings(5);
@@ -886,7 +962,7 @@ fn root_validation_and_output_limits_reject_invalid_decisions() {
             &model,
             PlayerId::new(0),
             &observation,
-            &[0]
+            &[0, 1]
         ),
         Err(Error::ResourceLimit)
     );
@@ -1016,7 +1092,7 @@ fn internal_transition_error_aborts_search_without_reusing_the_failed_simulation
     let view = model.init_state(&(), 3).unwrap();
     let before = view.clone();
     let mut agent = MctsAgent::new(settings(4), &registry()).unwrap();
-    let result = agent.search(&model, PlayerId::new(0), &view, &[0]);
+    let result = agent.search(&model, PlayerId::new(0), &view, &[0, 1]);
     assert!(
         matches!(result, Err(Error::Game(message)) if message.contains("internal failure after mutation"))
     );
@@ -1024,5 +1100,9 @@ fn internal_transition_error_aborts_search_without_reusing_the_failed_simulation
     assert_eq!(view, before); // The real/root observation was never mutated.
     assert!(agent.last_report().is_none());
     model.fail_transition = false;
-    assert!(agent.search(&model, PlayerId::new(0), &view, &[0]).is_ok());
+    assert!(
+        agent
+            .search(&model, PlayerId::new(0), &view, &[0, 1])
+            .is_ok()
+    );
 }

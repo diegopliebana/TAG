@@ -4,7 +4,7 @@ For operating instructions, use the [short manual](../../guides/games/new-game.m
 the detailed reference.
 
 The adapter/worker provides configured play, pacing, history, forks and portable
-files for Tic-Tac-Toe, Connect 4, Can't Stop and Love Letter.
+files for Tic-Tac-Toe, Connect 4, Can't Stop, Love Letter and Sushi Go!.
 [Implementing games](../framework/implementing-games.md) explains native integration;
 [protocol and limits](protocol.md) defines browser messages; [web/README](../../../web/README.md)
 provides build and launch commands.
@@ -53,7 +53,11 @@ private/reveal conversion and observation-derived simulation design.
 Add the supported game identifier to GameKind in
 [protocol.rs](../../../adapters/browser/src/protocol.rs), a typed Runtime variant to
 [engine.rs](../../../adapters/browser/src/engine.rs), and its creation/view/command
-dispatch arms. The generic runtime handles sessions and agents once for all games.
+dispatch arms. The generic runtime handles sequential sessions and agents.
+Sushi Go! uses `JointRuntime` around the shared `JointSession`: every seat
+chooses against the same state, and one completed group becomes a replay
+position. The [joint file format](../persistence/formats.md#sushi-go-joint-files)
+defines its saved records.
 Extend the UI's game selector when human play is selected for this game.
 
 Implement BrowserGame on the existing forward-model type in the adapter. Supply

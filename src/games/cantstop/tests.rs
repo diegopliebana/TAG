@@ -137,20 +137,27 @@ fn repeated_sum_near_top_uses_one_step_then_bust_discards_entire_turn() {
     assert_eq!(offers(&state), vec![pair(2, 2)]);
     play(&mut state, pair(2, 2));
     assert_eq!(state.position.temporary_position(2).unwrap(), Some(2));
-    play(&mut state, CantStopAction::Roll);
-    // Override only the observed values here; first Roll above already advanced RNG.
-    state.position.dice = Some([1; 4]);
+    roll(&mut state, [1; 4]);
     assert_eq!(offers(&state), vec![single(2)]);
     play(&mut state, single(2));
     assert_eq!(state.position.column_owner(2).unwrap(), None);
     assert_eq!(state.position.player_score(P0).unwrap(), 0.0);
     roll(&mut state, [1; 4]);
-    assert_eq!(offers(&state), vec![CantStopAction::Bust]);
-    play(&mut state, CantStopAction::Bust);
+    assert_eq!(offers(&state), vec![CantStopAction::Roll]);
+    assert_eq!(state.position.phase, CantStopPhase::StartTurn);
     assert_eq!(state.position.permanent_position(P0, 2).unwrap(), 0);
     assert_eq!(state.position.temporary, [None; 11]);
     assert_eq!(state.position.current_player, P1);
     assert_eq!(state.position.counters.completed_turn_count(), 1);
+    assert_eq!(state.position.counters.move_count(), 5);
+    assert_eq!(state.position.dice, Some([1; 4]));
+    let before = state.clone();
+    assert!(
+        CantStopForwardModel
+            .next(&mut state, P1, &CantStopAction::Bust)
+            .is_err()
+    );
+    assert_eq!(state, before);
 }
 
 #[test]
@@ -237,7 +244,9 @@ fn completed_columns_are_unavailable_and_same_space_as_opponent_is_allowed() {
         state.position.permanent[1][n] = state.position.rules.column_heights[n];
     }
     roll(&mut state, [2, 4, 4, 6]);
-    assert_eq!(offers(&state), vec![CantStopAction::Bust]);
+    assert_eq!(offers(&state), vec![CantStopAction::Roll]);
+    assert_eq!(state.position.current_player, P1);
+    assert_eq!(state.position.counters.move_count(), 1);
     let mut state = initial(2);
     state.position.permanent[1][0] = 2;
     roll(&mut state, [1; 4]);
@@ -538,9 +547,6 @@ fn oracle(position: &CantStopPosition, dice: [u8; 4]) -> HashSet<CantStopAction>
             });
         }
     }
-    if expected.is_empty() {
-        expected.insert(CantStopAction::Bust);
-    }
     expected
 }
 
@@ -564,14 +570,21 @@ fn all_1296_rolls_match_independent_legality_oracle_on_representative_states() {
                 for c in 1..=6 {
                     for d in 1..=6 {
                         let dice = [a, b, c, d];
+                        let expected = oracle(&template.position, dice);
                         let mut state = template.clone();
                         roll(&mut state, dice);
+                        if expected.is_empty() {
+                            assert_eq!(state.position.current_player, P1);
+                            assert_eq!(state.position.phase, CantStopPhase::StartTurn);
+                            assert_eq!(state.position.temporary, [None; 11]);
+                            assert_eq!(offers(&state), vec![CantStopAction::Roll]);
+                            continue;
+                        }
                         let choices = offers(&state);
                         let unique: HashSet<_> = choices.iter().copied().collect();
                         assert_eq!(unique.len(), choices.len());
                         assert_eq!(
-                            unique,
-                            oracle(&state.position, dice),
+                            unique, expected,
                             "dice {dice:?}, position {:?}",
                             state.position
                         );

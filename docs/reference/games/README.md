@@ -7,5 +7,6 @@ Shared algorithms and adapter operations live in the other reference sections.
 - [Connect 4](connect4.md)
 - [Can't Stop](cantstop.md)
 - [Love Letter](loveletter.md)
+- [Sushi Go!](sushigo.md)
 
 [All reference sections](../README.md).

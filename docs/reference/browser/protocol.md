@@ -35,6 +35,7 @@ parameter merging is a separate contract.
 | `poll_ai` | Continue/poll the identified pending calculation. |
 | `commit_ai` | Validate and apply a prepared proposal, optionally choosing the response observer. |
 | `discard_ai` | Drop prepared work without applying a move. |
+| `cancel_joint` | Remove every pending simultaneous choice and restore controller progress at the decision boundary. |
 
 Commands that depend on a position carry its `position_version`. Replies echo
 request identity and distinguish the requested generation from the current one.
@@ -49,6 +50,21 @@ inside Rust. Historical views are read-only. For hidden-information games,
 display settings redact private information, seeds and AI candidates according
 to that game's contract. [Love Letter](../games/loveletter.md#browser-views-controllers-and-persistence)
 defines its event-time views and privileged reveal mode.
+
+For Sushi Go!, `waiting_seats` lists seats that have not chosen. A submitted
+choice leaves `position_version`, observations and recorded cursor unchanged.
+After the last choice, one joint transition advances the cursor once. The
+page automatically shows the next waiting human's observation. Pending actions
+and AI proposals are never returned. The browser is a research interface: it
+does not provide device handoff or local hot-seat privacy.
+Historical card views show the chosen observer's permitted information at that
+complete decision boundary. [Game details](../games/sushigo.md) explain the
+hand and remembered knowledge.
+The explicit privileged reveal setting adds opponents' current hands from the
+full state to the browser view; it is off by default and does not change any
+agent observation or rule transition. The ordinary board payload omits
+remembered passing-hand contents; agents can still use that justified
+knowledge in their own observations.
 
 ## File channel
 
@@ -76,7 +92,7 @@ and [learned controllers](learned-controllers.md).
 | Ordinary command or file envelope | 32 KiB UTF-8 text |
 | Separate file text | 10 MiB UTF-8 text |
 | Board dimensions/storage | At most 128 per dimension and 4,096 cells |
-| Stored accepted moves | 100,000 across stored history |
+| Stored accepted moves or complete joint decisions | 100,000 across stored history |
 | Model registry | At most 16 models, also bounded by aggregate model bytes |
 
 Replay parsing applies byte, depth, branch, storage and estimated-work checks.

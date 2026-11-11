@@ -4,8 +4,8 @@ use tag_rust::core::Decision;
 #[test]
 fn learner_teacher_matches_original_osla_action_and_rng() {
     fn verify<F, E>(
-        mut actual: EpisodeGame<F, E>,
-        mut expected: EpisodeGame<F, E>,
+        mut actual: EpisodeGame<F, Opponent<E>>,
+        mut expected: EpisodeGame<F, Opponent<E>>,
         mut teacher: Opponent<E>,
     ) where
         F: LearningGame + PublicInformationModel + Clone,
@@ -77,7 +77,9 @@ fn config(name: &str, learner: usize, opponent: &str) -> Config {
     Config {
         name: name.into(),
         parameters: BTreeMap::new(),
+        parameter_document: None,
         learner,
+        players: 2,
         opponent: opponent.into(),
         settings: BTreeMap::new(),
         payloads: vec!["cells".into(), "board".into()],
@@ -85,6 +87,78 @@ fn config(name: &str, learner: usize, opponent: &str) -> Config {
         limits: LearningLimits::default(),
         include_intermediate: false,
         teacher: false,
+    }
+}
+
+#[test]
+fn stochastic_multiplayer_episodes_advance_to_learner_and_replay_seeds() {
+    for (name, payloads) in [
+        (
+            "cantstop",
+            vec!["permanent", "temporary", "owners", "dice", "context"],
+        ),
+        (
+            "loveletter",
+            vec!["hands", "context", "public_history", "private_history"],
+        ),
+        (
+            "sushigo",
+            vec!["hand", "known_hands", "played", "players", "last_reveal"],
+        ),
+    ] {
+        let mut configuration = config(name, 2, "random");
+        configuration.players = 3;
+        configuration.payloads = payloads.into_iter().map(str::to_owned).collect();
+        let mut first = configuration.create_seeded_with_game(17, 31, None).unwrap();
+        let mut replay = configuration.create_seeded_with_game(17, 31, None).unwrap();
+        let mut observed = first.opening().unwrap();
+        let mut repeated = replay.opening().unwrap();
+        assert_eq!(observed.observation, repeated.observation);
+        assert_eq!(observed.rng, repeated.rng);
+        let mut previous_moves = 0;
+        for _ in 0..2000 {
+            assert_eq!(observed.observation.next_player, Some(PlayerId::new(2)));
+            let id = observed.observation.offered_action_ids[0];
+            first.validate(id).unwrap();
+            replay.validate(id).unwrap();
+            observed = first.step(id).unwrap();
+            repeated = replay.step(id).unwrap();
+            assert_eq!(observed.observation, repeated.observation);
+            assert_eq!(observed.rng, repeated.rng);
+            assert!(observed.moves > previous_moves);
+            previous_moves = observed.moves;
+            if observed.terminated {
+                assert_eq!(observed.observation.next_player, None);
+                assert!(matches!(observed.reward, -1.0 | 0.0 | 1.0));
+                break;
+            }
+        }
+        assert!(observed.terminated, "{name} did not finish");
+    }
+}
+
+#[test]
+fn sushi_go_episodes_cover_every_player_count_and_native_teacher() {
+    for players in 2..=5 {
+        let mut config = config("sushigo", players - 1, "random");
+        config.players = players;
+        config.payloads = vec!["hand".into(), "players".into(), "last_reveal".into()];
+        config.teacher = true;
+        let mut runtime = config.create_seeded_with_game(17, 31, Some(41)).unwrap();
+        let mut output = runtime.opening().unwrap();
+        let mut decisions = 0;
+        loop {
+            assert_eq!(output.observation.observer.index(), players - 1);
+            assert_eq!(output.observation.next_player, Some(PlayerId::new(players - 1)));
+            runtime.validate_teacher().unwrap();
+            output = runtime.step_teacher().unwrap();
+            decisions += 1;
+            if output.terminated { break; }
+        }
+        assert_eq!(decisions, 3 * (11 - players));
+        assert_eq!(output.moves, (decisions * players) as u64);
+        assert_eq!(output.observation.progress[3], 3);
+        assert!(matches!(output.reward, -1.0 | 1.0));
     }
 }
 fn compare<F, E>(config: Config, model: F, parameters: F::Parameters, evaluator: E)

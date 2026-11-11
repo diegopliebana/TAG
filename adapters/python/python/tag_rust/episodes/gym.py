@@ -4,6 +4,7 @@ Import this optional module explicitly. Ordinary tag_rust imports need no Gymnas
 """
 from contextlib import contextmanager
 from copy import deepcopy
+import json
 from threading import Lock
 import numpy as np
 import gymnasium as gym
@@ -13,17 +14,17 @@ from tag_rust.engine.api import _integer, _payload
 
 
 class GameEnv(gym.Env):
-    """Own one episode. A step includes the learner move and native opponent reply.
+    """Own one learner episode. A step advances until the learner acts again.
 
-    Opponents: first_available, random, osla, osla_python. Only osla_python accepts
-    settings: max_rows and max_candidates. reset(seed=...) owns opponent seeding.
+    Opponents: first_available, random, osla, and placement-only osla_python.
+    reset(seed=...) derives independent game and opponent seeds.
     Invalid actions preserve play. Unexpected runtime step failures require reset.
     """
     metadata = {"render_modes": []}
     render_mode = None
 
-    def __init__(self, game, parameters=None, *, learner=0, opponent="osla_python",
-                 opponent_settings=None, payloads=("board",), max_episode_steps=None,
+    def __init__(self, game, parameters=None, *, players=2, learner=0, opponent=None,
+                 opponent_settings=None, payloads=None, max_episode_steps=None,
                  max_cells=4096, max_bytes=64*1024*1024, include_intermediate=False, teacher=None):
         super().__init__()
         self._lock = Lock()
@@ -31,6 +32,12 @@ class GameEnv(gym.Env):
             raise ValueError("include_intermediate must be Boolean; teacher must be None or 'osla'")
         self._include_intermediate = include_intermediate
         self._teacher = teacher
+        if opponent is None:
+            opponent = "random" if game in ("cantstop", "loveletter", "sushigo") else "osla_python"
+        if payloads is None:
+            payloads = {"cantstop":("permanent","temporary","owners","dice","context"),
+                        "loveletter":("hands","context","public_history","private_history"),
+                        "sushigo":("hand","known_hands","played","players","context","last_reveal")}.get(game,("board",))
         if not isinstance(game, str) or not isinstance(opponent, str):
             raise TypeError("game and opponent must be strings")
         if isinstance(payloads, (str, bytes)):
@@ -45,7 +52,14 @@ class GameEnv(gym.Env):
                 raise TypeError("settings must be a dictionary with string keys")
             return {k: _integer(v, k) for k, v in value.items()}
         horizon = None if max_episode_steps is None else _integer(max_episode_steps, "max_episode_steps")
-        config = dict(game=game, parameters=settings(parameters), learner=_integer(learner,"learner"),
+        if parameters is None:
+            parameters = {}
+        if not isinstance(parameters,dict) or any(not isinstance(k,str) for k in parameters):
+            raise TypeError("parameters must be a dictionary with string keys")
+        parameter_document = json.dumps(parameters,allow_nan=False)
+        config = dict(game=game, parameters={}, parameters_json=parameter_document,
+                      players=_integer(players,"players"),
+                      learner=_integer(learner,"learner"),
                       opponent=opponent, opponent_settings=settings(opponent_settings),
                       payloads=payloads, max_episode_steps=horizon,
                       include_intermediate=include_intermediate, teacher=teacher is not None,
@@ -144,7 +158,8 @@ class GameEnv(gym.Env):
             state = self._prepare_seed(seed)
             if teacher_seed is not None:
                 state[3]["teacher_seed"] = teacher_seed
-            candidate = self._native.prepare_reset(state[3]["opponent_seed"], teacher_seed)
+            candidate = self._native.prepare_reset(state[3]["opponent_seed"],
+                                                   teacher_seed, state[3]["environment_seed"])
             result = self._format(candidate.output, state[3])
             old = self._seed_state()
             try:
@@ -192,7 +207,7 @@ class GameEnv(gym.Env):
             return self._step_return(value)
 
     def step_teacher(self):
-        """Choose with the independent Rust OSLA teacher and execute one learner step."""
+        """Choose with the independently seeded Rust OSLA teacher and execute one learner step."""
         with self._exclusive():
             value = self._native.step_teacher()
             return self._step_return(value)

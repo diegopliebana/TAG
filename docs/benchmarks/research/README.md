@@ -47,6 +47,16 @@ construct observations. Other rule/knowledge/RNG differences are retained.
 
 ![Two-player Love Letter under default and aligned token thresholds.](plots/workflows/loveletter-token-target.svg)
 
+## Complete games with MCTS in every seat
+
+The [all-MCTS game study](mcts-games/README.md) adds 250 games per engine for each
+of the eight game/player settings (4,000 collected games total), with 5,000 iterations per
+searched decision and random rollout length 10. It reports the five API categories
+at encountered real/search positions, work counts and process-memory peaks.
+Search defaults and configurable rules are aligned; forced actions skip search.
+This is a separate workload from the prepared-state tables below.
+The study reports exclusions and the actual included sample count per setting.
+
 ## Rules and prepared-state APIs
 
 Two-player profiles below use each implementation's prepared opening state.
@@ -135,6 +145,47 @@ RNGs; Rust uses compact game-specific values. Ratios include those architectural
 choices, rather than isolating the programming language.
 
 ## Memory, adapters and complete workflows
+
+### Estimated incremental memory per retained state
+
+These estimates use the existing retained-state measurements, rather than the
+allocation volume of a copy operation. For each of three independent processes:
+
+```text
+bytes per state = (retained-memory delta at 2,048 copies
+                - retained-memory delta at 128 copies) / 1,920
+```
+
+Each retained-memory delta is measured relative to that process's baseline.
+The table reports the median of the three estimates; ratios use unrounded values.
+The first column is Java bytes / Rust bytes: above 1 means Java's estimated
+incremental retained footprint was larger.
+
+| Java/Rust size ratio | Game | Players | Rust bytes/state | Java bytes/state (estimated) |
+|---|---|---|---|---|
+| 33.90 | Tic-Tac-Toe | 2 | 105 | 3,559 |
+| 12.34 | Connect 4 | 2 | 800 | 9,870 |
+| 5.33 | Can't Stop | 2 | 840 | 4,474 |
+| 5.26 | Can't Stop | 3 | 884 | 4,647 |
+| 5.18 | Can't Stop | 4 | 928 | 4,810 |
+| 6.38 | Love Letter | 2 | 1,347 | 8,589 |
+| 6.03 | Love Letter | 3 | 1,529 | 9,220 |
+| 5.75 | Love Letter | 4 | 1,711 | 9,832 |
+
+For example, Rust Tic-Tac-Toe uses approximately **105 bytes per retained state**,
+not the 9 bytes requested by the clone operation alone. Retaining the copies in
+a vector also allocates storage for the complete state structs, including their
+inline fields and board-buffer bookkeeping.
+
+These are estimates for the benchmark's prepared positions, not exact isolated
+object sizes. Rust counts live requested heap bytes, excluding allocator overhead;
+Java counts used heap after garbage collection and is subject to measurement noise.
+The estimates include incremental collection storage, exclude shared objects already
+in the baseline, and do not include the whole runtime footprint. Histories and
+variable-sized containers can make other positions larger. The measurements are
+in [memory-summary.json](memory-summary.json), in `heap_or_requested_delta`.
+
+### Process memory and other workflow measurements
 
 All earlier memory/adapter categories were recollected. Process committed memory,
 resident working set, post-GC Java heap and requested allocation bytes describe

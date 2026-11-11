@@ -47,3 +47,15 @@ test("Can't Stop move labels retain the repeated sum and explicit bust", () => {
   assert.equal(cantStopActionLabel("Bust"), "Bust — end turn");
   assert.equal(cantStopActionLabel({ Allocate: { columns: [7,0], length: 1 } }), "Advance 7");
 });
+
+test("an automatic bust is announced with the next player's Roll and visible dice", () => {
+  const { container, view } = fixture(2);
+  view.next_player = 1;
+  Object.assign(view.board.cantstop, { bust_player: 0, dice: [6, 6, 6, 6] });
+  renderBoard(container, view, () => {});
+  const [caption, dice, , , actions] = container.children[0].children;
+  assert.match(caption.textContent, /Player 0 busted.*Player 1.*Start turn/);
+  assert.match(dice.attributes["aria-label"], /6, 6, 6, 6/);
+  assert.equal(actions.children.length, 1);
+  assert.equal(actions.children[0].textContent, "Roll all four dice");
+});

@@ -13,6 +13,7 @@ mod learned;
 mod loveletter;
 mod mcts;
 mod random;
+mod sushigo;
 
 fn send(
     engine: &mut BrowserEngine,

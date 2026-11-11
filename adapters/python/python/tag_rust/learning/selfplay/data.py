@@ -30,10 +30,18 @@ def visit_target(observation,report):
             raise ValueError("visit count is outside the stored int64 range")
         visits[row["action_id"]] = count
     total = sum(int(value) for value in visits)
-    if total == 0:
-        raise ValueError("self-play requires at least one completed root visit")
+    if report.get("forced") is True and total != 0:
+        raise ValueError("forced action cannot have completed root visits")
     if report["action_id"] not in actions:
         raise ValueError("search selected an unavailable action")
+    if total == 0:
+        if (report.get("forced") is not True or len(actions) != 1 or report["action_id"] != actions[0]
+            or report.get("fallback") is not False):
+            raise ValueError("self-play requires a completed root visit or a forced action")
+        # A forced choice has policy probability one, while actual search visits stay zero.
+        policy = np.zeros(len(visits),dtype=np.float32)
+        policy[actions[0]] = 1.0
+        return visits,policy
     return visits,(visits.astype(np.float64)/total).astype(np.float32)
 
 
@@ -89,15 +97,15 @@ def validate_example(example,contract,*,max_bytes):
             raise ValueError("invalid recorded observation metadata/action mapping")
     if any(obs.next_player != example.actor for obs in example.observations):
         raise ValueError("example observations disagree about the acting player")
-    if contract.identity.game == "loveletter":
+    if contract.identity.game in ("loveletter", "sushigo"):
         if contract.value.players != tuple(range(players)) or "last_private_history" in {
             tensor.name for tensor in contract.tensors
         }:
-            raise ValueError("Love Letter examples require full player values and supported search inputs")
+            raise ValueError("hidden-information game examples require full player values and supported search inputs")
         if any((obs.results != 0).any() or (
             "terminal_values" in obs.payloads and obs.payloads["terminal_values"].any()
         ) for obs in example.observations):
-            raise ValueError("Love Letter decision inputs must precede the whole-game outcome")
+            raise ValueError("decision inputs must precede the whole-game outcome")
     policy,visits,values = example.policy,example.visits,example.terminal_values
     if (not isinstance(policy,np.ndarray) or policy.dtype != np.float32 or policy.shape != (actions,)
         or not np.isfinite(policy).all() or (policy < 0).any() or not np.isclose(policy.sum(),1,atol=1e-6)
@@ -105,13 +113,19 @@ def validate_example(example,contract,*,max_bytes):
         or not isinstance(values,np.ndarray) or values.dtype != np.float32 or values.shape != (players,)
         or not np.isin(values,(-1.,0.,1.)).all()):
         raise ValueError("invalid policy, visits or complete terminal reward vector")
-    if contract.identity.game == "loveletter" and (not (values == 1).any() or (values == 0).any()):
-        raise ValueError("Love Letter whole-game targets require winners and win/loss values only")
+    if contract.identity.game in ("loveletter", "sushigo") and (not (values == 1).any() or (values == 0).any()):
+        raise ValueError("whole-game targets require winners and win/loss values only")
     actor = next(obs for obs in example.observations if obs.observer == example.actor)
     total = sum(int(value) for value in visits)
+    forced = example.search_report.get("forced") is True
+    forced_target = (forced and total == 0 and len(actor.offered_action_ids) == 1
+                     and example.action == int(actor.offered_action_ids[0])
+                     and policy[example.action] == 1.0)
+    visited_target = (total > 0 and not forced
+                      and np.allclose(policy,visits.astype(np.float64)/total,atol=1e-6,rtol=1e-6))
     if (not 0 <= example.action < actions or not actor.action_mask[example.action]
         or (policy[~actor.action_mask] != 0).any() or (visits[~actor.action_mask] != 0).any()
-        or total == 0 or not np.allclose(policy,visits.astype(np.float64)/total,atol=1e-6,rtol=1e-6)):
+        or not (forced_target or visited_target)):
         raise ValueError("policy target does not match legal completed visits")
     if example.search_report["settings"]["seed"] != example.search_seed:
         raise ValueError("example search seed differs from its effective settings")

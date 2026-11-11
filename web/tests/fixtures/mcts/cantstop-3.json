@@ -25,7 +25,7 @@
       "game": "cantstop",
       "height": 0,
       "player_count": 3,
-      "rules_version": 1,
+      "rules_version": 2,
       "target": 0,
       "width": 0
     },
@@ -151,7 +151,7 @@
     4
   ],
   "implementation": "tag_rust.PolicyValueNetwork/2",
-  "model_identity": "0f2d10d8c9987727fc7b7a9987884c9b4f1a5384f574d4e61415e7ce8f416c8c",
+  "model_identity": "ebfa1060de95d677e0c25e37f9903488b48d644ac1b9c5be6b3def1593350ced",
   "provenance": {
     "algorithm": "mcts-selfplay",
     "model_context": {

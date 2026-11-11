@@ -130,6 +130,7 @@ impl BrowserGame for Game {
             outcome: p.status().into(),
             winning_cells: vec![],
             loveletter: None,
+            sushigo: None,
             cantstop: Some(
                 json!({"rules":p.rules(),"phase":p.phase(),"dice":p.dice(),"permanent":permanent,"temporary":temporary,"owners":owners}),
             ),

@@ -355,7 +355,8 @@ fn search_report<F: LearningGame>(
         "schema_version":1,"algorithm_version":1,
         "selected_index":report.selected_index,
         "action_id":model.action_id(observation, &actions[report.selected_index]).map_err(|e| e.to_string())?,
-        "root_actions":rows,"fallback":report.fallback,"elapsed_ms":report.elapsed_ms,
+        "root_actions":rows,"fallback":report.fallback,"forced":report.forced,
+        "elapsed_ms":report.elapsed_ms,
         "nodes":report.nodes,"edges":report.edges,"settings":settings,
         "stop_reasons":report.stop_reasons.iter().map(|s| format!("{s:?}")).collect::<Vec<_>>(),
         "counters":{"completed_iterations":report.counters.completed_iterations,
@@ -454,12 +455,7 @@ impl crate::engine::Engine {
         macro_rules! start {
             ($game:expr, $model:ty) => {{
                 let game = $game;
-                let actor = match game.session.next_player() {
-                    tag_rust::core::Decision::Player(actor) => actor,
-                    tag_rust::core::Decision::Finished => {
-                        return Err("cannot search a finished game".into());
-                    }
-                };
+                let actor = game.next_player().ok_or("cannot search a finished game")?;
                 let model = game.session.model().clone();
                 let observation = model
                     .observe(game.session.state(), actor)
@@ -479,6 +475,15 @@ impl crate::engine::Engine {
             }};
         }
         match self {
+            Self::SushiGo(game) => {
+                if options.observers != ValueObservers::DecidingPlayer
+                    || options.settings.value_completion
+                        != tag_rust::search::mcts::ValueCompletion::RequireFullVector
+                {
+                    return Err("Sushi Go! MCTS requires deciding_player observations and require_full_vector completion".into());
+                }
+                start!(game, tag_rust::games::sushigo::SushiGoForwardModel)
+            }
             Self::LoveLetter(game) => {
                 if options
                     .payloads

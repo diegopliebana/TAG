@@ -130,19 +130,32 @@ impl<F: BrowserGame> Runtime<F> {
                 origin: self.origins[id],
             });
         }
+        let mut board = F::display_board(
+            state,
+            &observation,
+            self.reveal_hidden_information,
+            public_only,
+        );
+        if let Some(position) = board.cantstop.as_mut()
+            && position["phase"] == "start_turn"
+            && let Some(last) = self
+                .game
+                .recorded_prefix(location.branch, location.cursor)
+                .map_err(branch_error)?
+                .last()
+            && serde_json::to_value(&last.action).map_err(|e| fail(e.to_string()))? == "Roll"
+        {
+            position["bust_player"] = serde_json::json!(last.actor.index());
+        }
         Ok(PublicView {
             game: F::KIND,
             position_version: session.position_version().to_string(),
             branch: location.branch.0,
             observer,
             next_player: next,
+            waiting_seats: None,
             controllers: controllers.into_iter().map(F::display_settings).collect(),
-            board: F::display_board(
-                state,
-                &observation,
-                self.reveal_hidden_information,
-                public_only,
-            ),
+            board,
             actions,
             results,
             scores,

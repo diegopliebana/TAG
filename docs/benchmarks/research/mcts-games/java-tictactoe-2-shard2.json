@@ -1,0 +1,7190 @@
+{
+  "identity": {
+    "engine": "java",
+    "game": "tictactoe",
+    "players": 2,
+    "shard": 2,
+    "games": 50,
+    "seed": 242,
+    "settings": {
+      "games_per_profile": 250,
+      "shards": 3,
+      "iterations": 5000,
+      "rollout_length": 10,
+      "warmup_decisions": 6,
+      "sampling_stride": 1024,
+      "seed": 42,
+      "aligned": "true",
+      "seed_copies": "true",
+      "skip_forced": "true",
+      "memory_interval_ms": 50,
+      "java_heap": "-Xms64m -Xmx512m",
+      "rules": {
+        "tictactoe": {
+          "grid_size": 3
+        },
+        "connect4": {
+          "width": 7,
+          "height": 6,
+          "winning_length": 4
+        },
+        "cantstop": {
+          "column_heights": [
+            3,
+            5,
+            7,
+            9,
+            11,
+            13,
+            11,
+            9,
+            7,
+            5,
+            3
+          ],
+          "markers": 3,
+          "columns_to_win": 3
+        },
+        "loveletter": {
+          "classic_cards": 16,
+          "winning_tokens": [
+            6,
+            5,
+            4
+          ]
+        }
+      },
+      "agent_seed_derivation": "4 * game_seed + 100000 + absolute_seat (wrapping 64-bit)",
+      "shard_sizes": [
+        100,
+        100,
+        50
+      ],
+      "probe_build_sha256": "1a4c2a81e3b4cc8aa7c1d2960de6623b621cfb4000b81335c64ab5b86c563105"
+    }
+  },
+  "command": [
+    "C:\\Program Files\\Java\\jdk-21.0.12\\bin\\java.exe",
+    "-Xms64m",
+    "-Xmx512m",
+    "-cp",
+    "C:\\Research\\TAG\\tag-rust\\.scratch\\mcts-games\\classes;C:\\Research\\TAG\\tag-rust\\.scratch\\java-comparison\\target\\classes;C:\\Users\\Diego\\.m2\\repository\\com\\googlecode\\json-simple\\json-simple\\1.1.1\\json-simple-1.1.1.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\code\\gson\\gson\\2.10\\gson-2.10.jar;C:\\Users\\Diego\\.m2\\repository\\com\\github\\davidmoten\\guava-mini\\0.1.3\\guava-mini-0.1.3.jar;C:\\Users\\Diego\\.m2\\repository\\commons-logging\\commons-logging\\1.2\\commons-logging-1.2.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-lang3\\3.18.0\\commons-lang3-3.18.0.jar;C:\\Users\\Diego\\.m2\\repository\\commons-codec\\commons-codec\\1.19.0\\commons-codec-1.19.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-compress\\1.28.0\\commons-compress-1.28.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-math3\\3.6.1\\commons-math3-3.6.1.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-text\\1.14.0\\commons-text-1.14.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-collections4\\4.5.0\\commons-collections4-4.5.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-crypto\\1.1.0\\commons-crypto-1.1.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\codehaus\\janino\\commons-compiler\\3.1.9\\commons-compiler-3.1.9.jar;C:\\Users\\Diego\\.m2\\repository\\com\\sun\\istack\\istack-commons-runtime\\4.1.2\\istack-commons-runtime-4.1.2.jar;C:\\Users\\Diego\\.m2\\repository\\commons-io\\commons-io\\2.14.0\\commons-io-2.14.0.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\guava\\guava\\30.0-jre\\guava-30.0-jre.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\guava\\failureaccess\\1.0.2\\failureaccess-1.0.2.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\guava\\listenablefuture\\9999.0-empty-to-avoid-conflict-with-guava\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\http-client\\google-http-client-gson\\1.47.0\\google-http-client-gson-1.47.0.jar",
+    "BenchmarkMctsGames",
+    "tictactoe",
+    "2",
+    "50",
+    "5000",
+    "242",
+    "1024",
+    "true",
+    "true",
+    "true",
+    "6"
+  ],
+  "baseline": {
+    "working_set": 362512384,
+    "peak_working_set": 375541760,
+    "private_bytes": 417615872,
+    "pagefile": 417615872,
+    "peak_pagefile": 433348608
+  },
+  "ready": {
+    "phase": "ready",
+    "game": "tictactoe",
+    "engine": "java",
+    "players": 2,
+    "timer_control_ns": 40.0888
+  },
+  "process_segments": [
+    {
+      "first_game_id": 0,
+      "command": [
+        "C:\\Program Files\\Java\\jdk-21.0.12\\bin\\java.exe",
+        "-Xms64m",
+        "-Xmx512m",
+        "-cp",
+        "C:\\Research\\TAG\\tag-rust\\.scratch\\mcts-games\\classes;C:\\Research\\TAG\\tag-rust\\.scratch\\java-comparison\\target\\classes;C:\\Users\\Diego\\.m2\\repository\\com\\googlecode\\json-simple\\json-simple\\1.1.1\\json-simple-1.1.1.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\code\\gson\\gson\\2.10\\gson-2.10.jar;C:\\Users\\Diego\\.m2\\repository\\com\\github\\davidmoten\\guava-mini\\0.1.3\\guava-mini-0.1.3.jar;C:\\Users\\Diego\\.m2\\repository\\commons-logging\\commons-logging\\1.2\\commons-logging-1.2.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-lang3\\3.18.0\\commons-lang3-3.18.0.jar;C:\\Users\\Diego\\.m2\\repository\\commons-codec\\commons-codec\\1.19.0\\commons-codec-1.19.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-compress\\1.28.0\\commons-compress-1.28.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-math3\\3.6.1\\commons-math3-3.6.1.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-text\\1.14.0\\commons-text-1.14.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-collections4\\4.5.0\\commons-collections4-4.5.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\apache\\commons\\commons-crypto\\1.1.0\\commons-crypto-1.1.0.jar;C:\\Users\\Diego\\.m2\\repository\\org\\codehaus\\janino\\commons-compiler\\3.1.9\\commons-compiler-3.1.9.jar;C:\\Users\\Diego\\.m2\\repository\\com\\sun\\istack\\istack-commons-runtime\\4.1.2\\istack-commons-runtime-4.1.2.jar;C:\\Users\\Diego\\.m2\\repository\\commons-io\\commons-io\\2.14.0\\commons-io-2.14.0.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\guava\\guava\\30.0-jre\\guava-30.0-jre.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\guava\\failureaccess\\1.0.2\\failureaccess-1.0.2.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\guava\\listenablefuture\\9999.0-empty-to-avoid-conflict-with-guava\\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\\Users\\Diego\\.m2\\repository\\com\\google\\http-client\\google-http-client-gson\\1.47.0\\google-http-client-gson-1.47.0.jar",
+        "BenchmarkMctsGames",
+        "tictactoe",
+        "2",
+        "50",
+        "5000",
+        "242",
+        "1024",
+        "true",
+        "true",
+        "true",
+        "6"
+      ],
+      "baseline": {
+        "working_set": 362512384,
+        "peak_working_set": 375541760,
+        "private_bytes": 417615872,
+        "pagefile": 417615872,
+        "peak_pagefile": 433348608
+      },
+      "ready": {
+        "phase": "ready",
+        "game": "tictactoe",
+        "engine": "java",
+        "players": 2,
+        "timer_control_ns": 40.0888
+      },
+      "started_utc": "2026-10-30T09:57:27.790019+00:00"
+    }
+  ],
+  "games": [
+    {
+      "phase": "game",
+      "search_ns": 500466002,
+      "game": "tictactoe",
+      "seed": 242,
+      "players": 2,
+      "trace_hash": "11711488599620944430",
+      "engine": "java",
+      "elapsed_ns": 505249100,
+      "decisions": 9,
+      "id": 0,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 89499,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 19001,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 67401,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 63198,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 76499,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 8298,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204050,
+          "ns": 59799,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 912599,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 1085193,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193350,
+          "ns": 102302,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 296701,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 1230688,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 368078848,
+        "peak_working_set": 375541760,
+        "private_bytes": 422608896,
+        "pagefile": 422608896,
+        "peak_pagefile": 433348608
+      },
+      "memory_samples": 9
+    },
+    {
+      "phase": "game",
+      "search_ns": 686484598,
+      "game": "tictactoe",
+      "seed": 243,
+      "players": 2,
+      "trace_hash": "551525881382726203",
+      "engine": "java",
+      "elapsed_ns": 687198401,
+      "decisions": 9,
+      "id": 1,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 57800,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 13199,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 67499,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 84101,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 79101,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 9499,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204437,
+          "ns": 49397,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1068199,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 1257687,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193761,
+          "ns": 127106,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 240293,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 1398889,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 391901184,
+        "peak_working_set": 391905280,
+        "private_bytes": 447811584,
+        "pagefile": 447811584,
+        "peak_pagefile": 447811584
+      },
+      "memory_samples": 12
+    },
+    {
+      "phase": "game",
+      "search_ns": 1111808802,
+      "game": "tictactoe",
+      "seed": 244,
+      "players": 2,
+      "trace_hash": "9690920250526572192",
+      "engine": "java",
+      "elapsed_ns": 1112804500,
+      "decisions": 9,
+      "id": 2,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 34101,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 19698,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 96500,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 104799,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 114102,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 11498,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204414,
+          "ns": 74392,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1892287,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2191094,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193690,
+          "ns": 188197,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 442806,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2383703,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 396468224,
+        "peak_working_set": 396468224,
+        "private_bytes": 452112384,
+        "pagefile": 452112384,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 19
+    },
+    {
+      "phase": "game",
+      "search_ns": 887272301,
+      "game": "tictactoe",
+      "seed": 245,
+      "players": 2,
+      "trace_hash": "14111514378337308242",
+      "engine": "java",
+      "elapsed_ns": 888295600,
+      "decisions": 9,
+      "id": 3,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 50201,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 16198,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 87801,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 82000,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 100401,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 9397,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204141,
+          "ns": 54803,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1571598,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 1825099,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193498,
+          "ns": 143499,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 421999,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 1988396,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 362926080,
+        "peak_working_set": 396468224,
+        "private_bytes": 417865728,
+        "pagefile": 417865728,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 15
+    },
+    {
+      "phase": "game",
+      "search_ns": 896555602,
+      "game": "tictactoe",
+      "seed": 246,
+      "players": 2,
+      "trace_hash": "4795692476566364885",
+      "engine": "java",
+      "elapsed_ns": 897540800,
+      "decisions": 9,
+      "id": 4,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 66600,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 16599,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 80899,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 91201,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 94799,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 11800,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203844,
+          "ns": 54100,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1647481,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 1899993,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193160,
+          "ns": 146602,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 357201,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2060296,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 346300416,
+        "peak_working_set": 396468224,
+        "private_bytes": 404566016,
+        "pagefile": 404566016,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 14
+    },
+    {
+      "phase": "game",
+      "search_ns": 977182202,
+      "game": "tictactoe",
+      "seed": 247,
+      "players": 2,
+      "trace_hash": "11606321841500407028",
+      "engine": "java",
+      "elapsed_ns": 978093800,
+      "decisions": 9,
+      "id": 5,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 38500,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 19500,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 103099,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 83198,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 118196,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 11602,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203703,
+          "ns": 61800,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 214
+        },
+        {
+          "calls": 0,
+          "ns": 1878905,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2143101,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193093,
+          "ns": 157500,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 364405,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2340694,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 346873856,
+        "peak_working_set": 396468224,
+        "private_bytes": 409657344,
+        "pagefile": 409657344,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 17
+    },
+    {
+      "phase": "game",
+      "search_ns": 1207638300,
+      "game": "tictactoe",
+      "seed": 248,
+      "players": 2,
+      "trace_hash": "2211089783684829446",
+      "engine": "java",
+      "elapsed_ns": 1209357200,
+      "decisions": 9,
+      "id": 6,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 72699,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 20299,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 95001,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 130199,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 109900,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 14299,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203925,
+          "ns": 84398,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2338391,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2755608,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193223,
+          "ns": 238204,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 722098,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2942704,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 274591744,
+        "peak_working_set": 396468224,
+        "private_bytes": 336822272,
+        "pagefile": 336822272,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 20
+    },
+    {
+      "phase": "game",
+      "search_ns": 1470776500,
+      "game": "tictactoe",
+      "seed": 249,
+      "players": 2,
+      "trace_hash": "1144131740411481219",
+      "engine": "java",
+      "elapsed_ns": 1471995799,
+      "decisions": 9,
+      "id": 7,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 48499,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 21402,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 118800,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 104798,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 135302,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 15598,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204288,
+          "ns": 98903,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2610898,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 3016900,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193622,
+          "ns": 250696,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 573000,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 3248006,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 295964672,
+        "peak_working_set": 396468224,
+        "private_bytes": 358244352,
+        "pagefile": 358244352,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 25
+    },
+    {
+      "phase": "game",
+      "search_ns": 1431256099,
+      "game": "tictactoe",
+      "seed": 250,
+      "players": 2,
+      "trace_hash": "15802027944751651824",
+      "engine": "java",
+      "elapsed_ns": 1432666001,
+      "decisions": 9,
+      "id": 8,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 53800,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 24300,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 134002,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 114004,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 156600,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 22898,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204334,
+          "ns": 92599,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2311608,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2668102,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193588,
+          "ns": 214989,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 592897,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2909809,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 275537920,
+        "peak_working_set": 396468224,
+        "private_bytes": 330530816,
+        "pagefile": 330530816,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 24
+    },
+    {
+      "phase": "game",
+      "search_ns": 1416841201,
+      "game": "tictactoe",
+      "seed": 251,
+      "players": 2,
+      "trace_hash": "10612431363500010333",
+      "engine": "java",
+      "elapsed_ns": 1418173301,
+      "decisions": 9,
+      "id": 9,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 56900,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 21300,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 126200,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 106701,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 146301,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 17299,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204272,
+          "ns": 93998,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2479406,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2900802,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193623,
+          "ns": 244404,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 654102,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 3123908,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 289517568,
+        "peak_working_set": 396468224,
+        "private_bytes": 344772608,
+        "pagefile": 344772608,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 23
+    },
+    {
+      "phase": "game",
+      "search_ns": 1367981601,
+      "game": "tictactoe",
+      "seed": 252,
+      "players": 2,
+      "trace_hash": "315704216373286385",
+      "engine": "java",
+      "elapsed_ns": 1369320400,
+      "decisions": 9,
+      "id": 10,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 53600,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 22601,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 114002,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 112199,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 131200,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 14804,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204203,
+          "ns": 92400,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2428099,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2802300,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193509,
+          "ns": 230887,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 613401,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 3025209,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 290689024,
+        "peak_working_set": 396468224,
+        "private_bytes": 344805376,
+        "pagefile": 344805376,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 23
+    },
+    {
+      "phase": "game",
+      "search_ns": 1264298001,
+      "game": "tictactoe",
+      "seed": 253,
+      "players": 2,
+      "trace_hash": "13885289273461432908",
+      "engine": "java",
+      "elapsed_ns": 1265716200,
+      "decisions": 9,
+      "id": 11,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 57600,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 21402,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 127798,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 99200,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 147101,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 11301,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204233,
+          "ns": 80600,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2214694,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2543598,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193519,
+          "ns": 204102,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 544303,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2771403,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 289767424,
+        "peak_working_set": 396468224,
+        "private_bytes": 343830528,
+        "pagefile": 343830528,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 21
+    },
+    {
+      "phase": "game",
+      "search_ns": 960452797,
+      "game": "tictactoe",
+      "seed": 254,
+      "players": 2,
+      "trace_hash": "10932500187269690915",
+      "engine": "java",
+      "elapsed_ns": 962306400,
+      "decisions": 9,
+      "id": 12,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 74400,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 19001,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 76700,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 85501,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 88499,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 10100,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204136,
+          "ns": 64897,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 12505205,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 12783206,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193396,
+          "ns": 155898,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 532296,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 12945007,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 310120448,
+        "peak_working_set": 396468224,
+        "private_bytes": 364507136,
+        "pagefile": 364507136,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 16
+    },
+    {
+      "phase": "game",
+      "search_ns": 957780297,
+      "game": "tictactoe",
+      "seed": 255,
+      "players": 2,
+      "trace_hash": "7979191339476474667",
+      "engine": "java",
+      "elapsed_ns": 958599300,
+      "decisions": 9,
+      "id": 13,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 35599,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 19502,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 94200,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 76398,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 109100,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 13999,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204207,
+          "ns": 56299,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1884995,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2139982,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193542,
+          "ns": 154716,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 375101,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2325082,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 312311808,
+        "peak_working_set": 396468224,
+        "private_bytes": 378425344,
+        "pagefile": 378425344,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 17
+    },
+    {
+      "phase": "game",
+      "search_ns": 1130975401,
+      "game": "tictactoe",
+      "seed": 256,
+      "players": 2,
+      "trace_hash": "17696135931586346652",
+      "engine": "java",
+      "elapsed_ns": 1132170900,
+      "decisions": 9,
+      "id": 14,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 76400,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 19003,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 94401,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 87399,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 108099,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 12000,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203932,
+          "ns": 98101,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1974897,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2314196,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193245,
+          "ns": 201103,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 658494,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2548296,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 274968576,
+        "peak_working_set": 396468224,
+        "private_bytes": 329195520,
+        "pagefile": 329195520,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 19
+    },
+    {
+      "phase": "game",
+      "search_ns": 951614302,
+      "game": "tictactoe",
+      "seed": 257,
+      "players": 2,
+      "trace_hash": "3281406840780571113",
+      "engine": "java",
+      "elapsed_ns": 952585899,
+      "decisions": 9,
+      "id": 15,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 56099,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 17701,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 80401,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 70103,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 92402,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 9899,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204010,
+          "ns": 62796,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1901203,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2177302,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193390,
+          "ns": 157901,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 379601,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2333699,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 280104960,
+        "peak_working_set": 396468224,
+        "private_bytes": 354902016,
+        "pagefile": 354902016,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 16
+    },
+    {
+      "phase": "game",
+      "search_ns": 1124534599,
+      "game": "tictactoe",
+      "seed": 258,
+      "players": 2,
+      "trace_hash": "12808079878923753413",
+      "engine": "java",
+      "elapsed_ns": 1125546000,
+      "decisions": 9,
+      "id": 16,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 42200,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 21801,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 118001,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 101103,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 136800,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 13999,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203923,
+          "ns": 71503,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1848609,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2132205,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193245,
+          "ns": 172603,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 395497,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2350302,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 268206080,
+        "peak_working_set": 396468224,
+        "private_bytes": 321720320,
+        "pagefile": 321720320,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 19
+    },
+    {
+      "phase": "game",
+      "search_ns": 952947502,
+      "game": "tictactoe",
+      "seed": 259,
+      "players": 2,
+      "trace_hash": "9532509943693235660",
+      "engine": "java",
+      "elapsed_ns": 954087100,
+      "decisions": 9,
+      "id": 17,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 73300,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 21599,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 121000,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 100800,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 139002,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 14300,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204239,
+          "ns": 60704,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1868896,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2135497,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193574,
+          "ns": 167196,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 372801,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2364507,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 285462528,
+        "peak_working_set": 396468224,
+        "private_bytes": 339070976,
+        "pagefile": 339070976,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 17
+    },
+    {
+      "phase": "game",
+      "search_ns": 1088668000,
+      "game": "tictactoe",
+      "seed": 260,
+      "players": 2,
+      "trace_hash": "16697679737913774923",
+      "engine": "java",
+      "elapsed_ns": 1089701301,
+      "decisions": 9,
+      "id": 18,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 48600,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 19400,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 102301,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 81000,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 120198,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 12502,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203860,
+          "ns": 66100,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1856911,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2143600,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193225,
+          "ns": 213498,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 597595,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2336002,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 287895552,
+        "peak_working_set": 396468224,
+        "private_bytes": 356196352,
+        "pagefile": 356196352,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 19
+    },
+    {
+      "phase": "game",
+      "search_ns": 1472026899,
+      "game": "tictactoe",
+      "seed": 261,
+      "players": 2,
+      "trace_hash": "5474522806420649526",
+      "engine": "java",
+      "elapsed_ns": 1473468500,
+      "decisions": 9,
+      "id": 19,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 65099,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 26497,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 165597,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 158904,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 189600,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 19400,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204095,
+          "ns": 106100,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2686187,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 3088982,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193449,
+          "ns": 256398,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 567696,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 3378683,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 282279936,
+        "peak_working_set": 396468224,
+        "private_bytes": 335966208,
+        "pagefile": 335966208,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 24
+    },
+    {
+      "phase": "game",
+      "search_ns": 1404319001,
+      "game": "tictactoe",
+      "seed": 262,
+      "players": 2,
+      "trace_hash": "5002221853406561676",
+      "engine": "java",
+      "elapsed_ns": 1405773299,
+      "decisions": 9,
+      "id": 20,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 60700,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 34100,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 105201,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 136796,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 123098,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 14399,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204148,
+          "ns": 94101,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2615790,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 3033890,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193485,
+          "ns": 245899,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 572896,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 3250998,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 282730496,
+        "peak_working_set": 396468224,
+        "private_bytes": 335966208,
+        "pagefile": 335966208,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 23
+    },
+    {
+      "phase": "game",
+      "search_ns": 1071804201,
+      "game": "tictactoe",
+      "seed": 263,
+      "players": 2,
+      "trace_hash": "14076245124777604037",
+      "engine": "java",
+      "elapsed_ns": 1072708500,
+      "decisions": 9,
+      "id": 21,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 53100,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 17900,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 90397,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 83400,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 104001,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 12200,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204208,
+          "ns": 66997,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2014298,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2288596,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193521,
+          "ns": 166200,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 411795,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2478408,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 300724224,
+        "peak_working_set": 396468224,
+        "private_bytes": 354283520,
+        "pagefile": 354283520,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 19
+    },
+    {
+      "phase": "game",
+      "search_ns": 901740000,
+      "game": "tictactoe",
+      "seed": 264,
+      "players": 2,
+      "trace_hash": "12391038755175884710",
+      "engine": "java",
+      "elapsed_ns": 902560900,
+      "decisions": 9,
+      "id": 22,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 50900,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 17899,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 85201,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 77800,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 98897,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 9602,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204087,
+          "ns": 57599,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2009797,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2256605,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193471,
+          "ns": 142794,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 386500,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2432197,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 301907968,
+        "peak_working_set": 396468224,
+        "private_bytes": 356425728,
+        "pagefile": 356425728,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 16
+    },
+    {
+      "phase": "game",
+      "search_ns": 1139436400,
+      "game": "tictactoe",
+      "seed": 265,
+      "players": 2,
+      "trace_hash": "10287109887917687620",
+      "engine": "java",
+      "elapsed_ns": 1140319700,
+      "decisions": 9,
+      "id": 23,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 41700,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 20902,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 103599,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 92201,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 119298,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 11899,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204424,
+          "ns": 66798,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1989598,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2271003,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193721,
+          "ns": 171199,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 418897,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2470200,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 303935488,
+        "peak_working_set": 396468224,
+        "private_bytes": 358051840,
+        "pagefile": 358051840,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 20
+    },
+    {
+      "phase": "game",
+      "search_ns": 1427386099,
+      "game": "tictactoe",
+      "seed": 266,
+      "players": 2,
+      "trace_hash": "8818890144689970451",
+      "engine": "java",
+      "elapsed_ns": 1428549700,
+      "decisions": 9,
+      "id": 24,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 42601,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 21797,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 276200,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 111600,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 299699,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 17299,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204527,
+          "ns": 89702,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2436502,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2778307,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193754,
+          "ns": 219800,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 514200,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 3178807,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 262660096,
+        "peak_working_set": 396468224,
+        "private_bytes": 316284928,
+        "pagefile": 316284928,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 26
+    },
+    {
+      "phase": "game",
+      "search_ns": 1097015800,
+      "game": "tictactoe",
+      "seed": 267,
+      "players": 2,
+      "trace_hash": "902878114037643498",
+      "engine": "java",
+      "elapsed_ns": 1098225901,
+      "decisions": 9,
+      "id": 25,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 51200,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 21399,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 108799,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 100399,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 127200,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 10500,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203982,
+          "ns": 68995,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2028799,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2323190,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193324,
+          "ns": 169005,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 519507,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2533592,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 262909952,
+        "peak_working_set": 396468224,
+        "private_bytes": 329744384,
+        "pagefile": 329744384,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 19
+    },
+    {
+      "phase": "game",
+      "search_ns": 1185923400,
+      "game": "tictactoe",
+      "seed": 268,
+      "players": 2,
+      "trace_hash": "8337786598279116305",
+      "engine": "java",
+      "elapsed_ns": 1186959900,
+      "decisions": 9,
+      "id": 26,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 49601,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 20602,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 128199,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 97200,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 149399,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 13701,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204231,
+          "ns": 73106,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1921187,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2222200,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193527,
+          "ns": 180604,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 610007,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2448498,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 286220288,
+        "peak_working_set": 396468224,
+        "private_bytes": 341667840,
+        "pagefile": 341667840,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 19
+    },
+    {
+      "phase": "game",
+      "search_ns": 1122459199,
+      "game": "tictactoe",
+      "seed": 269,
+      "players": 2,
+      "trace_hash": "8319122829316242412",
+      "engine": "java",
+      "elapsed_ns": 1123590401,
+      "decisions": 9,
+      "id": 27,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 36900,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 90801,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 121899,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 117900,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 141598,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 17303,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204059,
+          "ns": 71094,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1931205,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2274297,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193403,
+          "ns": 202602,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 494398,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2493693,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 335970304,
+        "peak_working_set": 396468224,
+        "private_bytes": 392605696,
+        "pagefile": 392605696,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 18
+    },
+    {
+      "phase": "game",
+      "search_ns": 1075896800,
+      "game": "tictactoe",
+      "seed": 270,
+      "players": 2,
+      "trace_hash": "2998840954505472403",
+      "engine": "java",
+      "elapsed_ns": 1077402800,
+      "decisions": 9,
+      "id": 28,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 157200,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 35201,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 143300,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 117000,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 164304,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 13399,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204089,
+          "ns": 74897,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1907187,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2196292,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193459,
+          "ns": 173604,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 565501,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2433496,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 269910016,
+        "peak_working_set": 396468224,
+        "private_bytes": 325562368,
+        "pagefile": 325562368,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 17
+    },
+    {
+      "phase": "game",
+      "search_ns": 1026557601,
+      "game": "tictactoe",
+      "seed": 271,
+      "players": 2,
+      "trace_hash": "17184820369961068318",
+      "engine": "java",
+      "elapsed_ns": 1027239899,
+      "decisions": 9,
+      "id": 29,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 38799,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 8698,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 93400,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 82297,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 110500,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 13198,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204099,
+          "ns": 62503,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1761802,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2035801,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193430,
+          "ns": 161296,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 362204,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2228801,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 293089280,
+        "peak_working_set": 396468224,
+        "private_bytes": 349126656,
+        "pagefile": 349126656,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 19
+    },
+    {
+      "phase": "game",
+      "search_ns": 1342087999,
+      "game": "tictactoe",
+      "seed": 272,
+      "players": 2,
+      "trace_hash": "9655196100737652130",
+      "engine": "java",
+      "elapsed_ns": 1342976200,
+      "decisions": 9,
+      "id": 30,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 45400,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 13100,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 129100,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 105202,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 146902,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 15701,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203917,
+          "ns": 85303,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2276809,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2619286,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193252,
+          "ns": 238100,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 615798,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2854990,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 295555072,
+        "peak_working_set": 396468224,
+        "private_bytes": 349581312,
+        "pagefile": 349581312,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 23
+    },
+    {
+      "phase": "game",
+      "search_ns": 963940298,
+      "game": "tictactoe",
+      "seed": 273,
+      "players": 2,
+      "trace_hash": "15507358413461400495",
+      "engine": "java",
+      "elapsed_ns": 967084499,
+      "decisions": 9,
+      "id": 31,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 59701,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 8900,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 84200,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 90299,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 98200,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 12298,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204454,
+          "ns": 69501,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1753108,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2024705,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193714,
+          "ns": 164695,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 419509,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2186996,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 262991872,
+        "peak_working_set": 396468224,
+        "private_bytes": 317698048,
+        "pagefile": 317698048,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 16
+    },
+    {
+      "phase": "game",
+      "search_ns": 1369694102,
+      "game": "tictactoe",
+      "seed": 274,
+      "players": 2,
+      "trace_hash": "13551131518897020708",
+      "engine": "java",
+      "elapsed_ns": 1370567299,
+      "decisions": 9,
+      "id": 32,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 37900,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 11799,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 123900,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 105402,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 143901,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 17601,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203918,
+          "ns": 87506,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2481203,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2832282,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193303,
+          "ns": 227501,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 567301,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 3061686,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 330989568,
+        "peak_working_set": 396468224,
+        "private_bytes": 387313664,
+        "pagefile": 387313664,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 22
+    },
+    {
+      "phase": "game",
+      "search_ns": 1316256701,
+      "game": "tictactoe",
+      "seed": 275,
+      "players": 2,
+      "trace_hash": "9613206625759047512",
+      "engine": "java",
+      "elapsed_ns": 1317458100,
+      "decisions": 9,
+      "id": 33,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 153700,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 11100,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 105903,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 115099,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 122303,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 14597,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204177,
+          "ns": 85300,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2223899,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2593003,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193486,
+          "ns": 218196,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 517699,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2786001,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 247312384,
+        "peak_working_set": 396468224,
+        "private_bytes": 355192832,
+        "pagefile": 355192832,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 21
+    },
+    {
+      "phase": "game",
+      "search_ns": 1250238795,
+      "game": "tictactoe",
+      "seed": 276,
+      "players": 2,
+      "trace_hash": "13059399540659856255",
+      "engine": "java",
+      "elapsed_ns": 1251628000,
+      "decisions": 9,
+      "id": 34,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 75400,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 206598,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 103101,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 138103,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 119401,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 13600,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203989,
+          "ns": 80889,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2172492,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2506903,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193295,
+          "ns": 231991,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 551708,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2695507,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 286720000,
+        "peak_working_set": 396468224,
+        "private_bytes": 340791296,
+        "pagefile": 340791296,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 20
+    },
+    {
+      "phase": "game",
+      "search_ns": 1240702901,
+      "game": "tictactoe",
+      "seed": 277,
+      "players": 2,
+      "trace_hash": "406558878368281550",
+      "engine": "java",
+      "elapsed_ns": 1241999300,
+      "decisions": 9,
+      "id": 35,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 66600,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 11901,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 118801,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 115697,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 135902,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 14902,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204282,
+          "ns": 85098,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2140083,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2473093,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193548,
+          "ns": 214204,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 615705,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2679103,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 286789632,
+        "peak_working_set": 396468224,
+        "private_bytes": 340819968,
+        "pagefile": 340819968,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 20
+    },
+    {
+      "phase": "game",
+      "search_ns": 1200273701,
+      "game": "tictactoe",
+      "seed": 278,
+      "players": 2,
+      "trace_hash": "9158243797564888610",
+      "engine": "java",
+      "elapsed_ns": 1202997900,
+      "decisions": 9,
+      "id": 36,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 563500,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 10100,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 135401,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 330599,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 153201,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 12598,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204101,
+          "ns": 66698,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2512811,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 3853901,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193483,
+          "ns": 794210,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 1327898,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 4080000,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 269979648,
+        "peak_working_set": 396468224,
+        "private_bytes": 324878336,
+        "pagefile": 324878336,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 20
+    },
+    {
+      "phase": "game",
+      "search_ns": 1191317601,
+      "game": "tictactoe",
+      "seed": 279,
+      "players": 2,
+      "trace_hash": "12495397863085403391",
+      "engine": "java",
+      "elapsed_ns": 1193022501,
+      "decisions": 9,
+      "id": 37,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 51701,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 9099,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 222602,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 122601,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 299001,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 14700,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204050,
+          "ns": 71401,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2521497,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2833102,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193348,
+          "ns": 170206,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 566808,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 3214705,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 325107712,
+        "peak_working_set": 396468224,
+        "private_bytes": 381001728,
+        "pagefile": 381001728,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 21
+    },
+    {
+      "phase": "game",
+      "search_ns": 1194460002,
+      "game": "tictactoe",
+      "seed": 280,
+      "players": 2,
+      "trace_hash": "11363572365323041060",
+      "engine": "java",
+      "elapsed_ns": 1195582101,
+      "decisions": 9,
+      "id": 38,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 59500,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 13000,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 166800,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 117498,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 193500,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 17399,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204144,
+          "ns": 76901,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2049794,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2380100,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193449,
+          "ns": 174593,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 399901,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2661505,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 309592064,
+        "peak_working_set": 396468224,
+        "private_bytes": 366149632,
+        "pagefile": 366149632,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 20
+    },
+    {
+      "phase": "game",
+      "search_ns": 997257603,
+      "game": "tictactoe",
+      "seed": 281,
+      "players": 2,
+      "trace_hash": "497132037511246185",
+      "engine": "java",
+      "elapsed_ns": 998244300,
+      "decisions": 9,
+      "id": 39,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 42999,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 9500,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 103600,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 82904,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 120500,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 14800,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204118,
+          "ns": 56701,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1755196,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2047488,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193405,
+          "ns": 150097,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 346401,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2238586,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 289005568,
+        "peak_working_set": 396468224,
+        "private_bytes": 345219072,
+        "pagefile": 345219072,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 17
+    },
+    {
+      "phase": "game",
+      "search_ns": 956878699,
+      "game": "tictactoe",
+      "seed": 282,
+      "players": 2,
+      "trace_hash": "11543756481446104119",
+      "engine": "java",
+      "elapsed_ns": 958072701,
+      "decisions": 9,
+      "id": 40,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 81400,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 7904,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 84000,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 76297,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 97599,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 14102,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203682,
+          "ns": 60003,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 214
+        },
+        {
+          "calls": 0,
+          "ns": 1741604,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2011498,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193067,
+          "ns": 151706,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 404506,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2191194,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 289026048,
+        "peak_working_set": 396468224,
+        "private_bytes": 345280512,
+        "pagefile": 345280512,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 14
+    },
+    {
+      "phase": "game",
+      "search_ns": 1006821099,
+      "game": "tictactoe",
+      "seed": 283,
+      "players": 2,
+      "trace_hash": "14495788487443544882",
+      "engine": "java",
+      "elapsed_ns": 1007850300,
+      "decisions": 9,
+      "id": 41,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 65900,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 9802,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 96802,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 104299,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 112498,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 13306,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204266,
+          "ns": 75494,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1753207,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2038195,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193574,
+          "ns": 156694,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 516304,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2237787,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 319787008,
+        "peak_working_set": 396468224,
+        "private_bytes": 376336384,
+        "pagefile": 376336384,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 18
+    },
+    {
+      "phase": "game",
+      "search_ns": 1152473199,
+      "game": "tictactoe",
+      "seed": 284,
+      "players": 2,
+      "trace_hash": "5692649296671094333",
+      "engine": "java",
+      "elapsed_ns": 1153236400,
+      "decisions": 9,
+      "id": 42,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 46700,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 8802,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 81600,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 77000,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 95101,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 12001,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204251,
+          "ns": 72297,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2020303,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2344313,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193557,
+          "ns": 173093,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 407198,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2529515,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 319938560,
+        "peak_working_set": 396468224,
+        "private_bytes": 376336384,
+        "pagefile": 376336384,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 19
+    },
+    {
+      "phase": "game",
+      "search_ns": 1384997304,
+      "game": "tictactoe",
+      "seed": 285,
+      "players": 2,
+      "trace_hash": "4799639370023249047",
+      "engine": "java",
+      "elapsed_ns": 1385980999,
+      "decisions": 9,
+      "id": 43,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 45300,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 10703,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 167200,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 112000,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 199999,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 16499,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203894,
+          "ns": 83098,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2283910,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2631909,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193186,
+          "ns": 210900,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 455998,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2926700,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 309829632,
+        "peak_working_set": 396468224,
+        "private_bytes": 363409408,
+        "pagefile": 363409408,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 25
+    },
+    {
+      "phase": "game",
+      "search_ns": 1540829301,
+      "game": "tictactoe",
+      "seed": 286,
+      "players": 2,
+      "trace_hash": "9049528898722032872",
+      "engine": "java",
+      "elapsed_ns": 1541719699,
+      "decisions": 9,
+      "id": 44,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 42701,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 11902,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 121300,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 111200,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 140702,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 19599,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204189,
+          "ns": 95505,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2693698,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 3220797,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 205
+        },
+        {
+          "calls": 193541,
+          "ns": 239910,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 205
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 516802,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 3458503,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 309833728,
+        "peak_working_set": 396468224,
+        "private_bytes": 363409408,
+        "pagefile": 363409408,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 25
+    },
+    {
+      "phase": "game",
+      "search_ns": 1449169702,
+      "game": "tictactoe",
+      "seed": 287,
+      "players": 2,
+      "trace_hash": "15195926523593679165",
+      "engine": "java",
+      "elapsed_ns": 1450097301,
+      "decisions": 9,
+      "id": 45,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 46300,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 11399,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 124600,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 115300,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 143398,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 17602,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204133,
+          "ns": 87798,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2424299,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2787997,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193451,
+          "ns": 216999,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 535499,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 3025594,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 242253824,
+        "peak_working_set": 396468224,
+        "private_bytes": 331284480,
+        "pagefile": 331284480,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 23
+    },
+    {
+      "phase": "game",
+      "search_ns": 1365075899,
+      "game": "tictactoe",
+      "seed": 288,
+      "players": 2,
+      "trace_hash": "15683336030361066835",
+      "engine": "java",
+      "elapsed_ns": 1366124900,
+      "decisions": 9,
+      "id": 46,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 62599,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 51301,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 99599,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 106198,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 114798,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 15302,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204047,
+          "ns": 111804,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2421001,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2781292,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193383,
+          "ns": 210404,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 524099,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2972796,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 305827840,
+        "peak_working_set": 396468224,
+        "private_bytes": 359178240,
+        "pagefile": 359178240,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 22
+    },
+    {
+      "phase": "game",
+      "search_ns": 1113553101,
+      "game": "tictactoe",
+      "seed": 289,
+      "players": 2,
+      "trace_hash": "814583606146863246",
+      "engine": "java",
+      "elapsed_ns": 1114418600,
+      "decisions": 9,
+      "id": 47,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 47100,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 10099,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 119800,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 108202,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 139301,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 17399,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204161,
+          "ns": 72802,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 1908491,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2196389,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193395,
+          "ns": 162300,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 397293,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2408287,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 305889280,
+        "peak_working_set": 396468224,
+        "private_bytes": 359260160,
+        "pagefile": 359260160,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 18
+    },
+    {
+      "phase": "game",
+      "search_ns": 1264083503,
+      "game": "tictactoe",
+      "seed": 290,
+      "players": 2,
+      "trace_hash": "12246511907042284333",
+      "engine": "java",
+      "elapsed_ns": 1265140600,
+      "decisions": 9,
+      "id": 48,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 68199,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 9097,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 118199,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 114601,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 137998,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 17702,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 203924,
+          "ns": 84096,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2533787,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2894401,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193288,
+          "ns": 232806,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 646494,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 3117798,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 314552320,
+        "peak_working_set": 396468224,
+        "private_bytes": 368926720,
+        "pagefile": 368926720,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 21
+    },
+    {
+      "phase": "game",
+      "search_ns": 1185527000,
+      "game": "tictactoe",
+      "seed": 291,
+      "players": 2,
+      "trace_hash": "16330336716753677728",
+      "engine": "java",
+      "elapsed_ns": 1186486700,
+      "decisions": 9,
+      "id": 49,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 42500,
+          "scope": "real",
+          "operation": "init",
+          "samples": 1
+        },
+        {
+          "calls": 9,
+          "ns": 12200,
+          "scope": "real",
+          "operation": "actions",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 176702,
+          "scope": "real",
+          "operation": "copy",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 122306,
+          "scope": "real",
+          "operation": "observe",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 201399,
+          "scope": "real",
+          "operation": "copy_apply",
+          "samples": 9
+        },
+        {
+          "calls": 9,
+          "ns": 17702,
+          "scope": "real",
+          "operation": "apply",
+          "samples": 9
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "real",
+          "operation": "actual_copy",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "init",
+          "samples": 0
+        },
+        {
+          "calls": 204097,
+          "ns": 101603,
+          "scope": "search",
+          "operation": "actions",
+          "samples": 215
+        },
+        {
+          "calls": 0,
+          "ns": 2144000,
+          "scope": "search",
+          "operation": "copy",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "observe",
+          "samples": 0
+        },
+        {
+          "calls": 0,
+          "ns": 2458687,
+          "scope": "search",
+          "operation": "copy_apply",
+          "samples": 204
+        },
+        {
+          "calls": 193429,
+          "ns": 175894,
+          "scope": "search",
+          "operation": "apply",
+          "samples": 204
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "scope": "search",
+          "operation": "fork",
+          "samples": 0
+        },
+        {
+          "calls": 40008,
+          "ns": 560594,
+          "scope": "search",
+          "operation": "actual_copy",
+          "samples": 55
+        }
+      ],
+      "probe_ns": 2751692,
+      "searched_decisions": 8,
+      "results": [
+        "DRAW_GAME",
+        "DRAW_GAME"
+      ],
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 319082496,
+        "peak_working_set": 396468224,
+        "private_bytes": 373014528,
+        "pagefile": 373014528,
+        "peak_pagefile": 452112384
+      },
+      "memory_samples": 21
+    }
+  ],
+  "wall_seconds": 60.43067459994927,
+  "wall_seconds_scope": "latest process segment only"
+}

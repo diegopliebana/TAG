@@ -36,6 +36,7 @@ Only this index and [setup](setup.md) stay at the guide root.
 | Connect 4 (`connect4`) | [Run Connect 4](games/connect4.md) | Native, matches/tournaments, Python/learning and browser |
 | Can't Stop (`cantstop`) | [Run Can't Stop](games/cantstop.md) | Native experiments, Python/learning, portable saves and browser |
 | Love Letter (`loveletter`) | [Run Love Letter](games/loveletter.md) | Native experiments, private observations, Python self-play/evaluation, portable saves and browser |
+| Sushi Go! (`sushigo`) | [Run Sushi Go!](games/sushigo.md) | Native joint search, Python operations; Gymnasium/PyTorch runtime checks pending |
 
 For API contracts, algorithm explanations, implementation details and measurements,
 use the separate [technical reference](../reference/README.md). Each manual links

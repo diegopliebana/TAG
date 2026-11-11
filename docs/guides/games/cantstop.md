@@ -19,7 +19,7 @@ its choices and dice; this is not a Java/Rust seed-equivalence guarantee.
 ## Rules
 
 The game starts with a compulsory Roll. Allocate one of the offered pairings,
-then Stop to bank progress or Roll again. A forced Bust discards temporary
+then Stop to bank progress or Roll again. An unusable roll automatically discards temporary
 progress. Only banking a top space claims a column. The first player to claim
 three columns wins under the default rules.
 
@@ -61,7 +61,7 @@ Follow [browser setup and shared controls](../running/browser.md), then select
 heights, markers, winning target and the game dice seed. An integer repeats its
 dice stream; `auto` uses Web Crypto. AI seeds are independent and also accept
 `auto`. The resolved game seed appears above the board. Choose **Roll**, an
-offered allocation, **Stop** or forced **Bust** below the tracks. White circles
+offered allocation or **Stop** below the tracks. A bust ends the turn automatically. White circles
 show temporary progress; colored player shapes show banked positions. Sampled
 OSLA averages 1–128 independently sampled successors per action. Neural MCTS
 requires a matching player count/rules export from [self-play](../learning/mcts-selfplay.md).
@@ -72,6 +72,7 @@ After [Python setup](../setup.md), create a game with
 `tag_rust.create("cantstop", {"seed": 42}, players=3)`. Observations can request
 `("dice", "context")`. The [shared API guide](../running/game-operations-from-python.md)
 explains action application, copies and reset.
+For learner-step play with native opponents, use the [Gym episode guide](../learning/episodes-and-collection.md).
 
 ```powershell
 .\.venv\Scripts\python.exe adapters/python/examples/cantstop.py --players 3 --seed 42 --max-actions 1000
@@ -116,7 +117,7 @@ per action, giving the candidate two games in each seat. Root noise and candidat
 visit sampling are disabled. Results go to
 `examples/evaluation/results/cantstop-evaluation.json`. Copy the configuration
 and change `output.report_file` for another experiment. `ranking: "score"` uses claimed-column counts for finishing places.
-Learner-step Gym episodes and local neural agents in the native match CLI are not
+Local neural agents in the native match CLI are not
 registered. Browser Neural MCTS and Python neural search/evaluation are supported.
 
 ## Reference

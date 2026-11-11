@@ -1,0 +1,80 @@
+[
+    {
+        "file":  "CardBack.png",
+        "source":  "public TAG/data/sushigo/CardBack.png",
+        "sha256":  "be335df8fa13d1bd29455d5d85dc1cf5461beab87fdfb9624bd56cc7f9ccdb66",
+        "bytes":  7713
+    },
+    {
+        "file":  "chopsticks.png",
+        "source":  "public TAG/data/sushigo/chopsticks.png",
+        "sha256":  "0cd88c8f778ba0d962341e004a850b83e6b757dfc5530320e14520ef26b4bf13",
+        "bytes":  5966
+    },
+    {
+        "file":  "dumpling.png",
+        "source":  "public TAG/data/sushigo/dumpling.png",
+        "sha256":  "22a8dd47e24cd59aa8b6c88b8a9e5add3bb9ddf43d546b6bca6ee7aa30bc0070",
+        "bytes":  5730
+    },
+    {
+        "file":  "eggnigiri.png",
+        "source":  "public TAG/data/sushigo/eggnigiri.png",
+        "sha256":  "5ec733110b5048e9f62ab75319336eda7d83df2ac3621ee1ed22aa1112f1cc07",
+        "bytes":  4444
+    },
+    {
+        "file":  "maki_1.png",
+        "source":  "public TAG/data/sushigo/maki_1.png",
+        "sha256":  "13ca65d040e4e75374a032d4ed41632fcb146e3edbf5a4d7bb1c9bd0083dea07",
+        "bytes":  5814
+    },
+    {
+        "file":  "maki_2.png",
+        "source":  "public TAG/data/sushigo/maki_2.png",
+        "sha256":  "d7bccf314d2dcc030d2f980b2a17f963432917f4afaa70ebb76fae0a9991531f",
+        "bytes":  6508
+    },
+    {
+        "file":  "maki_3.png",
+        "source":  "public TAG/data/sushigo/maki_3.png",
+        "sha256":  "d2a715dcbfa73f6d6931aa00f56808e98c4f178d1b9e7e22b249aa55d60da1ea",
+        "bytes":  7088
+    },
+    {
+        "file":  "pudding.png",
+        "source":  "public TAG/data/sushigo/pudding.png",
+        "sha256":  "886c036da55a75e460b9d57c18bcaacb14a16f5981a7c2c788cc7cae9c2721b7",
+        "bytes":  6558
+    },
+    {
+        "file":  "salmonnigiri.png",
+        "source":  "public TAG/data/sushigo/salmonnigiri.png",
+        "sha256":  "795245430adfdb22ab19453fbf0e9946615ed5add15184f30acf0749d1008ad1",
+        "bytes":  5180
+    },
+    {
+        "file":  "sashimi.png",
+        "source":  "public TAG/data/sushigo/sashimi.png",
+        "sha256":  "dbe154e25d00f581a29f98652aff94d4cb05586c5e1abf390948425d15735ea3",
+        "bytes":  5045
+    },
+    {
+        "file":  "squidnigiri.png",
+        "source":  "public TAG/data/sushigo/squidnigiri.png",
+        "sha256":  "8f63408bc14c71a4fdd9a05ab62971e253bbecc9662548ff1b03262ba3b70ee4",
+        "bytes":  5469
+    },
+    {
+        "file":  "tempura.png",
+        "source":  "public TAG/data/sushigo/tempura.png",
+        "sha256":  "5cf500fb2a8e0425779e7055de3de92809869d8f42b6cf1ffd7ec3d605bc4541",
+        "bytes":  7186
+    },
+    {
+        "file":  "wasabi.png",
+        "source":  "public TAG/data/sushigo/wasabi.png",
+        "sha256":  "1ea11f87b2af4880e2e3009041e04fe73903f6bb4d655170f3afa018a0bb70c7",
+        "bytes":  4461
+    }
+]

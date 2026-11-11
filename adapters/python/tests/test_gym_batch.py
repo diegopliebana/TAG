@@ -15,6 +15,41 @@ def same_info(test,a,b):
 
 
 class EpisodeBatchTests(unittest.TestCase):
+    def test_three_player_card_episodes_match_individual_batch_members(self):
+        for game in ("cantstop", "loveletter", "sushigo"):
+            batched=[GameEnv(game,players=3,learner=seat,opponent="random") for seat in (0,1,2)]
+            singles=[GameEnv(game,players=3,learner=seat,opponent="random") for seat in (0,1,2)]
+            batch=GameEnvBatch(batched)
+            try:
+                result=batch.reset(seeds=[41,42,43])
+                reference=[env.reset(seed=41+i) for i,env in enumerate(singles)]
+                self.assertTrue(result.valid.all())
+                active=[True]*3
+                for _ in range(20):
+                    actions=[int(np.flatnonzero(reference[i][0]["action_mask"])[0]) if active[i] else None
+                             for i in range(3)]
+                    if all(action is None for action in actions):
+                        break
+                    expected=[None if action is None else singles[i].step(action)
+                              for i,action in enumerate(actions)]
+                    result=batch.step(actions)
+                    for i, item in enumerate(expected):
+                        if item is None:
+                            continue
+                        observation,reward,terminated,truncated,info=item
+                        self.assertTrue(result.valid[i])
+                        for key in observation:
+                            np.testing.assert_array_equal(result.observations[key][i],observation[key])
+                        same_info(self,result.infos[i],info)
+                        self.assertEqual((result.rewards[i],result.terminated[i],result.truncated[i]),
+                                         (reward,terminated,truncated))
+                        reference[i]=(observation,info)
+                        active[i]=not(terminated or truncated)
+                self.assertTrue(all(error is None for error in result.errors))
+            finally:
+                batch.close()
+                for env in batched+singles: env.close()
+
     def test_every_transition_and_rng_matches_individual_mixed_members(self):
         cases=[("tictactoe",{}),("tictactoe",{"grid_size":5}),
                ("connect4",{}),("connect4",{"width":4,"height":3,"winning_length":3})]

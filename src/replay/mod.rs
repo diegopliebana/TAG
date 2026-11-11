@@ -9,6 +9,7 @@ mod common;
 mod controllers;
 mod file_validation;
 mod format;
+mod joint_format;
 mod replay_file;
 mod state_file;
 mod validation;
@@ -16,6 +17,7 @@ use crate::core::ForwardModel;
 pub use codec::*;
 pub use controllers::{BuiltinCodec, ReplayCodec};
 pub use format::*;
+pub use joint_format::*;
 pub(crate) use validation::{
     placement_counters, placement_validation_work, validate_placement, validate_placement_outcome,
 };

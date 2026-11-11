@@ -477,6 +477,34 @@ impl NativeEvaluators for crate::games::loveletter::LoveLetterForwardModel {
         registry
     }
 }
+struct SushiGoEvaluator;
+impl StateEvaluator<crate::games::sushigo::SushiGoForwardModel> for SushiGoEvaluator {
+    fn evaluate(
+        &mut self,
+        state: &crate::games::sushigo::State,
+        context: &mut SimulationContext<'_, crate::games::sushigo::SushiGoForwardModel>,
+    ) -> Result<StateValues> {
+        PlayerEvaluator(crate::games::sushigo::SushiGoHeuristic).evaluate(state, context)
+    }
+    fn checkpoint(&self) -> Result<Vec<u8>> {
+        Ok(Vec::new())
+    }
+    fn restore(&mut self, bytes: &[u8]) -> Result<()> {
+        restore_stateless(bytes)
+    }
+}
+impl NativeEvaluators for crate::games::sushigo::SushiGoForwardModel {
+    fn native_evaluators() -> EvaluatorRegistry<Self> {
+        let mut registry = EvaluatorRegistry::default();
+        registry
+            .register_state("game_heuristic", |p| {
+                empty_parameters(p)?;
+                Ok(Box::new(SushiGoEvaluator))
+            })
+            .expect("fresh game heuristic name");
+        registry
+    }
+}
 // Can't Stop exposes a baseline and configurable progress estimate independently
 // for every state/action role. Configuration is retained in the registry spec.
 struct CantStopEvaluator(crate::games::cantstop::CantStopProgress);

@@ -26,7 +26,7 @@ def main():
                 from tag_rust.learning.artifacts import load_model
                 initial_model = load_model(args.model)
             session = SelfPlaySession(settings,initial_model=initial_model)
-        if session.settings.game in ("cantstop", "loveletter"):
+        if session.settings.game in ("cantstop", "loveletter", "sushigo"):
             print(json.dumps({"master_seed":session.settings.seed,"seed_derivation_version":2,
                               "completed_cycles":session.completed_cycles}),flush=True)
         for report in session.run(max_cycles=args.max_cycles):

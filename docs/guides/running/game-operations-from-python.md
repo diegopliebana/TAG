@@ -23,7 +23,10 @@ This example uses Connect 4 and always takes the first available action. For
 another registered game, change its name, parameters and `players` as described
 in its [game manual](../README.md#game-manuals); the loop is unchanged.
 Read `next_player` after each action: consecutive decisions may belong to the
-same seat. A position token rejects choices based on an outdated state.
+same seat. A position token rejects choices based on an outdated state. In
+Sushi Go!, every seat can choose from the same observation boundary; submitted
+choices remain private until all seats have chosen. Their original tokens stay
+valid through that joint decision, and the token changes when it resolves.
 
 ## Configure, copy and reset
 

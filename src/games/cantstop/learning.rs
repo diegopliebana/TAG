@@ -10,7 +10,7 @@ fn invalid(error: impl std::fmt::Display) -> LearningError {
 fn identity(rules: &CantStopRules, players: usize) -> EncodingIdentity {
     EncodingIdentity {
         game: "cantstop",
-        rules_version: 1,
+        rules_version: 2,
         encoding_version: 1,
         player_count: players,
         configuration: EncodingConfiguration::Named(
@@ -448,10 +448,9 @@ mod tests {
             )
             .unwrap();
         model.next_with_roll(&mut state, actor, [6; 4]).unwrap();
-        assert_eq!(encode(&state, 0).offered_action_ids, [2]);
-        model
-            .next(&mut state, actor, &CantStopAction::Bust)
-            .unwrap();
+        assert_eq!(state.position.current_player(), PlayerId::new(1));
+        assert_eq!(encode(&state, 1).offered_action_ids, [0]);
+        assert!(!encode(&state, 1).action_mask[2]);
         assert!(encode(&state, 1).tensors[1].values.iter().all(|&v| v == 0.));
         let parameters = CantStopParameters {
             rules: CantStopRules {

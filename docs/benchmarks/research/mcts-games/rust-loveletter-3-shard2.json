@@ -1,0 +1,7228 @@
+{
+  "identity": {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 3,
+    "shard": 2,
+    "games": 50,
+    "seed": 242,
+    "settings": {
+      "games_per_profile": 250,
+      "shards": 3,
+      "iterations": 5000,
+      "rollout_length": 10,
+      "warmup_decisions": 6,
+      "sampling_stride": 1024,
+      "seed": 42,
+      "aligned": "true",
+      "seed_copies": "true",
+      "skip_forced": "true",
+      "memory_interval_ms": 50,
+      "java_heap": "-Xms64m -Xmx512m",
+      "rules": {
+        "tictactoe": {
+          "grid_size": 3
+        },
+        "connect4": {
+          "width": 7,
+          "height": 6,
+          "winning_length": 4
+        },
+        "cantstop": {
+          "column_heights": [
+            3,
+            5,
+            7,
+            9,
+            11,
+            13,
+            11,
+            9,
+            7,
+            5,
+            3
+          ],
+          "markers": 3,
+          "columns_to_win": 3
+        },
+        "loveletter": {
+          "classic_cards": 16,
+          "winning_tokens": [
+            6,
+            5,
+            4
+          ]
+        }
+      },
+      "agent_seed_derivation": "4 * game_seed + 100000 + absolute_seat (wrapping 64-bit)",
+      "shard_sizes": [
+        100,
+        100,
+        50
+      ],
+      "probe_build_sha256": "1a4c2a81e3b4cc8aa7c1d2960de6623b621cfb4000b81335c64ab5b86c563105"
+    }
+  },
+  "command": [
+    "C:\\Research\\TAG\\tag-rust\\target\\release\\examples\\mcts_games_measure.exe",
+    "loveletter",
+    "3",
+    "50",
+    "5000",
+    "242",
+    "1024",
+    "true",
+    "true",
+    "6"
+  ],
+  "baseline": {
+    "working_set": 5853184,
+    "peak_working_set": 7626752,
+    "private_bytes": 2019328,
+    "pagefile": 2019328,
+    "peak_pagefile": 3715072
+  },
+  "ready": {
+    "engine": "rust",
+    "game": "loveletter",
+    "phase": "ready",
+    "players": 3,
+    "timer_control_ns": 22.95
+  },
+  "process_segments": [
+    {
+      "first_game_id": 0,
+      "command": [
+        "C:\\Research\\TAG\\tag-rust\\target\\release\\examples\\mcts_games_measure.exe",
+        "loveletter",
+        "3",
+        "50",
+        "5000",
+        "242",
+        "1024",
+        "true",
+        "true",
+        "6"
+      ],
+      "baseline": {
+        "working_set": 5853184,
+        "peak_working_set": 7626752,
+        "private_bytes": 2019328,
+        "pagefile": 2019328,
+        "peak_pagefile": 3715072
+      },
+      "ready": {
+        "engine": "rust",
+        "game": "loveletter",
+        "phase": "ready",
+        "players": 3,
+        "timer_control_ns": 22.95
+      },
+      "started_utc": "2026-10-30T13:14:06.638794+00:00"
+    }
+  ],
+  "games": [
+    {
+      "decisions": 82,
+      "elapsed_ns": 19221951900,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 0,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 5200,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 82,
+          "ns": 35500,
+          "operation": "actions",
+          "samples": 82,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 366300,
+          "operation": "copy",
+          "samples": 82,
+          "scope": "real"
+        },
+        {
+          "calls": 82,
+          "ns": 276600,
+          "operation": "observe",
+          "samples": 82,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 575600,
+          "operation": "copy_apply",
+          "samples": 82,
+          "scope": "real"
+        },
+        {
+          "calls": 82,
+          "ns": 69800,
+          "operation": "apply",
+          "samples": 82,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5210266,
+          "ns": 1457600,
+          "operation": "actions",
+          "samples": 5104,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 19768700,
+          "operation": "copy",
+          "samples": 5104,
+          "scope": "search"
+        },
+        {
+          "calls": 1050564,
+          "ns": 1230900,
+          "operation": "observe",
+          "samples": 1041,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 29891200,
+          "operation": "copy_apply",
+          "samples": 5104,
+          "scope": "search"
+        },
+        {
+          "calls": 5210186,
+          "ns": 10269000,
+          "operation": "apply",
+          "samples": 5104,
+          "scope": "search"
+        },
+        {
+          "calls": 400080,
+          "ns": 20874200,
+          "operation": "fork",
+          "samples": 406,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 36161200,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 19219150600,
+      "searched_decisions": 80,
+      "seed": 242,
+      "trace_hash": "16590865597638762664",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8114176,
+        "peak_working_set": 8114176,
+        "private_bytes": 4112384,
+        "pagefile": 4112384,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 306
+    },
+    {
+      "decisions": 40,
+      "elapsed_ns": 11201445000,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 1,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 8000,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 40,
+          "ns": 18100,
+          "operation": "actions",
+          "samples": 40,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 193300,
+          "operation": "copy",
+          "samples": 40,
+          "scope": "real"
+        },
+        {
+          "calls": 40,
+          "ns": 132600,
+          "operation": "observe",
+          "samples": 40,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 294400,
+          "operation": "copy_apply",
+          "samples": 40,
+          "scope": "real"
+        },
+        {
+          "calls": 40,
+          "ns": 41900,
+          "operation": "apply",
+          "samples": 40,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 2585027,
+          "ns": 1018900,
+          "operation": "actions",
+          "samples": 2540,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 10029800,
+          "operation": "copy",
+          "samples": 2540,
+          "scope": "search"
+        },
+        {
+          "calls": 529491,
+          "ns": 793300,
+          "operation": "observe",
+          "samples": 533,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 15677300,
+          "operation": "copy_apply",
+          "samples": 2540,
+          "scope": "search"
+        },
+        {
+          "calls": 2584987,
+          "ns": 1918500,
+          "operation": "apply",
+          "samples": 2540,
+          "scope": "search"
+        },
+        {
+          "calls": 200040,
+          "ns": 5319500,
+          "operation": "fork",
+          "samples": 211,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 19111400,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 11200411800,
+      "searched_decisions": 40,
+      "seed": 243,
+      "trace_hash": "11328486392372402182",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7946240,
+        "peak_working_set": 8114176,
+        "private_bytes": 4112384,
+        "pagefile": 4112384,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 175
+    },
+    {
+      "decisions": 81,
+      "elapsed_ns": 19593963900,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 2,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 9900,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 81,
+          "ns": 40600,
+          "operation": "actions",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 404300,
+          "operation": "copy",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 81,
+          "ns": 154300,
+          "operation": "observe",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 633800,
+          "operation": "copy_apply",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 81,
+          "ns": 74800,
+          "operation": "apply",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4752085,
+          "ns": 1496700,
+          "operation": "actions",
+          "samples": 4656,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 20144100,
+          "operation": "copy",
+          "samples": 4656,
+          "scope": "search"
+        },
+        {
+          "calls": 904770,
+          "ns": 1374200,
+          "operation": "observe",
+          "samples": 899,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 30037800,
+          "operation": "copy_apply",
+          "samples": 4656,
+          "scope": "search"
+        },
+        {
+          "calls": 4752010,
+          "ns": 3363600,
+          "operation": "apply",
+          "samples": 4656,
+          "scope": "search"
+        },
+        {
+          "calls": 375075,
+          "ns": 9306700,
+          "operation": "fork",
+          "samples": 382,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 36532300,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 19591092000,
+      "searched_decisions": 75,
+      "seed": 244,
+      "trace_hash": "11728037148301150280",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7938048,
+        "peak_working_set": 8114176,
+        "private_bytes": 3883008,
+        "pagefile": 3883008,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 307
+    },
+    {
+      "decisions": 67,
+      "elapsed_ns": 17576809300,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 3,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 10200,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 67,
+          "ns": 29000,
+          "operation": "actions",
+          "samples": 67,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 350400,
+          "operation": "copy",
+          "samples": 67,
+          "scope": "real"
+        },
+        {
+          "calls": 67,
+          "ns": 134000,
+          "operation": "observe",
+          "samples": 67,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 516000,
+          "operation": "copy_apply",
+          "samples": 67,
+          "scope": "real"
+        },
+        {
+          "calls": 67,
+          "ns": 59600,
+          "operation": "apply",
+          "samples": 67,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4114510,
+          "ns": 1314900,
+          "operation": "actions",
+          "samples": 4034,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 15948000,
+          "operation": "copy",
+          "samples": 4034,
+          "scope": "search"
+        },
+        {
+          "calls": 850515,
+          "ns": 1236800,
+          "operation": "observe",
+          "samples": 846,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 24388800,
+          "operation": "copy_apply",
+          "samples": 4034,
+          "scope": "search"
+        },
+        {
+          "calls": 4114448,
+          "ns": 3292400,
+          "operation": "apply",
+          "samples": 4034,
+          "scope": "search"
+        },
+        {
+          "calls": 310062,
+          "ns": 7981800,
+          "operation": "fork",
+          "samples": 318,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 30142000,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 17574614700,
+      "searched_decisions": 62,
+      "seed": 245,
+      "trace_hash": "10739058692641457074",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7938048,
+        "peak_working_set": 8114176,
+        "private_bytes": 3887104,
+        "pagefile": 3887104,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 275
+    },
+    {
+      "decisions": 68,
+      "elapsed_ns": 16851039100,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 4,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 9700,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 68,
+          "ns": 32900,
+          "operation": "actions",
+          "samples": 68,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 318200,
+          "operation": "copy",
+          "samples": 68,
+          "scope": "real"
+        },
+        {
+          "calls": 68,
+          "ns": 130500,
+          "operation": "observe",
+          "samples": 68,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 486000,
+          "operation": "copy_apply",
+          "samples": 68,
+          "scope": "real"
+        },
+        {
+          "calls": 68,
+          "ns": 64400,
+          "operation": "apply",
+          "samples": 68,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4052997,
+          "ns": 1248500,
+          "operation": "actions",
+          "samples": 3974,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 15814600,
+          "operation": "copy",
+          "samples": 3973,
+          "scope": "search"
+        },
+        {
+          "calls": 787191,
+          "ns": 1118700,
+          "operation": "observe",
+          "samples": 784,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 24091500,
+          "operation": "copy_apply",
+          "samples": 3973,
+          "scope": "search"
+        },
+        {
+          "calls": 4052932,
+          "ns": 3145200,
+          "operation": "apply",
+          "samples": 3973,
+          "scope": "search"
+        },
+        {
+          "calls": 325065,
+          "ns": 8155600,
+          "operation": "fork",
+          "samples": 333,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 30040600,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 16848310200,
+      "searched_decisions": 65,
+      "seed": 246,
+      "trace_hash": "4540370448089138394",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7999488,
+        "peak_working_set": 8114176,
+        "private_bytes": 3956736,
+        "pagefile": 3956736,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 264
+    },
+    {
+      "decisions": 101,
+      "elapsed_ns": 23342965400,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 5,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 5100,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 101,
+          "ns": 44400,
+          "operation": "actions",
+          "samples": 101,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 475600,
+          "operation": "copy",
+          "samples": 101,
+          "scope": "real"
+        },
+        {
+          "calls": 101,
+          "ns": 187100,
+          "operation": "observe",
+          "samples": 101,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 720400,
+          "operation": "copy_apply",
+          "samples": 101,
+          "scope": "real"
+        },
+        {
+          "calls": 101,
+          "ns": 91400,
+          "operation": "apply",
+          "samples": 101,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5408049,
+          "ns": 1700100,
+          "operation": "actions",
+          "samples": 5297,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 20503100,
+          "operation": "copy",
+          "samples": 5297,
+          "scope": "search"
+        },
+        {
+          "calls": 976068,
+          "ns": 1417500,
+          "operation": "observe",
+          "samples": 969,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 31621500,
+          "operation": "copy_apply",
+          "samples": 5297,
+          "scope": "search"
+        },
+        {
+          "calls": 5407957,
+          "ns": 3904500,
+          "operation": "apply",
+          "samples": 5297,
+          "scope": "search"
+        },
+        {
+          "calls": 460092,
+          "ns": 11071400,
+          "operation": "fork",
+          "samples": 465,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 39723800,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 23340735900,
+      "searched_decisions": 92,
+      "seed": 247,
+      "trace_hash": "14849915607772202923",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8007680,
+        "peak_working_set": 8114176,
+        "private_bytes": 3956736,
+        "pagefile": 3956736,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 365
+    },
+    {
+      "decisions": 41,
+      "elapsed_ns": 9361376800,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 6,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 8800,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 41,
+          "ns": 14700,
+          "operation": "actions",
+          "samples": 41,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 164100,
+          "operation": "copy",
+          "samples": 41,
+          "scope": "real"
+        },
+        {
+          "calls": 41,
+          "ns": 64000,
+          "operation": "observe",
+          "samples": 41,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 245300,
+          "operation": "copy_apply",
+          "samples": 41,
+          "scope": "real"
+        },
+        {
+          "calls": 41,
+          "ns": 32700,
+          "operation": "apply",
+          "samples": 41,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 2418127,
+          "ns": 736800,
+          "operation": "actions",
+          "samples": 2377,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 9232300,
+          "operation": "copy",
+          "samples": 2377,
+          "scope": "search"
+        },
+        {
+          "calls": 480891,
+          "ns": 671900,
+          "operation": "observe",
+          "samples": 485,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 13832800,
+          "operation": "copy_apply",
+          "samples": 2377,
+          "scope": "search"
+        },
+        {
+          "calls": 2418090,
+          "ns": 1774000,
+          "operation": "apply",
+          "samples": 2377,
+          "scope": "search"
+        },
+        {
+          "calls": 185037,
+          "ns": 4817800,
+          "operation": "fork",
+          "samples": 196,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 17029900,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 9360596000,
+      "searched_decisions": 37,
+      "seed": 248,
+      "trace_hash": "13024301416091218915",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7917568,
+        "peak_working_set": 8114176,
+        "private_bytes": 3956736,
+        "pagefile": 3956736,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 149
+    },
+    {
+      "decisions": 95,
+      "elapsed_ns": 22676713600,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 7,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 7500,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 95,
+          "ns": 45400,
+          "operation": "actions",
+          "samples": 95,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 463700,
+          "operation": "copy",
+          "samples": 95,
+          "scope": "real"
+        },
+        {
+          "calls": 95,
+          "ns": 189300,
+          "operation": "observe",
+          "samples": 95,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 711800,
+          "operation": "copy_apply",
+          "samples": 95,
+          "scope": "real"
+        },
+        {
+          "calls": 95,
+          "ns": 87500,
+          "operation": "apply",
+          "samples": 95,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4761147,
+          "ns": 1548400,
+          "operation": "actions",
+          "samples": 4665,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 19153700,
+          "operation": "copy",
+          "samples": 4665,
+          "scope": "search"
+        },
+        {
+          "calls": 716637,
+          "ns": 1110500,
+          "operation": "observe",
+          "samples": 715,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 29135900,
+          "operation": "copy_apply",
+          "samples": 4665,
+          "scope": "search"
+        },
+        {
+          "calls": 4761057,
+          "ns": 3673700,
+          "operation": "apply",
+          "samples": 4665,
+          "scope": "search"
+        },
+        {
+          "calls": 450090,
+          "ns": 11812300,
+          "operation": "fork",
+          "samples": 455,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 36032700,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 22674143100,
+      "searched_decisions": 90,
+      "seed": 249,
+      "trace_hash": "8297758877986677777",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7933952,
+        "peak_working_set": 8114176,
+        "private_bytes": 3956736,
+        "pagefile": 3956736,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 358
+    },
+    {
+      "decisions": 81,
+      "elapsed_ns": 18754624500,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 8,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 9900,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 81,
+          "ns": 39400,
+          "operation": "actions",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 403600,
+          "operation": "copy",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 81,
+          "ns": 161600,
+          "operation": "observe",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 602500,
+          "operation": "copy_apply",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 81,
+          "ns": 72600,
+          "operation": "apply",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4297959,
+          "ns": 1407500,
+          "operation": "actions",
+          "samples": 4213,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 16581900,
+          "operation": "copy",
+          "samples": 4213,
+          "scope": "search"
+        },
+        {
+          "calls": 704154,
+          "ns": 1036500,
+          "operation": "observe",
+          "samples": 703,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 25204700,
+          "operation": "copy_apply",
+          "samples": 4213,
+          "scope": "search"
+        },
+        {
+          "calls": 4297883,
+          "ns": 3492400,
+          "operation": "apply",
+          "samples": 4213,
+          "scope": "search"
+        },
+        {
+          "calls": 380076,
+          "ns": 9585500,
+          "operation": "fork",
+          "samples": 387,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 31188800,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 18752448300,
+      "searched_decisions": 76,
+      "seed": 250,
+      "trace_hash": "12542121351513629229",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8011776,
+        "peak_working_set": 8114176,
+        "private_bytes": 3956736,
+        "pagefile": 3956736,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 294
+    },
+    {
+      "decisions": 93,
+      "elapsed_ns": 21667699800,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 9,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 5400,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 93,
+          "ns": 42700,
+          "operation": "actions",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 422200,
+          "operation": "copy",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 93,
+          "ns": 170600,
+          "operation": "observe",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 637600,
+          "operation": "copy_apply",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 93,
+          "ns": 82900,
+          "operation": "apply",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5266283,
+          "ns": 1590200,
+          "operation": "actions",
+          "samples": 5158,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 19828600,
+          "operation": "copy",
+          "samples": 5158,
+          "scope": "search"
+        },
+        {
+          "calls": 938757,
+          "ns": 1374900,
+          "operation": "observe",
+          "samples": 932,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 30550000,
+          "operation": "copy_apply",
+          "samples": 5158,
+          "scope": "search"
+        },
+        {
+          "calls": 5266197,
+          "ns": 3741500,
+          "operation": "apply",
+          "samples": 5158,
+          "scope": "search"
+        },
+        {
+          "calls": 430086,
+          "ns": 10272200,
+          "operation": "fork",
+          "samples": 436,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 37460100,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 21664788700,
+      "searched_decisions": 86,
+      "seed": 251,
+      "trace_hash": "13954979103307720454",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8011776,
+        "peak_working_set": 8114176,
+        "private_bytes": 3956736,
+        "pagefile": 3956736,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 340
+    },
+    {
+      "decisions": 63,
+      "elapsed_ns": 16409306900,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 10,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 11600,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 63,
+          "ns": 33500,
+          "operation": "actions",
+          "samples": 63,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 290100,
+          "operation": "copy",
+          "samples": 63,
+          "scope": "real"
+        },
+        {
+          "calls": 63,
+          "ns": 122100,
+          "operation": "observe",
+          "samples": 63,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 497200,
+          "operation": "copy_apply",
+          "samples": 63,
+          "scope": "real"
+        },
+        {
+          "calls": 63,
+          "ns": 57700,
+          "operation": "apply",
+          "samples": 63,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 3788334,
+          "ns": 1226700,
+          "operation": "actions",
+          "samples": 3715,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 14935600,
+          "operation": "copy",
+          "samples": 3715,
+          "scope": "search"
+        },
+        {
+          "calls": 793851,
+          "ns": 1167000,
+          "operation": "observe",
+          "samples": 791,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 22378000,
+          "operation": "copy_apply",
+          "samples": 3715,
+          "scope": "search"
+        },
+        {
+          "calls": 3788275,
+          "ns": 2895100,
+          "operation": "apply",
+          "samples": 3715,
+          "scope": "search"
+        },
+        {
+          "calls": 295059,
+          "ns": 7947400,
+          "operation": "fork",
+          "samples": 304,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 27390300,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 16407845100,
+      "searched_decisions": 59,
+      "seed": 252,
+      "trace_hash": "15718769426459743003",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8011776,
+        "peak_working_set": 8114176,
+        "private_bytes": 3956736,
+        "pagefile": 3956736,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 256
+    },
+    {
+      "decisions": 84,
+      "elapsed_ns": 21936603900,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 11,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 9700,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 84,
+          "ns": 38100,
+          "operation": "actions",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 435100,
+          "operation": "copy",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 84,
+          "ns": 168800,
+          "operation": "observe",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 651100,
+          "operation": "copy_apply",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 84,
+          "ns": 78400,
+          "operation": "apply",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5268542,
+          "ns": 1689400,
+          "operation": "actions",
+          "samples": 5161,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 20742500,
+          "operation": "copy",
+          "samples": 5160,
+          "scope": "search"
+        },
+        {
+          "calls": 1047207,
+          "ns": 1495900,
+          "operation": "observe",
+          "samples": 1038,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 31075300,
+          "operation": "copy_apply",
+          "samples": 5160,
+          "scope": "search"
+        },
+        {
+          "calls": 5268461,
+          "ns": 3841100,
+          "operation": "apply",
+          "samples": 5160,
+          "scope": "search"
+        },
+        {
+          "calls": 405081,
+          "ns": 10618800,
+          "operation": "fork",
+          "samples": 411,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 37955400,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 21934719900,
+      "searched_decisions": 81,
+      "seed": 253,
+      "trace_hash": "5129952268427045628",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8146944,
+        "peak_working_set": 8146944,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 344
+    },
+    {
+      "decisions": 81,
+      "elapsed_ns": 20445022200,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 12,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 10000,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 81,
+          "ns": 32900,
+          "operation": "actions",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 508000,
+          "operation": "copy",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 81,
+          "ns": 138700,
+          "operation": "observe",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 689400,
+          "operation": "copy_apply",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 81,
+          "ns": 66100,
+          "operation": "apply",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4873708,
+          "ns": 1523400,
+          "operation": "actions",
+          "samples": 4775,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 18268600,
+          "operation": "copy",
+          "samples": 4775,
+          "scope": "search"
+        },
+        {
+          "calls": 898677,
+          "ns": 1311000,
+          "operation": "observe",
+          "samples": 893,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 27747200,
+          "operation": "copy_apply",
+          "samples": 4775,
+          "scope": "search"
+        },
+        {
+          "calls": 4873629,
+          "ns": 3541600,
+          "operation": "apply",
+          "samples": 4775,
+          "scope": "search"
+        },
+        {
+          "calls": 395079,
+          "ns": 9425900,
+          "operation": "fork",
+          "samples": 401,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 34171700,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 20443201700,
+      "searched_decisions": 79,
+      "seed": 254,
+      "trace_hash": "16840714655104079898",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8146944,
+        "peak_working_set": 8146944,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 321
+    },
+    {
+      "decisions": 89,
+      "elapsed_ns": 23918987300,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 13,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 9100,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 89,
+          "ns": 40800,
+          "operation": "actions",
+          "samples": 89,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 422600,
+          "operation": "copy",
+          "samples": 89,
+          "scope": "real"
+        },
+        {
+          "calls": 89,
+          "ns": 167600,
+          "operation": "observe",
+          "samples": 89,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 643900,
+          "operation": "copy_apply",
+          "samples": 89,
+          "scope": "real"
+        },
+        {
+          "calls": 89,
+          "ns": 80200,
+          "operation": "apply",
+          "samples": 89,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5705180,
+          "ns": 1819300,
+          "operation": "actions",
+          "samples": 5587,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 23046200,
+          "operation": "copy",
+          "samples": 5587,
+          "scope": "search"
+        },
+        {
+          "calls": 1141074,
+          "ns": 1642100,
+          "operation": "observe",
+          "samples": 1130,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 34961800,
+          "operation": "copy_apply",
+          "samples": 5587,
+          "scope": "search"
+        },
+        {
+          "calls": 5705092,
+          "ns": 4274700,
+          "operation": "apply",
+          "samples": 5587,
+          "scope": "search"
+        },
+        {
+          "calls": 440088,
+          "ns": 11683500,
+          "operation": "fork",
+          "samples": 445,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 42444500,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 23916829900,
+      "searched_decisions": 88,
+      "seed": 255,
+      "trace_hash": "5352402763134920846",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8146944,
+        "peak_working_set": 8146944,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 376
+    },
+    {
+      "decisions": 74,
+      "elapsed_ns": 18913711000,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 14,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 10600,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 74,
+          "ns": 33300,
+          "operation": "actions",
+          "samples": 74,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 322300,
+          "operation": "copy",
+          "samples": 74,
+          "scope": "real"
+        },
+        {
+          "calls": 74,
+          "ns": 127200,
+          "operation": "observe",
+          "samples": 74,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 491400,
+          "operation": "copy_apply",
+          "samples": 74,
+          "scope": "real"
+        },
+        {
+          "calls": 74,
+          "ns": 63500,
+          "operation": "apply",
+          "samples": 74,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4653752,
+          "ns": 1472200,
+          "operation": "actions",
+          "samples": 4560,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 17586400,
+          "operation": "copy",
+          "samples": 4560,
+          "scope": "search"
+        },
+        {
+          "calls": 913071,
+          "ns": 1350600,
+          "operation": "observe",
+          "samples": 907,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 26525900,
+          "operation": "copy_apply",
+          "samples": 4560,
+          "scope": "search"
+        },
+        {
+          "calls": 4653680,
+          "ns": 3322700,
+          "operation": "apply",
+          "samples": 4560,
+          "scope": "search"
+        },
+        {
+          "calls": 360072,
+          "ns": 8650200,
+          "operation": "fork",
+          "samples": 367,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 32398400,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 18912153000,
+      "searched_decisions": 72,
+      "seed": 256,
+      "trace_hash": "12928285940651439670",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8093696,
+        "peak_working_set": 8146944,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4112384
+      },
+      "memory_samples": 296
+    },
+    {
+      "decisions": 102,
+      "elapsed_ns": 26151583900,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 15,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 9900,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 102,
+          "ns": 50000,
+          "operation": "actions",
+          "samples": 102,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 545500,
+          "operation": "copy",
+          "samples": 102,
+          "scope": "real"
+        },
+        {
+          "calls": 102,
+          "ns": 203500,
+          "operation": "observe",
+          "samples": 102,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 781700,
+          "operation": "copy_apply",
+          "samples": 102,
+          "scope": "real"
+        },
+        {
+          "calls": 102,
+          "ns": 83500,
+          "operation": "apply",
+          "samples": 102,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5820487,
+          "ns": 2071400,
+          "operation": "actions",
+          "samples": 5700,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 24624000,
+          "operation": "copy",
+          "samples": 5699,
+          "scope": "search"
+        },
+        {
+          "calls": 1119525,
+          "ns": 1759000,
+          "operation": "observe",
+          "samples": 1109,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 37578600,
+          "operation": "copy_apply",
+          "samples": 5699,
+          "scope": "search"
+        },
+        {
+          "calls": 5820396,
+          "ns": 4442000,
+          "operation": "apply",
+          "samples": 5699,
+          "scope": "search"
+        },
+        {
+          "calls": 455091,
+          "ns": 13156800,
+          "operation": "fork",
+          "samples": 460,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 45874400,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 26149351900,
+      "searched_decisions": 91,
+      "seed": 257,
+      "trace_hash": "3057386637350035398",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8273920,
+        "peak_working_set": 8273920,
+        "private_bytes": 4153344,
+        "pagefile": 4153344,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 409
+    },
+    {
+      "decisions": 101,
+      "elapsed_ns": 26417202800,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 16,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 12000,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 101,
+          "ns": 44400,
+          "operation": "actions",
+          "samples": 101,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 498600,
+          "operation": "copy",
+          "samples": 101,
+          "scope": "real"
+        },
+        {
+          "calls": 101,
+          "ns": 205800,
+          "operation": "observe",
+          "samples": 101,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 759100,
+          "operation": "copy_apply",
+          "samples": 101,
+          "scope": "real"
+        },
+        {
+          "calls": 101,
+          "ns": 90200,
+          "operation": "apply",
+          "samples": 101,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 6016743,
+          "ns": 1982500,
+          "operation": "actions",
+          "samples": 5891,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 24217100,
+          "operation": "copy",
+          "samples": 5891,
+          "scope": "search"
+        },
+        {
+          "calls": 1136910,
+          "ns": 1710000,
+          "operation": "observe",
+          "samples": 1126,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 36440400,
+          "operation": "copy_apply",
+          "samples": 5891,
+          "scope": "search"
+        },
+        {
+          "calls": 6016647,
+          "ns": 4470200,
+          "operation": "apply",
+          "samples": 5891,
+          "scope": "search"
+        },
+        {
+          "calls": 480096,
+          "ns": 12564300,
+          "operation": "fork",
+          "samples": 484,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 44514500,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 26414697600,
+      "searched_decisions": 96,
+      "seed": 258,
+      "trace_hash": "12865864054439237014",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8282112,
+        "peak_working_set": 8282112,
+        "private_bytes": 4153344,
+        "pagefile": 4153344,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 411
+    },
+    {
+      "decisions": 110,
+      "elapsed_ns": 27504541100,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 17,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 10200,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 110,
+          "ns": 47300,
+          "operation": "actions",
+          "samples": 110,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 575800,
+          "operation": "copy",
+          "samples": 110,
+          "scope": "real"
+        },
+        {
+          "calls": 110,
+          "ns": 224200,
+          "operation": "observe",
+          "samples": 110,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 851100,
+          "operation": "copy_apply",
+          "samples": 110,
+          "scope": "real"
+        },
+        {
+          "calls": 110,
+          "ns": 99500,
+          "operation": "apply",
+          "samples": 110,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 6081096,
+          "ns": 2045300,
+          "operation": "actions",
+          "samples": 5954,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 24259600,
+          "operation": "copy",
+          "samples": 5954,
+          "scope": "search"
+        },
+        {
+          "calls": 1047711,
+          "ns": 1545500,
+          "operation": "observe",
+          "samples": 1039,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 37141000,
+          "operation": "copy_apply",
+          "samples": 5954,
+          "scope": "search"
+        },
+        {
+          "calls": 6080990,
+          "ns": 4569600,
+          "operation": "apply",
+          "samples": 5954,
+          "scope": "search"
+        },
+        {
+          "calls": 530106,
+          "ns": 13883100,
+          "operation": "fork",
+          "samples": 533,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 45632400,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 27502064900,
+      "searched_decisions": 106,
+      "seed": 259,
+      "trace_hash": "3995416334617685582",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8282112,
+        "peak_working_set": 8282112,
+        "private_bytes": 4153344,
+        "pagefile": 4153344,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 433
+    },
+    {
+      "decisions": 105,
+      "elapsed_ns": 26288244500,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 18,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 10300,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 105,
+          "ns": 39400,
+          "operation": "actions",
+          "samples": 105,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 514100,
+          "operation": "copy",
+          "samples": 105,
+          "scope": "real"
+        },
+        {
+          "calls": 105,
+          "ns": 195900,
+          "operation": "observe",
+          "samples": 105,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 751700,
+          "operation": "copy_apply",
+          "samples": 105,
+          "scope": "real"
+        },
+        {
+          "calls": 105,
+          "ns": 86100,
+          "operation": "apply",
+          "samples": 105,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 6349278,
+          "ns": 1972400,
+          "operation": "actions",
+          "samples": 6216,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 24009600,
+          "operation": "copy",
+          "samples": 6216,
+          "scope": "search"
+        },
+        {
+          "calls": 1223916,
+          "ns": 1733800,
+          "operation": "observe",
+          "samples": 1211,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 36200500,
+          "operation": "copy_apply",
+          "samples": 6216,
+          "scope": "search"
+        },
+        {
+          "calls": 6349178,
+          "ns": 4398200,
+          "operation": "apply",
+          "samples": 6216,
+          "scope": "search"
+        },
+        {
+          "calls": 500100,
+          "ns": 12292300,
+          "operation": "fork",
+          "samples": 504,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 44468700,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 26285905400,
+      "searched_decisions": 100,
+      "seed": 260,
+      "trace_hash": "1214222391817816247",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8282112,
+        "peak_working_set": 8282112,
+        "private_bytes": 4153344,
+        "pagefile": 4153344,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 412
+    },
+    {
+      "decisions": 54,
+      "elapsed_ns": 12475725400,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 19,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 12600,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 54,
+          "ns": 21600,
+          "operation": "actions",
+          "samples": 54,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 265200,
+          "operation": "copy",
+          "samples": 54,
+          "scope": "real"
+        },
+        {
+          "calls": 54,
+          "ns": 99100,
+          "operation": "observe",
+          "samples": 54,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 412000,
+          "operation": "copy_apply",
+          "samples": 54,
+          "scope": "real"
+        },
+        {
+          "calls": 54,
+          "ns": 53600,
+          "operation": "apply",
+          "samples": 54,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 3035708,
+          "ns": 902200,
+          "operation": "actions",
+          "samples": 2980,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 11585100,
+          "operation": "copy",
+          "samples": 2980,
+          "scope": "search"
+        },
+        {
+          "calls": 560313,
+          "ns": 804800,
+          "operation": "observe",
+          "samples": 563,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 17329300,
+          "operation": "copy_apply",
+          "samples": 2980,
+          "scope": "search"
+        },
+        {
+          "calls": 3035657,
+          "ns": 2145200,
+          "operation": "apply",
+          "samples": 2980,
+          "scope": "search"
+        },
+        {
+          "calls": 255051,
+          "ns": 6272900,
+          "operation": "fork",
+          "samples": 265,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 21210600,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 12474540100,
+      "searched_decisions": 51,
+      "seed": 261,
+      "trace_hash": "3822412356929196717",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8278016,
+        "peak_working_set": 8282112,
+        "private_bytes": 4153344,
+        "pagefile": 4153344,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 198
+    },
+    {
+      "decisions": 103,
+      "elapsed_ns": 25382921100,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 20,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 11400,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 103,
+          "ns": 48600,
+          "operation": "actions",
+          "samples": 103,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 508400,
+          "operation": "copy",
+          "samples": 103,
+          "scope": "real"
+        },
+        {
+          "calls": 103,
+          "ns": 209300,
+          "operation": "observe",
+          "samples": 103,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 777800,
+          "operation": "copy_apply",
+          "samples": 103,
+          "scope": "real"
+        },
+        {
+          "calls": 103,
+          "ns": 89600,
+          "operation": "apply",
+          "samples": 103,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5798010,
+          "ns": 1862100,
+          "operation": "actions",
+          "samples": 5678,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 22515500,
+          "operation": "copy",
+          "samples": 5678,
+          "scope": "search"
+        },
+        {
+          "calls": 1018869,
+          "ns": 1561300,
+          "operation": "observe",
+          "samples": 1010,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 34073100,
+          "operation": "copy_apply",
+          "samples": 5678,
+          "scope": "search"
+        },
+        {
+          "calls": 5797912,
+          "ns": 4308300,
+          "operation": "apply",
+          "samples": 5678,
+          "scope": "search"
+        },
+        {
+          "calls": 490098,
+          "ns": 12495600,
+          "operation": "fork",
+          "samples": 494,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 41843400,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 25380172400,
+      "searched_decisions": 98,
+      "seed": 262,
+      "trace_hash": "6439662810876063106",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7991296,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 399
+    },
+    {
+      "decisions": 100,
+      "elapsed_ns": 25272038200,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 21,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 5400,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 100,
+          "ns": 47400,
+          "operation": "actions",
+          "samples": 100,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 496300,
+          "operation": "copy",
+          "samples": 100,
+          "scope": "real"
+        },
+        {
+          "calls": 100,
+          "ns": 190300,
+          "operation": "observe",
+          "samples": 100,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 769500,
+          "operation": "copy_apply",
+          "samples": 100,
+          "scope": "real"
+        },
+        {
+          "calls": 100,
+          "ns": 86400,
+          "operation": "apply",
+          "samples": 100,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5654189,
+          "ns": 1918300,
+          "operation": "actions",
+          "samples": 5537,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 23417200,
+          "operation": "copy",
+          "samples": 5537,
+          "scope": "search"
+        },
+        {
+          "calls": 1052442,
+          "ns": 1600100,
+          "operation": "observe",
+          "samples": 1043,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 35103600,
+          "operation": "copy_apply",
+          "samples": 5537,
+          "scope": "search"
+        },
+        {
+          "calls": 5654097,
+          "ns": 4260800,
+          "operation": "apply",
+          "samples": 5537,
+          "scope": "search"
+        },
+        {
+          "calls": 460092,
+          "ns": 11689300,
+          "operation": "fork",
+          "samples": 465,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 43664300,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 25269865500,
+      "searched_decisions": 92,
+      "seed": 263,
+      "trace_hash": "4361016374726610826",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8257536,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 404
+    },
+    {
+      "decisions": 84,
+      "elapsed_ns": 22006375900,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 22,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 10300,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 84,
+          "ns": 34300,
+          "operation": "actions",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 419000,
+          "operation": "copy",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 84,
+          "ns": 158200,
+          "operation": "observe",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 606400,
+          "operation": "copy_apply",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 84,
+          "ns": 66800,
+          "operation": "apply",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5122895,
+          "ns": 1744000,
+          "operation": "actions",
+          "samples": 5018,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 21970500,
+          "operation": "copy",
+          "samples": 5018,
+          "scope": "search"
+        },
+        {
+          "calls": 1033407,
+          "ns": 1568200,
+          "operation": "observe",
+          "samples": 1025,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 32324900,
+          "operation": "copy_apply",
+          "samples": 5018,
+          "scope": "search"
+        },
+        {
+          "calls": 5122817,
+          "ns": 3918100,
+          "operation": "apply",
+          "samples": 5018,
+          "scope": "search"
+        },
+        {
+          "calls": 390078,
+          "ns": 9809900,
+          "operation": "fork",
+          "samples": 396,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 39401900,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 22004481900,
+      "searched_decisions": 78,
+      "seed": 264,
+      "trace_hash": "15657813228358177507",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8007680,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 358
+    },
+    {
+      "decisions": 87,
+      "elapsed_ns": 21599242300,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 23,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 7800,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 87,
+          "ns": 38200,
+          "operation": "actions",
+          "samples": 87,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 404300,
+          "operation": "copy",
+          "samples": 87,
+          "scope": "real"
+        },
+        {
+          "calls": 87,
+          "ns": 153400,
+          "operation": "observe",
+          "samples": 87,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 601300,
+          "operation": "copy_apply",
+          "samples": 87,
+          "scope": "real"
+        },
+        {
+          "calls": 87,
+          "ns": 77800,
+          "operation": "apply",
+          "samples": 87,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5409561,
+          "ns": 1662300,
+          "operation": "actions",
+          "samples": 5298,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 21133000,
+          "operation": "copy",
+          "samples": 5298,
+          "scope": "search"
+        },
+        {
+          "calls": 1052916,
+          "ns": 1626600,
+          "operation": "observe",
+          "samples": 1044,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 31347200,
+          "operation": "copy_apply",
+          "samples": 5298,
+          "scope": "search"
+        },
+        {
+          "calls": 5409477,
+          "ns": 3792600,
+          "operation": "apply",
+          "samples": 5298,
+          "scope": "search"
+        },
+        {
+          "calls": 420084,
+          "ns": 9890400,
+          "operation": "fork",
+          "samples": 426,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 38083900,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 21597448800,
+      "searched_decisions": 84,
+      "seed": 265,
+      "trace_hash": "11513822349801105625",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8257536,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 341
+    },
+    {
+      "decisions": 81,
+      "elapsed_ns": 18990074100,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 24,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 10300,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 81,
+          "ns": 33300,
+          "operation": "actions",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 443900,
+          "operation": "copy",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 81,
+          "ns": 147800,
+          "operation": "observe",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 639100,
+          "operation": "copy_apply",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 81,
+          "ns": 70400,
+          "operation": "apply",
+          "samples": 81,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4186854,
+          "ns": 1324900,
+          "operation": "actions",
+          "samples": 4104,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 17509200,
+          "operation": "copy",
+          "samples": 4104,
+          "scope": "search"
+        },
+        {
+          "calls": 671499,
+          "ns": 1024500,
+          "operation": "observe",
+          "samples": 671,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 26196500,
+          "operation": "copy_apply",
+          "samples": 4104,
+          "scope": "search"
+        },
+        {
+          "calls": 4186779,
+          "ns": 3375900,
+          "operation": "apply",
+          "samples": 4104,
+          "scope": "search"
+        },
+        {
+          "calls": 375075,
+          "ns": 9817100,
+          "operation": "fork",
+          "samples": 382,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 31977700,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 18988320800,
+      "searched_decisions": 75,
+      "seed": 266,
+      "trace_hash": "16480860623957025552",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8019968,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 307
+    },
+    {
+      "decisions": 93,
+      "elapsed_ns": 26061860200,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 25,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 11900,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 93,
+          "ns": 45400,
+          "operation": "actions",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 536200,
+          "operation": "copy",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 93,
+          "ns": 277800,
+          "operation": "observe",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 856000,
+          "operation": "copy_apply",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 93,
+          "ns": 98700,
+          "operation": "apply",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5162159,
+          "ns": 1844100,
+          "operation": "actions",
+          "samples": 5057,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 24029200,
+          "operation": "copy",
+          "samples": 5057,
+          "scope": "search"
+        },
+        {
+          "calls": 880350,
+          "ns": 1430200,
+          "operation": "observe",
+          "samples": 875,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 35773400,
+          "operation": "copy_apply",
+          "samples": 5057,
+          "scope": "search"
+        },
+        {
+          "calls": 5162070,
+          "ns": 4333800,
+          "operation": "apply",
+          "samples": 5057,
+          "scope": "search"
+        },
+        {
+          "calls": 445089,
+          "ns": 12719400,
+          "operation": "fork",
+          "samples": 450,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 43705400,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 26059383600,
+      "searched_decisions": 89,
+      "seed": 267,
+      "trace_hash": "3505971634190907658",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7991296,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 435
+    },
+    {
+      "decisions": 84,
+      "elapsed_ns": 22672273400,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 26,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 4700,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 84,
+          "ns": 39700,
+          "operation": "actions",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 454300,
+          "operation": "copy",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 84,
+          "ns": 164600,
+          "operation": "observe",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 684900,
+          "operation": "copy_apply",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 84,
+          "ns": 77600,
+          "operation": "apply",
+          "samples": 84,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5226162,
+          "ns": 1711100,
+          "operation": "actions",
+          "samples": 5119,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 23737700,
+          "operation": "copy",
+          "samples": 5119,
+          "scope": "search"
+        },
+        {
+          "calls": 990819,
+          "ns": 1452500,
+          "operation": "observe",
+          "samples": 983,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 34534700,
+          "operation": "copy_apply",
+          "samples": 5119,
+          "scope": "search"
+        },
+        {
+          "calls": 5226078,
+          "ns": 3817100,
+          "operation": "apply",
+          "samples": 5119,
+          "scope": "search"
+        },
+        {
+          "calls": 420084,
+          "ns": 10255400,
+          "operation": "fork",
+          "samples": 426,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 41682100,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 22669632900,
+      "searched_decisions": 84,
+      "seed": 268,
+      "trace_hash": "3315020067950432254",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8024064,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 387
+    },
+    {
+      "decisions": 93,
+      "elapsed_ns": 26674860300,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 27,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 13900,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 93,
+          "ns": 45200,
+          "operation": "actions",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 495200,
+          "operation": "copy",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 93,
+          "ns": 188800,
+          "operation": "observe",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 750400,
+          "operation": "copy_apply",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 93,
+          "ns": 86100,
+          "operation": "apply",
+          "samples": 93,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5690127,
+          "ns": 1935500,
+          "operation": "actions",
+          "samples": 5572,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 26361800,
+          "operation": "copy",
+          "samples": 5572,
+          "scope": "search"
+        },
+        {
+          "calls": 1089012,
+          "ns": 1738700,
+          "operation": "observe",
+          "samples": 1079,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 39104400,
+          "operation": "copy_apply",
+          "samples": 5572,
+          "scope": "search"
+        },
+        {
+          "calls": 5690036,
+          "ns": 4725200,
+          "operation": "apply",
+          "samples": 5572,
+          "scope": "search"
+        },
+        {
+          "calls": 455091,
+          "ns": 12603600,
+          "operation": "fork",
+          "samples": 460,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 47415100,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 26672538600,
+      "searched_decisions": 91,
+      "seed": 269,
+      "trace_hash": "15266184177356733252",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8257536,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 447
+    },
+    {
+      "decisions": 85,
+      "elapsed_ns": 24048209600,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 28,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 8400,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 85,
+          "ns": 45600,
+          "operation": "actions",
+          "samples": 85,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 609600,
+          "operation": "copy",
+          "samples": 85,
+          "scope": "real"
+        },
+        {
+          "calls": 85,
+          "ns": 194200,
+          "operation": "observe",
+          "samples": 85,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 890600,
+          "operation": "copy_apply",
+          "samples": 85,
+          "scope": "real"
+        },
+        {
+          "calls": 85,
+          "ns": 104200,
+          "operation": "apply",
+          "samples": 85,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4371845,
+          "ns": 1604800,
+          "operation": "actions",
+          "samples": 4285,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 22830900,
+          "operation": "copy",
+          "samples": 4285,
+          "scope": "search"
+        },
+        {
+          "calls": 749715,
+          "ns": 1294900,
+          "operation": "observe",
+          "samples": 748,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 33748800,
+          "operation": "copy_apply",
+          "samples": 4285,
+          "scope": "search"
+        },
+        {
+          "calls": 4371763,
+          "ns": 3849500,
+          "operation": "apply",
+          "samples": 4285,
+          "scope": "search"
+        },
+        {
+          "calls": 410082,
+          "ns": 15063400,
+          "operation": "fork",
+          "samples": 416,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 41095200,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 24045663400,
+      "searched_decisions": 82,
+      "seed": 270,
+      "trace_hash": "3974841588732995669",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8167424,
+        "peak_working_set": 8282112,
+        "private_bytes": 4120576,
+        "pagefile": 4120576,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 411
+    },
+    {
+      "decisions": 100,
+      "elapsed_ns": 26959791200,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 29,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 9100,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 100,
+          "ns": 39400,
+          "operation": "actions",
+          "samples": 100,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 506100,
+          "operation": "copy",
+          "samples": 100,
+          "scope": "real"
+        },
+        {
+          "calls": 100,
+          "ns": 189000,
+          "operation": "observe",
+          "samples": 100,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 759100,
+          "operation": "copy_apply",
+          "samples": 100,
+          "scope": "real"
+        },
+        {
+          "calls": 100,
+          "ns": 85500,
+          "operation": "apply",
+          "samples": 100,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5780373,
+          "ns": 1985500,
+          "operation": "actions",
+          "samples": 5660,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 26912100,
+          "operation": "copy",
+          "samples": 5660,
+          "scope": "search"
+        },
+        {
+          "calls": 1095378,
+          "ns": 1669900,
+          "operation": "observe",
+          "samples": 1085,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 39934700,
+          "operation": "copy_apply",
+          "samples": 5660,
+          "scope": "search"
+        },
+        {
+          "calls": 5780280,
+          "ns": 4562500,
+          "operation": "apply",
+          "samples": 5660,
+          "scope": "search"
+        },
+        {
+          "calls": 465093,
+          "ns": 12581000,
+          "operation": "fork",
+          "samples": 470,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 48920900,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 26956978200,
+      "searched_decisions": 93,
+      "seed": 271,
+      "trace_hash": "12963550004513769369",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8024064,
+        "peak_working_set": 8282112,
+        "private_bytes": 4120576,
+        "pagefile": 4120576,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 454
+    },
+    {
+      "decisions": 73,
+      "elapsed_ns": 19635787600,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 30,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 9000,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 73,
+          "ns": 30100,
+          "operation": "actions",
+          "samples": 73,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 396100,
+          "operation": "copy",
+          "samples": 73,
+          "scope": "real"
+        },
+        {
+          "calls": 73,
+          "ns": 141700,
+          "operation": "observe",
+          "samples": 73,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 583900,
+          "operation": "copy_apply",
+          "samples": 73,
+          "scope": "real"
+        },
+        {
+          "calls": 73,
+          "ns": 67200,
+          "operation": "apply",
+          "samples": 73,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4319247,
+          "ns": 1452700,
+          "operation": "actions",
+          "samples": 4234,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 19871900,
+          "operation": "copy",
+          "samples": 4233,
+          "scope": "search"
+        },
+        {
+          "calls": 813726,
+          "ns": 1281000,
+          "operation": "observe",
+          "samples": 810,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 29041200,
+          "operation": "copy_apply",
+          "samples": 4233,
+          "scope": "search"
+        },
+        {
+          "calls": 4319178,
+          "ns": 4092000,
+          "operation": "apply",
+          "samples": 4233,
+          "scope": "search"
+        },
+        {
+          "calls": 345069,
+          "ns": 8637200,
+          "operation": "fork",
+          "samples": 352,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 35293200,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 19633702100,
+      "searched_decisions": 69,
+      "seed": 272,
+      "trace_hash": "16404782204686027833",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7974912,
+        "peak_working_set": 8282112,
+        "private_bytes": 4120576,
+        "pagefile": 4120576,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 334
+    },
+    {
+      "decisions": 53,
+      "elapsed_ns": 14622652600,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 31,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 12800,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 53,
+          "ns": 22000,
+          "operation": "actions",
+          "samples": 53,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 245400,
+          "operation": "copy",
+          "samples": 53,
+          "scope": "real"
+        },
+        {
+          "calls": 53,
+          "ns": 93600,
+          "operation": "observe",
+          "samples": 53,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 368900,
+          "operation": "copy_apply",
+          "samples": 53,
+          "scope": "real"
+        },
+        {
+          "calls": 53,
+          "ns": 52400,
+          "operation": "apply",
+          "samples": 53,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 3355508,
+          "ns": 1112800,
+          "operation": "actions",
+          "samples": 3292,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 14098300,
+          "operation": "copy",
+          "samples": 3292,
+          "scope": "search"
+        },
+        {
+          "calls": 689229,
+          "ns": 1067800,
+          "operation": "observe",
+          "samples": 689,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 21385700,
+          "operation": "copy_apply",
+          "samples": 3292,
+          "scope": "search"
+        },
+        {
+          "calls": 3355456,
+          "ns": 2473300,
+          "operation": "apply",
+          "samples": 3292,
+          "scope": "search"
+        },
+        {
+          "calls": 260052,
+          "ns": 6520900,
+          "operation": "fork",
+          "samples": 269,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 26299200,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 14621183200,
+      "searched_decisions": 52,
+      "seed": 273,
+      "trace_hash": "8806274622221131171",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7970816,
+        "peak_working_set": 8282112,
+        "private_bytes": 4120576,
+        "pagefile": 4120576,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 237
+    },
+    {
+      "decisions": 86,
+      "elapsed_ns": 23432807700,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 32,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 14100,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 86,
+          "ns": 41600,
+          "operation": "actions",
+          "samples": 86,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 483400,
+          "operation": "copy",
+          "samples": 86,
+          "scope": "real"
+        },
+        {
+          "calls": 86,
+          "ns": 172400,
+          "operation": "observe",
+          "samples": 86,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 699200,
+          "operation": "copy_apply",
+          "samples": 86,
+          "scope": "real"
+        },
+        {
+          "calls": 86,
+          "ns": 89400,
+          "operation": "apply",
+          "samples": 86,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5216212,
+          "ns": 1794500,
+          "operation": "actions",
+          "samples": 5109,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 22295300,
+          "operation": "copy",
+          "samples": 5109,
+          "scope": "search"
+        },
+        {
+          "calls": 997932,
+          "ns": 1526800,
+          "operation": "observe",
+          "samples": 990,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 33596300,
+          "operation": "copy_apply",
+          "samples": 5109,
+          "scope": "search"
+        },
+        {
+          "calls": 5216128,
+          "ns": 4173900,
+          "operation": "apply",
+          "samples": 5109,
+          "scope": "search"
+        },
+        {
+          "calls": 420084,
+          "ns": 11200100,
+          "operation": "fork",
+          "samples": 426,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 40932400,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 23430724600,
+      "searched_decisions": 84,
+      "seed": 274,
+      "trace_hash": "4225180061254111888",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8257536,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 373
+    },
+    {
+      "decisions": 96,
+      "elapsed_ns": 28226430800,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 33,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 16200,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 96,
+          "ns": 52600,
+          "operation": "actions",
+          "samples": 96,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 636900,
+          "operation": "copy",
+          "samples": 96,
+          "scope": "real"
+        },
+        {
+          "calls": 96,
+          "ns": 196000,
+          "operation": "observe",
+          "samples": 96,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 885200,
+          "operation": "copy_apply",
+          "samples": 96,
+          "scope": "real"
+        },
+        {
+          "calls": 96,
+          "ns": 92000,
+          "operation": "apply",
+          "samples": 96,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 6348050,
+          "ns": 2191700,
+          "operation": "actions",
+          "samples": 6215,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 27197900,
+          "operation": "copy",
+          "samples": 6215,
+          "scope": "search"
+        },
+        {
+          "calls": 1273572,
+          "ns": 1919800,
+          "operation": "observe",
+          "samples": 1259,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 41106700,
+          "operation": "copy_apply",
+          "samples": 6215,
+          "scope": "search"
+        },
+        {
+          "calls": 6347954,
+          "ns": 4947300,
+          "operation": "apply",
+          "samples": 6215,
+          "scope": "search"
+        },
+        {
+          "calls": 480096,
+          "ns": 13381200,
+          "operation": "fork",
+          "samples": 484,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 50759000,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 28222521900,
+      "searched_decisions": 96,
+      "seed": 275,
+      "trace_hash": "16612268137293023241",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7991296,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 450
+    },
+    {
+      "decisions": 103,
+      "elapsed_ns": 27657033600,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 34,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 12800,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 103,
+          "ns": 45200,
+          "operation": "actions",
+          "samples": 103,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 500000,
+          "operation": "copy",
+          "samples": 103,
+          "scope": "real"
+        },
+        {
+          "calls": 103,
+          "ns": 203600,
+          "operation": "observe",
+          "samples": 103,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 758900,
+          "operation": "copy_apply",
+          "samples": 103,
+          "scope": "real"
+        },
+        {
+          "calls": 103,
+          "ns": 92600,
+          "operation": "apply",
+          "samples": 103,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 6297581,
+          "ns": 2069400,
+          "operation": "actions",
+          "samples": 6165,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 26574100,
+          "operation": "copy",
+          "samples": 6165,
+          "scope": "search"
+        },
+        {
+          "calls": 1219242,
+          "ns": 2084300,
+          "operation": "observe",
+          "samples": 1206,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 39668600,
+          "operation": "copy_apply",
+          "samples": 6165,
+          "scope": "search"
+        },
+        {
+          "calls": 6297482,
+          "ns": 4828100,
+          "operation": "apply",
+          "samples": 6165,
+          "scope": "search"
+        },
+        {
+          "calls": 495099,
+          "ns": 13085200,
+          "operation": "fork",
+          "samples": 499,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 48915100,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 27654303800,
+      "searched_decisions": 99,
+      "seed": 276,
+      "trace_hash": "13489832036115565300",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8257536,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 436
+    },
+    {
+      "decisions": 120,
+      "elapsed_ns": 31392705100,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 35,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 7800,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 120,
+          "ns": 59200,
+          "operation": "actions",
+          "samples": 120,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 620500,
+          "operation": "copy",
+          "samples": 120,
+          "scope": "real"
+        },
+        {
+          "calls": 120,
+          "ns": 247200,
+          "operation": "observe",
+          "samples": 120,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 919200,
+          "operation": "copy_apply",
+          "samples": 120,
+          "scope": "real"
+        },
+        {
+          "calls": 120,
+          "ns": 101400,
+          "operation": "apply",
+          "samples": 120,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 6754522,
+          "ns": 2405100,
+          "operation": "actions",
+          "samples": 6612,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 27992000,
+          "operation": "copy",
+          "samples": 6612,
+          "scope": "search"
+        },
+        {
+          "calls": 1193946,
+          "ns": 1795600,
+          "operation": "observe",
+          "samples": 1181,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 42593000,
+          "operation": "copy_apply",
+          "samples": 6612,
+          "scope": "search"
+        },
+        {
+          "calls": 6754404,
+          "ns": 5152600,
+          "operation": "apply",
+          "samples": 6612,
+          "scope": "search"
+        },
+        {
+          "calls": 590118,
+          "ns": 14926900,
+          "operation": "fork",
+          "samples": 592,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 52165000,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 31389243500,
+      "searched_decisions": 118,
+      "seed": 277,
+      "trace_hash": "13890565896441839951",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8249344,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 495
+    },
+    {
+      "decisions": 111,
+      "elapsed_ns": 27072389800,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 36,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 6300,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 111,
+          "ns": 44700,
+          "operation": "actions",
+          "samples": 111,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 520400,
+          "operation": "copy",
+          "samples": 111,
+          "scope": "real"
+        },
+        {
+          "calls": 111,
+          "ns": 212600,
+          "operation": "observe",
+          "samples": 111,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 773000,
+          "operation": "copy_apply",
+          "samples": 111,
+          "scope": "real"
+        },
+        {
+          "calls": 111,
+          "ns": 90700,
+          "operation": "apply",
+          "samples": 111,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 6030969,
+          "ns": 1953600,
+          "operation": "actions",
+          "samples": 5905,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 25035800,
+          "operation": "copy",
+          "samples": 5905,
+          "scope": "search"
+        },
+        {
+          "calls": 1056651,
+          "ns": 1497600,
+          "operation": "observe",
+          "samples": 1047,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 37596700,
+          "operation": "copy_apply",
+          "samples": 5905,
+          "scope": "search"
+        },
+        {
+          "calls": 6030865,
+          "ns": 4582200,
+          "operation": "apply",
+          "samples": 5905,
+          "scope": "search"
+        },
+        {
+          "calls": 520104,
+          "ns": 12858300,
+          "operation": "fork",
+          "samples": 523,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 45741800,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 27069960700,
+      "searched_decisions": 104,
+      "seed": 278,
+      "trace_hash": "3103597772393036756",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8257536,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 429
+    },
+    {
+      "decisions": 99,
+      "elapsed_ns": 25874944600,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 37,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 7300,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 99,
+          "ns": 49400,
+          "operation": "actions",
+          "samples": 99,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 522300,
+          "operation": "copy",
+          "samples": 99,
+          "scope": "real"
+        },
+        {
+          "calls": 99,
+          "ns": 213000,
+          "operation": "observe",
+          "samples": 99,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 789600,
+          "operation": "copy_apply",
+          "samples": 99,
+          "scope": "real"
+        },
+        {
+          "calls": 99,
+          "ns": 103700,
+          "operation": "apply",
+          "samples": 99,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5749777,
+          "ns": 1914400,
+          "operation": "actions",
+          "samples": 5631,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 24628300,
+          "operation": "copy",
+          "samples": 5630,
+          "scope": "search"
+        },
+        {
+          "calls": 1062885,
+          "ns": 1741500,
+          "operation": "observe",
+          "samples": 1053,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 36816600,
+          "operation": "copy_apply",
+          "samples": 5630,
+          "scope": "search"
+        },
+        {
+          "calls": 5749683,
+          "ns": 4461000,
+          "operation": "apply",
+          "samples": 5630,
+          "scope": "search"
+        },
+        {
+          "calls": 470094,
+          "ns": 12614000,
+          "operation": "fork",
+          "samples": 475,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 45091400,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 25871715700,
+      "searched_decisions": 94,
+      "seed": 279,
+      "trace_hash": "8018629647780031566",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8257536,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 416
+    },
+    {
+      "decisions": 68,
+      "elapsed_ns": 16348612600,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 38,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 12400,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 68,
+          "ns": 30300,
+          "operation": "actions",
+          "samples": 68,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 378500,
+          "operation": "copy",
+          "samples": 68,
+          "scope": "real"
+        },
+        {
+          "calls": 68,
+          "ns": 112900,
+          "operation": "observe",
+          "samples": 68,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 542200,
+          "operation": "copy_apply",
+          "samples": 68,
+          "scope": "real"
+        },
+        {
+          "calls": 68,
+          "ns": 60500,
+          "operation": "apply",
+          "samples": 68,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4114591,
+          "ns": 1241300,
+          "operation": "actions",
+          "samples": 4034,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 15310300,
+          "operation": "copy",
+          "samples": 4034,
+          "scope": "search"
+        },
+        {
+          "calls": 834450,
+          "ns": 1310900,
+          "operation": "observe",
+          "samples": 830,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 22909400,
+          "operation": "copy_apply",
+          "samples": 4034,
+          "scope": "search"
+        },
+        {
+          "calls": 4114527,
+          "ns": 2929400,
+          "operation": "apply",
+          "samples": 4034,
+          "scope": "search"
+        },
+        {
+          "calls": 320064,
+          "ns": 7764300,
+          "operation": "fork",
+          "samples": 328,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 28351300,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 16347073500,
+      "searched_decisions": 64,
+      "seed": 280,
+      "trace_hash": "1748093333446815313",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8257536,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 256
+    },
+    {
+      "decisions": 79,
+      "elapsed_ns": 20466167500,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 39,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 4200,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 79,
+          "ns": 36700,
+          "operation": "actions",
+          "samples": 79,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 388500,
+          "operation": "copy",
+          "samples": 79,
+          "scope": "real"
+        },
+        {
+          "calls": 79,
+          "ns": 140700,
+          "operation": "observe",
+          "samples": 79,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 581000,
+          "operation": "copy_apply",
+          "samples": 79,
+          "scope": "real"
+        },
+        {
+          "calls": 79,
+          "ns": 69600,
+          "operation": "apply",
+          "samples": 79,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4614401,
+          "ns": 1469200,
+          "operation": "actions",
+          "samples": 4522,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 18895500,
+          "operation": "copy",
+          "samples": 4522,
+          "scope": "search"
+        },
+        {
+          "calls": 848880,
+          "ns": 1242700,
+          "operation": "observe",
+          "samples": 844,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 28508500,
+          "operation": "copy_apply",
+          "samples": 4522,
+          "scope": "search"
+        },
+        {
+          "calls": 4614326,
+          "ns": 3588400,
+          "operation": "apply",
+          "samples": 4522,
+          "scope": "search"
+        },
+        {
+          "calls": 375075,
+          "ns": 9657800,
+          "operation": "fork",
+          "samples": 382,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 34873600,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 20464505400,
+      "searched_decisions": 75,
+      "seed": 281,
+      "trace_hash": "12101951893702653427",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8257536,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 331
+    },
+    {
+      "decisions": 106,
+      "elapsed_ns": 32888444100,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 40,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 4800,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 106,
+          "ns": 60500,
+          "operation": "actions",
+          "samples": 106,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 661900,
+          "operation": "copy",
+          "samples": 106,
+          "scope": "real"
+        },
+        {
+          "calls": 106,
+          "ns": 273700,
+          "operation": "observe",
+          "samples": 106,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 1019200,
+          "operation": "copy_apply",
+          "samples": 106,
+          "scope": "real"
+        },
+        {
+          "calls": 106,
+          "ns": 110500,
+          "operation": "apply",
+          "samples": 106,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 6346244,
+          "ns": 2564800,
+          "operation": "actions",
+          "samples": 6213,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 33426600,
+          "operation": "copy",
+          "samples": 6213,
+          "scope": "search"
+        },
+        {
+          "calls": 1187313,
+          "ns": 2029000,
+          "operation": "observe",
+          "samples": 1175,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 49511500,
+          "operation": "copy_apply",
+          "samples": 6213,
+          "scope": "search"
+        },
+        {
+          "calls": 6346142,
+          "ns": 5754600,
+          "operation": "apply",
+          "samples": 6213,
+          "scope": "search"
+        },
+        {
+          "calls": 510102,
+          "ns": 15030800,
+          "operation": "fork",
+          "samples": 514,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 60533100,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 32884845800,
+      "searched_decisions": 102,
+      "seed": 282,
+      "trace_hash": "10420321134042778648",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8257536,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 538
+    },
+    {
+      "decisions": 77,
+      "elapsed_ns": 25059831200,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 41,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 7500,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 77,
+          "ns": 46100,
+          "operation": "actions",
+          "samples": 77,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 494700,
+          "operation": "copy",
+          "samples": 77,
+          "scope": "real"
+        },
+        {
+          "calls": 77,
+          "ns": 182300,
+          "operation": "observe",
+          "samples": 77,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 730200,
+          "operation": "copy_apply",
+          "samples": 77,
+          "scope": "real"
+        },
+        {
+          "calls": 77,
+          "ns": 80200,
+          "operation": "apply",
+          "samples": 77,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 4717175,
+          "ns": 1870500,
+          "operation": "actions",
+          "samples": 4622,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 25220000,
+          "operation": "copy",
+          "samples": 4622,
+          "scope": "search"
+        },
+        {
+          "calls": 947880,
+          "ns": 1652100,
+          "operation": "observe",
+          "samples": 941,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 36725700,
+          "operation": "copy_apply",
+          "samples": 4622,
+          "scope": "search"
+        },
+        {
+          "calls": 4717100,
+          "ns": 4082400,
+          "operation": "apply",
+          "samples": 4622,
+          "scope": "search"
+        },
+        {
+          "calls": 375075,
+          "ns": 11619300,
+          "operation": "fork",
+          "samples": 382,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 45065200,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 25057426800,
+      "searched_decisions": 75,
+      "seed": 283,
+      "trace_hash": "7794437138158139816",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8093696,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 410
+    },
+    {
+      "decisions": 107,
+      "elapsed_ns": 33633697900,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 42,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 12200,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 107,
+          "ns": 66000,
+          "operation": "actions",
+          "samples": 107,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 682500,
+          "operation": "copy",
+          "samples": 107,
+          "scope": "real"
+        },
+        {
+          "calls": 107,
+          "ns": 267700,
+          "operation": "observe",
+          "samples": 107,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 1016200,
+          "operation": "copy_apply",
+          "samples": 107,
+          "scope": "real"
+        },
+        {
+          "calls": 107,
+          "ns": 155900,
+          "operation": "apply",
+          "samples": 107,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5911382,
+          "ns": 2626200,
+          "operation": "actions",
+          "samples": 5788,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 33299000,
+          "operation": "copy",
+          "samples": 5788,
+          "scope": "search"
+        },
+        {
+          "calls": 1045269,
+          "ns": 1958700,
+          "operation": "observe",
+          "samples": 1036,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 48667600,
+          "operation": "copy_apply",
+          "samples": 5788,
+          "scope": "search"
+        },
+        {
+          "calls": 5911281,
+          "ns": 5734800,
+          "operation": "apply",
+          "samples": 5788,
+          "scope": "search"
+        },
+        {
+          "calls": 505101,
+          "ns": 16921300,
+          "operation": "fork",
+          "samples": 509,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 58841300,
+      "results": [
+        "Win",
+        "Loss",
+        "Loss"
+      ],
+      "search_ns": 33630541400,
+      "searched_decisions": 101,
+      "seed": 284,
+      "trace_hash": "1103811479069860679",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7843840,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 549
+    },
+    {
+      "decisions": 61,
+      "elapsed_ns": 16350422100,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 43,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 13000,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 61,
+          "ns": 29900,
+          "operation": "actions",
+          "samples": 61,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 293700,
+          "operation": "copy",
+          "samples": 61,
+          "scope": "real"
+        },
+        {
+          "calls": 61,
+          "ns": 158600,
+          "operation": "observe",
+          "samples": 61,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 450700,
+          "operation": "copy_apply",
+          "samples": 61,
+          "scope": "real"
+        },
+        {
+          "calls": 61,
+          "ns": 74600,
+          "operation": "apply",
+          "samples": 61,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 3591875,
+          "ns": 1498700,
+          "operation": "actions",
+          "samples": 3523,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 17048800,
+          "operation": "copy",
+          "samples": 3523,
+          "scope": "search"
+        },
+        {
+          "calls": 736173,
+          "ns": 1175400,
+          "operation": "observe",
+          "samples": 734,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 24918000,
+          "operation": "copy_apply",
+          "samples": 3523,
+          "scope": "search"
+        },
+        {
+          "calls": 3591820,
+          "ns": 2792700,
+          "operation": "apply",
+          "samples": 3523,
+          "scope": "search"
+        },
+        {
+          "calls": 275055,
+          "ns": 7961200,
+          "operation": "fork",
+          "samples": 284,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 31155900,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 16348574700,
+      "searched_decisions": 55,
+      "seed": 285,
+      "trace_hash": "18184442178984824954",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7774208,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 277
+    },
+    {
+      "decisions": 65,
+      "elapsed_ns": 19680103100,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 44,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 9700,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 65,
+          "ns": 28500,
+          "operation": "actions",
+          "samples": 65,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 324600,
+          "operation": "copy",
+          "samples": 65,
+          "scope": "real"
+        },
+        {
+          "calls": 65,
+          "ns": 113300,
+          "operation": "observe",
+          "samples": 65,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 495600,
+          "operation": "copy_apply",
+          "samples": 65,
+          "scope": "real"
+        },
+        {
+          "calls": 65,
+          "ns": 56700,
+          "operation": "apply",
+          "samples": 65,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 3948856,
+          "ns": 1289700,
+          "operation": "actions",
+          "samples": 3872,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 18253900,
+          "operation": "copy",
+          "samples": 3872,
+          "scope": "search"
+        },
+        {
+          "calls": 786456,
+          "ns": 1224900,
+          "operation": "observe",
+          "samples": 784,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 26959500,
+          "operation": "copy_apply",
+          "samples": 3872,
+          "scope": "search"
+        },
+        {
+          "calls": 3948793,
+          "ns": 3186000,
+          "operation": "apply",
+          "samples": 3872,
+          "scope": "search"
+        },
+        {
+          "calls": 315063,
+          "ns": 7939800,
+          "operation": "fork",
+          "samples": 323,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 32262100,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 19678707700,
+      "searched_decisions": 63,
+      "seed": 286,
+      "trace_hash": "1613586433443142791",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8093696,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 288
+    },
+    {
+      "decisions": 92,
+      "elapsed_ns": 25253078200,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 45,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 8500,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 92,
+          "ns": 42500,
+          "operation": "actions",
+          "samples": 92,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 514100,
+          "operation": "copy",
+          "samples": 92,
+          "scope": "real"
+        },
+        {
+          "calls": 92,
+          "ns": 318300,
+          "operation": "observe",
+          "samples": 92,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 848900,
+          "operation": "copy_apply",
+          "samples": 92,
+          "scope": "real"
+        },
+        {
+          "calls": 92,
+          "ns": 81100,
+          "operation": "apply",
+          "samples": 92,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5388362,
+          "ns": 1880100,
+          "operation": "actions",
+          "samples": 5278,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 26749800,
+          "operation": "copy",
+          "samples": 5277,
+          "scope": "search"
+        },
+        {
+          "calls": 1062879,
+          "ns": 1686200,
+          "operation": "observe",
+          "samples": 1053,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 38963100,
+          "operation": "copy_apply",
+          "samples": 5277,
+          "scope": "search"
+        },
+        {
+          "calls": 5388278,
+          "ns": 4260000,
+          "operation": "apply",
+          "samples": 5277,
+          "scope": "search"
+        },
+        {
+          "calls": 420084,
+          "ns": 11696300,
+          "operation": "fork",
+          "samples": 426,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 47138900,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 25250732800,
+      "searched_decisions": 84,
+      "seed": 287,
+      "trace_hash": "16551398272911535180",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8036352,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 421
+    },
+    {
+      "decisions": 64,
+      "elapsed_ns": 16536997700,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 46,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 11100,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 64,
+          "ns": 27400,
+          "operation": "actions",
+          "samples": 64,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 313900,
+          "operation": "copy",
+          "samples": 64,
+          "scope": "real"
+        },
+        {
+          "calls": 64,
+          "ns": 119500,
+          "operation": "observe",
+          "samples": 64,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 467500,
+          "operation": "copy_apply",
+          "samples": 64,
+          "scope": "real"
+        },
+        {
+          "calls": 64,
+          "ns": 50200,
+          "operation": "apply",
+          "samples": 64,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 3715353,
+          "ns": 1455800,
+          "operation": "actions",
+          "samples": 3644,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 16788900,
+          "operation": "copy",
+          "samples": 3644,
+          "scope": "search"
+        },
+        {
+          "calls": 730002,
+          "ns": 1146200,
+          "operation": "observe",
+          "samples": 728,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 24920400,
+          "operation": "copy_apply",
+          "samples": 3644,
+          "scope": "search"
+        },
+        {
+          "calls": 3715295,
+          "ns": 3075000,
+          "operation": "apply",
+          "samples": 3644,
+          "scope": "search"
+        },
+        {
+          "calls": 290058,
+          "ns": 8038900,
+          "operation": "fork",
+          "samples": 299,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 30043100,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 16535100900,
+      "searched_decisions": 58,
+      "seed": 288,
+      "trace_hash": "9178413911826654595",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8093696,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 274
+    },
+    {
+      "decisions": 99,
+      "elapsed_ns": 28043326700,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 47,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 9700,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 99,
+          "ns": 42400,
+          "operation": "actions",
+          "samples": 99,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 571400,
+          "operation": "copy",
+          "samples": 99,
+          "scope": "real"
+        },
+        {
+          "calls": 99,
+          "ns": 203100,
+          "operation": "observe",
+          "samples": 99,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 837400,
+          "operation": "copy_apply",
+          "samples": 99,
+          "scope": "real"
+        },
+        {
+          "calls": 99,
+          "ns": 90300,
+          "operation": "apply",
+          "samples": 99,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 6222063,
+          "ns": 2098600,
+          "operation": "actions",
+          "samples": 6092,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 29154300,
+          "operation": "copy",
+          "samples": 6092,
+          "scope": "search"
+        },
+        {
+          "calls": 1232436,
+          "ns": 2263200,
+          "operation": "observe",
+          "samples": 1219,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 42339300,
+          "operation": "copy_apply",
+          "samples": 6092,
+          "scope": "search"
+        },
+        {
+          "calls": 6221969,
+          "ns": 4929700,
+          "operation": "apply",
+          "samples": 6092,
+          "scope": "search"
+        },
+        {
+          "calls": 470094,
+          "ns": 13475700,
+          "operation": "fork",
+          "samples": 475,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 51430000,
+      "results": [
+        "Loss",
+        "Loss",
+        "Win"
+      ],
+      "search_ns": 28040452100,
+      "searched_decisions": 94,
+      "seed": 289,
+      "trace_hash": "14907049957165461603",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7970816,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 460
+    },
+    {
+      "decisions": 89,
+      "elapsed_ns": 26677584300,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 48,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 13400,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 89,
+          "ns": 61700,
+          "operation": "actions",
+          "samples": 89,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 526800,
+          "operation": "copy",
+          "samples": 89,
+          "scope": "real"
+        },
+        {
+          "calls": 89,
+          "ns": 208900,
+          "operation": "observe",
+          "samples": 89,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 795200,
+          "operation": "copy_apply",
+          "samples": 89,
+          "scope": "real"
+        },
+        {
+          "calls": 89,
+          "ns": 94800,
+          "operation": "apply",
+          "samples": 89,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 5613773,
+          "ns": 1950300,
+          "operation": "actions",
+          "samples": 5498,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 27909200,
+          "operation": "copy",
+          "samples": 5498,
+          "scope": "search"
+        },
+        {
+          "calls": 1154406,
+          "ns": 1876900,
+          "operation": "observe",
+          "samples": 1143,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 41088500,
+          "operation": "copy_apply",
+          "samples": 5498,
+          "scope": "search"
+        },
+        {
+          "calls": 5613687,
+          "ns": 4583500,
+          "operation": "apply",
+          "samples": 5498,
+          "scope": "search"
+        },
+        {
+          "calls": 430086,
+          "ns": 12022100,
+          "operation": "fork",
+          "samples": 436,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 49539400,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 26674876200,
+      "searched_decisions": 86,
+      "seed": 290,
+      "trace_hash": "4221230814595401249",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 7868416,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 436
+    },
+    {
+      "decisions": 71,
+      "elapsed_ns": 19141000200,
+      "engine": "rust",
+      "game": "loveletter",
+      "id": 49,
+      "metrics": [
+        {
+          "calls": 1,
+          "ns": 9300,
+          "operation": "init",
+          "samples": 1,
+          "scope": "real"
+        },
+        {
+          "calls": 71,
+          "ns": 35600,
+          "operation": "actions",
+          "samples": 71,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 445600,
+          "operation": "copy",
+          "samples": 71,
+          "scope": "real"
+        },
+        {
+          "calls": 71,
+          "ns": 159900,
+          "operation": "observe",
+          "samples": 71,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 648800,
+          "operation": "copy_apply",
+          "samples": 71,
+          "scope": "real"
+        },
+        {
+          "calls": 71,
+          "ns": 74100,
+          "operation": "apply",
+          "samples": 71,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "fork",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "real"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "init",
+          "samples": 0,
+          "scope": "search"
+        },
+        {
+          "calls": 3918978,
+          "ns": 1436300,
+          "operation": "actions",
+          "samples": 3843,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 19792600,
+          "operation": "copy",
+          "samples": 3843,
+          "scope": "search"
+        },
+        {
+          "calls": 740409,
+          "ns": 1401600,
+          "operation": "observe",
+          "samples": 739,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 28950600,
+          "operation": "copy_apply",
+          "samples": 3843,
+          "scope": "search"
+        },
+        {
+          "calls": 3918913,
+          "ns": 3364800,
+          "operation": "apply",
+          "samples": 3843,
+          "scope": "search"
+        },
+        {
+          "calls": 325065,
+          "ns": 9017000,
+          "operation": "fork",
+          "samples": 333,
+          "scope": "search"
+        },
+        {
+          "calls": 0,
+          "ns": 0,
+          "operation": "actual_copy",
+          "samples": 0,
+          "scope": "search"
+        }
+      ],
+      "phase": "game",
+      "players": 3,
+      "probe_ns": 35188300,
+      "results": [
+        "Loss",
+        "Win",
+        "Loss"
+      ],
+      "search_ns": 19138699900,
+      "searched_decisions": 65,
+      "seed": 291,
+      "trace_hash": "10202303241071925318",
+      "process_segment": 0,
+      "memory_peak": {
+        "working_set": 8093696,
+        "peak_working_set": 8282112,
+        "private_bytes": 4091904,
+        "pagefile": 4091904,
+        "peak_pagefile": 4161536
+      },
+      "memory_samples": 313
+    }
+  ],
+  "wall_seconds": 1120.0608711999957,
+  "wall_seconds_scope": "latest process segment only"
+}

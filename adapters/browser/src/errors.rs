@@ -35,12 +35,15 @@ pub(crate) fn branch_error<G: Display, A: Display, C: Display>(
                 SessionError::PositionVersionExhausted => "resource_limit",
                 SessionError::GameFinished => "game_finished",
                 SessionError::GameStopped => "game_stopped",
+                SessionError::SimultaneousRequiresJointSession => "unsupported_decision",
                 SessionError::WrongActor { .. } => "wrong_actor",
                 SessionError::HumanRequired { .. } | SessionError::AiRequired { .. } => {
                     "wrong_controller"
                 }
                 SessionError::ActionNotOffered { .. } => "action_not_offered",
                 SessionError::Execution(execution) => match execution {
+                    RunnerError::SimultaneousRequiresJointRunner => "unsupported_decision",
+                    RunnerError::InvalidJoint(_) => "invalid_joint_decision",
                     RunnerError::MissingController { .. } => "wrong_controller",
                     RunnerError::NoAvailableActions { .. } => "no_available_actions",
                     RunnerError::InvalidSelection { .. } => "invalid_selection",

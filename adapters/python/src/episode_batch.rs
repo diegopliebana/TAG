@@ -272,13 +272,14 @@ impl EpisodeBatch {
     /// # Errors
     /// Invalid selection/lifecycle/limits reject the call. Runtime member errors
     /// are returned by row. Aggregate conversion errors replace no live episode.
-    #[pyo3(signature=(indices,seeds,teacher_seeds=None))]
+    #[pyo3(signature=(indices,seeds,teacher_seeds=None,game_seeds=None))]
     fn prepare_resets(
         &self,
         py: Python<'_>,
         indices: Vec<usize>,
         seeds: Vec<Option<u64>>,
         teacher_seeds: Option<Vec<Option<u64>>>,
+        game_seeds: Option<Vec<Option<u64>>>,
     ) -> PyResult<BatchResetCandidate> {
         self.open()?;
         let owned = self.references(py);
@@ -287,6 +288,12 @@ impl EpisodeBatch {
         if indices.len() != seeds.len() {
             return Err(PyValueError::new_err(
                 "one seed is required per selected member",
+            ));
+        }
+        let game_seeds = game_seeds.unwrap_or_else(|| vec![None; indices.len()]);
+        if game_seeds.len() != indices.len() {
+            return Err(PyValueError::new_err(
+                "one game seed per selected index is required",
             ));
         }
         self.capacity(&members)?;
@@ -319,7 +326,9 @@ impl EpisodeBatch {
             .map(|e| e.status().to_owned())
             .collect::<Vec<_>>();
         py.detach(|| {
-            for ((&index, seed), teacher_seed) in indices.iter().zip(seeds).zip(teacher_seeds) {
+            for (((&index, seed), game_seed), teacher_seed) in
+                indices.iter().zip(seeds).zip(game_seeds).zip(teacher_seeds)
+            {
                 // A wrapper seed-staging failure has no candidate. Keep this
                 // member in whole-call lifecycle validation but skip execution.
                 let Some(seed) = seed else {
@@ -327,7 +336,11 @@ impl EpisodeBatch {
                 };
                 let member = &refs[index];
                 let result = (|| {
-                    let mut runtime = member.config.create_seeded(seed, teacher_seed)?;
+                    let mut runtime = member.config.create_seeded_with_game(
+                        seed,
+                        game_seed.unwrap_or(0),
+                        teacher_seed,
+                    )?;
                     let output = runtime.opening()?;
                     Ok::<_, String>((runtime, output))
                 })();
@@ -456,6 +469,8 @@ mod tests {
     #[test]
     fn runtime_failure_retains_partial_moves_and_does_not_stop_a_peer() {
         let config = Config {
+            players: 2,
+            parameter_document: None,
             name: "tictactoe".into(),
             parameters: BTreeMap::new(),
             learner: 0,

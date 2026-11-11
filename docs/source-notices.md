@@ -63,6 +63,22 @@ checkpoint validation and neural search reuse the existing Rust/Python framework
 The sampled-search examples adapt the project's Can't Stop examples and preserve
 their seed recipe. No rulebook text was copied into game assets.
 
+## Sushi Go!
+
+`src/games/sushigo/` was independently implemented after comparing the public
+TAG `SGParameters`, `SGGameState`, `SGForwardModel`, `SGCard` and card actions.
+The official Gamewright rulebook governs the final-card pass and round scoring;
+the [game contract](reference/games/sushigo.md) records the resulting rules and
+the documented differences from public TAG. No Java source was copied. The
+browser uses 13 card PNGs copied byte-for-byte from the public TAG
+`data/sushigo/` directory, with the reference repository's MIT notice and
+per-file hashes in [the Sushi Go! asset record](../web/assets/sushigo/README.md).
+The public directory does not include separate per-image attribution.
+The first-reveal comparison fixture in
+`docs/milestones/m12/fixtures/SushiRevealBenchmark.java`
+calls public TAG from a disposable build copy and writes no files in the
+read-only reference.
+
 ## Agents and search
 
 Random action selection follows public `players/simple/RandomPlayer.java`.

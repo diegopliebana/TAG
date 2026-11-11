@@ -33,8 +33,9 @@ export class CantStopBoard {
     const p = view.board.cantstop, n = view.controllers.length;
     const max = Math.max(...p.rules.column_heights), height = max * 24 + 84, bottom = height - 44;
     this.root.setAttribute("data-phase", p.phase);
-    const phase = { start_turn: "Start turn: roll the dice", allocation: "Choose an allocation, or accept a bust", decision: "Bank your progress or roll again" }[p.phase];
-    this.caption.textContent = view.next_player === null ? `Player ${view.board.outcome.player} wins` : `Player ${view.next_player} · ${phase}`;
+    const phase = { start_turn: "Start turn: roll the dice", allocation: "Choose an allocation", decision: "Bank your progress or roll again" }[p.phase];
+    const bust = p.bust_player === undefined ? "" : `Player ${p.bust_player} busted — temporary progress lost. `;
+    this.caption.textContent = view.next_player === null ? `Player ${view.board.outcome.player} wins` : `${bust}Player ${view.next_player} · ${phase}`;
     this.dice.setAttribute("aria-label", p.dice ? `Dice: ${p.dice.join(", ")}` : "Dice have not been rolled");
     this.dice.replaceChildren();
     for (let i = 0; i < 4; i++) {

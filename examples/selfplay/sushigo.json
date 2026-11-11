@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "game": "sushigo",
+  "players": 3,
+  "seed": null,
+  "cycles": 2,
+  "games_per_cycle": 3,
+  "parallel_games": 3,
+  "search": {
+    "schema_version": 1,
+    "tree_policy": "ucb1",
+    "rollout_length": 0,
+    "budgets": {"iterations": 8},
+    "state_evaluator": {"name": "network_value"}
+  },
+  "model": {
+    "payloads": ["hand", "known_hands", "played", "paired_nigiri", "players",
+                 "context", "discard", "last_reveal", "round_scores"],
+    "hidden_sizes": [32, 32],
+    "value_output": "players"
+  },
+  "exploration": {"move_policy": "visit_sampling", "sampling_moves": null,
+                  "root_noise": false},
+  "data": {"mode": "replay_buffer", "capacity": 10000},
+  "optimization": {"updates_per_cycle": 8, "batch_size": 16, "learning_rate": 0.001},
+  "evaluation": {"enabled": true, "games": 3,
+                 "opponent": {"name": "random", "agent": {"type": "random"}},
+                 "ranking": "score"},
+  "limits": {"max_moves": 100},
+  "output": {
+    "model_file": "../../results/sushigo-model.json",
+    "checkpoint_file": "../../results/sushigo-training.pt",
+    "report_file": "../../results/sushigo-results.json"
+  }
+}

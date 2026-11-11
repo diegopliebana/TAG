@@ -46,11 +46,7 @@ fn main() {
         while let Decision::Player(actor) = model.next_player(&state) {
             let observation = model.observe(&state, actor).unwrap();
             let actions = model.available_actions(&state, actor).unwrap();
-            let phase = if actions == [CantStopAction::Bust] {
-                "ForcedBust".to_owned()
-            } else {
-                format!("{:?}", observation.position().phase())
-            };
+            let phase = format!("{:?}", observation.position().phase());
             if seen.insert(phase.clone()) {
                 for evaluator in ["game_heuristic", "constant"] {
                     let settings = Settings::from_json(
@@ -89,7 +85,7 @@ fn main() {
                                 "action_evaluations":report.counters.action_evaluations}}}));
                 }
             }
-            // Continue rolling instead of banking so a one-marker game reaches Bust.
+            // Continue rolling instead of banking; unusable rolls end turns automatically.
             let action = actions
                 .iter()
                 .find(|a| **a == CantStopAction::Roll)
@@ -97,11 +93,11 @@ fn main() {
             moves.push(model.action_id(&observation, action).unwrap());
             model.next(&mut state, actor, action).unwrap();
             assert!(moves.len() < 1000);
-            if seen.len() == 4 {
+            if seen.len() == 3 {
                 break;
             }
         }
-        assert_eq!(seen.len(), 4);
+        assert_eq!(seen.len(), 3);
     }
     println!("{}", serde_json::to_string(&cases).unwrap());
 }

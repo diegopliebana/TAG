@@ -1,4 +1,5 @@
 //! The search loop runs MCTS iterations and back-propagates their player values.
+mod joint;
 mod setup;
 mod traversal;
 use super::budgets::increment;
@@ -30,6 +31,8 @@ pub struct SearchReport<A> {
     pub elapsed_ms: f64,
     /// True when no iteration visited a root action and a random legal move was chosen.
     pub fallback: bool,
+    /// The sole legal root action was returned after validation, without search.
+    pub forced: bool,
     pub nodes: usize,
     pub edges: usize,
     pub effective_settings: Settings,
@@ -194,9 +197,8 @@ where
             .simulation_fork(observation, &mut validation_rng)
             .map_err(|e| Error::Game(e.to_string()))?;
         increment(&mut context.counters.state_copies)?;
-        if model.next_player(&root) != Decision::Player(actor)
-            || actor.index() >= model.player_count(&root)
-        {
+        let root_seats = model.decision_players(&root);
+        if !root_seats.contains(&actor) || actor.index() >= model.player_count(&root) {
             return Err(Error::Invalid(
                 "root actor must match a nonterminal observation".into(),
             ));
@@ -212,6 +214,43 @@ where
         let players = model.player_count(&root);
         context.require_values(players)?;
         context.require_values(players.checked_mul(actions.len()).ok_or(Error::Overflow)?)?;
+        if actions.len() == 1 {
+            return Ok(SearchReport {
+                selected_index: 0,
+                root_actions: vec![RootActionReport {
+                    action: actions[0].clone(),
+                    visits: 0,
+                    mean_values: vec![0.0; players],
+                }],
+                counters: context.counters.clone(),
+                stop_reasons: Vec::new(),
+                elapsed_ms: context.elapsed_ms(),
+                fallback: false,
+                forced: true,
+                nodes: 1,
+                edges: 0,
+                effective_settings: effective,
+            });
+        }
+        if root_seats.len() > 1 {
+            if !model.joint_actions_public_after(&root) {
+                return Err(Error::Invalid(
+                    "joint-action tree requires choices to be public before the next decision"
+                        .into(),
+                ));
+            }
+            return self
+                .search_joint_impl(
+                    actor,
+                    observation,
+                    actions,
+                    players,
+                    effective,
+                    context,
+                    cooperative,
+                )
+                .await;
+        }
         let mut tree = vec![Node::default()];
         let mut edge_count = 0usize;
         let mut forced_stop = None;
@@ -347,6 +386,7 @@ where
             stop_reasons: reasons,
             elapsed_ms: context.elapsed_ms(),
             fallback,
+            forced: false,
             nodes: tree.len(),
             edges: edge_count,
             effective_settings: effective,

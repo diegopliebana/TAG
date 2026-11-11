@@ -207,6 +207,7 @@ impl BrowserGame for ttt::TicTacToeForwardModel {
         BoardView {
             cantstop: None,
             loveletter: None,
+            sushigo: None,
             width: o.grid_size(),
             height: o.grid_size(),
             cells: o
@@ -257,6 +258,7 @@ impl BrowserGame for c4::Connect4ForwardModel {
         BoardView {
             cantstop: None,
             loveletter: None,
+            sushigo: None,
             width: o.width(),
             height: o.height(),
             cells: o

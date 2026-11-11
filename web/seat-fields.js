@@ -18,10 +18,10 @@ export function createSeatFields(container, seeds, prefix = "", count = 2, game 
     const section = document.createElement("div"); section.className = "seat-settings";
     const label = document.createElement("label"); label.textContent = `Player ${seat}`;
     const select = document.createElement("select"); select.id = `${prefix}controller-${seat}`;
-    for (const kind of ["cantstop","loveletter"].includes(game) ? ["human", "random", "first_available", "sampled_osla", "mcts", "neural_mcts"] : ["human", "random", "first_available", "osla", "mcts", "neural_mcts", "q_learning", "neural_osla"]) {
+    for (const kind of ["cantstop","loveletter","sushigo"].includes(game) ? ["human", "random", "first_available", "sampled_osla", "mcts", "neural_mcts"] : ["human", "random", "first_available", "osla", "mcts", "neural_mcts", "q_learning", "neural_osla"]) {
       const option = document.createElement("option"); option.value = kind; option.textContent = controllerName(kind); select.append(option);
     }
-    select.value = seat === 0 ? "human" : ["cantstop","loveletter"].includes(game) ? "sampled_osla" : "osla"; label.append(select);
+    select.value = seat === 0 ? "human" : ["cantstop","loveletter","sushigo"].includes(game) ? "sampled_osla" : "osla"; label.append(select);
     const seedLabel = document.createElement("label"); seedLabel.textContent = `Player ${seat} seed`; seedLabel.hidden = select.value === "human";
     const controls = document.createElement("div"); controls.className = "seed-controls";
     const input = document.createElement("input"); input.type = "text"; input.inputMode = "numeric"; input.id = `${prefix}seed-${seat}`;
@@ -41,9 +41,9 @@ export function createSeatFields(container, seeds, prefix = "", count = 2, game 
       const selected = modelSelect.value;
       modelSelect.replaceChildren();
       const placeholder = document.createElement("option"); placeholder.value = ""; placeholder.textContent = "Choose a loaded model"; modelSelect.append(placeholder);
-      for (const model of models.filter(m => m.kind === select.value && (!game || m.game === game) && (!["cantstop","loveletter"].includes(game) || m.player_count === count))) {
+      for (const model of models.filter(m => m.kind === select.value && (!game || m.game === game) && (!["cantstop","loveletter","sushigo"].includes(game) || m.player_count === count))) {
         const option = document.createElement("option"); option.value = model.id;
-        option.textContent = `${model.game === "loveletter" ? "Love Letter" : model.game === "cantstop" ? "Can't Stop" : model.game === "tictactoe" ? "Tic-Tac-Toe" : "Connect 4"} / ${model.id.slice(0, 12)}`;
+        option.textContent = `${model.game === "loveletter" ? "Love Letter" : model.game === "cantstop" ? "Can't Stop" : model.game === "sushigo" ? "Sushi Go!" : model.game === "tictactoe" ? "Tic-Tac-Toe" : "Connect 4"} / ${model.id.slice(0, 12)}`;
         option.title = model.id; modelSelect.append(option);
       }
       modelSelect.value = [...modelSelect.options].some(o => o.value === selected) ? selected : "";
@@ -79,12 +79,13 @@ export function createSeatFields(container, seeds, prefix = "", count = 2, game 
       finally { searchFile.value = ""; }
     });
     const nativeDefault = search.value;
-    const neuralDefault = JSON.stringify({ schema_version: 1, tree_policy: "puct", rollout_length: 0,
+    const neuralDefault = JSON.stringify(game === "sushigo" ? { schema_version:1,tree_policy:"ucb1",rollout_length:0,
+      budgets:{iterations:256},state_evaluator:{name:"network_value"} } : { schema_version: 1, tree_policy: "puct", rollout_length: 0,
       budgets: { iterations: 256 }, state_evaluator: { name: "network_value" },
       puct_preferences: { source: "probabilities", evaluator: { name: "network_policy" } } }, null, 2);
     const bindingsLabel = document.createElement("label"); bindingsLabel.textContent = `Player ${seat} neural MCTS bindings JSON`;
     const bindings = document.createElement("textarea"); bindings.id = `${prefix}bindings-${seat}`;
-    bindings.rows = 4; bindings.value = JSON.stringify({ value: "network_value", policy: "network_policy", value_observers: null }, null, 2);
+    bindings.rows = 4; bindings.value = JSON.stringify({ value: "network_value", policy: "network_policy", value_observers: game === "sushigo" ? "deciding_player" : null }, null, 2);
     bindingsLabel.append(bindings); section.append(bindingsLabel);
     const showSearch = () => {
       searchLabel.hidden = !["mcts", "neural_mcts"].includes(select.value);

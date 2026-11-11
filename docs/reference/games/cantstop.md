@@ -33,13 +33,14 @@ height. Automatic OS seed resolution belongs to the application adapters.
 
 | Phase | Offered actions | Effect |
 |---|---|---|
-| `StartTurn` | Roll | Roll four dice internally; enter Allocation. |
-| `Allocation` | Allocate one/two sums, or forced Bust | Move temporary markers; successful allocation enters Decision. Bust loses temporary progress and advances the player. |
+| `StartTurn` | Roll | Roll four dice internally; enter Allocation if usable, otherwise resolve a bust immediately. |
+| `Allocation` | Allocate one/two sums | Move temporary markers; successful allocation enters Decision. |
 | `Decision` | Stop, then Roll | Stop banks all temporary markers, claims top spaces and checks victory. Roll risks all temporary progress. |
 
-A Bust is represented by a single offered acknowledgement action so the generic
-runner can process it; there is no choice to avoid a failed roll. Each Roll,
-Allocate, Stop or Bust increments accepted moves once. Only nonterminal Stop/Bust
+A roll with no legal allocation automatically discards temporary progress and
+advances the player in the same transition. It produces no acknowledgement action
+or extra agent/search decision; the rolled dice remain visible. Each Roll,
+Allocate or Stop increments accepted moves once. A busting Roll or nonterminal Stop
 increments completed turns. The terminal Stop retains the winning actor and does
 not complete an ordinary turn. Cycling players does not create a game round;
 the current round counter remains zero, following Java's turn-counter semantics.
@@ -237,7 +238,12 @@ and outcomes. `MctsSearch` and `MctsBatch` calculate native/neural moves.
 [Self-play](../learning/mcts-selfplay.md) provides training and completed-cycle
 checkpoints; [frozen-model evaluation](../learning/model-evaluation.md) records
 native lineups, candidate seat rotation and separate truncation/rank accounting.
-Attached controllers and Gym episodes are separate capabilities. The
+Single and batched Gym episodes use the same game operations. One learner step
+advances native opponents until the learner can act again or the game finishes;
+the resolved reset environment seed initializes real dice. Random, first-available
+and sampled OSLA opponents are supported. Attached controllers are a separate
+capability. The [episode reference](../python/gym-episodes.md) defines rewards,
+truncation and seeds. The
 [game-operations guide](../../guides/games/cantstop.md#use-from-python)
 provides commands.
 
@@ -246,6 +252,11 @@ the configured player count. Its default preserves existing fixed-count game
 implementations. Can't Stop's original `learning_spec` method describes two
 players; explicit 3/4-player callers use the new method. `encode` reads the actual
 observer's public position and returns independently owned arrays.
+
+Rules version 2 resolves busts within Roll. Older rules-version-1 models and
+portable saves/recordings are rejected rather than silently changing their
+transition semantics; retrain models and start new recordings. The action domain
+remains 80 entries and allocation IDs are unchanged.
 
 Let N be the configured player count. Encoding version 1 uses absolute seat order:
 
@@ -269,7 +280,7 @@ identity. No grid or open-line heuristic is advertised.
 
 Action IDs are fixed across supported rule configurations:
 
-- 0=Roll, 1=Stop, 2=Bust.
+- 0=Roll, 1=Stop. ID 2 is reserved for the legacy Bust action and is always masked out.
 - 3-13 are single allocations for columns 2-12, in ascending order.
 - 14-79 are unordered pairs with repetition in lexicographic order: (2,2),
   (2,3), ..., (2,12), (3,3), ..., (12,12).

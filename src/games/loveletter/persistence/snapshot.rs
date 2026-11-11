@@ -397,13 +397,8 @@ fn deck(
         }
     }
     let mut remaining = Card::DECK.to_vec();
-    for &card in slots.iter().flatten() {
-        let index = remaining
-            .iter()
-            .position(|&c| c == card)
-            .ok_or_else(|| invalid("Love Letter card multiset disagrees"))?;
-        remaining.remove(index);
-    }
+    crate::core::cards::remove_all(&mut remaining, slots.iter().flatten().copied())
+        .map_err(|_| invalid("Love Letter card multiset disagrees"))?;
     let mut remaining = remaining.into_iter();
     Ok(slots.map(|card| {
         card.unwrap_or_else(|| remaining.next().expect("sixteen validated card slots"))

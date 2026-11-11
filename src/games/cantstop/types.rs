@@ -157,6 +157,7 @@ pub enum CantStopAction {
     Roll,
     Stop,
     Allocate(Allocation),
+    /// Reserved legacy action. Busts now resolve inside Roll; never legal.
     Bust,
 }
 

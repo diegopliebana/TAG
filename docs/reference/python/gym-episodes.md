@@ -3,7 +3,8 @@
 For operating instructions, use the [short manual](../../guides/running/game-operations-from-python.md). This page contains
 the detailed reference.
 
-The single-environment interface supports for Tic-Tac-Toe and Connect 4.
+The single-environment interface supports Tic-Tac-Toe, Connect 4, Can't Stop
+and Love Letter. The latter two have stochastic, multiplayer rules.
 Rust owns the rules, chosen opponent and episode bookkeeping. Python supplies the
 learner's actions and receives independent NumPy arrays. [Batched episodes](batched-episodes.md)
 are also implemented. Gymnasium is optional: import this module explicitly.
@@ -51,15 +52,20 @@ finally:
     env.close()
 ```
 
-A step applies one learner action and then the opponent reply, unless the game
-already ended. If seat 1 learns, reset runs seat 0's opening move first. Every
+A step applies one learner action and then advances native opponents until the
+learner can act again or the game ends. This includes repeated decisions by one
+opponent and Love Letter round boundaries. Reset performs the same advance when
+the configured learner is not the first actor. Every
 returned board is from the learner's viewpoint. Cells encode own pieces as +1,
 opposing pieces as -1 and empty cells as 0. Board channels are own/opposing/empty
 in channel/row/column order. All payloads are float32; the legal mask is int8.
 
 For Tic-Tac-Toe use GameEnv("tictactoe", {"grid_size": 4}, ...). For Connect 4,
-parameters are width, height and winning_length. Use learner=0 or learner=1.
-Payloads can be cells, board or both; names, shapes, types and numeric bounds
+parameters are width, height and winning_length. Can't Stop and Love Letter
+accept their usual JSON rule parameters; pass the game seed to reset rather
+than embedding it in parameters. `players` is 2 by default and may be 2–4
+for either stochastic game. `learner` is any seat in that player count.
+Payload names, shapes, types and numeric bounds
 come from Rust descriptions. Settings remain fixed for an environment's lifetime.
 The [array guide](../learning/observation-arrays.md) explains the coordinates and indices.
 
@@ -69,16 +75,20 @@ The [array guide](../learning/observation-arrays.md) explains the coordinates an
 |---|---|---|
 | first_available | Chooses the first offered action. | Empty dictionary. |
 | random | Uniformly samples offered actions with its own Rust RNG. | Empty dictionary. |
-| osla | Original native OSLA, evaluating copied game states. | Empty dictionary. |
-| osla_python | Separate batched OSLA agent, scoring candidates entirely in Rust. This is the default. | max_rows (default 1024), max_candidates (default 4096). |
+| osla | Original native OSLA for placement games; observation-derived sampled OSLA for Can't Stop and Love Letter. | Empty dictionary for placement games; `repetitions_per_action` (default 1) for stochastic games. |
+| osla_python | Separate batched OSLA agent, scoring candidates entirely in Rust. Default for placement games. | max_rows (default 1024), max_candidates (default 4096). |
 
 For example, opponent="osla_python", opponent_settings={"max_rows": 3} limits
 candidate rows per batch. max_candidates must cover the configuration's full
 action space so predictable limit failures are rejected before episode play.
-Unknown policies/settings fail explicitly. These agents preserve their existing
+The default stochastic opponent is Random; `osla_python` is available for the
+two placement games. Unknown policies/settings fail explicitly. These agents preserve their existing
 native selection and tie/RNG rules. A new Rust policy needs Rust factory/settings
 registration and validation. External Python-evaluated opponents remain outside
 this synchronous interface; use [Game/GameBatch](rust-owned-execution.md) for them.
+In a multiplayer episode, one configured opponent policy controls every
+non-learner seat. It receives that seat's own observation at each decision and
+draws from one opponent RNG stream in the actual action order.
 
 Do not put seeds or live checkpoints in opponent_settings. reset(seed=...) derives
 fresh episode/opponent seeds. This keeps one experiment seed contract across
@@ -92,7 +102,7 @@ Info's results array is ordered by absolute seat ID: ongoing=0, win=1, draw=2,
 loss=3. Result labels themselves are not numeric rewards.
 
 An optional positive max_episode_steps counts learner actions and their complete
-opponent replies. At the horizon, an ongoing game returns truncated=True and its
+opponent decisions. At the horizon, an ongoing game returns truncated=True and its
 learner-ready observation/legal mask. A rules ending returns terminated=True and
 an empty mask, taking precedence over the horizon. The caller's discount applies
 once per learner step; returned rewards are undiscounted.
@@ -100,7 +110,7 @@ once per learner step; returned rewards are undiscounted.
 Reset explicitly after either flag. Further step calls are rejected. Never sample
 an all-zero terminal mask: Gymnasium's Discrete mask fallback can return an ID even
 when no legal move exists. Keep the final observation/reward before starting a new
-episode. These games reject learner seat 1 with target one because reset would
+episode. The placement games reject learner seat 1 with target one because reset would
 finish before the learner could act. Seat 0 can use that configuration.
 
 max_cells defaults to 4096 and max_bytes to 64 MiB of numeric output/index data.
@@ -133,7 +143,9 @@ An explicit reset seed restarts NumPy PCG64 and sets episode_index to zero.
 reset(seed=None) continues its progression; the first unseeded reset initializes
 it from entropy. Derivation version 1 draws two raw u64 words per successful
 reset in environment/opponent order. The environment word is reserved metadata
-for these deterministic games; their rules consume no chance stream. Step does
+for placement games. For Can't Stop and Love Letter it initializes the real
+game's chance stream; the opponent word initializes only the native opponent.
+Step does
 not draw wrapper seeds. Seed action_space separately for reproducible sampling.
 
 Info records encoding identity, observer, next_player, progress and results;
@@ -179,11 +191,11 @@ the checker assumes its determinism smoke step does not truncate.
 
 | Argument | Default | Accepted meaning |
 |---|---|---|
-| `game`, `parameters` | Required game ID; parameters None | Registered learner game and validated integer rule parameters |
-| `learner` | 0 | Seat 0 or 1 |
-| `opponent` | `osla_python` | Registered opponent identifier from the table above |
+| `game`, `parameters` | Required game ID; parameters None | Registered learner game and its JSON-compatible rule parameters |
+| `players`, `learner` | 2; 0 | Supported player count and one seat in that game |
+| `opponent` | `osla_python` for placement, `random` for stochastic | Registered opponent identifier from the table above |
 | `opponent_settings` | None (empty object) | Only that opponent's documented fields |
-| `payloads` | `("board",)` | Non-string sequence of advertised observation names |
+| `payloads` | Game-specific defaults | Non-string sequence of advertised observation names |
 | `max_episode_steps` | None | Positive learner-step cap or disabled |
 | `max_cells`, `max_bytes` | 4,096; 64 MiB | Positive configuration/array resource limits |
 | `include_intermediate` | False | Boolean capture of post-learner/pre-opponent data |

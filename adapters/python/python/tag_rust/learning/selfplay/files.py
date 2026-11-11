@@ -39,7 +39,7 @@ def save_checkpoint(path,session):
         "sample_rng":session.sample_rng.bit_generator.state,"runtime":session.runtime,
         "positions":[_position_document(position) for position in session.buffer._positions],
         "buffer_bytes":session.buffer.nbytes,"buffer_dropped":session.buffer.dropped,"buffer_digest":session.buffer.digest()}
-    if session.settings.game == "loveletter":
+    if session.settings.game in ("loveletter", "sushigo"):
         document["information_access"] = document["model"]["provenance"]["information_access"]
     def write(stream):
         torch.save(document,stream)
@@ -98,7 +98,7 @@ def load_checkpoint(path,*,max_bytes=512*1024*1024):
             provenance = data["model"].get("provenance")
             if not isinstance(provenance,dict) or provenance.get("seed_derivation_version") != 2:
                 raise ValueError("checkpoint model seed derivation provenance differs")
-            if settings.game == "loveletter" and (
+            if settings.game in ("loveletter", "sushigo") and (
                 provenance.get("settings") != settings.document()
                 or provenance.get("master_seed") != settings.seed
                 or provenance.get("completed_cycles") != completed
@@ -174,7 +174,7 @@ def load_checkpoint(path,*,max_bytes=512*1024*1024):
                 raise ValueError("checkpoint buffer differs from its completed cycle")
         elif positions or data["buffer_dropped"] or data["buffer_bytes"]:
             raise ValueError("initial checkpoint must have an empty buffer")
-        if settings.game == "loveletter":
+        if settings.game in ("loveletter", "sushigo"):
             _validate_replay(settings,data["history"],positions)
         # Numeric input arrays are now independently owned and checked. Restore
         # Adam only after its settings agree with this completed-cycle schedule.

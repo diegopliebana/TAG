@@ -46,7 +46,8 @@ pub(super) fn convert(error: Error) -> PyErr {
     }
 }
 
-/// A token identifying one instance and its accepted-move/reset revision.
+/// A token identifying one instance and its completed-transition/reset revision.
+/// Simultaneous participants share one token until their joint move resolves.
 #[pyclass(frozen, eq, skip_from_py_object, module = "tag_rust._engine")]
 #[derive(Clone, PartialEq, Eq)]
 pub struct Position {
@@ -136,7 +137,7 @@ impl Game {
 
 #[pymethods]
 impl Game {
-    /// Read a fresh position token. Reset and accepted moves invalidate previous tokens.
+    /// Read a position token. Reset and completed transitions invalidate older tokens.
     #[getter]
     fn position(&self) -> PyResult<Position> {
         self.engine()?;
@@ -254,7 +255,9 @@ impl Game {
             .ok_or_else(|| ClosedGameError::new_err("this game is closed"))?;
         py.detach(|| engine.apply(action_id, actor))
             .map_err(convert)?;
-        self.revision = next_revision;
+        if !matches!(engine, Engine::SushiGo(game) if !game.joint_pending.is_empty()) {
+            self.revision = next_revision;
+        }
         Ok(self.token())
     }
 

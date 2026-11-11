@@ -53,6 +53,32 @@ are rejected; they are not silently replaced with Random or human controllers.
 Replay validation can therefore perform search/inference work, unlike display-only
 navigation of an already validated recording.
 
+## Sushi Go! joint files
+
+Sushi Go! uses [joint format 3](../../../src/replay/joint_format.rs). A state
+file stores the resolved deal seed, player count and every complete joint
+choice from the initial game to its saved boundary. Import runs those choices
+from the seed and checks the complete resulting state, including hidden hands,
+chance progress and remembered passing hands. It then asks for fresh
+controllers. There is no file for an unfinished choice round.
+
+A replay adds branches. Each branch records its starting controller checkpoints
+and a list of complete decisions. A decision stores ordered `(seat, action)`
+choices, a fingerprint of the complete successor, next decision seats and all
+controller checkpoints. Branches refer to an earlier parent and a complete
+decision position. Import replays every decision through the ordinary legal
+action checks and verifies each successor and checkpoint before replacing the
+current session. **Save branch** starts a portable replay at the selected
+branch's fork boundary; if the displayed cursor precedes that fork, it uses
+the ancestor containing the cursor. **Save session** retains all branches. The fingerprint detects
+an altered result in the file; the initial seed and legal-choice proof establish
+that the result came from an actual game. Unknown format and rule versions are
+rejected. Existing sequential version 1/2 files are unchanged.
+
+These files are privileged local data. The imported browser view still uses a
+single player's observation. At most 256 branches, ancestry depth 64, 100,000
+stored complete decisions and 10 MiB of JSON are accepted.
+
 ## Versions and RNG data
 
 `Versions` records `format`, `game`, `rules`, `agents`, `evaluators` and `rng`.

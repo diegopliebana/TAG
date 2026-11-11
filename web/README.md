@@ -1,7 +1,7 @@
 # Browser build and validation
 
-The browser supports Tic-Tac-Toe, Connect 4 and 2-4-player Can't Stop and Love
-Letter. For setup, play, models, zoom, action information screens and saves, use
+The browser supports Tic-Tac-Toe, Connect 4, 2–4-player Can't Stop and Love
+Letter, and 2–5-player Sushi Go!. For setup, play, models, zoom, action information screens and saves, use
 the [browser manual](../docs/guides/running/browser.md). This page owns build,
 launch and developer validation commands.
 

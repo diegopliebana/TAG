@@ -120,7 +120,6 @@ impl Default for LoveLetterRules {
 pub struct LoveLetterParameters {
     pub rules: LoveLetterRules,
     pub seed: u64,
-    /// Explicit digital replacement for the rulebook's social first-player choice.
     pub first_player: PlayerId,
 }
 impl Default for LoveLetterParameters {

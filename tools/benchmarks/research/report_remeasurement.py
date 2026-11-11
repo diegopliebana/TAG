@@ -148,6 +148,73 @@ is inferred from these fixtures.
         r,j=(allocations[e,g,n,'copy']['bytes_per_call'] for e in ('rust','java'))
         rows.append([f'{j/r:.2f}' if r else '—',NAMES[g],n,f'{r:.1f}',f'{j:.1f}'])
     text+=table(['Java/Rust requested bytes','Game','Players','Rust bytes/copy','Java bytes/copy'],rows)+'\n'
+    memory=read('memory-summary.json')
+    rows=[]
+    for g,n in PROFILES:
+        sizes={}
+        for engine in ('rust','java'):
+            estimates=[]
+            for fork in (1,2,3):
+                deltas={r['count']:r['heap_or_requested_delta'] for r in memory
+                        if (r['engine'],r['game'],r['players'],r['fork'])==(engine,g,n,fork)}
+                estimates.append((deltas[2048]-deltas[128])/(2048-128))
+            sizes[engine]=statistics.median(estimates)
+        r,j=sizes['rust'],sizes['java']
+        rows.append([f'{j/r:.2f}',NAMES[g],n,f'{r:,.0f}',f'{j:,.0f}'])
+    retained='''### Estimated incremental memory per retained state
+
+These estimates use the existing retained-state measurements, rather than the
+allocation volume of a copy operation. For each of three independent processes:
+
+```text
+bytes per state = (retained-memory delta at 2,048 copies
+                - retained-memory delta at 128 copies) / 1,920
+```
+
+Each retained-memory delta is measured relative to that process's baseline.
+The table reports the median of the three estimates; ratios use unrounded values.
+The first column is Java bytes / Rust bytes: above 1 means Java's estimated
+incremental retained footprint was larger.
+
+'''
+    retained+=table(['Java/Rust size ratio','Game','Players','Rust bytes/state','Java bytes/state (estimated)'],rows)
+    retained+='''
+
+For example, Rust Tic-Tac-Toe uses approximately **105 bytes per retained state**,
+not the 9 bytes requested by the clone operation alone. Retaining the copies in
+a vector also allocates storage for the complete state structs, including their
+inline fields and board-buffer bookkeeping.
+
+These are estimates for the benchmark's prepared positions, not exact isolated
+object sizes. Rust counts live requested heap bytes, excluding allocator overhead;
+Java counts used heap after garbage collection and is subject to measurement noise.
+The estimates include incremental collection storage, exclude shared objects already
+in the baseline, and do not include the whole runtime footprint. Histories and
+variable-sized containers can make other positions larger. The measurements are
+in [memory-summary.json](memory-summary.json), in `heap_or_requested_delta`.
+
+### Process memory and other workflow measurements
+
+'''
+    heading='## Memory, adapters and complete workflows\n\n'
+    text=text.replace(heading,heading+retained,1)
+    mcts_validation=root/'mcts-games/validation.json'
+    if mcts_validation.exists():
+        complete=json.loads(mcts_validation.read_text())
+        if complete.get('complete'):
+            count=complete['games_per_profile']
+            section=f'''## Complete games with MCTS in every seat
+
+The [all-MCTS game study](mcts-games/README.md) adds {count:,} games per engine for each
+of the eight game/player settings ({count*16:,} collected games total), with 5,000 iterations per
+searched decision and random rollout length 10. It reports the five API categories
+at encountered real/search positions, work counts and process-memory peaks.
+Search defaults and configurable rules are aligned; forced actions skip search.
+This is a separate workload from the prepared-state tables below.
+The study reports exclusions and the actual included sample count per setting.
+
+'''
+            text=text.replace('## Rules and prepared-state APIs\n',section+'## Rules and prepared-state APIs\n',1)
     (root/'README.md').write_text(text,encoding='utf-8')
     details='''# Workflow and component diagnostics
 

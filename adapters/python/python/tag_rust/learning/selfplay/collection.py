@@ -152,7 +152,7 @@ def collect_games(settings,snapshot,*,first_game_id=0):
                 actor_observation = next(obs for obs in member.observations if obs.observer == member.actor)
                 visits,policy = visit_target(actor_observation,report)
                 metadata = {name:report[name] for name in ("settings","counters","action_id","stop_reasons",
-                    "fallback","nodes","edges","external_evaluators","value_observers")}
+                    "fallback","forced","nodes","edges","external_evaluators","value_observers")}
                 record = dict(observations=member.observations,actor=member.actor,policy=policy,visits=visits,
                     action=report["action_id"],game_id=member.logical_id,ply=len(member.records),
                     model_identity=snapshot.identity,search_seed=report["settings"]["seed"],

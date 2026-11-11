@@ -88,9 +88,12 @@ separately and do not undo valid updates or create losses for unfinished games.
 
 The policy target is `visits(a) / sum(visits)` over the real decision's legal
 actions. Every legal action retains its ID, including actions with zero visits.
-Illegal actions have zero target probability. A search with no completed root
-visits cannot provide this target, so collection rejects it. Ordinary zero-budget
-MCTS fallback behavior remains available outside training collection.
+Illegal actions have zero target probability. A forced root action has zero
+actual visits and a one-hot target assigning probability one to that action.
+The report marks `forced=true`; visit counts remain search-work measurements.
+Other searches with no completed root visits cannot provide a policy target,
+so collection rejects them. Ordinary zero-budget fallback behavior remains
+available outside training collection.
 
 For the current games, terminal rewards are +1 for a win, 0 for a draw and -1 for
 a loss. The value target at every collected position is the eventual reward for

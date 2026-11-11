@@ -43,7 +43,9 @@ finally:
 ```
 
 The collector supplies learner actions. Rust validates all selected actions first,
-then applies each learner move and its native opponent reply using the shared episode runtime.
+then applies each learner move and advances native opponents until that learner
+can act again or the game finishes. This works for Can't Stop and Love Letter
+with compatible player counts, rules and numeric layouts.
 Each original GameEnv keeps its own board, policy, RNG and wrapper seed progression.
 You can inspect/use originals between bulk calls. Shared mutation is locked for the
 whole operation, including reset/output conversion. Using an old result after a

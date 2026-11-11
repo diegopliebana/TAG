@@ -32,8 +32,7 @@ def run(args):
             if game_name == "loveletter":
                 parameters["first_player"] = seat
             game = stack.enter_context(tag.create(game_name, parameters, players=args.players))
-            # Can't Stop's established demo reaches the requested seat by play;
-            # Love Letter can select the starter directly without changing rules.
+            # Sushi Go! collects earlier seats' choices without resolving them.
             while game.next_player != seat:
                 view = game.observe(game.next_player, ())
                 game.apply(int(view.offered_action_ids[0]), position=view.position)
@@ -61,14 +60,18 @@ def run(args):
             snapshot = FrozenModel(network)
             model_identity = snapshot.identity
             evaluator = NeuralMctsEvaluator(snapshot, turn_context="own_turn")
-            bindings = {"network_value": evaluator, "network_policy": evaluator}
+            bindings = {"network_value": evaluator}
+            if game_name != "sushigo":
+                bindings["network_policy"] = evaluator
         searches = []
         for index, game in enumerate(games):
             configuration = {"schema_version": 1, "seed": seed_for("search", index),
                 "rollout_length": 0, "budgets": {"iterations": args.iterations}}
             if bindings:
-                configuration.update(tree_policy="puct", state_evaluator={"name": "network_value"},
-                    puct_preferences={"source": "probabilities", "evaluator": {"name": "network_policy"}})
+                configuration.update(state_evaluator={"name": "network_value"})
+                if game_name != "sushigo":
+                    configuration.update(tree_policy="puct",
+                        puct_preferences={"source":"probabilities", "evaluator":{"name":"network_policy"}})
             searches.append(stack.enter_context(tag.MctsSearch(game, configuration, bindings=bindings)))
         with tag.MctsBatch(searches) as batch:
             reports = batch.run()
@@ -83,8 +86,8 @@ def run(args):
 
 def main(default_game="cantstop"):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--game", choices=("cantstop", "loveletter"), default=default_game)
-    parser.add_argument("--players", type=int, choices=(2, 3, 4), default=2)
+    parser.add_argument("--game", choices=("cantstop", "loveletter", "sushigo"), default=default_game)
+    parser.add_argument("--players", type=int, choices=(2, 3, 4, 5), default=2)
     parser.add_argument("--searches", type=int, default=4)
     parser.add_argument("--iterations", type=int, default=32)
     parser.add_argument("--seed", type=seed_argument, default=None, help="integer or auto; default uses OS randomness")

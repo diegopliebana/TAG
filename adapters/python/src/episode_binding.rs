@@ -156,7 +156,16 @@ impl Episode {
         let config = Config {
             name: f("game")?.extract()?,
             parameters: f("parameters")?.extract()?,
+            parameter_document: config
+                .get_item("parameters_json")?
+                .map(|v| v.extract())
+                .transpose()?,
             learner: f("learner")?.extract()?,
+            players: config
+                .get_item("players")?
+                .map(|v| v.extract())
+                .transpose()?
+                .unwrap_or(2),
             opponent: f("opponent")?.extract()?,
             settings: f("opponent_settings")?.extract()?,
             payloads: f("payloads")?.extract()?,
@@ -194,12 +203,13 @@ impl Episode {
         let spec = py.detach(|| self.description.clone());
         arrays::spec(py, spec)
     }
-    #[pyo3(signature=(seed,teacher_seed=None))]
+    #[pyo3(signature=(seed,teacher_seed=None,game_seed=0))]
     fn prepare_reset(
         &self,
         py: Python<'_>,
         seed: u64,
         teacher_seed: Option<u64>,
+        game_seed: u64,
     ) -> PyResult<ResetCandidate> {
         self.open()?;
         self.generation
@@ -207,7 +217,9 @@ impl Episode {
             .ok_or_else(|| PyRuntimeError::new_err("episode generation exhausted"))?;
         let (runtime, output) = py
             .detach(|| {
-                let mut runtime = self.config.create_seeded(seed, teacher_seed)?;
+                let mut runtime =
+                    self.config
+                        .create_seeded_with_game(seed, game_seed, teacher_seed)?;
                 let output = runtime.opening()?;
                 Ok::<_, String>((runtime, output))
             })

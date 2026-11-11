@@ -5,7 +5,7 @@ import { renderBoard } from "../board.js";
 // Minimal DOM double tracks element identity, focus and event handlers.
 class Element {
   constructor(ownerDocument, tag) { this.ownerDocument = ownerDocument; this.tag = tag; this.children = []; this.listeners = {}; this.attributes = {}; this.textContent = ""; }
-  append(element) { this.children.push(element); }
+  append(...elements) { this.children.push(...elements); }
   replaceChildren(...elements) { this.children = elements; }
   setAttribute(name, value) { this.attributes[name] = value; }
   addEventListener(event, listener) { this.listeners[event] = listener; }
@@ -49,6 +49,33 @@ test("Connect 4 columns retain identity and game changes rebuild their structure
   buttons[1].listeners.click(); assert.equal(choices[0], next.actions[0]);
   const old = board.children[0]; renderBoard(board, view("tictactoe"), () => {});
   assert.notEqual(board.children[0], old); assert.equal(board.buttons().length, 4);
+});
+
+test("Sushi Go! keeps opponent cards face down until privileged reveal", () => {
+  const board=container(), action={Pick:"Tempura"}, double={Chopsticks:{first:"Wasabi",second:"SalmonNigiri"}}, picked=[];
+  const view={game:"sushigo",observer:0,waiting_seats:[0,1],controllers:[{kind:"human"},{kind:"human"}],
+    board:{width:12,height:5,sushigo:{round:1,hand_size:10,draw_count:88,scores:[0,0],pudding:[0,0],played:[[{card:"Sashimi",on_wasabi:false}],[]],round_scores:[],discard:["Dumpling"],last_reveal:[[0,{Pick:"Wasabi"}]],hand:["Tempura"],hand_ids:[0,1],public_only:false}},actions:[action,double]};
+  renderBoard(board,view,choice=>picked.push(choice));
+  assert.ok(board.children[0].children[4].children.length>0);
+  assert.ok(JSON.stringify(board).includes("sashimi.png"));
+  assert.ok(JSON.stringify(board).includes("CardBack.png"));
+  assert.ok(!JSON.stringify(board).includes("Discarded cards"));
+  assert.ok(!JSON.stringify(board).includes("Last reveal"));
+  assert.ok(!JSON.stringify(board).includes("Previously seen hand"));
+  board.buttons().at(-1).onclick();assert.deepEqual(picked,[double]);
+  const nextView={...view,observer:1,waiting_seats:[1],actions:[action],board:{...view.board,sushigo:{...view.board.sushigo,hand:["Dumpling"],known_hands:[["Wasabi"],["Dumpling"]],public_only:false}}};
+  renderBoard(board,nextView,choice=>picked.push(choice));
+  assert.ok(JSON.stringify(board).includes("Player 1's hand"));
+  assert.ok(!JSON.stringify(board).includes("Previously seen hand"));
+  assert.ok(!JSON.stringify(board).includes("wasabi.png"));
+  assert.ok(!JSON.stringify(board).includes("Remembered passing hand"));
+  assert.ok(!JSON.stringify(board).includes("Pass the device"));
+  assert.ok(JSON.stringify(board).includes("Sashimi"));
+  const privileged={...nextView,board:{...nextView.board,sushigo:{...nextView.board.sushigo,opponent_hands:[["Tempura"],null]}}};
+  renderBoard(board,privileged,()=>{});
+  assert.ok(JSON.stringify(board).includes("tempura.png"));
+  const buttons=board.buttons();assert.equal(buttons.length,1);
+  assert.ok(!JSON.stringify(board).includes("Cancel this choice round"));
 });
 
 test("candidate artwork updates existing layers and keeps empty pieces hidden", () => {

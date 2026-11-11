@@ -34,18 +34,19 @@ APIs, rendering, filesystems or GPU runtimes.
 
 ## Supported workflows
 
-| Capability | Tic-Tac-Toe | Connect 4 | Can't Stop | Love Letter |
-|---|---|---|---|---|
-| Players | 2 | 2 | 2-4 | 2-4 |
-| Rules and native matches/tournaments | Yes | Yes | Yes | Yes, classic rules |
-| Random and native lookahead/MCTS | Yes | Yes | Yes, independent sampled simulations | Yes, observation-derived sampled simulations |
-| Python create/observe/apply/reset/copy | Yes | Yes | Yes | Yes, private observations |
-| Python native/neural MCTS move calculation | Yes | Yes | Yes | Yes, model-input restrictions apply |
-| Complete-game MCTS self-play and frozen-model evaluation | Yes | Yes | Yes | Yes, shared-win targets |
-| Local neural agents in native match/tournament CLI | Yes | Yes | Not registered | Not registered |
-| Learner-step Gym episodes and teacher/actor-critic workflow | Yes | Yes | Not registered | Not registered |
-| Tabular Q-learning example | Default 3x3 game | Not supported by this example | Not supported by this example | Not supported by this example |
-| Playable browser, history, branches and portable files | Yes | Yes | Yes | Yes, permitted and privileged views are separate |
+| Capability | Tic-Tac-Toe | Connect 4 | Can't Stop | Love Letter | Sushi Go! |
+|---|---|---|---|---|---|
+| Players | 2 | 2 | 2-4 | 2-4 | 2-5 |
+| Rules and native matches/tournaments | Yes | Yes | Yes | Yes, classic rules | Yes, native Random matches |
+| Random and native lookahead/MCTS | Yes | Yes | Yes, independent sampled simulations | Yes, observation-derived sampled simulations | Yes, sampled joint successors |
+| Python create/observe/apply/reset/copy | Yes | Yes | Yes | Yes, private observations | Yes, joint choices resolve together |
+| Python native/neural MCTS move calculation | Yes | Yes | Yes | Yes, model-input restrictions apply | Yes, full-seat values and UCB1 joint search |
+| Complete-game MCTS self-play and frozen-model evaluation | Yes | Yes | Yes | Yes, shared-win targets | Yes, rotating seats |
+| Local neural agents in native match/tournament CLI | Yes | Yes | Not registered | Not registered | Not registered |
+| Learner-step Gym episodes, including native OSLA teacher | Yes | Yes | Yes | Yes | Yes, joint opponent choices |
+| Actor-critic collection/training workflow | Yes | Yes | Not registered | Not registered | Not yet |
+| Tabular Q-learning example | Default 3x3 game | Not supported by this example | Not supported by this example | Not supported by this example | Not supported by this example |
+| Playable browser, history, branches and portable files | Yes | Yes | Yes | Yes, permitted and privileged views are separate | Yes, local pass-device play and complete joint records |
 
 Registration declares capabilities independently. Basic game operations do not
 imply an encoder, heuristic, learner environment or replay codec. Models must match
@@ -82,9 +83,10 @@ inside the browser. [Python APIs](../python/README.md) and
 
 ## Extension limits
 
-`Decision` currently represents one acting player or completion. Simultaneous
-submission, explicit standalone chance nodes and general team contracts require
-additional design. Current MCTS requires its root choices to match the complete
+`Decision` represents one acting player or completion; simultaneous submission
+uses `ForwardModel::decision_players` and a separate joint session. Explicit
+standalone chance nodes and general team contracts require additional design.
+Current MCTS requires its root choices to match the complete
 legal set; arbitrary search filters are not a supported decorator mechanism.
 There is no common listener/metric registry or passive agent lifecycle API.
 Existing accepted-action callbacks and search reports support scoped research

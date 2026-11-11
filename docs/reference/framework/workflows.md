@@ -29,7 +29,8 @@ enable every controller, encoder or training algorithm.
 
 ## Limits and unsupported combinations
 
-- Learner-step Gym/teacher/actor-critic examples support the two placement games.
+- Learner-step Gym episodes support all four games. The existing actor-critic
+  collection and training examples support the two placement games.
   Whole-game MCTS self-play and Python frozen-model evaluation support all four
   games within their model contracts.
 - Browser Neural MCTS supports all four games. Local neural agents in the native

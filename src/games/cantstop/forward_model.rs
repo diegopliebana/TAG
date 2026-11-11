@@ -77,8 +77,7 @@ impl CantStopForwardModel {
             });
         }
         if p.counters.move_count() == usize::MAX
-            || (matches!(action, Action::Stop | Action::Bust)
-                && p.counters.completed_turn_count() == usize::MAX)
+            || (matches!(action, Action::Stop) && p.counters.completed_turn_count() == usize::MAX)
         {
             return Err(Error::CounterOverflow);
         }
@@ -94,6 +93,13 @@ impl CantStopForwardModel {
                 p.dice = Some(dice);
                 p.phase = Phase::Allocation;
                 event = Some(RollEvent { dice });
+                if actions(p).is_empty() {
+                    if p.counters.completed_turn_count() == usize::MAX {
+                        return Err(Error::CounterOverflow);
+                    }
+                    p.temporary = [None; COLUMN_COUNT];
+                    end_turn(p);
+                }
             }
             Action::Allocate(allocation) => {
                 for column in allocation.columns() {
@@ -134,8 +140,7 @@ impl CantStopForwardModel {
                 }
             }
             Action::Bust => {
-                p.temporary = [None; COLUMN_COUNT];
-                end_turn(p);
+                unreachable!("legacy Bust actions are rejected before mutation");
             }
         }
         p.counters.record_move();
@@ -207,9 +212,6 @@ pub(super) fn actions(p: &CantStopPosition) -> Vec<Action> {
                 }
             }
             full.extend(single);
-            if full.is_empty() {
-                full.push(Action::Bust);
-            }
             full
         }
     }

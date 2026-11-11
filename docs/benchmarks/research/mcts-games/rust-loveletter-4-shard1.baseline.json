@@ -1,0 +1,110 @@
+{
+  "identity": {
+    "engine": "rust",
+    "game": "loveletter",
+    "players": 4,
+    "shard": 1,
+    "games": 100,
+    "seed": 142,
+    "settings": {
+      "games_per_profile": 250,
+      "shards": 3,
+      "iterations": 5000,
+      "rollout_length": 10,
+      "warmup_decisions": 6,
+      "sampling_stride": 1024,
+      "seed": 42,
+      "aligned": "true",
+      "seed_copies": "true",
+      "skip_forced": "true",
+      "memory_interval_ms": 50,
+      "java_heap": "-Xms64m -Xmx512m",
+      "rules": {
+        "tictactoe": {
+          "grid_size": 3
+        },
+        "connect4": {
+          "width": 7,
+          "height": 6,
+          "winning_length": 4
+        },
+        "cantstop": {
+          "column_heights": [
+            3,
+            5,
+            7,
+            9,
+            11,
+            13,
+            11,
+            9,
+            7,
+            5,
+            3
+          ],
+          "markers": 3,
+          "columns_to_win": 3
+        },
+        "loveletter": {
+          "classic_cards": 16,
+          "winning_tokens": [
+            6,
+            5,
+            4
+          ]
+        }
+      },
+      "agent_seed_derivation": "4 * game_seed + 100000 + absolute_seat (wrapping 64-bit)",
+      "shard_sizes": [
+        100,
+        100,
+        50
+      ],
+      "probe_build_sha256": "1a4c2a81e3b4cc8aa7c1d2960de6623b621cfb4000b81335c64ab5b86c563105"
+    }
+  },
+  "command": [
+    "C:\\Research\\TAG\\tag-rust\\target\\release\\examples\\mcts_games_measure.exe",
+    "loveletter",
+    "4",
+    "100",
+    "5000",
+    "142",
+    "1024",
+    "true",
+    "true",
+    "6"
+  ],
+  "segments": [
+    {
+      "first_game_id": 0,
+      "command": [
+        "C:\\Research\\TAG\\tag-rust\\target\\release\\examples\\mcts_games_measure.exe",
+        "loveletter",
+        "4",
+        "100",
+        "5000",
+        "142",
+        "1024",
+        "true",
+        "true",
+        "6"
+      ],
+      "baseline": {
+        "working_set": 6090752,
+        "peak_working_set": 7823360,
+        "private_bytes": 2207744,
+        "pagefile": 2207744,
+        "peak_pagefile": 4100096
+      },
+      "ready": {
+        "engine": "rust",
+        "game": "loveletter",
+        "phase": "ready",
+        "players": 4,
+        "timer_control_ns": 25.91
+      },
+      "started_utc": "2026-10-30T08:57:28.980267+00:00"
+    }
+  ]
+}

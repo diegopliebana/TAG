@@ -47,8 +47,8 @@ class NeuralMctsEvaluator:
             raise ValueError("neural MCTS currently requires win=1,draw=0,loss=-1 value units")
         if contract.actions.mapping == "candidates":
             raise ValueError("candidate-feature neural MCTS needs a declared candidate encoder")
-        if spec.identity.game in ("cantstop", "loveletter"):
-            game_name = "Love Letter" if spec.identity.game == "loveletter" else "Can't Stop"
+        if spec.identity.game in ("cantstop", "loveletter", "sushigo"):
+            game_name = {"loveletter":"Love Letter", "cantstop":"Can't Stop", "sushigo":"Sushi Go!"}[spec.identity.game]
             if spec.identity.game == "loveletter" and any(t.name == "last_private_history" for t in contract.tensors):
                 raise ValueError("Love Letter MCTS cannot supply previous-round private history for hypothetical opponents")
             if (contract.value.players != tuple(range(spec.identity.player_count))

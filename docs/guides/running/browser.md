@@ -1,7 +1,9 @@
 # Play and review games in the browser
 
-The browser displays a Rust game running in a Web Worker. Use it for human/AI
-play, agent comparisons and reviewing saved continuations. Game-specific inputs,
+The browser displays a Rust game running in a Web Worker. Use it for research
+play, agent comparisons and reviewing saved continuations. It does not provide
+hot-seat privacy: anyone operating the page can inspect the active seat's view.
+Game-specific inputs,
 parameters and private-information controls are in the [game manuals](../README.md#game-manuals).
 
 [Browser execution diagram](../../reference/browser/README.md#a-browser-move) shows how the page and worker handle a move.
@@ -57,10 +59,18 @@ Hidden-information saves can contain privileged state and seeds. Follow the
 selected game's manual before sharing them. Public/player views and privileged
 inspection are separate display modes where supported.
 
+For Sushi Go!, each seat chooses from the same pre-decision deal. After a
+human submits, the next waiting seat appears automatically. Save and fork
+after all seats have chosen. A state file asks for new controllers; branch
+and session files resume recorded controllers.
+
 ## Display controls
 
 Settings offers theme, sound, reduced motion, **Fit** and **Scrollable** board
-display. Scrollable display enables zoom. On narrow screens, setup fields stack
+display. Each new game starts with its own display setting: Sushi Go! uses
+**Scrollable** at 80% zoom; the other games use **Fit** at 100%. Scrollable
+display enables zoom. Manual changes remain in effect during the current
+session. On narrow screens, setup fields stack
 vertically. Each game's manual explains any additional views, card/board controls
 and action information screens.
 

@@ -13,6 +13,7 @@ use tag_rust::{
     games::{
         cantstop::{CantStopForwardModel, CantStopProgress},
         loveletter::{LoveLetterForwardModel, LoveLetterHeuristic},
+        sushigo::{SushiGoForwardModel, SushiGoHeuristic},
     },
     search::mcts::{MctsAgent, MctsSnapshot, Settings},
 };
@@ -141,6 +142,7 @@ macro_rules! backend {
             pub struct NativeOpponents {
                 candidate: usize,
                 position: Position,
+                input_serial: u64,
                 seats: Vec<Option<Saved>>,
                 failed: bool,
             }
@@ -163,6 +165,11 @@ macro_rules! backend {
                             "native lineup source game changed",
                         ));
                     }
+                    if native_game(game)?.joint_submissions != self.input_serial {
+                        return Err(StalePositionError::new_err(
+                            "native lineup source game changed",
+                        ));
+                    }
                     if self.failed {
                         return Err(PyValueError::new_err("native lineup has failed"));
                     }
@@ -180,9 +187,9 @@ macro_rules! backend {
                             .map(|s| s.as_ref().map(Active::restore).transpose())
                             .collect::<Result<Vec<_>>>()?;
                         let reason = loop {
-                            let actor = match game.session.next_player() {
-                                tag_rust::core::Decision::Finished => break "finished",
-                                tag_rust::core::Decision::Player(player) => player.index(),
+                            let actor = match game.next_player() {
+                                None => break "finished",
+                                Some(player) => player.index(),
                             };
                             if limit.is_some_and(|limit| moves >= limit) {
                                 break "action_limit";
@@ -261,6 +268,7 @@ macro_rules! backend {
                     Ok(Self {
                         candidate,
                         position: game.token(),
+                        input_serial: native_game(game)?.joint_submissions,
                         seats,
                         failed: false,
                     })
@@ -282,11 +290,17 @@ macro_rules! backend {
                         ));
                     }
                     let limit = Some(max_actions.unwrap_or(available));
+                    let joint = matches!(game.engine.as_ref(), Some(Engine::SushiGo(_)));
                     let Engine::$variant(native) = game.engine.as_mut().expect("checked") else {
                         unreachable!()
                     };
+                    let prior_resolutions = native.joint_resolutions;
                     let (moves, report) = py.detach(|| self.run(native, limit, trace));
-                    game.revision += moves;
+                    let revisions = if joint {
+                        native.joint_resolutions - prior_resolutions
+                    } else { moves };
+                    game.revision += revisions;
+                    self.input_serial = native.joint_submissions;
                     self.position = game.token();
                     Ok(report.to_string())
                 }
@@ -309,17 +323,26 @@ macro_rules! backend {
                         .revision
                         .checked_add(1)
                         .ok_or_else(|| PyValueError::new_err("position revisions exhausted"))?;
+                    let joint = matches!(game.engine.as_ref(), Some(Engine::SushiGo(_)));
                     let Engine::$variant(native) = game.engine.as_mut().expect("checked") else {
                         unreachable!()
                     };
-                    let result = py
+                    let (result, revisions, serial) = py
                         .detach(|| {
+                            let prior_resolutions = native.joint_resolutions;
                             native.apply(id, Some(self.candidate)).map_err(error)?;
-                            Ok::<_, String>(event(native, self.candidate, id))
+                            Ok::<_, String>((event(native, self.candidate, id),
+                                native.joint_resolutions - prior_resolutions,
+                                native.joint_submissions))
                         })
                         .map_err(PyValueError::new_err)?;
-                    game.revision = next;
+                    if joint {
+                        game.revision += revisions;
+                    } else {
+                        game.revision = next;
+                    }
                     self.position = game.token();
+                    self.input_serial = serial;
                     Ok(result.to_string())
                 }
                 /// Read current public scores and result labels without advancing dice.
@@ -330,6 +353,9 @@ macro_rules! backend {
                         return Err(StalePositionError::new_err("native lineup source changed"));
                     }
                     let native = native_game(game)?;
+                    if native.joint_submissions != self.input_serial {
+                        return Err(StalePositionError::new_err("native lineup source changed"));
+                    }
                     py.detach(|| -> Result<String> {
                         let model = native.session.model();
                         let scores = (0..model.player_count(native.session.state())).map(|seat|model.player_score(native.session.state(),PlayerId::new(seat)).map_err(error)).collect::<Result<Vec<_>>>()?;
@@ -362,10 +388,21 @@ backend!(
         json!({"actor":actor,"action_id":id})
     }
 );
+backend!(
+    sushigo,
+    SushiGo,
+    SushiGoForwardModel,
+    SushiGoHeuristic,
+    SushiGoHeuristic,
+    |_game: &crate::engine::Game<SushiGoForwardModel>, actor: usize, id: usize| {
+        json!({"actor":actor,"action_id":id})
+    }
+);
 
 enum Backend {
     CantStop(cantstop::NativeOpponents),
     LoveLetter(loveletter::NativeOpponents),
+    SushiGo(sushigo::NativeOpponents),
 }
 /// Persistent native opponents, bound to a single live game and its position.
 #[pyclass(module = "tag_rust._engine")]
@@ -377,6 +414,7 @@ macro_rules! dispatch {
         match &mut $this.inner {
             Backend::CantStop(runtime) => runtime.$method($($arg),*),
             Backend::LoveLetter(runtime) => runtime.$method($($arg),*),
+            Backend::SushiGo(runtime) => runtime.$method($($arg),*),
         }
     };
 }
@@ -397,9 +435,12 @@ impl NativeOpponents {
                 candidate,
                 agents_json,
             )?),
+            Engine::SushiGo(_) => Backend::SushiGo(sushigo::NativeOpponents::new(
+                py, game, candidate, agents_json,
+            )?),
             _ => {
                 return Err(PyValueError::new_err(
-                    "native lineups support Can't Stop and Love Letter",
+                    "native lineups support Can't Stop, Love Letter and Sushi Go!",
                 ));
             }
         };
@@ -428,6 +469,7 @@ impl NativeOpponents {
         match &self.inner {
             Backend::CantStop(runtime) => runtime.state(py, game),
             Backend::LoveLetter(runtime) => runtime.state(py, game),
+            Backend::SushiGo(runtime) => runtime.state(py, game),
         }
     }
 }

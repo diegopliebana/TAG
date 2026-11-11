@@ -143,6 +143,13 @@ impl Engine {
                     Decision::Player(actor) => Stop::Human(actor.index()),
                 }),
             },
+            Self::SushiGo(game) => Progress {
+                moves: 0,
+                stop: Ok(match game.next_player() {
+                    Some(actor) => Stop::Human(actor.index()),
+                    None => Stop::Finished,
+                }),
+            },
         }
     }
     pub fn resume(
@@ -166,6 +173,10 @@ impl Engine {
                     "Love Letter",
                     "external evaluation",
                 )),
+            },
+            Self::SushiGo(_) => Progress {
+                moves: 0,
+                stop: Err(crate::engine::unsupported_game("Sushi Go!", "external evaluation")),
             },
         }
     }

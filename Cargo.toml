@@ -46,6 +46,11 @@ default-members = ["."]
 resolver = "3"
 
 [[example]]
+name = "mcts_games_measure"
+path = "tools/benchmarks/mcts-games/native.rs"
+required-features = ["mcts-json"]
+
+[[example]]
 name = "research_measure"
 path = "tools/benchmarks/research/native.rs"
 required-features = ["mcts-json", "replay"]

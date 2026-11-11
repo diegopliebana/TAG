@@ -35,7 +35,7 @@ def evaluate_model(settings,snapshot,*,cycle=0):
 def evaluate(settings,snapshot,cycle):
     if not settings.evaluation.enabled:
         return {"enabled":False}
-    if settings.game in ("cantstop", "loveletter"):
+    if settings.game in ("cantstop", "loveletter", "sushigo"):
         from .lineup_evaluation import evaluate_lineup
         return evaluate_lineup(settings,snapshot,cycle)
     if settings.players != 2:

@@ -111,6 +111,35 @@ class NativeEpisodeTests(unittest.TestCase):
 
 @unittest.skipUnless(HAS_GYM,"Gymnasium is not installed; install the documented optional dependency")
 class GymEpisodeTests(unittest.TestCase):
+    def test_stochastic_three_player_episodes_reproduce_full_trajectories(self):
+        if not HAS_GYM:
+            self.skipTest("Gymnasium is optional")
+        for name in ("cantstop", "loveletter"):
+            with self.subTest(game=name):
+                def play():
+                    env = GameEnv(name, players=3, learner=2, opponent="random")
+                    observation, info = env.reset(seed=31)
+                    trace = [(info["environment_seed"], info["opponent_seed"],
+                              info["underlying_moves"], observation["action_mask"].copy())]
+                    for _ in range(2000):
+                        self.assertEqual(info["next_player"], 2)
+                        action = int(np.flatnonzero(observation["action_mask"])[0])
+                        observation, reward, terminated, truncated, info = env.step(action)
+                        trace.append((action, reward, terminated, truncated,
+                                      info["underlying_moves"], observation["action_mask"].copy()))
+                        if terminated or truncated:
+                            break
+                    self.assertTrue(terminated)
+                    self.assertFalse(truncated)
+                    self.assertGreater(info["underlying_moves"], info["learner_steps"])
+                    env.close()
+                    return trace
+                first, repeated = play(), play()
+                self.assertEqual(len(first), len(repeated))
+                for a, b in zip(first, repeated):
+                    self.assertEqual(a[:-1], b[:-1])
+                    np.testing.assert_array_equal(a[-1], b[-1])
+
     def test_spaces_passive_checks_and_complete_masked_games(self):
         cases=[("tictactoe",{}),("tictactoe",{"grid_size":4}),
                ("connect4",{}),("connect4",{"width":4,"height":3,"winning_length":3})]

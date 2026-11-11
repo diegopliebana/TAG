@@ -77,7 +77,10 @@ function updateRecords(after, clear = false) {
   if (after.moves !== null) recordedMoves = after.moves;
   else if (after.accepted_move) recordedMoves[after.accepted_move.position - 1] = after.accepted_move;
 }
-function acceptLive(after, clear = false) { updateRecords(after, clear); view = after; displayView = null; }
+function acceptLive(after, clear = false) {
+  updateRecords(after, clear); view = after; displayView = null;
+  if (clear) window.dispatchEvent(new CustomEvent("tag-game-started", {detail:{game:after.game}}));
+}
 function acceptDisplay(after) {
   updateRecords(after);
   if (after.read_only) displayView = after;
@@ -99,15 +102,15 @@ function parameters() {
     input.name = field.name; input.value = field.value; if (field.name === "first_player") input.min = "0";
     label.append(input); ui["setup-parameters"].append(label);
     if (field.name === "players") {
-      input.min = "2"; input.max = "4";
+      input.min = "2"; input.max = ui.game.value === "sushigo" ? "5" : "4";
       input.addEventListener("change", () => {
         const n = Number(input.value);
-        if (Number.isInteger(n) && n >= 2 && n <= 4) createSeatFields(ui["setup-seats"], seeds, "", n, ui.game.value);
+        if (Number.isInteger(n) && n >= 2 && n <= (ui.game.value === "sushigo" ? 5 : 4)) createSeatFields(ui["setup-seats"], seeds, "", n, ui.game.value);
       });
     }
   }
   ui["setup-error"].textContent = "";
-  createSeatFields(ui["setup-seats"], seeds, "", ui.game.value === "loveletter" ? 3 : 2, ui.game.value);
+  createSeatFields(ui["setup-seats"], seeds, "", ["loveletter","sushigo"].includes(ui.game.value) ? 3 : 2, ui.game.value);
 }
 function refreshSeeds() { for (const input of ui["setup-seats"].querySelectorAll('input[id^="seed-"]')) input.value = seeds.next(); }
 function render() {
@@ -127,7 +130,8 @@ function render() {
   ui.fork.disabled = locked || navigationPending || !display;
   for (const control of ui["fork-form"].querySelectorAll("button, input, select")) control.disabled = locked;
   ui["observer-view"].disabled = ui["reveal-hidden"].disabled = locked || navigationPending;
-  ui["observer-controls"].hidden = ui["reveal-controls"].hidden = ui["action-results-controls"].hidden = display?.game !== "loveletter";
+  ui["observer-controls"].hidden = ui["action-results-controls"].hidden = display?.game !== "loveletter";
+  ui["reveal-controls"].hidden = !["loveletter","sushigo"].includes(display?.game);
   if (display?.game === "loveletter") {
     const select=ui["observer-view"];
     if (select.options.length !== display.controllers.length+2) {
@@ -144,12 +148,13 @@ function render() {
   }
   if (!display) return;
   panel.render(display, recordedMoves, locked);
-  const name = display.game === "loveletter" ? "Love Letter" : display.game === "cantstop" ? "Can't Stop" : display.game === "tictactoe" ? "Tic-Tac-Toe" : "Connect 4";
+  const name = display.game === "sushigo" ? "Sushi Go!" : display.game === "loveletter" ? "Love Letter" : display.game === "cantstop" ? "Can't Stop" : display.game === "tictactoe" ? "Tic-Tac-Toe" : "Connect 4";
   ui["game-name"].textContent = name.toUpperCase();
   ui["match-title"].textContent = display.controllers.map(seat => controllerName(seat.kind)).join(" versus ");
   ui.result.textContent = display.board.outcome.kind === "shared_win" ? `Players ${display.board.outcome.player.join(", ")} share the win` : display.board.outcome.kind === "won" ? `Player ${display.board.outcome.player} wins` : terminal ? "Draw" : `Player ${display.next_player} to move`;
   ui.details.textContent = `${name} | ${display.board.counters[0]} moves | ${display.board.width} × ${display.board.height}${settings?.winning_length ? ` | Winning length ${settings.winning_length}` : ""}`;
   if (display.game === "loveletter") ui.details.textContent = `${name} | ${display.board.counters[0]} moves | ${display.controllers.length} players | Round ${display.board.loveletter.round}`;
+  if (display.game === "sushigo") ui.details.textContent = `${name} | Round ${display.board.sushigo.round} of 3 | ${display.controllers.length} players | ${display.cursor} complete choices`;
   const human = !terminal && display.controllers[display.next_player].kind === "human";
   ui.status.textContent = errorMessage || (navigationPending ? "Loading the selected recorded position..." : recording.playing ? `Playing recording: move ${display.cursor} of ${display.tip}.` : historical ? `Reviewing move ${display.cursor} of ${display.tip}. Fork to continue from here.` : lifecyclePending ? "Waiting for the current engine command to finish..." : commandBusy ? "Applying your request..." : terminal ? "Game finished. Reset to play again, or choose New game." : animating ? "Showing the accepted move..." : playback.busy ? ({ thinking: "AI is thinking...", waiting: "Waiting for the AI delay...", committing: "Applying the AI move...", cancelling: "Discarding the pending AI move...", animating: "Showing the accepted move..." })[playback.phase] : human ? `Waiting for Player ${display.next_player}. ${display.game === "tictactoe" ? "Choose an outlined empty cell." : display.game === "loveletter" ? "Choose a card, target and any Guard guess." : "Choose an available column."}${hasAi ? playback.playing ? " AI play is enabled." : " AI play is paused." : ""}` : playback.playing ? "Preparing the next AI turn..." : `AI play is paused. Use Play or AI step for Player ${display.next_player}.`);
   if (fileStatus && !errorMessage) ui.status.textContent = fileStatus;
@@ -157,13 +162,14 @@ function render() {
     ui.status.textContent = ui.status.textContent.replace(display.game === "loveletter" ? "Choose a card, target and any Guard guess." : "Choose an available column.", "Choose one of the available actions below the tracks.");
     ui.details.textContent = `${name} | ${display.board.counters[0]} actions | ${display.board.counters[1]} completed turns | Dice seed: ${settings?.seed ?? "loaded"}`;
   }
+  if (display.game === "sushigo" && !historical && !terminal && !commandBusy) ui.status.textContent = errorMessage || (display.controllers[display.next_player].kind !== "human" ? `Player ${display.next_player}'s AI is choosing. ${playback.playing ? "Play is enabled." : "Use AI step or Play live."}` : `Player ${display.observer}: choose a card. Choices reveal together after everyone submits.`);
   renderBoard(ui.board, display, action => move(action), { busy: locked || navigationPending || historical || recording.busy || playback.busy || animating, sprites: assets.sprites, emphasis: display.board.winning_cells });
   if (ui.players.dataset.game !== `${display.game}-${display.controllers.length}`) {
     ui.players.replaceChildren(); ui.players.dataset.game = `${display.game}-${display.controllers.length}`;
     for (let seat = 0; seat < display.controllers.length; seat++) {
       const card = document.createElement("div"); card.className = "player";
-      const image = document.createElement(["cantstop","loveletter"].includes(display.game) ? "span" : "img"); image.alt = "";
-      if (["cantstop","loveletter"].includes(display.game)) { image.className = "cantstop-player"; image.style.color = playerColors[seat]; image.textContent = ["●", "◆", "■", "▲"][seat]; image.setAttribute("aria-hidden", "true"); }
+      const image = document.createElement(["cantstop","loveletter","sushigo"].includes(display.game) ? "span" : "img"); image.alt = "";
+      if (["cantstop","loveletter","sushigo"].includes(display.game)) { image.className = "cantstop-player"; image.style.color = playerColors[seat] ?? "#e8949b"; image.textContent = ["●", "◆", "■", "▲", "★"][seat]; image.setAttribute("aria-hidden", "true"); }
       image.src = display.game === "tictactoe" ? (seat === 0 ? assets.sprites.x : assets.sprites.o) : (seat === 0 ? assets.sprites.red : assets.sprites.yellow);
       const label = document.createElement("span"); const seed = document.createElement("span"); seed.className = "agent-seed";
       card.append(image, label, seed); ui.players.append(card);
@@ -175,6 +181,7 @@ function render() {
     card.children[2].textContent = controller.seed === undefined || display.game === "loveletter" ? "" : `Seed: ${controller.seed}`;
     if (display.game === "loveletter") card.children[1].textContent = `Player ${seat} / ${controllerName(controller.kind)} / ${display.scores[seat]} favor tokens`;
     if (display.game === "cantstop") card.children[1].textContent = `Player ${seat} / ${playerShapes[seat]} / ${controllerName(controller.kind)} / ${display.scores[seat]} columns`;
+    if (display.game === "sushigo") card.children[1].textContent = `Player ${seat} / ${controllerName(controller.kind)} / ${display.scores[seat]} points`;
   });
 }
 async function present(after, unlocked = Promise.resolve(), recorded = false) {
@@ -212,7 +219,7 @@ function resetPresentation() {
   ui["reveal-hidden"].checked=false;ui["observer-view"].value="auto";
 }
 async function changePresentation() {
-  if (!view || view.game!=="loveletter" || fileBusy || lifecyclePending) return;
+  if (!view || !["loveletter","sushigo"].includes(view.game) || fileBusy || lifecyclePending) return;
   if (effectView || actionResults.resolve) cancelPresentation(false);
   const intent=++presentationIntent;
   const value=ui["observer-view"].value;
@@ -222,6 +229,9 @@ async function changePresentation() {
     delete current.board.loveletter.privileged;
     current.board.loveletter.hand=[];current.board.loveletter.private_events=[];current.board.loveletter.last_private_events=[];
     current.actions=[];
+  }
+  for (const current of [view,displayView]) if (current?.board?.sushigo) {
+    delete current.board.sushigo.opponent_hands;
   }
   render();
   try {
@@ -237,7 +247,8 @@ ui["action-result-pause"].addEventListener("click",()=>{
 });
 function move(action) {
   if (fileBusy || commandBusy || lifecyclePending || setupPending || forkPending || navigationPending || recording.busy || reviewing() || playback.busy || animating || !view) return;
-  return execute({ type: "human_move", actor: view.next_player, action, ...(view.game === "loveletter" ? {observer:view.observer} : {}) }, { moved: true });
+  if (view.game === "sushigo") { view.board.sushigo.hand=[];view.actions=[];render(); }
+  return execute({ type: "human_move", actor: view.game === "sushigo" ? view.observer : view.next_player, action, ...(view.game === "loveletter" ? {observer:view.observer} : {}) }, { moved: true });
 }
 async function execute(command, { moved = false, newSettings = null } = {}) {
   if (commandBusy || playback.busy) return false;

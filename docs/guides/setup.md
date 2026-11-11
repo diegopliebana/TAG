@@ -148,6 +148,17 @@ install Matplotlib into the Python environment (the recorded version is 3.11.2):
 
 Matplotlib is needed only by plotting tools, not by the engine, browser or training.
 
+## Optional presentation previews
+
+The editable PowerPoint generator uses Python's standard library. Its optional
+`--preview` mode uses Pillow and installed Arial/Consolas fonts on Windows:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install Pillow
+```
+
+Pillow generates layout previews; PowerPoint reads the editable PPTX separately.
+
 ## Equivalent POSIX-shell commands
 
 The recorded runtime checks use Windows. On a POSIX host with a working Rust

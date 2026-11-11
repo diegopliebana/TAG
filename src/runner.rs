@@ -5,7 +5,7 @@
 //! Recording is optional. Earlier accepted moves remain in place if a later call fails.
 
 use crate::agents::Agent;
-use crate::core::{Decision, ForwardModel, PlayerId};
+use crate::core::{Decision, ForwardModel, PlayerId, joint};
 use std::fmt;
 
 /// Owned player view and choices for one sequential decision.
@@ -73,6 +73,8 @@ pub(crate) fn choose_action<F: ForwardModel, A: Agent<F>>(
 #[derive(Debug, PartialEq, Eq)] // PartialEq/Eq: compare failure details when both nested errors support equality.
 // Errors move to the caller.
 pub enum RunnerError<G, A> {
+    SimultaneousRequiresJointRunner,
+    InvalidJoint(String),
     MissingController {
         player: PlayerId,
     },
@@ -98,6 +100,10 @@ impl<G: fmt::Display, A: fmt::Display> fmt::Display for RunnerError<G, A> {
     ) -> fmt::Result {
         // Success or owned formatting error.
         match self {
+            Self::SimultaneousRequiresJointRunner => {
+                write!(formatter, "simultaneous decision requires run_joint_game")
+            }
+            Self::InvalidJoint(message) => write!(formatter, "invalid joint decision: {message}"),
             Self::MissingController { player } => {
                 write!(formatter, "no controller for player {}", player.index())
             }
@@ -163,6 +169,90 @@ pub fn run_game<F: ForwardModel, A: Agent<F>>(
     agents: &mut [A],     // Exclusive controller slice borrow; each seat owns its controller.
 ) -> Result<(), RunnerError<F::Error, A::Error>> {
     run_game_impl(model, state, agents, |_, _, _, _, _| {})
+}
+
+/// Run complete decisions. Every participant sees the same pre-decision state.
+/// Controller calls follow `decision_players` order, but no chosen action is
+/// applied until all choices have been collected and validated. The callback
+/// receives one ordered joint action and its complete successor state.
+pub fn run_joint_game<F, A, R>(
+    model: &F,
+    state: &mut F::State,
+    agents: &mut [A],
+    mut accepted: R,
+) -> Result<(), RunnerError<F::Error, A::Error>>
+where
+    F: ForwardModel,
+    F::Action: PartialEq,
+    A: Agent<F>,
+    R: FnMut(&F, &F::State, &[(PlayerId, F::Action)]),
+{
+    run_joint_game_impl(model, state, agents, |model, state, choices, _| {
+        accepted(model, state, choices);
+    })
+}
+
+/// Record one complete joint action and every controller's post-choice progress.
+/// The callback runs only after the full decision has resolved successfully.
+pub fn run_joint_game_recorded<F, A, R>(
+    model: &F,
+    state: &mut F::State,
+    agents: &mut [A],
+    mut record: R,
+) -> Result<(), RunnerError<F::Error, A::Error>>
+where
+    F: ForwardModel,
+    F::State: Clone,
+    F::Action: PartialEq + Clone,
+    A: Agent<F> + crate::core::checkpoint::Checkpoint,
+    R: FnMut(crate::recording::RecordedJointDecision<F::State, F::Action, A::Snapshot>),
+{
+    use crate::recording::{ControllerSnapshot, RecordedJointDecision};
+    run_joint_game_impl(model, state, agents, |model, state, choices, agents| {
+        record(RecordedJointDecision {
+            choices: choices.to_vec(),
+            state_after: state.clone(),
+            next_seats: model.decision_players(state),
+            controllers_after: agents
+                .iter()
+                .map(|agent| ControllerSnapshot::Ai(agent.snapshot()))
+                .collect(),
+        });
+    })
+}
+
+fn run_joint_game_impl<F, A, R>(
+    model: &F,
+    state: &mut F::State,
+    agents: &mut [A],
+    mut accepted: R,
+) -> Result<(), RunnerError<F::Error, A::Error>>
+where
+    F: ForwardModel,
+    F::Action: PartialEq,
+    A: Agent<F>,
+    R: FnMut(&F, &F::State, &[(PlayerId, F::Action)], &[A]),
+{
+    loop {
+        let seats = model.decision_players(state);
+        if seats.is_empty() {
+            return Ok(());
+        }
+        let mut choices = Vec::with_capacity(seats.len());
+        for actor in seats {
+            let agent = agents
+                .get_mut(actor.index())
+                .ok_or(RunnerError::MissingController { player: actor })?;
+            let input = offered_decision(model, state, actor)?;
+            let action = choose_action(model, agent, actor, input)?;
+            choices.push((actor, action));
+        }
+        joint::apply(model, state, &choices).map_err(|error| match error {
+            joint::JointError::Rule(error) => RunnerError::Game(error),
+            joint::JointError::Invalid(message) => RunnerError::InvalidJoint(message),
+        })?;
+        accepted(model, state, &choices, agents);
+    }
 }
 
 /// Run a match and inspect each accepted action without requiring agent checkpoints.
@@ -243,6 +333,9 @@ where
 {
     // Completion or owned execution error.
     loop {
+        if model.decision_players(state).len() > 1 {
+            return Err(RunnerError::SimultaneousRequiresJointRunner);
+        }
         let actor = match model.next_player(state) {
             Decision::Finished => return Ok(()),
             Decision::Player(player) => player,

@@ -2,7 +2,7 @@
 //! A slot denotes a position in that shuffle, never an actual game's card ID.
 use super::*;
 use crate::core::{
-    ForwardModel,
+    ForwardModel, cards,
     checkpoint::Checkpoint,
     random::{ChanceRng, SimulationRng},
     simulation::SimulationModel,
@@ -100,11 +100,6 @@ impl Search<'_> {
             true
         }
     }
-    fn shuffle<T>(&mut self, values: &mut [T]) {
-        for i in (1..values.len()).rev() {
-            values.swap(i, self.random.index(i + 1).expect("nonempty choices"));
-        }
-    }
     fn events(&mut self, mut c: Constraints, index: usize) -> Option<LoveLetterState> {
         if !self.node() || !c.propagate() {
             return None;
@@ -136,7 +131,7 @@ impl Search<'_> {
             }
             PublicEvent::Discarded { player, card } => {
                 let mut choices: Vec<_> = (0..c.hands.get(player.index())?.len()).collect();
-                self.shuffle(&mut choices);
+                cards::shuffle(&mut choices, &mut self.random);
                 for choice in choices {
                     let mut branch = c.clone();
                     let slot = branch.hands[player.index()].remove(choice);
@@ -240,7 +235,7 @@ impl Search<'_> {
                 .into_iter()
                 .filter(|&v| c.domains[slot] & bit(v) != 0)
                 .collect();
-            self.shuffle(&mut choices);
+            cards::shuffle(&mut choices, &mut self.random);
             for card in choices {
                 let mut branch = c.clone();
                 branch.domains[slot] = bit(card);

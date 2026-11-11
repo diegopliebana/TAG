@@ -74,6 +74,12 @@ The native match's `osla` registration selects the appropriate implementation;
 OSLA selects a greatest mean and resolves exact ties with its choice RNG. Game
 manuals explain their available heuristic and information limits.
 
+For simultaneous decisions, sampled OSLA fills the other seats' choices from
+their observations of each simulated state, using uniform random selection,
+then evaluates the complete successor. One repetition applies one joint
+transition. The ordinary `OslaAgent` reports an explicit error if asked to
+evaluate a simultaneous decision; use `SampledOslaAgent` there.
+
 OSLA considers the immediate successor, rather than searching a tree of future
 choices. More samples reduce sampling variation but do not turn it into deeper
 search. [MCTS](mcts.md) explores longer action sequences and shares statistics

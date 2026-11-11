@@ -1,0 +1,19 @@
+{
+  "games_per_engine_profile": 250,
+  "total_collected_games_target": 4000,
+  "shard_sizes": [
+    100,
+    100,
+    50
+  ],
+  "state": "complete",
+  "previous_target_per_engine_profile": 500,
+  "reason": "User reduced the target on 2026-10-29. Preserve completed 100-game batches and let the current batch commit before switching to the revised schedule.",
+  "exclusions": "exclusions.json",
+  "replacement_games": false,
+  "resumed_utc": "2026-10-30T06:05:23.572775+00:00",
+  "interrupted_batch_archive": ".scratch\\mcts-games-interrupted-20261029T153635Z",
+  "baseline_checkpointing": true,
+  "collected_games": 4000,
+  "included_games": 3998
+}

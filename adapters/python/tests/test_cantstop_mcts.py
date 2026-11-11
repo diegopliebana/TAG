@@ -38,6 +38,24 @@ class Constant:
 
 
 class CantStopSearch(unittest.TestCase):
+    def test_forced_roll_skips_native_and_external_evaluation(self):
+        evaluator=Constant()
+        with tag.create("cantstop",{"seed":42},players=3) as game:
+            before=game.observe(0,NAMES)
+            with tag.MctsSearch(game,settings(100,policy=True),bindings={
+                    "external_value":evaluator,"external_policy":evaluator}) as search:
+                with tag.MctsBatch([search]) as batch:
+                    report,=batch.run()
+                    self.assertFalse(batch.errors)
+            self.assertEqual(report["action_id"],0)
+            self.assertTrue(report["forced"])
+            self.assertFalse(report["fallback"])
+            self.assertEqual(report["root_actions"][0]["visits"],0)
+            self.assertEqual(report["counters"]["forward_model_calls"],0)
+            self.assertEqual(report["counters"]["state_evaluations"],0)
+            self.assertEqual(evaluator.requests,[])
+            same_view(self,before,game.observe(0,NAMES))
+
     @classmethod
     def setUpClass(cls):
         result = subprocess.run(["cargo", "run", "--offline", "--quiet", "--manifest-path",
@@ -69,13 +87,15 @@ class CantStopSearch(unittest.TestCase):
                         self.assertEqual(request.observations[0].observer, request.deciding_player)
                         self.assertEqual(request.observations[0].next_player, request.deciding_player)
                     phases.add(case["phase"])
-        self.assertEqual(len(phases), 4)
+        self.assertEqual(len(phases), 3)
 
     def test_batching_retry_and_polling_preserve_simulation_continuation_and_live_dice(self):
         for players in (2, 3, 4):
             evaluator = Constant()
             with ExitStack() as stack:
                 games = [stack.enter_context(tag.create("cantstop", {"seed": 42}, players=players)) for _ in range(3)]
+                for game in games:
+                    game.apply(0, position=game.position)  # Search an allocation with multiple choices.
                 untouched = stack.enter_context(games[0].clone())
                 searches = [stack.enter_context(tag.MctsSearch(game, settings(40, policy=True),
                     bindings={"external_value": evaluator, "external_policy": evaluator})) for game in games]
@@ -113,6 +133,7 @@ class CantStopSearch(unittest.TestCase):
     def test_limits_cancellation_seed_reproduction_and_stale_positions(self):
         evaluator = Constant()
         with tag.create("cantstop", {"seed": 42}, players=3) as game:
+            game.apply(0, position=game.position)
             before = game.observe(0)
             config = settings(8)
             config["seed"] = None
@@ -173,6 +194,7 @@ class CantStopSearch(unittest.TestCase):
     def test_expired_pending_evaluation_adds_no_visits(self):
         evaluator = Constant()
         with tag.create("cantstop", {"seed": 42}, players=3) as game:
+            game.apply(0, position=game.position)
             config = settings(100)
             config["budgets"]["time_ms"] = 500
             with tag.MctsSearch(game, config, bindings={"external_value": evaluator}) as search:

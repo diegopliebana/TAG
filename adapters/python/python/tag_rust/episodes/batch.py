@@ -182,7 +182,9 @@ class GameEnvBatch:
                 except Exception as error:
                     seed_errors[i] = f"{type(error).__name__}: {error}"
             candidate = self._native.prepare_resets(indices, [
-                states[i][3]["opponent_seed"] if i in states else None for i in indices], teacher_seeds)
+                states[i][3]["opponent_seed"] if i in states else None for i in indices],
+                teacher_seeds,
+                [states[i][3]["environment_seed"] if i in states else None for i in indices])
             value = candidate.output
             for i, error in seed_errors.items():
                 value["errors"][i] = error

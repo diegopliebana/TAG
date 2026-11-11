@@ -3,6 +3,7 @@ mod cantstop;
 mod engine;
 mod errors;
 mod games;
+mod joint_runtime;
 mod learned;
 mod loveletter;
 mod mcts;
@@ -10,6 +11,7 @@ mod protocol;
 mod runtime;
 mod seeds;
 mod stochastic;
+mod sushigo;
 pub use engine::BrowserEngine;
 
 #[cfg(test)]

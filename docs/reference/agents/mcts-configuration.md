@@ -28,6 +28,7 @@ These are the accepted JSON names. Effective settings can be exported with Setti
 | `schema_version` | Required `1`; identifies the configuration format. |
 | `seed` | Explicit unsigned integer, or `null`/omitted for automatic seeding at agent creation. Expose and record the resolved integer. Checkpoints also retain current RNG progress. |
 | `search_mode` | `open_loop` is the selected default. Each iteration reconstructs a simulation from the root and applies tree actions. Version 1 rejects other modes. |
+| `joint_opponent_policy` | `uniform_random` (default) or `first_available` for simulated other players in a simultaneous decision. Each uses that simulated player's observation. |
 | `tree_policy` | `ucb1` or `puct`. |
 | `exploration_constant` | Finite nonnegative number; controls exploration relative to the declared value scale. Default sqrt(2). |
 | `tree_depth` | Positive integer or `null`. Root depth is zero. At the limit evaluate the selected node directly, skipping expansion and rollout. |
@@ -80,7 +81,9 @@ nonnegative and normalized over legal actions; all-zero mass is rejected.
 At forward-model exhaustion during rollout, evaluate the current position and
 complete back-propagation without more actions. Time expiry discards unfinished results while
 preserving completed statistics. Synchronous native calls cannot be interrupted
-mid-call. No completed iteration means a reported seeded random legal fallback.
+mid-call. A sole root action returns directly after validation, with `forced=true`
+and zero visits. For multiple actions, no completed iteration means a reported
+seeded random legal fallback.
 The same current-position completion applies during traversal and after expansion.
 Cancellation takes precedence over time; time takes precedence over finishing work.
 Reports include all observed stop reasons. Insufficient whole-list heuristic budget
@@ -154,6 +157,7 @@ compatibility through the Python search API. For browser/file registration, see 
 | schema_version | Required; exactly 1. Reject unknown fields. |
 | seed | Omitted/null means automatic platform seeding; explicit u64 retained. |
 | search_mode | open_loop; reject unsupported alternatives in version 1. |
+| joint_opponent_policy | uniform_random; first_available is also supported for simultaneous simulations. |
 | tree_policy / exploration_constant | ucb1 / sqrt(2); constant finite, nonnegative. |
 | tree_depth / rollout_length | 100 / 10; null disables either independently. |
 | state_evaluator | game_heuristic, empty parameters, validated for the game. |
@@ -164,7 +168,7 @@ compatibility through the Python search API. For browser/file registration, see 
 | rollout.temperature | 1 for softmax; finite positive. |
 | final_selection | most_visits; visit_sampling temperature 1, finite positive. |
 | budgets | Omitted object means 1000 iterations, other limits disabled. Supplied object's omitted limits are disabled; at least one enabled required. |
-| Budget numbers | Zero valid as immediate stop/fallback; finite nonnegative f64 milliseconds, u64 counts. |
+| Budget numbers | Zero valid as immediate stop/fallback for multiple actions; a sole root action returns directly. Time is finite nonnegative f64 milliseconds; counts are u64. |
 | limits.max_nodes | 100000, positive, includes root. |
 | limits.max_edges | 1000000, positive. |
 | limits.max_actions_per_decision | 4096, positive. |

@@ -14,8 +14,10 @@
     "state_evaluator": {"name": "network_value"},
     "puct_preferences": {"source": "probabilities", "evaluator": {"name": "network_policy"}}
   },
+
   "model": {
-    "payloads": ["hands", "players", "reserve", "discards", "context", "public_history", "private_history", "last_public_history", "last_tokens"],
+    "payloads": ["hands", "players", "reserve", "discards", "context", "public_history",
+                 "private_history", "last_public_history", "last_tokens"],
     "hidden_sizes": [32, 32],
     "value_output": "players"
   },

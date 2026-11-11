@@ -6,6 +6,13 @@ const display = document.querySelector("#board-display");
 const zoom = document.querySelector("#board-zoom");
 const zoomValue = document.querySelector("#board-zoom-value");
 const zoomReset = document.querySelector("#board-zoom-reset");
+const startingViews = {
+  tictactoe: { display: "fit", zoom: 100 },
+  connect4: { display: "fit", zoom: 100 },
+  cantstop: { display: "fit", zoom: 100 },
+  loveletter: { display: "fit", zoom: 100 },
+  sushigo: { display: "scrollable", zoom: 80 },
+};
 function sizeTable() {
   for (const menu of document.querySelectorAll(".toolbar-menus > details")) {
     // Right-align each dropdown with its own button; leave room at the left edge.
@@ -27,6 +34,11 @@ function sizeTable() {
     // vertically scrollable so cards and text retain readable sizes.
     board.style.setProperty("--letter-width", display.value === "fit" ? `${Math.min(1100, width)}px` : "1100px");
     board.style.setProperty("--letter-scale", display.value === "fit" ? "1" : String(Number(zoom.value) / 100));
+    board.style.removeProperty("--cell");
+    return;
+  }
+  if (board.querySelector(".sushigo-board")) {
+    board.style.setProperty("--sushi-scale", display.value === "fit" ? "1" : String(Number(zoom.value) / 100));
     board.style.removeProperty("--cell");
     return;
   }
@@ -62,9 +74,17 @@ for (const element of [toolbar, panel, ...panel.children].filter(element => elem
 // A newly selected game replaces the table; ordinary accepted moves update text.
 new MutationObserver(sizeTable).observe(board, { childList: true, subtree: true });
 display.addEventListener("change", () => { board.scrollTop = 0; board.scrollLeft = 0; sizeTable(); });
+window.addEventListener("tag-game-started", event => {
+  const starting = startingViews[event.detail.game];
+  if (!starting) return;
+  display.value = starting.display;
+  zoom.value = String(starting.zoom);
+  board.scrollTop = 0; board.scrollLeft = 0;
+  sizeTable();
+});
 function changeZoom() {
   // Keep the same board point at the viewport center while changing its scale.
-  const scaleProperty = board.querySelector(".loveletter-table") ? "--letter-scale" : "--cell";
+  const scaleProperty = board.querySelector(".loveletter-table") ? "--letter-scale" : board.querySelector(".sushigo-board") ? "--sushi-scale" : "--cell";
   const previousCell = parseFloat(getComputedStyle(board).getPropertyValue(scaleProperty));
   const padding = getComputedStyle(board);
   const centerX = board.scrollLeft + board.clientWidth / 2 - parseFloat(padding.paddingLeft);

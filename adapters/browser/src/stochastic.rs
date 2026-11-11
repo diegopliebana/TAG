@@ -158,10 +158,10 @@ macro_rules! stochastic_controllers {
                 },
                 s => s,
             };
-            if GAME_ID == "loveletter" {
+            if GAME_ID == "loveletter" || GAME_ID == "sushigo" {
                 if let SeatSetup::NeuralMcts { bindings, .. } = &setup {
                     if bindings.value_observers.is_some_and(|v| v != tag_rust::inference::ValuePerspective::DecidingPlayer) {
-                        return Err(bridge("Love Letter requires deciding-player neural observations"));
+                        return Err(bridge("hidden card games require deciding-player neural observations"));
                     }
                 }
             }
@@ -189,8 +189,11 @@ macro_rules! stochastic_controllers {
                 SeatSetup::Mcts { configuration, .. } | SeatSetup::NeuralMcts { configuration, .. } => {
                     let mut settings = Settings::from_json(&configuration.to_string()).map_err(bridge)?;
                     settings.seed = Some(seed);
-                    if GAME_ID == "loveletter" && settings.value_completion != tag_rust::search::mcts::ValueCompletion::RequireFullVector {
-                        return Err(bridge("Love Letter requires full absolute-seat value vectors"));
+                    if (GAME_ID == "loveletter" || GAME_ID == "sushigo") && settings.value_completion != tag_rust::search::mcts::ValueCompletion::RequireFullVector {
+                        return Err(bridge("card games require full absolute-seat value vectors"));
+                    }
+                    if GAME_ID == "sushigo" && settings.tree_policy != tag_rust::search::mcts::TreePolicy::Ucb1 {
+                        return Err(bridge("Sushi Go! joint MCTS requires UCB1"));
                     }
                     if let Some(m) = &local {
                         m.validate_search(&settings).map_err(bridge)?;

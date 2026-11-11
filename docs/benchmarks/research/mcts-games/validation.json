@@ -1,0 +1,76 @@
+{
+  "complete": true,
+  "profiles": 16,
+  "games_per_profile": 250,
+  "games": 4000,
+  "included_games": 3998,
+  "excluded_games": 2,
+  "included_counts": [
+    [
+      "Tic-Tac-Toe",
+      2,
+      250,
+      250,
+      0,
+      0
+    ],
+    [
+      "Connect 4",
+      2,
+      250,
+      250,
+      0,
+      0
+    ],
+    [
+      "Can't Stop",
+      2,
+      250,
+      250,
+      0,
+      0
+    ],
+    [
+      "Can't Stop",
+      3,
+      250,
+      250,
+      0,
+      0
+    ],
+    [
+      "Can't Stop",
+      4,
+      250,
+      250,
+      0,
+      0
+    ],
+    [
+      "Love Letter",
+      2,
+      250,
+      250,
+      0,
+      0
+    ],
+    [
+      "Love Letter",
+      3,
+      250,
+      248,
+      0,
+      2
+    ],
+    [
+      "Love Letter",
+      4,
+      250,
+      250,
+      0,
+      0
+    ]
+  ],
+  "shards": 48,
+  "iteration_budget": 5000
+}

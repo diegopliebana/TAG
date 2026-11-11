@@ -302,8 +302,8 @@ class SelfPlaySettings:
             raise ValueError("root noise requires PUCT probabilities using the declared neural policy binding")
         if self.evaluation.candidate_seat is not None and self.evaluation.candidate_seat >= self.players:
             raise ValueError("candidate_seat is outside the game")
-        if self.game in ("cantstop", "loveletter"):
-            game_name = "Love Letter" if self.game == "loveletter" else "Can't Stop"
+        if self.game in ("cantstop", "loveletter", "sushigo"):
+            game_name = {"loveletter":"Love Letter", "cantstop":"Can't Stop", "sushigo":"Sushi Go!"}[self.game]
             if "seed" in self.parameters:
                 raise ValueError(f"{game_name} self-play derives each game seed from the master seed; omit parameters.seed")
             if self.model.value_output != "players" or (
@@ -317,7 +317,16 @@ class SelfPlaySettings:
                 raise ValueError("Love Letter search cannot reconstruct previous-round private history for hypothetical opponents")
             if value["value_completion"] != "require_full_vector":
                 raise ValueError("Love Letter self-play requires require_full_vector completion")
-        if self.game in ("cantstop", "loveletter"):
+        if self.game == "sushigo":
+            if self.players not in (2, 3, 4, 5):
+                raise ValueError("Sushi Go! self-play requires 2–5 players")
+            if value["value_completion"] != "require_full_vector":
+                raise ValueError("Sushi Go! self-play requires require_full_vector completion")
+            if self.model.value_observers not in (None, "deciding_player"):
+                raise ValueError("Sushi Go! self-play requires deciding_player observations")
+            if value["tree_policy"] != "ucb1" or self.exploration.root_noise:
+                raise ValueError("Sushi Go! joint search uses UCB1 without root policy noise")
+        if self.game in ("cantstop", "loveletter", "sushigo"):
             if self.evaluation.opponents is not None and len(self.evaluation.opponents) != self.players-1:
                 raise ValueError("opponents must contain one entry for each non-candidate seat")
         elif (self.evaluation.opponents is not None or self.evaluation.opponent is not None

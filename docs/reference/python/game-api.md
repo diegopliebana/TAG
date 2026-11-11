@@ -92,9 +92,9 @@ Omitting `payloads` requests all arrays advertised by the game.
 | Field | Python representation and meaning |
 |---|---|
 | `identity` | Game/configuration/version description, matching GameSpec.identity. |
-| `position` | Token containing the game instance ID and current revision. |
+| `position` | Token containing the game instance ID and current completed-position revision. |
 | `observer` | Integer seat whose viewpoint defines own/opposing values. |
-| `next_player` | Next acting seat, or None at game completion. |
+| `next_player` | Next acting seat in a sequential game; the observer's participating seat in a simultaneous game; None at completion. |
 | `progress` | int64 array of four counters: moves, completed turns, turns this round, completed rounds. |
 | `results` | int8 array in absolute seat order: ongoing=0, win=1, draw=2, loss=3. |
 | `action_mask` | Boolean array of length spec.actions.size, marking actions offered to this observer. |
@@ -104,6 +104,10 @@ Omitting `payloads` requests all arrays advertised by the game.
 An inactive player can observe the board but has an all-false mask and an empty
 offered-ID array. The action IDs retain the meanings described in
 [the action guide](../learning/action-ids.md).
+For simultaneous games, `game.next_player` is the next input seat and each
+participant's original position token stays valid until all choices resolve.
+The [Sushi Go! contract](../games/sushigo.md#python-and-learning-contract)
+explains that joint submission boundary.
 
 `spec.heuristic` is separate support for the hand-written Python heuristic
 comparison. Its fixed line indices are not included in `view.payloads`. The
@@ -130,6 +134,8 @@ Python's `copy.copy` and `copy.deepcopy` use the same independent-copy behavior.
 Attached OSLAPython controllers are copied with their exact settings/RNG progress.
 Finish/commit or cancel pending evaluations before cloning; a pending request or
 proposal causes clone to raise EvaluationError.
+Sushi Go! also requires a complete joint decision before cloning; pending
+card choices remain outside the rule state until all seats submit.
 
 `reset()` restores the original setup and invalidates old tokens. `close()`
 releases the state; later game operations raise `ClosedGameError`. Closing twice

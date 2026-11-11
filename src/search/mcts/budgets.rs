@@ -234,6 +234,24 @@ impl<'a, F: ForwardModel> SimulationContext<'a, F> {
             .map_err(|e| Error::Game(e.to_string()))?;
         self.check_interrupt()
     }
+
+    /// Charge a complete simultaneous decision as one forward-model transition.
+    /// All external choices are validated against the same pre-decision state.
+    pub fn apply_joint(
+        &mut self,
+        state: &mut F::State,
+        choices: &[(PlayerId, F::Action)],
+    ) -> Result<()>
+    where
+        F::Action: PartialEq,
+        F::Error: std::fmt::Display,
+    {
+        self.require_transitions(1)?;
+        increment(&mut self.counters.forward_model_calls)?;
+        crate::core::joint::apply(self.model, state, choices)
+            .map_err(|error| Error::Game(error.to_string()))?;
+        self.check_interrupt()
+    }
     pub(super) fn reasons(&self) -> Vec<StopReason> {
         let mut reasons = Vec::new();
         if (self.cancelled)() {

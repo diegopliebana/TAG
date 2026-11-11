@@ -1,14 +1,18 @@
 //! Single-learner episodes. Rules, opponent decisions and bookkeeping run in Rust.
 use crate::engine::{Engine, Game};
 use std::collections::BTreeMap;
+use std::num::NonZeroU32;
 use tag_rust::core::checkpoint::Checkpoint;
 use tag_rust::{
     agents::{
-        Agent, EvaluationLimits, EvaluatorIdentity, OpenLinesBatchEvaluator, OslaPythonAgent,
-        OslaPythonConfig,
+        Agent, EvaluationLimits, EvaluatorIdentity, FirstAvailableAgent, OpenLinesBatchEvaluator,
+        OslaPythonAgent, OslaPythonConfig, RandomAgent, SampledOslaAgent,
     },
-    core::{PlayerId, PublicInformationModel, evaluation::Evaluator, random::AgentRngSnapshot},
-    games::{connect4 as c4, tictactoe as ttt},
+    core::{
+        PlayerId, PublicInformationModel, evaluation::Evaluator, random::AgentRngSnapshot,
+        simulation::SimulationModel,
+    },
+    games::{cantstop as cs, connect4 as c4, loveletter as ll, sushigo as sg, tictactoe as ttt},
     learning::{EncodedObservation, LearningGame, LearningLimits, LearningSpec, ResultTag},
     session::BuiltinAgent,
 };
@@ -18,7 +22,10 @@ use tag_rust::{
 pub struct Config {
     pub name: String,
     pub parameters: BTreeMap<String, usize>,
+    /// Optional complete game configuration; the Python wrapper checks JSON shape.
+    pub parameter_document: Option<String>,
     pub learner: usize,
+    pub players: usize,
     pub opponent: String,
     pub settings: BTreeMap<String, usize>,
     pub payloads: Vec<String>,
@@ -26,14 +33,92 @@ pub struct Config {
     pub limits: LearningLimits,
     /// Encode the learner's view immediately after its action, before opponent play.
     pub include_intermediate: bool,
-    /// Enable an independently seeded original OSLA policy for learner actions.
+    /// Enable an independently seeded OSLA policy for learner actions.
     pub teacher: bool,
 }
 
 /// The current native policies retain their original choose implementations.
-enum Opponent<E> {
+pub(crate) enum Opponent<E> {
     Builtin(Box<BuiltinAgent<E>>),
     Batch(Box<OslaPythonAgent<OpenLinesBatchEvaluator>>),
+}
+pub(crate) enum StochasticOpponent<E> {
+    Random(RandomAgent),
+    First(FirstAvailableAgent),
+    Osla(Box<SampledOslaAgent<E>>),
+}
+pub(crate) trait EpisodePolicy<F: LearningGame> {
+    fn rng(&self) -> AgentRngSnapshot;
+    fn choose(
+        &mut self,
+        model: &F,
+        actor: PlayerId,
+        view: &F::Observation,
+        actions: &[F::Action],
+    ) -> Result<usize, String>;
+}
+impl<F, E> EpisodePolicy<F> for StochasticOpponent<E>
+where
+    F: LearningGame + SimulationModel,
+    F::Action: Clone + PartialEq,
+    E: Evaluator<F::State>,
+    E::Error: std::fmt::Display,
+    F::Error: std::fmt::Display,
+{
+    fn rng(&self) -> AgentRngSnapshot {
+        match self {
+            Self::Random(a) => <RandomAgent as Agent<F>>::rng(a).snapshot(),
+            Self::First(a) => <FirstAvailableAgent as Agent<F>>::rng(a).snapshot(),
+            Self::Osla(a) => <SampledOslaAgent<E> as Agent<F>>::rng(a).snapshot(),
+        }
+    }
+    fn choose(
+        &mut self,
+        model: &F,
+        actor: PlayerId,
+        view: &F::Observation,
+        actions: &[F::Action],
+    ) -> Result<usize, String> {
+        match self {
+            Self::Random(a) => a
+                .choose(model, actor, view, actions)
+                .map_err(|e| e.to_string()),
+            Self::First(a) => a
+                .choose(model, actor, view, actions)
+                .map_err(|e| e.to_string()),
+            Self::Osla(a) => a
+                .choose(model, actor, view, actions)
+                .map_err(|e| e.to_string()),
+        }
+    }
+}
+fn stochastic_native<E>(
+    config: &Config,
+    evaluator: E,
+    seed: u64,
+) -> Result<StochasticOpponent<E>, String> {
+    Ok(match config.opponent.as_str() {
+        "random" => StochasticOpponent::Random(RandomAgent::new(seed)),
+        "first_available" => StochasticOpponent::First(FirstAvailableAgent::new(seed)),
+        "osla" => {
+            let repetitions = config
+                .settings
+                .get("repetitions_per_action")
+                .copied()
+                .unwrap_or(1);
+            let repetitions = u32::try_from(repetitions)
+                .ok()
+                .and_then(NonZeroU32::new)
+                .ok_or("repetitions_per_action must be a positive u32")?;
+            StochasticOpponent::Osla(Box::new(SampledOslaAgent::new(
+                evaluator,
+                seed,
+                repetitions,
+            )))
+        }
+        "osla_python" => return Err("osla_python is available only for placement games".into()),
+        _ => return Err("unknown Rust opponent".into()),
+    })
 }
 impl<E> Opponent<E> {
     fn rng<F>(&self) -> AgentRngSnapshot
@@ -76,16 +161,38 @@ impl<E> Opponent<E> {
         }
     }
 }
+impl<F, E> EpisodePolicy<F> for Opponent<E>
+where
+    F: LearningGame + PublicInformationModel,
+    F::State: Clone,
+    F::Action: Clone,
+    F::Error: std::fmt::Display,
+    E: Evaluator<F::State>,
+    E::Error: std::fmt::Display,
+{
+    fn rng(&self) -> AgentRngSnapshot {
+        self.rng::<F>()
+    }
+    fn choose(
+        &mut self,
+        model: &F,
+        actor: PlayerId,
+        view: &F::Observation,
+        actions: &[F::Action],
+    ) -> Result<usize, String> {
+        self.choose(model, actor, view, actions)
+    }
+}
 
-pub struct EpisodeGame<F: LearningGame, E>
+pub(crate) struct EpisodeGame<F: LearningGame, O>
 where
     F::State: Clone,
     F::Action: Clone,
     F::Error: std::fmt::Display,
 {
     game: Game<F>,
-    opponent: Opponent<E>,
-    teacher: Option<Opponent<E>>,
+    opponent: O,
+    teacher: Option<O>,
     include_intermediate: bool,
     learner: usize,
     payloads: Vec<String>,
@@ -96,9 +203,14 @@ where
 }
 
 /// Own one typed runtime; game registration remains Rust dispatch.
-pub enum Runtime {
-    TicTacToe(EpisodeGame<ttt::TicTacToeForwardModel, ttt::TicTacToeEvaluator>),
-    Connect4(EpisodeGame<c4::Connect4ForwardModel, c4::Connect4Evaluator>),
+pub(crate) enum Runtime {
+    TicTacToe(EpisodeGame<ttt::TicTacToeForwardModel, Opponent<ttt::TicTacToeEvaluator>>),
+    Connect4(EpisodeGame<c4::Connect4ForwardModel, Opponent<c4::Connect4Evaluator>>),
+    CantStop(EpisodeGame<cs::CantStopForwardModel, StochasticOpponent<cs::CantStopProgress>>),
+    LoveLetter(
+        EpisodeGame<ll::LoveLetterForwardModel, StochasticOpponent<ll::LoveLetterHeuristic>>,
+    ),
+    SushiGo(EpisodeGame<sg::SushiGoForwardModel, StochasticOpponent<sg::SushiGoHeuristic>>),
 }
 /// One completed return, before conversion to independently owned Python data.
 pub struct Output {
@@ -186,7 +298,7 @@ impl Config {
     /// Validate borrowed fixed settings and create a new owned candidate.
     /// `seed` initializes only the opponent. Failure never touches the live episode.
     pub fn create(&self, seed: u64) -> Result<Runtime, String> {
-        self.create_seeded(seed, self.teacher.then_some(0))
+        self.create_seeded_with_game(seed, 0, self.teacher.then_some(0))
     }
     /// Create a replacement with independent opponent and optional teacher seeds.
     ///
@@ -199,21 +311,55 @@ impl Config {
     ///
     /// # Errors
     /// Invalid settings, incompatible teacher seeds, or exceeded output limits.
+    #[cfg(test)]
     pub fn create_seeded(&self, seed: u64, teacher_seed: Option<u64>) -> Result<Runtime, String> {
+        self.create_seeded_with_game(seed, 0, teacher_seed)
+    }
+    pub fn create_seeded_with_game(
+        &self,
+        seed: u64,
+        game_seed: u64,
+        teacher_seed: Option<u64>,
+    ) -> Result<Runtime, String> {
         if self.teacher != teacher_seed.is_some() {
             return Err("teacher_seed is required exactly when teacher is configured".into());
         }
-        if self.learner > 1 || self.horizon == Some(0) || self.payloads.is_empty() {
-            return Err("learner must be 0 or 1, horizon positive, and payloads nonempty".into());
+        if self.players < 2
+            || self.learner >= self.players
+            || self.horizon == Some(0)
+            || self.payloads.is_empty()
+        {
+            return Err("player count, learner, horizon or payloads are invalid".into());
         }
         for key in self.settings.keys() {
-            if self.opponent != "osla_python"
-                || !["max_rows", "max_candidates"].contains(&key.as_str())
-            {
+            let placement = ["tictactoe", "connect4"].contains(&self.name.as_str());
+            let allowed = if placement && self.opponent == "osla_python" {
+                ["max_rows", "max_candidates"].as_slice()
+            } else if !placement && self.opponent == "osla" {
+                ["repetitions_per_action"].as_slice()
+            } else {
+                [].as_slice()
+            };
+            if !allowed.contains(&key.as_str()) {
                 return Err(format!("unsupported opponent setting: {key}"));
             }
         }
-        let game = Engine::create(&self.name, self.parameters.clone(), 2, self.limits)
+        let mut parameters = match &self.parameter_document {
+            Some(document) => {
+                serde_json::from_str::<serde_json::Value>(document).map_err(|e| e.to_string())?
+            }
+            None => serde_json::to_value(&self.parameters).map_err(|e| e.to_string())?,
+        };
+        if !parameters.is_object() {
+            return Err("parameters must be a JSON object".into());
+        }
+        if ["cantstop", "loveletter", "sushigo"].contains(&self.name.as_str()) {
+            if parameters.get("seed").is_some() {
+                return Err("pass the game seed to reset, not parameters".into());
+            }
+            parameters["seed"] = serde_json::json!(game_seed);
+        }
+        let game = Engine::create_value(&self.name, parameters, self.players, self.limits)
             .map_err(|e| e.to_string())?;
         Ok(match game {
             Engine::TicTacToe(game) => {
@@ -244,13 +390,32 @@ impl Config {
                     .transpose()?;
                 Runtime::Connect4(EpisodeGame::new(game, opponent, teacher, self)?)
             }
-            Engine::LoveLetter(_) => {
-                return Err(
-                    "Love Letter learner episodes are not supported by this adapter".into(),
-                );
+            Engine::CantStop(game) => {
+                let opponent = stochastic_native(self, cs::CantStopProgress::default(), seed)?;
+                let teacher = teacher_seed
+                    .map(|s| {
+                        stochastic_native(
+                            &self.teacher_config(),
+                            cs::CantStopProgress::default(),
+                            s,
+                        )
+                    })
+                    .transpose()?;
+                Runtime::CantStop(EpisodeGame::new(*game, opponent, teacher, self)?)
             }
-            Engine::CantStop(_) => {
-                return Err("Can't Stop learner episodes are not supported by this adapter".into());
+            Engine::LoveLetter(game) => {
+                let opponent = stochastic_native(self, ll::LoveLetterHeuristic, seed)?;
+                let teacher = teacher_seed
+                    .map(|s| stochastic_native(&self.teacher_config(), ll::LoveLetterHeuristic, s))
+                    .transpose()?;
+                Runtime::LoveLetter(EpisodeGame::new(*game, opponent, teacher, self)?)
+            }
+            Engine::SushiGo(game) => {
+                let opponent = stochastic_native(self, sg::SushiGoHeuristic, seed)?;
+                let teacher = teacher_seed
+                    .map(|s| stochastic_native(&self.teacher_config(), sg::SushiGoHeuristic, s))
+                    .transpose()?;
+                Runtime::SushiGo(EpisodeGame::new(*game, opponent, teacher, self)?)
             }
         })
     }
@@ -261,23 +426,25 @@ impl Config {
         config
     }
 }
-impl<F, E> EpisodeGame<F, E>
+impl<F, O> EpisodeGame<F, O>
 where
-    F: LearningGame + PublicInformationModel + Clone,
+    F: LearningGame + Clone,
     F::State: Clone,
     F::Action: Clone + PartialEq,
     F::Parameters: Clone,
     F::Error: std::fmt::Display,
-    E: Evaluator<F::State>,
-    E::Error: std::fmt::Display,
+    O: EpisodePolicy<F>,
 {
     fn new(
         game: Game<F>,
-        opponent: Opponent<E>,
-        teacher: Option<Opponent<E>>,
+        opponent: O,
+        teacher: Option<O>,
         config: &Config,
     ) -> Result<Self, String> {
-        if config.learner == 1 && game.description.identity.target() == 1 {
+        if config.learner == 1
+            && game.description.identity.target() == 1
+            && ["tictactoe", "connect4"].contains(&config.name.as_str())
+        {
             return Err("this configuration ends before learner seat 1 can act".into());
         }
         // Encoding the fixed layout now checks all payloads and output limits.
@@ -286,7 +453,8 @@ where
             .iter()
             .map(String::as_str)
             .collect::<Vec<_>>();
-        game.observe(0, &names).map_err(|e| e.to_string())?;
+        game.observe(config.learner, &names)
+            .map_err(|e| e.to_string())?;
         if config.include_intermediate || config.teacher {
             check_capacity(
                 &game.description,
@@ -308,32 +476,31 @@ where
             ended: false,
         })
     }
-    /// Advance the opponent if eligible, reading only its observation/actions.
-    /// Returns after one reply or game completion; an error can retain progress.
+    /// Advance opponents until the learner can act or the game finishes.
+    /// Each policy receives only its own observation and available actions.
     fn opponent_turn(&mut self) -> Result<(), String> {
-        let model = self.game.session.model();
-        let actor = match self.game.session.next_player() {
-            tag_rust::core::Decision::Finished => return Ok(()),
-            tag_rust::core::Decision::Player(p) if p.index() == self.learner => return Ok(()),
-            tag_rust::core::Decision::Player(p) => p,
-        };
-        let view = model
-            .observe(self.game.session.state(), actor)
-            .map_err(|e| e.to_string())?;
-        let actions = model
-            .available_actions(self.game.session.state(), actor)
-            .map_err(|e| e.to_string())?;
-        let index = self.opponent.choose(model, actor, &view, &actions)?;
-        let action = actions
-            .get(index)
-            .ok_or("opponent returned an invalid action index")?
-            .clone();
-        self.game
-            .session
-            .apply_human(actor, action)
-            .map_err(|e| e.to_string())?;
-        self.moves += 1;
-        Ok(())
+        loop {
+            let model = self.game.session.model();
+            let actor = match self.game.next_player() {
+                None => return Ok(()),
+                Some(p) if p.index() == self.learner => return Ok(()),
+                Some(p) => p,
+            };
+            let view = model
+                .observe(self.game.session.state(), actor)
+                .map_err(|e| e.to_string())?;
+            let actions = model
+                .available_actions(self.game.session.state(), actor)
+                .map_err(|e| e.to_string())?;
+            let index = self.opponent.choose(model, actor, &view, &actions)?;
+            let action = actions
+                .get(index)
+                .ok_or("opponent returned an invalid action index")?
+                .clone();
+            let id = model.action_id(&view, &action).map_err(|e| e.to_string())?;
+            self.game.apply(id, Some(actor.index())).map_err(|e| e.to_string())?;
+            self.moves = self.moves.checked_add(1).ok_or("move counter overflow")?;
+        }
     }
     /// Read the current episode and proposed `id` without changing state or RNG.
     /// Reject ended episodes, overflow and IDs absent from the learner's mask.
@@ -342,7 +509,7 @@ where
             return Err("episode ended; reset is required".into());
         }
         self.steps.checked_add(1).ok_or("learner step overflow")?;
-        self.moves.checked_add(2).ok_or("move counter overflow")?;
+        self.moves.checked_add(1).ok_or("move counter overflow")?;
         let view = self
             .game
             .observe(self.learner, &[])
@@ -359,7 +526,7 @@ where
         self.game
             .apply(id, Some(self.learner))
             .map_err(|e| e.to_string())?;
-        self.moves += 1;
+        self.moves = self.moves.checked_add(1).ok_or("move counter overflow")?;
         let intermediate = if self.include_intermediate {
             let names = self.payloads.iter().map(String::as_str).collect::<Vec<_>>();
             Some(
@@ -405,8 +572,8 @@ where
             reward,
             terminated,
             truncated,
-            rng: self.opponent.rng::<F>(),
-            teacher_rng: self.teacher.as_ref().map(|t| t.rng::<F>()),
+            rng: self.opponent.rng(),
+            teacher_rng: self.teacher.as_ref().map(EpisodePolicy::rng),
             action: None,
             intermediate: None,
         })
@@ -453,6 +620,9 @@ macro_rules! dispatch {
         match $self {
             Runtime::TicTacToe($game) => $body,
             Runtime::Connect4($game) => $body,
+            Runtime::CantStop($game) => $body,
+            Runtime::LoveLetter($game) => $body,
+            Runtime::SushiGo($game) => $body,
         }
     };
 }
@@ -486,7 +656,7 @@ impl Runtime {
     pub fn validate_teacher(&self) -> Result<(), String> {
         dispatch!(self, g, g.validate_teacher())
     }
-    /// Select the learner action in Rust and execute the ordinary learner step.
+    /// Select the learner action with the game's native OSLA and execute one step.
     /// A later failure may retain accepted actions and teacher RNG progress.
     pub fn step_teacher(&mut self) -> Result<Output, String> {
         dispatch!(self, g, g.step_teacher())
@@ -495,7 +665,9 @@ impl Runtime {
     pub fn opening(&mut self) -> Result<Output, String> {
         dispatch!(self, g, {
             g.opponent_turn()?;
-            g.output(g.moves)
+            let output = g.output(g.moves)?;
+            g.ended = output.terminated || output.truncated;
+            Ok(output)
         })
     }
 }

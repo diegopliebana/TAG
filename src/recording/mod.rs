@@ -24,3 +24,13 @@ pub struct RecordedMove<M, C> {
     pub decision: Decision,
     pub controller_after: ControllerSnapshot<C>,
 }
+
+/// A complete simultaneous decision and the resulting controller progress.
+/// Choices follow decision seat order and describe one post-transition state.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct RecordedJointDecision<S, M, C> {
+    pub choices: Vec<(PlayerId, M)>,
+    pub state_after: S,
+    pub next_seats: Vec<PlayerId>,
+    pub controllers_after: Vec<ControllerSnapshot<C>>,
+}

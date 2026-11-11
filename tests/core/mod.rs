@@ -6,4 +6,5 @@ mod public_simulation;
 mod runners;
 mod sessions;
 
+mod joint;
 mod learning;

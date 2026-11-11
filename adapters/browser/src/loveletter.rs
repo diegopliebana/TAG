@@ -176,6 +176,7 @@ impl BrowserGame for Game {
                 "last_round":p.last_round,"last_private_events":o.last_round_private_events(),
                 "observer":o.observer(),"public_only":false,
             })),
+            sushigo: None,
             width: 16,
             height: 1,
             cells: vec![],
