@@ -447,6 +447,19 @@ impl ForwardModel for SushiGoForwardModel {
             .map(|&score| f64::from(score))
             .ok_or(Error::InvalidPlayer(seat))
     }
+    fn outcome_score(&self, state: &State) -> Result<Option<crate::core::OutcomeScore>, Error> {
+        Ok(Some(crate::core::OutcomeScore {
+            scope: crate::core::ScoreScope::Players,
+            values: state
+                .public
+                .scores
+                .iter()
+                .map(|&value| f64::from(value))
+                .collect(),
+            unit: "points",
+            maximum: None,
+        }))
+    }
 }
 
 fn pass_hands(state: &mut State) {

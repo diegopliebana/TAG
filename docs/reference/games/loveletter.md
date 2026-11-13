@@ -46,13 +46,19 @@ Actions own copied card types and seat IDs. They contain no inspection values,
 actual opponent card, hidden physical-card identifier or references into a state.
 Equivalent plays of duplicate cards are deduplicated. Stable action order is
 ascending card rank, then ascending target seat, then ascending Guard guess rank.
-There is no neural action-ID mapping yet.
+The existing 52-output neural action-ID mapping still identifies complete plays.
 
 Only the actor's observation offers actions. Off-turn and terminal observations
 offer an empty list. Every non-Guard character remains a legal Guard guess even
 if public information makes it implausible; the game does not prune strategic
 choices or reveal whether a guess would hit. Countess alongside Prince or King
 forces `Play(Countess)`, with no public indication whether the play was forced.
+
+The component path chooses a played card, then an eligible target if needed,
+then a non-Guard guess for Guard. Untargeted plays and a Guard with no eligible
+target complete after the card. Prefix options come from the same permitted
+observation as complete actions, so an opponent's hand cannot remove a guess.
+The browser follows these paths before submitting the completed play.
 
 Handmaid protects against other players until the start of the holder's next
 turn. Guard/Priest/Baron/King have no effect when all other active players are

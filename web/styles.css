@@ -26,6 +26,7 @@
 .presentation-settings summary:focus-visible, .file-menu summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 #state-error { color: #e88d79; }
 .settings-menu { position: absolute; right: 0; top: calc(100% + 8px); width: min(280px, var(--menu-width, 280px)); max-height: calc(100dvh - var(--toolbar-height, 120px) - 24px); overflow: auto; padding: 18px; display: grid; gap: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 6px 20px rgb(0 0 0 / .25); }
+.settings-menu > label[hidden] { display: none; }
 .table-layout { align-items: start; }
 .game-panel .board-scroll { max-height: max(120px, calc(100dvh - var(--toolbar-height, 120px) - var(--board-chrome, 220px) - 40px)); scroll-padding: 8px; }
 .game-panel .art-board thead { position: sticky; top: 0; z-index: 2; background: var(--panel); }
@@ -123,3 +124,21 @@
 .sushigo-choice-images img { width:32px; height:44px; object-fit:contain; }
 .sushigo-hand details { margin-top:.65rem; }
 @media(max-width:600px) { .sushigo-card { width:70px; } .sushigo-played .sushigo-card { width:58px; } }
+.thegame-board { display:grid;gap:1rem;width:100%;zoom:var(--thegame-scale,1); }
+.thegame-summary { font-weight:700; }
+.thegame-piles { display:grid;grid-template-columns:repeat(4,minmax(8rem,1fr));gap:.6rem; }
+.thegame-pile { border:1px solid var(--line);border-radius:.7rem;background:var(--panel);padding:.8rem;text-align:center; }
+.thegame-pile h3 { font-size:.95rem;margin:0; }
+.thegame-pile strong { display:block;font-size:2.4rem;margin:.5rem 0; }
+.thegame-pile p { font-size:.8rem;margin:0;color:var(--muted); }
+.thegame-team,.thegame-cards,.thegame-actions { display:flex;flex-wrap:wrap;gap:.5rem; }
+.thegame-team span,.thegame-card { border:1px solid var(--line);border-radius:.5rem;padding:.55rem;background:var(--soft); }
+.thegame-card { min-width:2.6rem;text-align:center;font-size:1.3rem;font-weight:700; }
+.thegame-card[aria-pressed="true"] { outline:3px solid var(--accent);outline-offset:2px; }
+.thegame-card:disabled { opacity:.65; }
+.thegame-hand,.thegame-messages { border:1px solid var(--line);border-radius:.7rem;padding:.8rem; }
+.thegame-hand h3,.thegame-messages h3 { margin:0 0 .5rem; }
+.thegame-revealed-hands { display:grid;gap:.7rem;margin-top:1rem; }
+.thegame-revealed-seat h4 { margin:0 0 .35rem; }
+.thegame-actions button { min-height:44px; }
+@media(max-width:650px){.thegame-piles{grid-template-columns:repeat(2,minmax(8rem,1fr));}}

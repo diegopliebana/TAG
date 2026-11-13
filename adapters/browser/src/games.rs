@@ -11,7 +11,7 @@ use tag_rust::agents::Agent;
 use tag_rust::core::PublicInformationModel;
 use tag_rust::core::checkpoint::Checkpoint;
 use tag_rust::core::evaluation::Evaluator;
-use tag_rust::core::{ForwardModel, PlayerId, PlayerResult};
+use tag_rust::core::{ForwardModel, OutcomeScore, PlayerId, PlayerResult};
 use tag_rust::games::{connect4 as c4, tictactoe as ttt};
 use tag_rust::learning::{LearningGame, LearningLimits};
 use tag_rust::replay::counter_data;
@@ -123,6 +123,10 @@ pub(crate) trait BrowserGame:
         observation: &Self::Observation,
         player: PlayerId,
     ) -> Result<(PlayerResult, f64), Self::Error>;
+    /// A game-defined result score using only player-visible information.
+    fn observation_score(_: &Self::Observation) -> Option<OutcomeScore> {
+        None
+    }
 }
 /// Build a supported built-in controller from owned setup settings.
 ///
@@ -208,6 +212,7 @@ impl BrowserGame for ttt::TicTacToeForwardModel {
             cantstop: None,
             loveletter: None,
             sushigo: None,
+            thegame: None,
             width: o.grid_size(),
             height: o.grid_size(),
             cells: o
@@ -259,6 +264,7 @@ impl BrowserGame for c4::Connect4ForwardModel {
             cantstop: None,
             loveletter: None,
             sushigo: None,
+            thegame: None,
             width: o.width(),
             height: o.height(),
             cells: o

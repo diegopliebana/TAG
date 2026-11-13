@@ -18,6 +18,7 @@ class SelfPlayGame:
     outcomes: tuple[int,...]
     positions: tuple[PositionExample,...]
     game_seed: int | None = None
+    score: int | None = None
 
 
 @dataclass(frozen=True)
@@ -177,7 +178,12 @@ def collect_games(settings,snapshot,*,first_game_id=0):
                     positions = tuple(PositionExample(**record,terminal_values=rewards.copy()) for record in member.records)
                     for position in positions:
                         validate_example(position,contract,max_bytes=settings.data.max_bytes)
-                    completed.append(SelfPlayGame(member.logical_id,codes,positions,member.game.seed))
+                    score = None
+                    if settings.game == "thegame":
+                        # The public context's seventh entry is the rule-owned
+                        # cards-placed count; it is separate from team reward.
+                        score = int(member.game.observe(0,("context",)).payloads["context"][6])
+                    completed.append(SelfPlayGame(member.logical_id,codes,positions,member.game.seed,score))
                     member.game.close()
                     active.remove(member)
             fill_slots()

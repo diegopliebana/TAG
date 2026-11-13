@@ -302,8 +302,8 @@ class SelfPlaySettings:
             raise ValueError("root noise requires PUCT probabilities using the declared neural policy binding")
         if self.evaluation.candidate_seat is not None and self.evaluation.candidate_seat >= self.players:
             raise ValueError("candidate_seat is outside the game")
-        if self.game in ("cantstop", "loveletter", "sushigo"):
-            game_name = {"loveletter":"Love Letter", "cantstop":"Can't Stop", "sushigo":"Sushi Go!"}[self.game]
+        if self.game in ("cantstop", "loveletter", "sushigo", "thegame"):
+            game_name = {"loveletter":"Love Letter", "cantstop":"Can't Stop", "sushigo":"Sushi Go!", "thegame":"The Game"}[self.game]
             if "seed" in self.parameters:
                 raise ValueError(f"{game_name} self-play derives each game seed from the master seed; omit parameters.seed")
             if self.model.value_output != "players" or (
@@ -317,6 +317,15 @@ class SelfPlaySettings:
                 raise ValueError("Love Letter search cannot reconstruct previous-round private history for hypothetical opponents")
             if value["value_completion"] != "require_full_vector":
                 raise ValueError("Love Letter self-play requires require_full_vector completion")
+        if self.game == "thegame":
+            if self.players not in (1, 2, 3, 4, 5):
+                raise ValueError("The Game self-play requires 1–5 players")
+            if value["value_completion"] != "require_full_vector":
+                raise ValueError("The Game self-play requires require_full_vector completion")
+            if self.model.value_observers not in (None, "deciding_player"):
+                raise ValueError("The Game self-play requires deciding_player observations")
+            if self.evaluation.ranking is not None:
+                raise ValueError("The Game has a shared score, not individual finishing ranks")
         if self.game == "sushigo":
             if self.players not in (2, 3, 4, 5):
                 raise ValueError("Sushi Go! self-play requires 2–5 players")
@@ -326,13 +335,13 @@ class SelfPlaySettings:
                 raise ValueError("Sushi Go! self-play requires deciding_player observations")
             if value["tree_policy"] != "ucb1" or self.exploration.root_noise:
                 raise ValueError("Sushi Go! joint search uses UCB1 without root policy noise")
-        if self.game in ("cantstop", "loveletter", "sushigo"):
+        if self.game in ("cantstop", "loveletter", "sushigo", "thegame"):
             if self.evaluation.opponents is not None and len(self.evaluation.opponents) != self.players-1:
                 raise ValueError("opponents must contain one entry for each non-candidate seat")
         elif (self.evaluation.opponents is not None or self.evaluation.opponent is not None
               or self.evaluation.ranking is not None or self.evaluation.max_actions is not None
               or self.evaluation.include_actions):
-            raise ValueError("explicit native lineups and score ranking currently support Can't Stop and Love Letter")
+            raise ValueError("explicit native lineups currently require a supported stochastic game")
 
     @classmethod
     def from_dict(cls, value, *, directory=Path(".")):

@@ -1,7 +1,9 @@
 // One module worker owns the Wasm engine; browser rendering runs on the main thread.
-import init, { BrowserEngine } from "./pkg/tag_browser.js";
+// Match the bindings and Wasm bytes to this worker instance after a rebuild.
+const fresh = new URL(import.meta.url).searchParams.get("fresh") ?? "0";
+const { default: init, BrowserEngine } = await import(`./pkg/tag_browser.js?fresh=${encodeURIComponent(fresh)}`);
 try {
-  await init();
+  await init({ module_or_path: new Request(new URL("./pkg/tag_browser_bg.wasm", import.meta.url), { cache: "no-store" }) });
   const engine = new BrowserEngine();
   self.onmessage = ({ data }) => {
     try {

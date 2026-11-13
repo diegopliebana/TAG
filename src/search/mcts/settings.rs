@@ -223,6 +223,9 @@ pub struct Settings {
     pub schema_version: u32,
     pub seed: Option<u64>,
     pub search_mode: SearchMode,
+    /// Choose legal components within each MCTS decision. False preserves the
+    /// version-1 complete-action search recipe and existing saved controllers.
+    pub structured_actions: bool,
     pub joint_opponent_policy: JointOpponentPolicy,
     pub tree_policy: TreePolicy,
     pub exploration_constant: f64,
@@ -244,6 +247,7 @@ impl Default for Settings {
             schema_version: 1,
             seed: None,
             search_mode: SearchMode::default(),
+            structured_actions: false,
             joint_opponent_policy: JointOpponentPolicy::default(),
             tree_policy: TreePolicy::default(),
             exploration_constant: std::f64::consts::SQRT_2,

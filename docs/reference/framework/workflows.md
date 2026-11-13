@@ -29,11 +29,11 @@ enable every controller, encoder or training algorithm.
 
 ## Limits and unsupported combinations
 
-- Learner-step Gym episodes support all four games. The existing actor-critic
+- Learner-step Gym episodes support all six implemented games. The existing actor-critic
   collection and training examples support the two placement games.
-  Whole-game MCTS self-play and Python frozen-model evaluation support all four
+  Whole-game MCTS self-play and Python frozen-model evaluation support all six
   games within their model contracts.
-- Browser Neural MCTS supports all four games. Local neural agents in the native
+- Browser Neural MCTS supports all six implemented games. Local neural agents in the native
   match/tournament CLI are registered only for Tic-Tac-Toe and Connect 4.
 - Python attached OSLAPython controllers and independent-game groups are distinct
   from the resumable MCTS API. Native JSON matches do not load arbitrary Python

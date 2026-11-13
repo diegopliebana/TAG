@@ -173,6 +173,19 @@ impl BrowserGame for Game {
             ),
         ))
     }
+    fn observation_score(o: &Observation) -> Option<tag_rust::core::OutcomeScore> {
+        Some(tag_rust::core::OutcomeScore {
+            scope: tag_rust::core::ScoreScope::Players,
+            values: o
+                .public
+                .scores
+                .iter()
+                .map(|&value| f64::from(value))
+                .collect(),
+            unit: "points",
+            maximum: None,
+        })
+    }
     fn board(o: &Observation) -> BoardView {
         let winners: Vec<_> = (0..o.public.scores.len())
             .filter(|&p| result(o, PlayerId::new(p)) == Ok(PlayerResult::Win))
@@ -193,6 +206,7 @@ impl BrowserGame for Game {
                 "hand":o.hand,"observer":o.observer.index(),"finished":o.public.finished,
                 "public_only":false
             })),
+            thegame: None,
             width: 12,
             height: 5,
             cells: vec![],

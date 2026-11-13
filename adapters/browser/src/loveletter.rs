@@ -9,7 +9,7 @@ use serde_json::{Value, json};
 use tag_rust::{
     agents::{Agent, SampledOslaAgent, SampledOslaSnapshot},
     core::{
-        PlayerId,
+        ForwardModel, PlayerId,
         checkpoint::Checkpoint,
         random::{AgentRng, AgentRngSnapshot, SimulationRng, SimulationRngSnapshot},
     },
@@ -160,8 +160,27 @@ impl BrowserGame for Game {
     ) -> Result<(tag_rust::core::PlayerResult, f64), LoveLetterError> {
         Ok((o.public().player_result(p)?, o.public().player_score(p)?))
     }
+    fn observation_score(o: &LoveLetterObservation) -> Option<tag_rust::core::OutcomeScore> {
+        Some(tag_rust::core::OutcomeScore {
+            scope: tag_rust::core::ScoreScope::Players,
+            values: o
+                .public()
+                .tokens
+                .iter()
+                .map(|&value| f64::from(value))
+                .collect(),
+            unit: "favor_tokens",
+            maximum: None,
+        })
+    }
     fn board(o: &LoveLetterObservation) -> BoardView {
         let p = o.public();
+        let model = LoveLetterForwardModel;
+        let action_paths = model
+            .offered_actions(o)
+            .iter()
+            .map(|action| model.action_path(o, action))
+            .collect::<Vec<_>>();
         let outcome = match p.outcome.winners() {
             [] => BoardOutcome::Ongoing,
             [one] => BoardOutcome::Won(one.index()),
@@ -174,9 +193,10 @@ impl BrowserGame for Game {
                 "reserve":p.reserve,"discards":p.discards,"draw_count":p.draw_count,"removed_count":p.removed_count,
                 "hand":o.hand(),"public_events":p.events,"private_events":o.private_events(),
                 "last_round":p.last_round,"last_private_events":o.last_round_private_events(),
-                "observer":o.observer(),"public_only":false,
+                "observer":o.observer(),"public_only":false,"action_paths":action_paths,
             })),
             sushigo: None,
+            thegame: None,
             width: 16,
             height: 1,
             cells: vec![],
@@ -196,6 +216,7 @@ impl BrowserGame for Game {
         let v = b.loveletter.as_mut().unwrap();
         if public_only {
             v["hand"] = json!([]);
+            v["action_paths"] = json!([]);
             v["private_events"] = json!([]);
             v["last_private_events"] = json!([]);
             v["public_only"] = json!(true);

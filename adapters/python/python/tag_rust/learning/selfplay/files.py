@@ -31,7 +31,8 @@ def _position_document(position):
 
 def save_checkpoint(path,session):
     session.check_boundary()
-    document = {"format":"tag-mcts-selfplay-training","version":seed_version(session.settings),"algorithm_version":1,
+    document = {"format":"tag-mcts-selfplay-training","version":seed_version(session.settings),
+        "algorithm_version":2 if session.settings.search.get("structured_actions",False) else 1,
         "model":model_document(session.model,provenance=session.provenance()),"settings":session.settings.document(),
         "initial_identity":session.initial_identity,"completed_cycles":session.completed_cycles,
         "next_game_id":session.next_game_id,"updates":session.updates,"history":session.history,
@@ -39,7 +40,7 @@ def save_checkpoint(path,session):
         "sample_rng":session.sample_rng.bit_generator.state,"runtime":session.runtime,
         "positions":[_position_document(position) for position in session.buffer._positions],
         "buffer_bytes":session.buffer.nbytes,"buffer_dropped":session.buffer.dropped,"buffer_digest":session.buffer.digest()}
-    if session.settings.game in ("loveletter", "sushigo"):
+    if session.settings.game in ("loveletter", "sushigo", "thegame"):
         document["information_access"] = document["model"]["provenance"]["information_access"]
     def write(stream):
         torch.save(document,stream)
@@ -74,10 +75,12 @@ def load_checkpoint(path,*,max_bytes=512*1024*1024):
     data = torch.load(path,map_location="cpu",weights_only=True)
     if (not isinstance(data,dict) or type(data.get("version")) is not int or type(data.get("algorithm_version")) is not int
         or data.get("format") != "tag-mcts-selfplay-training" or data.get("version") not in (1,2)
-        or data.get("algorithm_version") != 1):
+        or data.get("algorithm_version") not in (1,2)):
         raise ValueError("unsupported self-play training format/version")
     try:
         settings = SelfPlaySettings.from_dict(data["settings"])
+        if data["algorithm_version"] != (2 if settings.search.get("structured_actions",False) else 1):
+            raise ValueError("checkpoint search algorithm differs from settings")
         if data["version"] != seed_version(settings):
             raise ValueError("checkpoint format and game seed derivation version differ")
         if settings.seed is None or path.stat().st_size > settings.limits.max_checkpoint_bytes:
@@ -98,7 +101,7 @@ def load_checkpoint(path,*,max_bytes=512*1024*1024):
             provenance = data["model"].get("provenance")
             if not isinstance(provenance,dict) or provenance.get("seed_derivation_version") != 2:
                 raise ValueError("checkpoint model seed derivation provenance differs")
-            if settings.game in ("loveletter", "sushigo") and (
+            if settings.game in ("loveletter", "sushigo", "thegame") and (
                 provenance.get("settings") != settings.document()
                 or provenance.get("master_seed") != settings.seed
                 or provenance.get("completed_cycles") != completed
@@ -124,6 +127,10 @@ def load_checkpoint(path,*,max_bytes=512*1024*1024):
                 if game["game_id"] != logical or type(game["moves"]) is not int or game["moves"] < 1 or len(game["outcomes"]) != settings.players:
                     raise ValueError("invalid completed-game history")
                 terminal_rewards(game["outcomes"])
+                if settings.game == "thegame" and (len(set(game["outcomes"])) != 1
+                    or type(game.get("score")) is not int or not 0 <= game["score"] <= 98
+                    or (game["outcomes"][0] == 1) != (game["score"] == 98)):
+                    raise ValueError("The Game completed team result/score differ")
                 if settings.game == "loveletter" and (1 not in game["outcomes"] or any(
                     code not in (1,3) for code in game["outcomes"]
                 )):
@@ -136,6 +143,11 @@ def load_checkpoint(path,*,max_bytes=512*1024*1024):
                 games[logical] = (game,report["before_identity"])
             if seed_version(settings) == 2:
                 summary = seat_outcome_counts((game["outcomes"] for game in report["games"]),settings.players)
+                if settings.game == "thegame":
+                    average = sum(game["score"] for game in report["games"]) / len(report["games"])
+                    summary["combined"]["average_score"] = average
+                    for seat in summary["per_seat"]:
+                        seat["average_score"] = average
                 if any(report.get(key) != value for key,value in summary.items()):
                     raise ValueError("checkpoint seat summaries differ from recorded games")
             previous = report["model_identity"]
@@ -174,7 +186,7 @@ def load_checkpoint(path,*,max_bytes=512*1024*1024):
                 raise ValueError("checkpoint buffer differs from its completed cycle")
         elif positions or data["buffer_dropped"] or data["buffer_bytes"]:
             raise ValueError("initial checkpoint must have an empty buffer")
-        if settings.game in ("loveletter", "sushigo"):
+        if settings.game in ("loveletter", "sushigo", "thegame"):
             _validate_replay(settings,data["history"],positions)
         # Numeric input arrays are now independently owned and checked. Restore
         # Adam only after its settings agree with this completed-cycle schedule.
@@ -226,7 +238,9 @@ def _validate_replay(settings,history,positions):
                 raise ValueError("checkpoint replay exceeds collection work limits")
             with create(settings.game,parameters,players=settings.players,max_cells=settings.limits.max_cells,
                         max_bytes=settings.limits.max_request_bytes) as game:
-                if record["first_player"] != game.next_player:
+                initial_starter = (int(game.observe(0,("context",)).payloads["context"][0])-1
+                                   if settings.game == "thegame" else game.next_player)
+                if record["first_player"] != initial_starter:
                     raise ValueError("checkpoint starter differs from real-game replay")
                 for ply,action in enumerate(actions):
                     actor = game.next_player
@@ -247,6 +261,8 @@ def _validate_replay(settings,history,positions):
                     game.apply(action,position=game.position)
                 if game.next_player is not None or game.observe(0,()).results.tolist() != record["outcomes"]:
                     raise ValueError("checkpoint completed outcomes differ from real-game replay")
+                if settings.game == "thegame" and int(game.observe(0,("context",)).payloads["context"][6]) != record["score"]:
+                    raise ValueError("checkpoint completed team score differs from real-game replay")
 
 
 def save_outputs(session):

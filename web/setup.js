@@ -1,5 +1,10 @@
 // UI defaults mirror the current Rust game defaults. Rust validates every setup.
 export function setupFields(game) {
+  if (game === "thegame") return [
+    { name: "players", label: "Players (1–5)", value: 2 },
+    { name: "seed", label: "Game shuffle seed (integer or auto)", value: "auto", type: "text" },
+    { name: "first_player", label: "First player (0-based)", value: 0 },
+  ];
   if (game === "sushigo") return [
     { name: "players", label: "Players (2–5)", value: 3 },
     { name: "seed", label: "Game deal seed (integer or auto)", value: "auto", type: "text" },
@@ -23,6 +28,14 @@ export function setupFields(game) {
   ];
 }
 export function readParameters(game, inputs) {
+  if (game === "thegame") {
+    const values=Object.fromEntries(inputs.map(i=>[i.name,i.value]));
+    const players=Number(values.players), first=Number(values.first_player);
+    if (!Number.isInteger(players)||players<1||players>5) throw new Error("The Game requires 1–5 players.");
+    if (!Number.isInteger(first)||first<0||first>=players) throw new Error("First player must be a valid seat.");
+    const raw=values.seed?.trim();
+    return {seed:!raw||raw==="auto"?new CryptoSeeds().next():readSeed(raw),first_player:first,communication:"LimitedChoices"};
+  }
   if (game === "sushigo") {
     const values=Object.fromEntries(inputs.map(i=>[i.name,i.value]));
     const players=Number(values.players);

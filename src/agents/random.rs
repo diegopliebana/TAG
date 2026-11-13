@@ -81,3 +81,88 @@ impl<F: ForwardModel> Agent<F> for RandomAgent {
         self.rng.index(actions.len()).ok_or(EmptyActionList)
     }
 }
+
+/// Uniformly chooses each legal component in turn. This is a distinct policy
+/// from `RandomAgent`: actions with fewer siblings along their path may have a
+/// different probability, and its RNG recipe is deliberately separate.
+#[derive(Debug)]
+pub struct StructuredRandomAgent {
+    rng: AgentRng,
+}
+
+impl StructuredRandomAgent {
+    pub fn new(seed: u64) -> Self {
+        Self {
+            rng: AgentRng::new(seed),
+        }
+    }
+}
+
+impl Checkpoint for StructuredRandomAgent {
+    type Snapshot = AgentRngSnapshot;
+    type RestoreError = RngSnapshotError;
+    fn snapshot(&self) -> Self::Snapshot {
+        self.rng.snapshot()
+    }
+    fn from_snapshot(snapshot: &Self::Snapshot) -> Result<Self, Self::RestoreError> {
+        Ok(Self {
+            rng: AgentRng::from_snapshot(snapshot)?,
+        })
+    }
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum StructuredRandomError {
+    EmptyActions,
+    InvalidChoices,
+}
+
+impl std::fmt::Display for StructuredRandomError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{self:?}")
+    }
+}
+impl std::error::Error for StructuredRandomError {}
+
+impl<F> Agent<F> for StructuredRandomAgent
+where
+    F: ForwardModel,
+    F::Action: Clone + PartialEq,
+{
+    type Error = StructuredRandomError;
+    fn rng(&self) -> &AgentRng {
+        &self.rng
+    }
+    fn rng_mut(&mut self) -> &mut AgentRng {
+        &mut self.rng
+    }
+    fn choose(
+        &mut self,
+        model: &F,
+        _actor: PlayerId,
+        observation: &F::Observation,
+        actions: &[F::Action],
+    ) -> Result<usize, Self::Error> {
+        if actions.is_empty() {
+            return Err(StructuredRandomError::EmptyActions);
+        }
+        let mut prefix = Vec::new();
+        loop {
+            let choices = model
+                .action_choices(observation, &prefix)
+                .map_err(|_| StructuredRandomError::InvalidChoices)?;
+            let selected = self
+                .rng
+                .index(choices.len())
+                .ok_or(StructuredRandomError::InvalidChoices)?;
+            let choice = &choices[selected];
+            if let Some(action) = &choice.action {
+                return actions
+                    .iter()
+                    .position(|offered| offered == action)
+                    .ok_or(StructuredRandomError::InvalidChoices);
+            }
+            prefix.push(choice.component);
+        }
+    }
+}

@@ -83,6 +83,7 @@ impl BrowserGame for TinyGame {
             cantstop: None,
             loveletter: None,
             sushigo: None,
+            thegame: None,
             width: 1,
             height: 1,
             cells: vec![finished.then_some(0)],

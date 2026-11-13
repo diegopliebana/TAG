@@ -58,6 +58,14 @@ pub(crate) fn insert(models: &mut Registry, text: &str) -> Result<String, ModelE
                 limits,
             )
         }
+        Some("thegame") => {
+            let (parameters, players) = crate::thegame::model_parameters(&model)?;
+            tag_rust::games::thegame::TheGameForwardModel.learning_spec_for_players(
+                &parameters,
+                players,
+                limits,
+            )
+        }
         _ => {
             return Err(error("unsupported browser learned-model game"));
         }

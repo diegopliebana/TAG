@@ -247,6 +247,7 @@ impl JointRuntime {
             actions,
             results,
             scores,
+            outcome_score: Game::observation_score(&input.observation),
             cursor: self.records.len(),
             tip: self.records.len(),
             read_only: false,

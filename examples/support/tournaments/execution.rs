@@ -82,6 +82,13 @@ pub struct TournamentReport {
 
 pub fn run(settings: &ResolvedTournament) -> Result<TournamentReport> {
     validate_destination(&settings.config.results_file)?;
+    if settings.config.ranking_metric == super::config::Metric::AverageScore
+        && settings.config.games.len() != 1
+    {
+        return Err(
+            "average_score ranking requires exactly one game entry with one score unit".into(),
+        );
+    }
     let mut entries = Vec::new();
     let mut schedules = Vec::new();
     let mut total = 0usize;
@@ -94,6 +101,11 @@ pub fn run(settings: &ResolvedTournament) -> Result<TournamentReport> {
         let validated =
             crate::matches::execution::validate_pool(&game.game_config(), game.player_count, &pool)
                 .map_err(|e| format!("game entry '{}': {e}", game.id))?;
+        if settings.config.ranking_metric == super::config::Metric::AverageScore
+            && validated.score_unit.is_none()
+        {
+            return Err(format!("game entry '{}' has no game-defined score", game.id).into());
+        }
         if settings.log_mode() == super::config::LogMode::Separate
             && let Some((width, height)) = validated.replay_dimensions
             && (width > 128
@@ -399,6 +411,7 @@ impl TournamentReport {
             super::config::Metric::AverageFinishingPosition => {
                 "average finishing position, lower is better"
             }
+            super::config::Metric::AverageScore => "average game score",
         };
         let truncated = if self.truncated_games > 0 {
             format!("; truncated={}", self.truncated_games)
@@ -466,13 +479,28 @@ impl TournamentReport {
                 let position = row
                     .average_finishing_position
                     .map_or("unavailable".into(), |position| format!("{position:.2}"));
+                let score_unit = self
+                    .games
+                    .iter()
+                    .filter(|game| game.entry_index == index)
+                    .find_map(|game| {
+                        game.outcome
+                            .as_ref()?
+                            .score
+                            .as_ref()
+                            .map(|score| score.unit)
+                    })
+                    .unwrap_or("game units");
+                let average_score = row.average_score.map_or("unavailable".into(), |score| {
+                    format!("{score:.2} {score_unit}")
+                });
                 let truncated = if show_truncated {
                     format!("; truncated={}", row.truncated)
                 } else {
                     String::new()
                 };
                 text.push_str(&format!(
-                    "  {} {}: {rates}; Average finishing position={position}; games played={}{truncated}\n",
+                    "  {} {}: {rates}; Average finishing position={position}; Average score={average_score}; games played={}{truncated}\n",
                     row.rank.map_or("-".into(), |r| r.to_string()), row.agent, row.appearances,
                 ));
             }

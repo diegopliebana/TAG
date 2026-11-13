@@ -14,14 +14,14 @@ does not update its weights. Training chooses the output paths below.
 |---|---|---|
 | [Q-learning](../learning/tabular-learning.md) | `target/models/tictactoe-q.json` | Browser Q-learning and Python table evaluation |
 | [Teacher/actor-critic](../learning/neural-training.md) | `target/models/connect4-osla.json` | Browser Neural OSLA; Python policy/Neural OSLA evaluation |
-| [MCTS self-play](../learning/mcts-selfplay.md) | `examples/selfplay/results/connect4-model.json` | Browser Neural MCTS; native `neural_mcts` matches/tournaments for Tic-Tac-Toe and Connect 4 |
+| [MCTS self-play](../learning/mcts-selfplay.md) | `examples/selfplay/results/connect4-model.json` | Browser Neural MCTS; native `neural_mcts` matches/tournaments for Tic-Tac-Toe, Connect 4 and The Game |
 
 These are different model contracts. Match the game's rules, observation encoding,
 action mapping and value convention. Changing a filename does not convert a model.
 Q-learning and Neural OSLA browser examples use their supported default placement
 game configurations. Browser Neural MCTS supports compatible self-play models for
-all four games, including the correct multiplayer player count and rules. Native
-neural match/tournament registration supports only Tic-Tac-Toe and Connect 4.
+all six implemented games, including the correct multiplayer player count and rules. Native
+neural match/tournament registration supports Tic-Tac-Toe, Connect 4 and The Game.
 Python MCTS and frozen-model evaluation support the documented stochastic/private
 model contracts as well. The [game manuals](../README.md#game-manuals) describe the
 appropriate export and setup for each game.

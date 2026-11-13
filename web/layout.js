@@ -12,6 +12,7 @@ const startingViews = {
   cantstop: { display: "fit", zoom: 100 },
   loveletter: { display: "fit", zoom: 100 },
   sushigo: { display: "scrollable", zoom: 80 },
+  thegame: { display: "scrollable", zoom: 100 },
 };
 function sizeTable() {
   for (const menu of document.querySelectorAll(".toolbar-menus > details")) {
@@ -39,6 +40,11 @@ function sizeTable() {
   }
   if (board.querySelector(".sushigo-board")) {
     board.style.setProperty("--sushi-scale", display.value === "fit" ? "1" : String(Number(zoom.value) / 100));
+    board.style.removeProperty("--cell");
+    return;
+  }
+  if (board.querySelector(".thegame-board")) {
+    board.style.setProperty("--thegame-scale", display.value === "fit" ? "1" : String(Number(zoom.value) / 100));
     board.style.removeProperty("--cell");
     return;
   }
@@ -84,7 +90,7 @@ window.addEventListener("tag-game-started", event => {
 });
 function changeZoom() {
   // Keep the same board point at the viewport center while changing its scale.
-  const scaleProperty = board.querySelector(".loveletter-table") ? "--letter-scale" : board.querySelector(".sushigo-board") ? "--sushi-scale" : "--cell";
+  const scaleProperty = board.querySelector(".loveletter-table") ? "--letter-scale" : board.querySelector(".sushigo-board") ? "--sushi-scale" : board.querySelector(".thegame-board") ? "--thegame-scale" : "--cell";
   const previousCell = parseFloat(getComputedStyle(board).getPropertyValue(scaleProperty));
   const padding = getComputedStyle(board);
   const centerX = board.scrollLeft + board.clientWidth / 2 - parseFloat(padding.paddingLeft);

@@ -13,14 +13,16 @@ For arrays, learner-step environments and teacher/policy trajectories, start
 with [episodes and collection](episodes-and-collection.md).
 
 For the current **Neural MCTS** browser controller, choose **MCTS self-play**.
-That workflow also supports 2-4-player Can't Stop and Love Letter. Compatible
+That workflow also supports multiplayer Can't Stop, Love Letter, Sushi Go! and
+The Game. Compatible
 exports run through Python MCTS, [opponent evaluation](evaluate-mcts-models.md)
 and browser Neural MCTS.
 These workflows use different value conventions; their models are not freely
 interchangeable between controllers.
 
-After training, [evaluate a frozen MCTS model](evaluate-mcts-models.md) against
-independent opponents without changing its weights.
+After training, [evaluate a frozen MCTS model](evaluate-mcts-models.md) with
+independent native controllers without changing its weights. In The Game those
+controllers are teammates.
 
 [Saved models](../agents/models.md) is the common guide to output locations, `.json`
 versus `.pt`, and loading the result into a match, tournament or browser seat.

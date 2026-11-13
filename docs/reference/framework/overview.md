@@ -34,19 +34,19 @@ APIs, rendering, filesystems or GPU runtimes.
 
 ## Supported workflows
 
-| Capability | Tic-Tac-Toe | Connect 4 | Can't Stop | Love Letter | Sushi Go! |
-|---|---|---|---|---|---|
-| Players | 2 | 2 | 2-4 | 2-4 | 2-5 |
-| Rules and native matches/tournaments | Yes | Yes | Yes | Yes, classic rules | Yes, native Random matches |
-| Random and native lookahead/MCTS | Yes | Yes | Yes, independent sampled simulations | Yes, observation-derived sampled simulations | Yes, sampled joint successors |
-| Python create/observe/apply/reset/copy | Yes | Yes | Yes | Yes, private observations | Yes, joint choices resolve together |
-| Python native/neural MCTS move calculation | Yes | Yes | Yes | Yes, model-input restrictions apply | Yes, full-seat values and UCB1 joint search |
-| Complete-game MCTS self-play and frozen-model evaluation | Yes | Yes | Yes | Yes, shared-win targets | Yes, rotating seats |
-| Local neural agents in native match/tournament CLI | Yes | Yes | Not registered | Not registered | Not registered |
-| Learner-step Gym episodes, including native OSLA teacher | Yes | Yes | Yes | Yes | Yes, joint opponent choices |
-| Actor-critic collection/training workflow | Yes | Yes | Not registered | Not registered | Not yet |
-| Tabular Q-learning example | Default 3x3 game | Not supported by this example | Not supported by this example | Not supported by this example | Not supported by this example |
-| Playable browser, history, branches and portable files | Yes | Yes | Yes | Yes, permitted and privileged views are separate | Yes, local pass-device play and complete joint records |
+| Capability | Tic-Tac-Toe | Connect 4 | Can't Stop | Love Letter | Sushi Go! | The Game |
+|---|---|---|---|---|---|---|
+| Players | 2 | 2 | 2-4 | 2-4 | 2-5 | 1-5 |
+| Rules and native matches/tournaments | Yes | Yes | Yes | Yes, classic rules | Yes | Native Random and MCTS matches |
+| Random and native lookahead/MCTS | Yes | Yes | Yes, independent sampled simulations | Yes, observation-derived sampled simulations | Yes, sampled joint successors | Yes, sampled cooperative search |
+| Python create/observe/apply/reset/copy | Yes | Yes | Yes | Yes, private observations | Yes, joint choices resolve together | Yes, private hands |
+| Python native/neural MCTS move calculation | Yes | Yes | Yes | Yes, model-input restrictions apply | Yes, full-seat values and UCB1 joint search | Yes, full team values |
+| Complete-game MCTS self-play and frozen-model evaluation | Yes | Yes | Yes | Yes, shared-win targets | Yes, rotating seats | Not yet available |
+| Local neural agents in native match/tournament CLI | Yes | Yes | Not registered | Not registered | Not registered | Not registered |
+| Learner-step Gym episodes, including native OSLA teacher | Yes | Yes | Yes | Yes | Yes, joint opponent choices | Yes, one to five seats |
+| Actor-critic collection/training workflow | Yes | Yes | Not registered | Not registered | Not yet | Not selected |
+| Tabular Q-learning example | Default 3x3 game | Not supported by this example | Not supported by this example | Not supported by this example | Not supported by this example | Not supported by this example |
+| Playable browser, history, branches and portable files | Yes | Yes | Yes | Yes, permitted and privileged views are separate | Yes, complete joint records | Yes, Human/Random/native and Neural MCTS with privileged files |
 
 Registration declares capabilities independently. Basic game operations do not
 imply an encoder, heuristic, learner environment or replay codec. Models must match
@@ -57,7 +57,7 @@ contract. See the [game contracts](../games/README.md) for details.
 
 A complete state can contain hidden cards and environment RNG progress. An
 observation contains only one player's permitted facts and retained knowledge.
-Learning encoders and ordinary agents use observations. Love Letter sampling
+Learning encoders and ordinary agents use observations. Love Letter and The Game sampling
 constructs possible worlds from the observation; those worlds are hypotheses.
 
 Exact snapshots preserve independent mutable state and RNG progress. Search forks
@@ -84,8 +84,9 @@ inside the browser. [Python APIs](../python/README.md) and
 ## Extension limits
 
 `Decision` represents one acting player or completion; simultaneous submission
-uses `ForwardModel::decision_players` and a separate joint session. Explicit
-standalone chance nodes and general team contracts require additional design.
+uses `ForwardModel::decision_players` and a separate joint session. The Game
+returns the same win or loss for each team member. Explicit standalone chance
+nodes and more general team identities/contracts require additional design.
 Current MCTS requires its root choices to match the complete
 legal set; arbitrary search filters are not a supported decorator mechanism.
 There is no common listener/metric registry or passive agent lifecycle API.

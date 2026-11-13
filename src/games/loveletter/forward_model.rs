@@ -103,6 +103,17 @@ impl ForwardModel for LoveLetterForwardModel {
         }
         actions(&o.public, &o.hand, o.observer)
     }
+    fn action_path(&self, _o: &Self::Observation, action: &Self::Action) -> Vec<u32> {
+        match *action {
+            LoveLetterAction::Play(card) => vec![card as u32],
+            LoveLetterAction::Target { card, target } => {
+                vec![card as u32, target.index() as u32]
+            }
+            LoveLetterAction::Guess { target, card } => {
+                vec![Card::Guard as u32, target.index() as u32, card as u32]
+            }
+        }
+    }
     fn available_actions(
         &self,
         s: &Self::State,
@@ -145,6 +156,20 @@ impl ForwardModel for LoveLetterForwardModel {
     }
     fn player_score(&self, s: &Self::State, p: PlayerId) -> Result<f64, Self::Error> {
         s.public.player_score(p)
+    }
+    fn outcome_score(
+        &self,
+        s: &Self::State,
+    ) -> Result<Option<crate::core::OutcomeScore>, Self::Error> {
+        let values = (0..self.player_count(s))
+            .map(|seat| self.player_score(s, PlayerId::new(seat)))
+            .collect::<Result<Vec<_>, _>>()?;
+        Ok(Some(crate::core::OutcomeScore {
+            scope: crate::core::ScoreScope::Players,
+            values,
+            unit: "favor_tokens",
+            maximum: None,
+        }))
     }
 }
 

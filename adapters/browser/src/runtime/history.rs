@@ -159,6 +159,7 @@ impl<F: BrowserGame> Runtime<F> {
             actions,
             results,
             scores,
+            outcome_score: F::observation_score(&observation),
             cursor: location.cursor,
             tip: location.tip,
             read_only: location.read_only,

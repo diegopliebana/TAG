@@ -72,6 +72,8 @@ try {
   for (let i = 0; i < 100; i++) { if (await evaluate("typeof window.gameReady !== 'undefined'")) break; await delay(100); }
   const human = await evaluate("(async () => { const checks = await import('./tests/human-play.js'); return checks.runHumanChecks(); })()");
   console.log(JSON.stringify({ humanPlay: human }));
+  const thegame = await evaluate("(async () => { const checks = await import('./tests/thegame-play.js'); return checks.runTheGameChecks(); })()");
+  console.log(JSON.stringify({ thegamePlay: thegame }));
   const ai = await evaluate("(async () => { const checks = await import('./tests/ai-play.js'); return checks.runAiChecks(); })()");
   console.log(JSON.stringify({ aiPlay: ai }));
   const review = await evaluate("(async () => { const checks = await import('./tests/review.js'); return checks.runReviewChecks(); })()");

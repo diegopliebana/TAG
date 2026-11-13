@@ -1,6 +1,6 @@
 # Public source inventory
 
-This export contains 1,120 files, including this report and
+This export contains 1,142 files, including this report and
 `public-export.json`. Build products, Git history, local environments,
 development records and training outputs are excluded.
 
@@ -10,15 +10,15 @@ and graphics are in the total file count but outside this source table.
 
 | Language | Source files | Physical lines |
 |---|---:|---:|
-| CSS | 2 | 184 |
+| CSS | 2 | 203 |
 | HTML | 5 | 129 |
 | Java | 7 | 637 |
-| JavaScript | 51 | 4,687 |
-| PowerShell | 4 | 99 |
-| Python | 146 | 17,258 |
+| JavaScript | 54 | 5,095 |
+| PowerShell | 5 | 252 |
+| Python | 147 | 17,470 |
 | Python interface | 1 | 126 |
-| Rust | 250 | 58,615 |
-| **Total** | **466** | **81,735** |
+| Rust | 260 | 62,928 |
+| **Total** | **481** | **86,840** |
 
 `public-export.json` lists the exact exported paths and SHA-256 hashes
 (excluding its own hash). The [framework census](framework-size/README.md)

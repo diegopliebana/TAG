@@ -150,7 +150,7 @@ Rust and optional batched model evaluation through Python.
 targets, trains the next model and saves completed-cycle checkpoints.
 [Local inference](local-mcts.md) uses those exports for browser MCTS and general
 neural matches/tournaments without a Python process during play. Browser MCTS
-supports all four games; native local neural experiment registration supports
+supports all six implemented games; native local neural experiment registration supports
 Tic-Tac-Toe and Connect 4.
 
 Use the [learning index](README.md) to choose an encoding, inference or training

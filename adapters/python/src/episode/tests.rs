@@ -105,6 +105,17 @@ fn stochastic_multiplayer_episodes_advance_to_learner_and_replay_seeds() {
             "sushigo",
             vec!["hand", "known_hands", "played", "players", "last_reveal"],
         ),
+        (
+            "thegame",
+            vec![
+                "hand",
+                "piles",
+                "players",
+                "context",
+                "placements",
+                "messages",
+            ],
+        ),
     ] {
         let mut configuration = config(name, 2, "random");
         configuration.players = 3;
@@ -138,6 +149,58 @@ fn stochastic_multiplayer_episodes_advance_to_learner_and_replay_seeds() {
 }
 
 #[test]
+fn the_game_episodes_cover_solo_and_every_cooperative_seat_count() {
+    for players in 1..=5 {
+        let mut setup = config("thegame", players - 1, "random");
+        setup.players = players;
+        setup.payloads = vec!["hand".into(), "piles".into(), "context".into()];
+        let mut runtime = setup.create_seeded_with_game(29, 41, None).unwrap();
+        let mut output = runtime.opening().unwrap();
+        for _ in 0..1000 {
+            if output.terminated {
+                break;
+            }
+            assert_eq!(
+                output.observation.next_player,
+                Some(PlayerId::new(players - 1))
+            );
+            let id = output.observation.offered_action_ids[0];
+            runtime.validate(id).unwrap();
+            output = runtime.step(id).unwrap();
+        }
+        assert!(output.terminated, "{players} seats did not finish");
+        assert!(matches!(output.reward, -1. | 1.));
+        assert!(
+            output
+                .observation
+                .results
+                .iter()
+                .all(|value| *value == output.observation.results[0])
+        );
+    }
+}
+
+#[test]
+fn the_game_teacher_selects_from_permitted_actions() {
+    let mut setup = config("thegame", 0, "random");
+    setup.payloads = vec!["hand".into(), "piles".into(), "context".into()];
+    setup.teacher = true;
+    let mut runtime = setup.create_seeded_with_game(29, 41, Some(51)).unwrap();
+    let initial = runtime.opening().unwrap();
+    runtime.validate_teacher().unwrap();
+    let next = runtime.step_teacher().unwrap();
+    assert!(
+        initial
+            .observation
+            .offered_action_ids
+            .contains(&next.action.unwrap())
+    );
+    assert!(next.teacher_rng.is_some());
+    setup.parameter_document = Some(r#"{"communication":7}"#.into());
+    assert!(setup.create_seeded_with_game(29, 41, Some(51)).is_err());
+}
+
+#[test]
 fn sushi_go_episodes_cover_every_player_count_and_native_teacher() {
     for players in 2..=5 {
         let mut config = config("sushigo", players - 1, "random");
@@ -149,11 +212,16 @@ fn sushi_go_episodes_cover_every_player_count_and_native_teacher() {
         let mut decisions = 0;
         loop {
             assert_eq!(output.observation.observer.index(), players - 1);
-            assert_eq!(output.observation.next_player, Some(PlayerId::new(players - 1)));
+            assert_eq!(
+                output.observation.next_player,
+                Some(PlayerId::new(players - 1))
+            );
             runtime.validate_teacher().unwrap();
             output = runtime.step_teacher().unwrap();
             decisions += 1;
-            if output.terminated { break; }
+            if output.terminated {
+                break;
+            }
         }
         assert_eq!(decisions, 3 * (11 - players));
         assert_eq!(output.moves, (decisions * players) as u64);

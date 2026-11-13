@@ -29,7 +29,7 @@ def run(args):
         for index in range(args.searches):
             seat = index % args.players
             parameters = {"seed": seed_for("game", index)}
-            if game_name == "loveletter":
+            if game_name in ("loveletter", "thegame"):
                 parameters["first_player"] = seat
             game = stack.enter_context(tag.create(game_name, parameters, players=args.players))
             # Sushi Go! collects earlier seats' choices without resolving them.
@@ -67,6 +67,8 @@ def run(args):
         for index, game in enumerate(games):
             configuration = {"schema_version": 1, "seed": seed_for("search", index),
                 "rollout_length": 0, "budgets": {"iterations": args.iterations}}
+            if game_name == "thegame":
+                configuration["structured_actions"] = True
             if bindings:
                 configuration.update(state_evaluator={"name": "network_value"})
                 if game_name != "sushigo":
@@ -86,8 +88,8 @@ def run(args):
 
 def main(default_game="cantstop"):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--game", choices=("cantstop", "loveletter", "sushigo"), default=default_game)
-    parser.add_argument("--players", type=int, choices=(2, 3, 4, 5), default=2)
+    parser.add_argument("--game", choices=("cantstop", "loveletter", "sushigo", "thegame"), default=default_game)
+    parser.add_argument("--players", type=int, choices=(1, 2, 3, 4, 5), default=2)
     parser.add_argument("--searches", type=int, default=4)
     parser.add_argument("--iterations", type=int, default=32)
     parser.add_argument("--seed", type=seed_argument, default=None, help="integer or auto; default uses OS randomness")

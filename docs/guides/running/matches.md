@@ -61,6 +61,10 @@ its model, and enable `inference`:
 cargo run --release --features mcts-json,replay,inference --example match_play -- examples/matches/neural-mcts-connect4.json
 ```
 
+The [The Game neural example](../../../examples/matches/thegame-neural-mcts.json)
+uses the same feature and a small local-model fixture. Its sampled MCTS search
+receives only the acting player's observation.
+
 [Saved models](../agents/models.md) explains the model file and agent bindings. Q-learning,
 Neural OSLA and arbitrary Python-backed agents are not registered in this native CLI.
 

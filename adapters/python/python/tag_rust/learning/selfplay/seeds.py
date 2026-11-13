@@ -15,7 +15,7 @@ def derive_seed(master, phase, game=0, ply=0, purpose="search", *, version=1):
 
 def seed_version(settings):
     """Placement games retain version 1; stochastic games share version 2."""
-    return 2 if settings.game in ("cantstop", "loveletter", "sushigo") else 1
+    return 2 if settings.game in ("cantstop", "loveletter", "sushigo", "thegame") else 1
 
 
 def workflow_seed(settings, phase, game=0, ply=0, purpose="search"):
@@ -30,7 +30,7 @@ def game_parameters(settings, game_id, *, phase="selfplay"):
     parameters = dict(settings.parameters)
     if seed_version(settings) == 2:
         parameters["seed"] = workflow_seed(settings,phase,game_id,purpose="game-chance")
-    if settings.game == "loveletter":
+    if settings.game in ("loveletter", "thegame"):
         # Self-play rotates starters directly. Evaluation rotates the starter
         # independently of candidate seats, covering every pairing in N*N games.
         # An explicit parameter selects a fixed starter in either workflow.

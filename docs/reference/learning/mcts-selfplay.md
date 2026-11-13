@@ -15,16 +15,16 @@ coordinates independent searches, batches frozen CPU model inference, stores
 training examples and performs gradient updates. MCTS back-propagation updates
 tree statistics; PyTorch's gradient back-propagation updates network parameters.
 
-This workflow supports Tic-Tac-Toe, Connect 4 and 2-4-player Can't Stop and
-Love Letter. Love Letter uses complete-game collection/training; its
+This workflow supports Tic-Tac-Toe, Connect 4, 2-4-player Can't Stop and
+Love Letter, 2-5-player Sushi Go!, and 1-5-player The Game. Love Letter uses complete-game collection/training; its
 [game-specific contract](../games/loveletter.md#complete-game-self-play-and-training)
 defines private inputs, rotating starters, shared wins and replay-validated
 checkpoints. [Opponent evaluation](model-evaluation.md) and
 [browser play](../browser/integration.md) are also supported.
 A session trains one game/ruleset and one model
 input/output specification. [Local inference](local-mcts.md) uses compatible
-exports in browser MCTS for all four games. Native neural match/tournament
-registration currently supports Tic-Tac-Toe and Connect 4 only.
+exports in browser MCTS for all six implemented games. Native neural match/tournament
+registration currently supports Tic-Tac-Toe, Connect 4 and The Game.
 [Opponent-lineup evaluation](model-evaluation.md) tests frozen models independently.
 
 ## Run, save and resume
@@ -201,7 +201,7 @@ directory. Saved settings retain resolved contents, not live file dependencies.
 | `model.payloads` | `["cells"]`; distinct named arrays supported by the game. |
 | `model.hidden_sizes` | `[64,64]`; positive reference-network layer widths. |
 | `model.value_output` | `observer` or `players`, as described above. |
-| `model.value_players` | Null/omitted uses absolute player order for vector output. Placement games also accept a permutation covering every player; Can't Stop and Love Letter require absolute order. Only valid for `players`. |
+| `model.value_players` | Null/omitted uses absolute player order for vector output. Placement games also accept a permutation covering every player; stochastic multiplayer games require absolute order. Only valid for `players`. |
 | `model.value_binding`, `model.policy_binding` | `network_value`, `network_policy`; distinct external evaluator names selected by the search configuration. |
 | `model.value_observers` | Null selects `all_players` for scalar output and `deciding_player` for full vectors. Scalar output may explicitly choose root/deciding observers with a compatible completion policy. Full-vector training supports deciding-player inference because its training observations are acting-player views. |
 | `exploration.move_policy` | `visit_sampling` or `most_visits`. |
@@ -217,7 +217,7 @@ directory. Saved settings retain resolved contents, not live file dependencies.
 | `optimization.batch_size` | 64 sampled positions per update, with replacement. Positive. |
 | `optimization.learning_rate` | 0.001; finite positive Adam learning rate. |
 | `optimization.policy_weight`, `optimization.value_weight` | 1 each; finite nonnegative. At least one must be positive. |
-| `evaluation.enabled` | True; evaluate updated weights separately. Can't Stop supports the [multiplayer lineup fields](model-evaluation.md#configuration-and-compatibility); its short example disables evaluation. Love Letter supports the same lineup evaluation fields. |
+| `evaluation.enabled` | True; evaluate updated weights separately. Stochastic multiplayer games support the [native lineup fields](model-evaluation.md#configuration-and-compatibility); some short examples disable evaluation. |
 | `evaluation.games` | 20; positive exact requested count unless an error stops evaluation. |
 | `evaluation.positions` | `rotate` default, or `fixed`. |
 | `evaluation.candidate_seat` | Required valid seat for `fixed`; omit/null with rotation. |
@@ -263,7 +263,7 @@ time budgets additionally depend on scheduling and waits.
 
 ### Stochastic self-play seed recipe
 
-Can't Stop and Love Letter select seed derivation version 2. Hash compact UTF-8 JSON with
+Can't Stop, Love Letter, Sushi Go! and The Game select seed derivation version 2. Hash compact UTF-8 JSON with
 `ensure_ascii=True` and separators `(',', ':')`:
 
 `["tag-mcts-stochastic-selfplay-seed",2,master_seed,phase,logical_game_id,ply,purpose]`
@@ -314,7 +314,7 @@ It uses restricted weights-only loading and does not restore pending searches or
 partly played games. `--checkpoint-limit-mib` raises/lowers the CLI reader's
 default 512 MiB ceiling when required; the API accepts `max_bytes`.
 
-Can't Stop and Love Letter use `tag-mcts-selfplay-training/2` with seed-derivation provenance 2
+Can't Stop, Love Letter, Sushi Go! and The Game use `tag-mcts-selfplay-training/2` with seed-derivation provenance 2
 and required per-game seed/seat summaries. Loading checks the format against the
 game's recipe, verifies game/search/noise seeds, checks summaries against the raw
 outcomes, and applies the existing model/buffer/optimizer/RNG validation. Existing

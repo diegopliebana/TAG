@@ -43,7 +43,7 @@ with agreed scope. Rules needing missing engine capabilities have an explicit pl
 | Browser adapter/worker and basic text play | Implemented for current games; use [the browser guide](../browser/integration.md). |
 | Browser graphics, animation and sound | Available for the current games; a new game needs its own display/input mapping. |
 | Numeric observations for learning | LearningGame is available in Rust; see the learning-input guide. |
-| Python game operations | Implemented for all four games; register new games in the Rust adapter and extend native/Python comparisons. |
+| Python game operations | Implemented for all six games; register new games in the Rust adapter and extend native/Python comparisons. |
 | External evaluation and neural search | Supported by external OSLA and native/resumable neural MCTS; each game needs compatible encoding and simulation capabilities. |
 
 List reusable mechanics and evaluate existing core implementations before adding
@@ -209,7 +209,7 @@ basic game operations in the [Python adapter](../python/game-api.md). Basic
 registration does not automatically enable attached controllers, learner-step
 Gym episodes or training: each has additional observation, opponent, reward and
 value-perspective requirements. Tic-Tac-Toe and Connect 4 support learner-step
-Gym/teacher training; all four games support complete-game MCTS self-play and
+Gym/teacher training; all six implemented games support complete-game MCTS self-play and
 frozen-model evaluation within their documented model contracts.
 
 Use [adding learning support](../learning/adding-support.md),

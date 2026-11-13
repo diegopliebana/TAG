@@ -31,6 +31,7 @@ pub enum Metric {
     PointsRate,
     RankPointsRate,
     AverageFinishingPosition,
+    AverageScore,
 }
 
 #[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq, Eq)]

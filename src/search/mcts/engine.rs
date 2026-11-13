@@ -251,6 +251,19 @@ where
                 )
                 .await;
         }
+        if self.settings.structured_actions {
+            return self
+                .search_structured_impl(
+                    actor,
+                    observation,
+                    actions,
+                    players,
+                    effective,
+                    context,
+                    cooperative,
+                )
+                .await;
+        }
         let mut tree = vec![Node::default()];
         let mut edge_count = 0usize;
         let mut forced_stop = None;
@@ -394,6 +407,8 @@ where
         Ok(report)
     }
 }
+
+mod structured;
 
 async fn action_scores<F: crate::core::ForwardModel>(
     evaluator: &mut dyn ActionEvaluator<F>,

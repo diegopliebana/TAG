@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "game": "thegame",
+  "players": 2,
+  "parameters": {"communication": "limited_choices"},
+  "seed": 42,
+  "cycles": 2,
+  "games_per_cycle": 2,
+  "parallel_games": 2,
+  "search": {
+    "schema_version": 1,
+    "structured_actions": true,
+    "tree_policy": "puct",
+    "rollout_length": 0,
+    "budgets": {"iterations": 8},
+    "value_completion": "require_full_vector",
+    "state_evaluator": {"name": "network_value"},
+    "puct_preferences": {"source": "probabilities", "evaluator": {"name": "network_policy"}}
+  },
+  "model": {
+    "payloads": ["hand", "piles", "players", "context", "placements", "messages"],
+    "hidden_sizes": [32, 32],
+    "value_output": "players"
+  },
+  "exploration": {"move_policy": "visit_sampling", "sampling_moves": 10, "root_noise": true},
+  "data": {"mode": "replay_buffer", "capacity": 10000},
+  "optimization": {"updates_per_cycle": 8, "batch_size": 16, "learning_rate": 0.001},
+  "evaluation": {
+    "enabled": true,
+    "games": 2,
+    "positions": "rotate",
+    "opponent": {"name": "random", "agent": {"type": "random"}},
+    "max_actions": 1024
+  },
+  "limits": {"max_moves": 1024},
+  "output": {
+    "model_file": "../../results/thegame-model.json",
+    "checkpoint_file": "../../results/thegame-training.pt",
+    "report_file": "../../results/thegame-results.json"
+  }
+}

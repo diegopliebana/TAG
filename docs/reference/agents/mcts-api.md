@@ -115,6 +115,17 @@ adapter controllers. The existing BuiltinAgent enum remains unchanged.
 
 ## Understand open-loop simulations and limits
 
+Set `structured_actions: true` in MCTS settings to visit component nodes.
+A partial node retains its parent's simulation state and deciding player. Its
+edge receives visits and player-value back-propagation, while game depth and
+the forward-model counter advance only when a complete action is applied.
+Root reports still list complete actions in offered order. Existing
+`structured_actions: false` checkpoints use algorithm version 1; structured
+checkpoints use version 2, and restoration preserves the selected mode. The
+existing complete-action neural policy mapping is reused: descendant action
+probabilities are summed and conditioned at each prefix. A factorized neural
+output would require a separate mapping version.
+
 An open-loop node represents an action history. Each iteration obtains a simulation fork from the root observation
 and applies the actions selected along that history. Nodes retain visit
 counts and value sums. Those simulated actions
@@ -139,6 +150,8 @@ iteration evaluates its current position and completes back-propagation without 
 action. At a deadline unfinished statistics are discarded. A native evaluator
 cannot be interrupted while its function is executing. If no root action acquired
 a completed visit, the agent returns a reported seeded random legal fallback.
+In structured mode, an iteration interrupted during a partial path is discarded;
+the partial selection has no state transition to evaluate.
 When the validated root has exactly one action, MCTS returns it immediately.
 The report sets `forced=true`, `fallback=false`, one root action with zero visits,
 one root node, no edges or stop reasons, and zero iterations, transitions and

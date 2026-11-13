@@ -156,3 +156,79 @@ fn sampled_osla_and_existing_mcts_finish_games_and_resume_agent_streams() {
         assert!(!state.public().outcome.winners().is_empty());
     }
 }
+
+#[test]
+fn structured_mcts_counts_complete_moves_and_restores_its_mode() {
+    use tag_rust::agents::{Agent, MctsAgent};
+    use tag_rust::search::mcts::{Budgets, NativeEvaluators, Settings};
+    let model = LoveLetterForwardModel;
+    let registry = LoveLetterForwardModel::native_evaluators();
+    let state = (0..100)
+        .map(|seed| {
+            model
+                .init_state(
+                    &LoveLetterParameters {
+                        seed,
+                        ..Default::default()
+                    },
+                    2,
+                )
+                .unwrap()
+        })
+        .find(|state| {
+            let actor = match model.next_player(state) {
+                Decision::Player(actor) => actor,
+                Decision::Finished => return false,
+            };
+            model
+                .offered_actions(&model.observe(state, actor).unwrap())
+                .iter()
+                .any(|action| matches!(action, LoveLetterAction::Guess { .. }))
+        })
+        .unwrap();
+    let original = state.clone();
+    let actor = match model.next_player(&state) {
+        Decision::Player(actor) => actor,
+        Decision::Finished => panic!("fresh game must have a decision"),
+    };
+    let observation = model.observe(&state, actor).unwrap();
+    let actions = model.offered_actions(&observation);
+    let settings = Settings {
+        seed: Some(29),
+        budgets: Budgets {
+            iterations: Some(50),
+            time_ms: None,
+            forward_model_calls: None,
+        },
+        tree_depth: Some(1),
+        rollout_length: Some(0),
+        ..Default::default()
+    };
+    let mut agent = MctsAgent::new(settings, &registry)
+        .unwrap()
+        .with_structured_actions();
+    let snapshot = agent.snapshot().unwrap();
+    assert_eq!(snapshot.algorithm_version, 2);
+    let mut restored = MctsAgent::from_snapshot(&snapshot, &registry).unwrap();
+    let first = agent.choose(&model, actor, &observation, &actions).unwrap();
+    let second = restored
+        .choose(&model, actor, &observation, &actions)
+        .unwrap();
+    assert_eq!(first, second);
+    assert_eq!(agent.snapshot().unwrap(), restored.snapshot().unwrap());
+    let report = agent.last_report().unwrap();
+    assert!(report.nodes > 1);
+    assert!(
+        report.edges
+            > report
+                .root_actions
+                .iter()
+                .filter(|action| action.visits > 0)
+                .count()
+    );
+    assert_eq!(
+        report.counters.completed_iterations,
+        report.counters.forward_model_calls
+    );
+    assert_eq!(state, original);
+}

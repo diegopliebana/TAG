@@ -3,6 +3,11 @@ use super::*;
 use serde_json::{Value, json};
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicUsize, Ordering};
+#[cfg(feature = "inference")]
+use tag_rust::{
+    agents::Agent,
+    core::{ForwardModel, simulation::SimulationModel},
+};
 
 fn configuration(game: &str, first: Value, second: Value) -> Value {
     json!({"schema_version":1, "game":{"name":game}, "players":[
@@ -17,6 +22,53 @@ fn mcts(policy: &str) -> Value {
 }
 fn random() -> Value {
     json!({"type":"random"})
+}
+
+#[test]
+fn the_game_reports_cards_placed_even_when_the_team_loses() {
+    let settings = resolve(configuration(
+        "thegame",
+        random(),
+        json!({"type":"first_available"}),
+    ))
+    .unwrap();
+    let report = run(&settings).unwrap();
+    assert_eq!(report.completed_games, 3);
+    assert!(report.games.iter().any(|game| game.results[0] == "loss"));
+    for game in &report.games {
+        let score = game.score.as_ref().unwrap();
+        assert_eq!(score.scope, tag_rust::core::ScoreScope::Team);
+        assert_eq!(score.unit, "cards_placed");
+        assert_eq!(score.maximum, Some(98.0));
+        assert!((0.0..=98.0).contains(&score.values[0]));
+        assert!(game.results.iter().all(|result| result == &game.results[0]));
+    }
+    let ordinary = run(&resolve(configuration("tictactoe", random(), random())).unwrap()).unwrap();
+    assert!(ordinary.games.iter().all(|game| game.score.is_none()));
+}
+
+#[test]
+fn the_game_native_mcts_runs_with_rotated_seats_and_fixed_seeds() {
+    let search = json!({"type":"mcts","config":{"schema_version":1,
+        "structured_actions":true,"rollout_length":0,
+        "budgets":{"iterations":8},"state_evaluator":{"name":"game_heuristic"}}});
+    let mut value = configuration("thegame", search, random());
+    value["games"] = json!(2);
+    value["max_actions"] = json!(16);
+    let settings = resolve(value).unwrap();
+    let first = run(&settings).unwrap();
+    let repeat = run(&settings).unwrap();
+    assert_eq!(first, repeat);
+    assert!(first.failure.is_none(), "{:?}", first.failure);
+    assert_eq!(first.games.len(), 2);
+    assert_eq!(first.games[0].seats, [0, 1]);
+    assert_eq!(first.games[1].seats, [1, 0]);
+    assert!(
+        first
+            .games
+            .iter()
+            .all(|game| game.mcts[0].completed_iterations > 0)
+    );
 }
 
 #[cfg(feature = "inference")]
@@ -47,6 +99,89 @@ fn neural_matches_validate_models_and_run_both_heads_on_each_game() {
             assert!(run(&resolve(value).unwrap()).is_err());
         }
     }
+}
+
+#[cfg(feature = "inference")]
+#[test]
+fn the_game_neural_matches_rotate_replay_and_validate_model_context() {
+    let model =
+        Path::new(env!("CARGO_MANIFEST_DIR")).join("web/tests/fixtures/mcts/thegame-two.json");
+    let agent = json!({"type":"neural_mcts", "model_file":model,
+        "config":{"schema_version":1,"tree_policy":"puct",
+            "structured_actions":true,"rollout_length":0,
+            "budgets":{"iterations":8},"state_evaluator":{"name":"network_value"},
+            "puct_preferences":{"source":"probabilities",
+                "evaluator":{"name":"network_policy"}}}});
+    let mut value = configuration("thegame", agent, random());
+    value["games"] = json!(2);
+    let settings = resolve(value.clone()).unwrap();
+    let first = run(&settings).unwrap();
+    let repeat = run(&settings).unwrap();
+    assert_eq!(first, repeat);
+    assert_eq!(first.completed_games, 2);
+    assert!(first.failure.is_none(), "{:?}", first.failure);
+    assert_eq!(first.games[0].seats, [0, 1]);
+    assert_eq!(first.games[1].seats, [1, 0]);
+    assert!(first.games.iter().all(|game| {
+        game.results[0] == game.results[1]
+            && game
+                .score
+                .as_ref()
+                .is_some_and(|score| score.values.len() == 1)
+            && game.mcts.iter().any(|c| c.completed_iterations > 0)
+    }));
+
+    // Different actual hidden cards with the same permitted view must not
+    // change the agent's proposal when its search streams are identical.
+    let game = tag_rust::games::thegame::TheGameForwardModel;
+    let actor = tag_rust::core::PlayerId::new(0);
+    let state = game.init_state(&Default::default(), 2).unwrap();
+    let observation = game.observe(&state, actor).unwrap();
+    let mut belief_rng = tag_rust::core::random::SimulationRng::new(719);
+    let alternate = game.simulation_fork(&observation, &mut belief_rng).unwrap();
+    assert_ne!(state, alternate);
+    let alternate_observation = game.observe(&alternate, actor).unwrap();
+    assert_eq!(observation, alternate_observation);
+    let actions = game.offered_actions(&observation);
+    let registry = <tag_rust::games::thegame::TheGameForwardModel as agents::MatchGame>::registry();
+    let mut original_agent = agents::build::<tag_rust::games::thegame::TheGameForwardModel>(
+        &settings.players[0],
+        901,
+        &registry,
+    )
+    .unwrap();
+    let mut alternate_agent = agents::build::<tag_rust::games::thegame::TheGameForwardModel>(
+        &settings.players[0],
+        901,
+        &registry,
+    )
+    .unwrap();
+    assert_eq!(
+        original_agent
+            .choose(&game, actor, &observation, &actions)
+            .unwrap(),
+        alternate_agent
+            .choose(&game, actor, &alternate_observation, &actions)
+            .unwrap(),
+    );
+
+    let mut wrong_seats = value.clone();
+    wrong_seats["players"].as_array_mut().unwrap().push(json!({
+        "name":"gamma", "agent":{"type":"random"}
+    }));
+    let temporary = Temporary::new();
+    let output = temporary.0.join("should-not-exist.json");
+    wrong_seats["reporting"]["path"] = json!(output);
+    assert!(run(&resolve(wrong_seats).unwrap()).is_err());
+    assert!(!output.exists());
+    let mut wrong_communication = value.clone();
+    wrong_communication["game"]["parameters"] = json!({"communication":"Silent"});
+    assert!(run(&resolve(wrong_communication).unwrap()).is_err());
+    let mut wrong_perspective = value.clone();
+    wrong_perspective["players"][0]["agent"]["bindings"] = json!({"value_observers":"root_player"});
+    assert!(resolve(wrong_perspective).is_err());
+    value["players"][0]["agent"]["config"]["value_completion"] = json!("fill_zeros");
+    assert!(run(&resolve(value).unwrap()).is_err());
 }
 fn osla() -> Value {
     json!({"type":"osla"})

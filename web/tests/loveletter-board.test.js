@@ -49,6 +49,31 @@ test("Love Letter setup and action labels follow classic ranks and separate targ
   assert.throws(()=>readParameters("loveletter",fields),/valid seat/);
 });
 
+test("Love Letter follows rule-owned card, target and Guard guess paths",()=>{
+  const document={createElement:tag=>new Element(document,tag)};
+  const container=document.createElement("div");
+  const actions=[{guess:{target:1,card:"princess"}},{guess:{target:1,card:"king"}},{play:"handmaid"}];
+  const view={game:"loveletter",observer:0,next_player:0,position_version:"one",read_only:false,
+    controllers:[{kind:"human"},{kind:"human"}],actions,board:{width:16,height:1,loveletter:{
+      round:1,tokens:[0,0],rules:{winning_tokens:[6,5,4]},active:[true,true],protected:[false,false],
+      draw_count:10,hand:["guard","handmaid"],reserve:[],discards:[[],[]],public_events:[],private_events:[],
+      last_private_events:[],action_paths:[[0,1,7],[0,1,5],[3]]}}};
+  let chosen;
+  const click=label=>{
+    const button=all(container).find(e=>e.tag==="button"&&e.textContent===label);
+    assert.ok(button,`missing ${label}`);button.onclick();
+  };
+  renderBoard(container,view,a=>chosen=a);
+  click("Play 1 Guard");
+  assert.equal(chosen,undefined);
+  click("Player 1");
+  click("Guess 9 Princess");
+  assert.deepEqual(chosen,actions[0]);
+  view.position_version="two";
+  renderBoard(container,view,a=>chosen=a);
+  assert.ok(all(container).some(e=>e.tag==="button"&&e.textContent==="Play 1 Guard"));
+});
+
 
 test("Love Letter artwork files and attribution retain their recorded hashes",()=>{
   const base=new URL("../assets/games/loveletter/",import.meta.url);

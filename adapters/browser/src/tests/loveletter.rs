@@ -179,6 +179,16 @@ fn every_native_view_matches_rules_and_switches_directly_between_humans() {
             let observation = model.observe(&state, PlayerId::new(actor)).unwrap();
             assert_eq!(v["board"]["loveletter"]["hand"], json!(observation.hand()));
             assert_eq!(
+                v["board"]["loveletter"]["action_paths"],
+                json!(
+                    model
+                        .offered_actions(&observation)
+                        .iter()
+                        .map(|action| model.action_path(&observation, action))
+                        .collect::<Vec<_>>()
+                )
+            );
+            assert_eq!(
                 v["board"]["loveletter"]["private_events"],
                 json!(observation.private_events())
             );

@@ -14,6 +14,7 @@ use tag_rust::{
         cantstop::{CantStopForwardModel, CantStopProgress},
         loveletter::{LoveLetterForwardModel, LoveLetterHeuristic},
         sushigo::{SushiGoForwardModel, SushiGoHeuristic},
+        thegame::{TheGameForwardModel, TheGameHeuristic},
     },
     search::mcts::{MctsAgent, MctsSnapshot, Settings},
 };
@@ -398,11 +399,22 @@ backend!(
         json!({"actor":actor,"action_id":id})
     }
 );
+backend!(
+    thegame,
+    TheGame,
+    TheGameForwardModel,
+    TheGameHeuristic,
+    (),
+    |_game: &crate::engine::Game<TheGameForwardModel>, actor: usize, id: usize| {
+        json!({"actor":actor,"action_id":id})
+    }
+);
 
 enum Backend {
     CantStop(cantstop::NativeOpponents),
     LoveLetter(loveletter::NativeOpponents),
     SushiGo(sushigo::NativeOpponents),
+    TheGame(thegame::NativeOpponents),
 }
 /// Persistent native opponents, bound to a single live game and its position.
 #[pyclass(module = "tag_rust._engine")]
@@ -415,6 +427,7 @@ macro_rules! dispatch {
             Backend::CantStop(runtime) => runtime.$method($($arg),*),
             Backend::LoveLetter(runtime) => runtime.$method($($arg),*),
             Backend::SushiGo(runtime) => runtime.$method($($arg),*),
+            Backend::TheGame(runtime) => runtime.$method($($arg),*),
         }
     };
 }
@@ -436,11 +449,20 @@ impl NativeOpponents {
                 agents_json,
             )?),
             Engine::SushiGo(_) => Backend::SushiGo(sushigo::NativeOpponents::new(
-                py, game, candidate, agents_json,
+                py,
+                game,
+                candidate,
+                agents_json,
+            )?),
+            Engine::TheGame(_) => Backend::TheGame(thegame::NativeOpponents::new(
+                py,
+                game,
+                candidate,
+                agents_json,
             )?),
             _ => {
                 return Err(PyValueError::new_err(
-                    "native lineups support Can't Stop, Love Letter and Sushi Go!",
+                    "native lineups support Can't Stop, Love Letter, Sushi Go! and The Game",
                 ));
             }
         };
@@ -470,6 +492,7 @@ impl NativeOpponents {
             Backend::CantStop(runtime) => runtime.state(py, game),
             Backend::LoveLetter(runtime) => runtime.state(py, game),
             Backend::SushiGo(runtime) => runtime.state(py, game),
+            Backend::TheGame(runtime) => runtime.state(py, game),
         }
     }
 }

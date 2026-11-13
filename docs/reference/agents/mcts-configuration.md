@@ -28,6 +28,7 @@ These are the accepted JSON names. Effective settings can be exported with Setti
 | `schema_version` | Required `1`; identifies the configuration format. |
 | `seed` | Explicit unsigned integer, or `null`/omitted for automatic seeding at agent creation. Expose and record the resolved integer. Checkpoints also retain current RNG progress. |
 | `search_mode` | `open_loop` is the selected default. Each iteration reconstructs a simulation from the root and applies tree actions. Version 1 rejects other modes. |
+| `structured_actions` | Boolean, default `false`. `true` visits legal action components as tree nodes and saves algorithm version 2; existing complete-action checkpoints retain version 1. |
 | `joint_opponent_policy` | `uniform_random` (default) or `first_available` for simulated other players in a simultaneous decision. Each uses that simulated player's observation. |
 | `tree_policy` | `ucb1` or `puct`. |
 | `exploration_constant` | Finite nonnegative number; controls exploration relative to the declared value scale. Default sqrt(2). |

@@ -18,10 +18,10 @@ export function createSeatFields(container, seeds, prefix = "", count = 2, game 
     const section = document.createElement("div"); section.className = "seat-settings";
     const label = document.createElement("label"); label.textContent = `Player ${seat}`;
     const select = document.createElement("select"); select.id = `${prefix}controller-${seat}`;
-    for (const kind of ["cantstop","loveletter","sushigo"].includes(game) ? ["human", "random", "first_available", "sampled_osla", "mcts", "neural_mcts"] : ["human", "random", "first_available", "osla", "mcts", "neural_mcts", "q_learning", "neural_osla"]) {
+    for (const kind of game === "thegame" ? ["human", "random", "mcts", "neural_mcts"] : ["cantstop","loveletter","sushigo"].includes(game) ? ["human", "random", "first_available", "sampled_osla", "mcts", "neural_mcts"] : ["human", "random", "first_available", "osla", "mcts", "neural_mcts", "q_learning", "neural_osla"]) {
       const option = document.createElement("option"); option.value = kind; option.textContent = controllerName(kind); select.append(option);
     }
-    select.value = seat === 0 ? "human" : ["cantstop","loveletter","sushigo"].includes(game) ? "sampled_osla" : "osla"; label.append(select);
+    select.value = seat === 0 ? "human" : game === "thegame" ? "random" : ["cantstop","loveletter","sushigo"].includes(game) ? "sampled_osla" : "osla"; label.append(select);
     const seedLabel = document.createElement("label"); seedLabel.textContent = `Player ${seat} seed`; seedLabel.hidden = select.value === "human";
     const controls = document.createElement("div"); controls.className = "seed-controls";
     const input = document.createElement("input"); input.type = "text"; input.inputMode = "numeric"; input.id = `${prefix}seed-${seat}`;
@@ -41,9 +41,9 @@ export function createSeatFields(container, seeds, prefix = "", count = 2, game 
       const selected = modelSelect.value;
       modelSelect.replaceChildren();
       const placeholder = document.createElement("option"); placeholder.value = ""; placeholder.textContent = "Choose a loaded model"; modelSelect.append(placeholder);
-      for (const model of models.filter(m => m.kind === select.value && (!game || m.game === game) && (!["cantstop","loveletter","sushigo"].includes(game) || m.player_count === count))) {
+      for (const model of models.filter(m => m.kind === select.value && (!game || m.game === game) && (!["cantstop","loveletter","sushigo","thegame"].includes(game) || m.player_count === count))) {
         const option = document.createElement("option"); option.value = model.id;
-        option.textContent = `${model.game === "loveletter" ? "Love Letter" : model.game === "cantstop" ? "Can't Stop" : model.game === "sushigo" ? "Sushi Go!" : model.game === "tictactoe" ? "Tic-Tac-Toe" : "Connect 4"} / ${model.id.slice(0, 12)}`;
+        option.textContent = `${model.game === "thegame" ? "The Game" : model.game === "loveletter" ? "Love Letter" : model.game === "cantstop" ? "Can't Stop" : model.game === "sushigo" ? "Sushi Go!" : model.game === "tictactoe" ? "Tic-Tac-Toe" : "Connect 4"} / ${model.id.slice(0, 12)}`;
         option.title = model.id; modelSelect.append(option);
       }
       modelSelect.value = [...modelSelect.options].some(o => o.value === selected) ? selected : "";
@@ -63,7 +63,7 @@ export function createSeatFields(container, seeds, prefix = "", count = 2, game 
     modelLabel.append(modelSelect, upload, status); section.append(modelLabel); refresh();
     const searchLabel = document.createElement("label"); searchLabel.textContent = `Player ${seat} MCTS JSON`;
     const search = document.createElement("textarea"); search.id = `${prefix}mcts-${seat}`;
-    search.rows = 8; search.value = JSON.stringify({ schema_version: 1, rollout_length: 0,
+    search.rows = 8; search.value = JSON.stringify({ schema_version: 1, ...(game === "thegame" ? { structured_actions: true } : {}), rollout_length: 0,
       budgets: { iterations: 256 }, state_evaluator: { name: "game_heuristic" } }, null, 2);
     search.setAttribute("aria-label", `Player ${seat} MCTS JSON`);
     const searchFile = document.createElement("input"); searchFile.type = "file";
@@ -81,11 +81,11 @@ export function createSeatFields(container, seeds, prefix = "", count = 2, game 
     const nativeDefault = search.value;
     const neuralDefault = JSON.stringify(game === "sushigo" ? { schema_version:1,tree_policy:"ucb1",rollout_length:0,
       budgets:{iterations:256},state_evaluator:{name:"network_value"} } : { schema_version: 1, tree_policy: "puct", rollout_length: 0,
-      budgets: { iterations: 256 }, state_evaluator: { name: "network_value" },
+      ...(game === "thegame" ? { structured_actions: true } : {}), budgets: { iterations: 256 }, state_evaluator: { name: "network_value" },
       puct_preferences: { source: "probabilities", evaluator: { name: "network_policy" } } }, null, 2);
     const bindingsLabel = document.createElement("label"); bindingsLabel.textContent = `Player ${seat} neural MCTS bindings JSON`;
     const bindings = document.createElement("textarea"); bindings.id = `${prefix}bindings-${seat}`;
-    bindings.rows = 4; bindings.value = JSON.stringify({ value: "network_value", policy: "network_policy", value_observers: game === "sushigo" ? "deciding_player" : null }, null, 2);
+    bindings.rows = 4; bindings.value = JSON.stringify({ value: "network_value", policy: "network_policy", value_observers: ["sushigo","thegame"].includes(game) ? "deciding_player" : null }, null, 2);
     bindingsLabel.append(bindings); section.append(bindingsLabel);
     const showSearch = () => {
       searchLabel.hidden = !["mcts", "neural_mcts"].includes(select.value);
@@ -134,7 +134,9 @@ export function readControllers(document, parameters, prefix = "") {
         controller.model_id = document.getElementById(`${prefix}model-${seat}`).value;
         if (!controller.model_id) throw new Error(kind === "q_learning"
           ? "Load and select a Q-table JSON for Q-learning. Neural model JSON uses Neural OSLA."
-          : "Load and select a neural evaluation JSON for Neural OSLA. Q-tables use Q-learning.");
+          : kind === "neural_mcts"
+            ? "Load and select a neural evaluation JSON for Neural MCTS."
+            : "Load and select a neural evaluation JSON for Neural OSLA. Q-tables use Q-learning.");
       }
       return controller;
     }

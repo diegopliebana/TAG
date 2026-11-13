@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "game": {
+    "name": "thegame",
+    "parameters": {"communication": "LimitedChoices"}
+  },
+  "players": [
+    {
+      "name": "native-mcts",
+      "agent": {
+        "type": "mcts",
+        "config": {
+          "schema_version": 1,
+          "structured_actions": true,
+          "rollout_length": 0,
+          "budgets": {"iterations": 16},
+          "state_evaluator": {"name": "game_heuristic"}
+        }
+      }
+    },
+    {"name": "random", "agent": {"type": "random"}}
+  ],
+  "games": 2,
+  "seed": 42,
+  "positions": "rotate",
+  "max_actions": 500,
+  "reporting": {"format": "summary"}
+}

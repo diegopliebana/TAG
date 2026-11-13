@@ -46,6 +46,7 @@ const GAME_REGISTRY: &[GameRegistration] = &[
     GameRegistration::new::<Connect4ForwardModel>("connect4"),
     GameRegistration::new::<tag_rust::games::cantstop::CantStopForwardModel>("cantstop"),
     GameRegistration::new::<tag_rust::games::loveletter::LoveLetterForwardModel>("loveletter"),
+    GameRegistration::new::<tag_rust::games::thegame::TheGameForwardModel>("thegame"),
 ];
 fn registration(name: &str) -> Result<&'static GameRegistration> {
     GAME_REGISTRY
@@ -78,6 +79,7 @@ pub struct ValidatedGame {
     pub parameters: serde_json::Value,
     pub rules_version: u32,
     pub replay_dimensions: Option<(usize, usize)>,
+    pub score_unit: Option<&'static str>,
 }
 /// Validate every agent in a tournament pool against one game's configuration.
 /// The pool can be larger than the player count. No actions or output writes occur.
@@ -98,12 +100,12 @@ fn validate_default<F: MatchGame + Default>(
     let model = F::default();
     F::validate_ranking(game.ranking.as_deref())?;
     let parameters = parameters::<F>(game)?;
-    model.init_state(&parameters, count)?;
+    let initial = model.init_state(&parameters, count)?;
     let registry = F::registry();
     for player in pool {
         #[cfg(feature = "inference")]
         if let Some(network) = &player.selected_model {
-            model.validate_neural_model(&parameters, network)?;
+            model.validate_neural_model(&parameters, count, network)?;
         }
         agents::build::<F>(player, player.base_seed, &registry)?;
     }
@@ -111,6 +113,7 @@ fn validate_default<F: MatchGame + Default>(
         replay_dimensions: F::replay_dimensions(&parameters),
         parameters: serde_json::to_value(parameters)?,
         rules_version: <F as MatchGame>::RULES_VERSION,
+        score_unit: model.outcome_score(&initial)?.map(|score| score.unit),
     })
 }
 /// Execute one scheduled lineup with explicit per-seat seeds. Tournament scheduling
@@ -281,7 +284,7 @@ fn run_registered<F: MatchGame>(model: F, settings: &ResolvedMatch) -> Result<Ma
     for (index, player) in settings.players.iter().enumerate() {
         #[cfg(feature = "inference")]
         if let Some(network) = &player.selected_model {
-            model.validate_neural_model(&parameters, network)?;
+            model.validate_neural_model(&parameters, settings.players.len(), network)?;
         }
         agents::build::<F>(player, initial_seeds[index], &registry)?;
     }
@@ -366,6 +369,27 @@ fn result_labels<F: MatchGame>(
             .into())
         })
         .collect()
+}
+
+fn result_score<F: MatchGame>(
+    model: &F,
+    state: &F::State,
+    order: &[usize],
+) -> Result<Option<tag_rust::core::OutcomeScore>> {
+    let Some(mut score) = model.outcome_score(state)? else {
+        return Ok(None);
+    };
+    match score.scope {
+        tag_rust::core::ScoreScope::Team if score.values.len() == 1 => {}
+        tag_rust::core::ScoreScope::Players if score.values.len() == order.len() => {
+            score.values = order.iter().map(|&seat| score.values[seat]).collect();
+        }
+        _ => return Err("game score dimension differs from its scope".into()),
+    }
+    if score.values.iter().any(|value| !value.is_finite()) {
+        return Err("game score must be finite".into());
+    }
+    Ok(Some(score))
 }
 
 fn final_ranks<F: MatchGame>(
@@ -471,6 +495,11 @@ fn play_one<F: MatchGame>(
     } else {
         result_labels(model, &state, &order)?
     };
+    let score = if truncated {
+        None
+    } else {
+        result_score(model, &state, &order)?
+    };
     let ranks = if truncated {
         None
     } else {
@@ -491,6 +520,7 @@ fn play_one<F: MatchGame>(
             agent_seeds,
             seats: order,
             results,
+            score,
             accepted_moves,
             mcts: totals,
             actions: settings.config.reporting.include_actions.then_some(actions),
@@ -572,6 +602,11 @@ where
     } else {
         result_labels(&model, session.active().session().state(), &order)?
     };
+    let score = if truncated {
+        None
+    } else {
+        result_score(&model, session.active().session().state(), &order)?
+    };
     let cursor = session.info(BranchId(0))?.move_count;
     let recording = Some(export_replay(&session, &parameters, cursor, 0).map_err(Into::into));
 
@@ -592,6 +627,7 @@ where
             agent_seeds,
             seats: order,
             results,
+            score,
             accepted_moves,
             ranks,
             truncated,

@@ -11,6 +11,7 @@ use the same Rust rule interface and need no trained weights or Python.
 |---|---|---|
 | First Available (`first_available`) | Always chooses entry 0 from the offered list | Action ordering, rule execution and complete-game plumbing |
 | Random (`random`) | Gives every offered entry equal probability | Repeated play without a heuristic; a simple opponent baseline |
+| Structured Random (`StructuredRandomAgent` in Rust) | Chooses each legal component uniformly until one action is complete | Compares card-first choices with uniform complete-action sampling |
 | OSLA (`osla`) | Simulates one action ahead and compares the resulting position estimates | The effect of a game heuristic before deeper tree search |
 
 First Available is not a strategy for choosing a tactically good action: its

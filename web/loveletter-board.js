@@ -42,9 +42,13 @@ function description(event) {
 export class LoveLetterBoard {
   constructor(container, view, sprites) {
     Object.assign(this, { container, game: view.game, width: view.board.width, height: view.board.height, sprites });
+    this.choicePrefix=[];this.choicePosition=null;this.choiceObserver=null;
   }
   update(view, choose, busy) {
     const document = this.container.ownerDocument, facts = view.board.loveletter;
+    if(this.choicePosition!==view.position_version || this.choiceObserver!==view.observer){
+      this.choicePrefix=[];this.choicePosition=view.position_version;this.choiceObserver=view.observer;
+    }
     const element = (tag, text, className) => {
       const node = document.createElement(tag); if (text !== undefined) node.textContent = text;
       if (className) node.className = className; return node;
@@ -100,6 +104,37 @@ export class LoveLetterBoard {
     }
     if (view.actions.length) root.append(element("h3", "Actions"));
     const controls = element("div", undefined, "letter-actions");
+    if(facts.action_paths?.length===view.actions.length && view.actions.length){
+      const paths=facts.action_paths;
+      const matches=path=>this.choicePrefix.every((part,index)=>path[index]===part);
+      if(!paths.some(path=>matches(path) && path.length>this.choicePrefix.length)) this.choicePrefix=[];
+      if(this.choicePrefix.length){
+        const back=element("button","Back");back.type="button";back.disabled=busy || view.read_only;
+        back.onclick=()=>{if(!back.disabled){this.choicePrefix.pop();this.update(view,choose,busy);}};
+        controls.append(back);
+      }
+      const options=new Map();
+      paths.forEach((path,index)=>{
+        if(matches(path) && path.length>this.choicePrefix.length && !options.has(path[this.choicePrefix.length]))
+          options.set(path[this.choicePrefix.length],index);
+      });
+      for(const [component,index] of options){
+        const action=view.actions[index],path=paths[index];
+        const name=action.guess?"guard":action.target?.card??action.play;
+        let label;
+        if(!this.choicePrefix.length)label=`Play ${title(name)}`;
+        else if(this.choicePrefix.length===1)label=`Player ${action.guess?.target??action.target?.target}`;
+        else label=`Guess ${title(action.guess.card)}`;
+        const button=element("button",label);button.type="button";button.disabled=busy || view.read_only;
+        button.onclick=()=>{
+          if(button.disabled)return;
+          if(path.length===this.choicePrefix.length+1) choose(action);
+          else {this.choicePrefix.push(component);this.update(view,choose,busy);}
+        };
+        controls.append(button);
+      }
+      root.append(controls);
+    } else {
     // Group choices by played card so target and Guard guesses remain explicit.
     const offered = new Map();
     for (const action of view.actions) {
@@ -128,6 +163,7 @@ export class LoveLetterBoard {
       controls.append(section);
     }
     root.append(controls);
+    }
     const history = (name, events) => {
       if (!events?.length) return;
       const details = element("details"); details.append(element("summary", name));

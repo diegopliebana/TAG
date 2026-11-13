@@ -6,7 +6,8 @@ use crate::protocol::*;
 use crate::runtime::{Runtime, integer};
 use tag_rust::games::{
     cantstop::CantStopForwardModel, connect4::Connect4ForwardModel,
-    loveletter::LoveLetterForwardModel, tictactoe::TicTacToeForwardModel,
+    loveletter::LoveLetterForwardModel, thegame::TheGameForwardModel,
+    tictactoe::TicTacToeForwardModel,
 };
 
 pub(crate) enum GameSession {
@@ -15,6 +16,7 @@ pub(crate) enum GameSession {
     Cantstop(Box<Runtime<CantStopForwardModel>>),
     Loveletter(Box<Runtime<LoveLetterForwardModel>>),
     Sushigo(Box<crate::joint_runtime::JointRuntime>),
+    Thegame(Box<Runtime<TheGameForwardModel>>),
 }
 impl GameSession {
     fn import(
@@ -25,6 +27,10 @@ impl GameSession {
         let header: serde_json::Value = serde_json::from_str(text)
             .map_err(|e| BridgeError::new("invalid_file", e.to_string()))?;
         match header["versions"]["game"].as_str() {
+            Some("thegame") => {
+                Runtime::import_with_models(text, TheGameForwardModel, controllers, models)
+                    .map(|(r, d, n)| (Self::Thegame(Box::new(r)), d, n))
+            }
             Some("loveletter") => {
                 Runtime::import_with_models(text, LoveLetterForwardModel, controllers, models)
                     .map(|(r, d, n)| (Self::Loveletter(Box::new(r)), d, n))
@@ -63,6 +69,7 @@ impl GameSession {
             Self::Cantstop(r) => r.export(scope, cursor, delay),
             Self::Loveletter(r) => r.export(scope, cursor, delay),
             Self::Sushigo(r) => r.export(scope, cursor, delay),
+            Self::Thegame(r) => r.export(scope, cursor, delay),
         }
     }
     fn file_data(&mut self) -> Result<(PublicView, PublicView, serde_json::Value), BridgeError> {
@@ -72,6 +79,7 @@ impl GameSession {
             Self::Cantstop(r) => Ok((r.file_display()?, r.view(None)?, r.file_parameters()?)),
             Self::Loveletter(r) => Ok((r.file_display()?, r.view(None)?, r.file_parameters()?)),
             Self::Sushigo(r) => r.file_data(),
+            Self::Thegame(r) => Ok((r.file_display()?, r.view(None)?, r.file_parameters()?)),
         }
     }
     fn create(
@@ -81,6 +89,10 @@ impl GameSession {
         models: &crate::learned::Registry,
     ) -> Result<Self, BridgeError> {
         match game {
+            GameKind::Thegame => {
+                Runtime::create_with_models(TheGameForwardModel, parameters, controllers, models)
+                    .map(|r| Self::Thegame(Box::new(r)))
+            }
             GameKind::Loveletter => {
                 Runtime::create_with_models(LoveLetterForwardModel, parameters, controllers, models)
                     .map(|r| Self::Loveletter(Box::new(r)))
@@ -110,6 +122,7 @@ impl GameSession {
             Self::Cantstop(g) => g.view(None),
             Self::Loveletter(g) => g.view(None),
             Self::Sushigo(g) => g.view(None),
+            Self::Thegame(g) => g.view(None),
         }
     }
     fn execute(
@@ -123,6 +136,7 @@ impl GameSession {
             Self::Cantstop(g) => g.execute(command, version),
             Self::Loveletter(g) => g.execute(command, version),
             Self::Sushigo(g) => g.execute(command, version),
+            Self::Thegame(g) => g.execute(command, version),
         }
     }
 }
@@ -283,6 +297,7 @@ impl BrowserEngine {
                             GameSession::Cantstop(r) => r.predict_model(&model_id, observer)?,
                             GameSession::Loveletter(r) => r.predict_model(&model_id, observer)?,
                             GameSession::Sushigo(r) => r.predict_model(&model_id, observer)?,
+                            GameSession::Thegame(r) => r.predict_model(&model_id, observer)?,
                         }
                         .to_string(),
                     );
@@ -404,6 +419,7 @@ impl GameSession {
             Self::Cantstop(r) => r.models = models.clone(),
             Self::Loveletter(r) => r.models = models.clone(),
             Self::Sushigo(r) => r.update_models(models),
+            Self::Thegame(r) => r.models = models.clone(),
         }
     }
 }

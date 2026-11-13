@@ -8,13 +8,15 @@ To compare an agent pool across multiple games, use
 
 Use one match configuration to choose the game, rule parameters and an agent for
 each player. This application supports Tic-Tac-Toe, Connect 4, Can't Stop and Love Letter with First
-Available, Random, native OSLA and native MCTS. Each agent owns its evaluator and
+Available, Random, native OSLA and native MCTS. The Game supports
+First Available, Random and native MCTS here. Each agent owns its evaluator and
 random-number generator. The Rust runner executes the game rules.
 
 With the optional `inference` feature, [local neural MCTS](../learning/local-mcts.md)
 adds model-backed agents using the same match settings and seat rotation for
-Tic-Tac-Toe and Connect 4. Local neural native match registration is absent for
-Can't Stop and Love Letter, independently of their browser/Python support.
+Tic-Tac-Toe, Connect 4 and The Game. The Game uses observation-derived sampled
+worlds. Local neural native match registration is absent for Can't Stop and
+Love Letter.
 
 ## Run an example
 
@@ -24,6 +26,8 @@ From the repository root:
 cargo run --offline --release --features mcts-json,replay --example match_play -- examples/matches/mcts-vs-osla.json
 cargo run --offline --release --features mcts-json,replay --example match_play -- examples/matches/mcts-vs-mcts.json
 cargo run --offline --release --features mcts-json,replay --example match_play -- examples/matches/random-vs-osla.json
+cargo run --offline --release --features mcts-json,replay --example match_play -- examples/matches/thegame-mcts.json
+cargo run --offline --release --features mcts-json,replay,inference --example match_play -- examples/matches/thegame-neural-mcts.json
 ```
 
 The first command plays two Connect 4 games using PUCT against OSLA, alternating
@@ -60,9 +64,9 @@ Launching the executable from another working directory preserves those referenc
 | Field | Accepted values and defaults |
 |---|---|
 | `schema_version` | Required integer `1`. Unknown fields are rejected. |
-| `game.name` | Required `tictactoe`, `connect4`, `cantstop` or `loveletter`. |
+| `game.name` | Required `tictactoe`, `connect4`, `cantstop`, `loveletter` or `thegame`. |
 | `game.parameters` | Object; omitted fields use the game's defaults. Tic-Tac-Toe accepts `grid_size`; Connect 4 accepts `width`, `height`, `winning_length`. Can't Stop accepts `rules` and an optional `seed` base; see its [reference](../games/cantstop.md). Love Letter accepts `rules.winning_tokens`, `first_player` and an optional `seed` base; see its [reference](../games/loveletter.md). The placement games also accept `limits: {"max_cells": N}`. Unknown parameters and invalid rule configurations fail before play. |
-| `players` | Required ordered list. Each entry has a unique nonempty `name`, an `agent`, and an optional `seed`. The placement games require two players; Can't Stop supports 2-4. |
+| `players` | Required ordered list. Each entry has a unique nonempty `name`, an `agent`, and an optional `seed`. The placement games require two players; Can't Stop supports 2-4, and The Game supports 1-5. |
 | `game.ranking` | Null/omitted or `game` uses the game's declared final ranking. Can't Stop supplies none by default; `score` explicitly opts into its research ranking. Equal scores tie. |
 | `max_actions` | Positive accepted-player-action limit; null/omitted disables it. Terminal completion takes precedence at the limit. |
 | `games` | Required positive integer, at most 10,000. Exactly this many games run unless an execution or output error stops the experiment. |
@@ -74,6 +78,10 @@ Launching the executable from another working directory preserves those referenc
 | `reporting.include_actions` | Boolean, default false. Include each completed game's accepted actions in order, with the acting seat. These traces aid reproducibility checks; replay files additionally preserve controller progress. |
 
 `reporting` can be omitted entirely. Existing output files are never overwritten.
+The Game's parameters are `seed`, `first_player` and `communication`, as
+defined in its [game reference](../games/thegame.md). Its matches support
+First Available, Random and native MCTS agents. The example uses observation-derived
+sampled search with structured card-then-pile nodes and rotates seats.
 Configuration files, including referenced agent files, are limited to 1 MiB each.
 Known destination conflicts are checked before games start; parent directories
 are created when writing outputs. Use a new report path and recording directory
@@ -140,7 +148,9 @@ requires the same rules, evaluator behaviour and RNG/software versions.
 The full report contains effective game parameters, agent names and algorithms,
 seed derivation version, position schedule, requested/completed game counts,
 per-agent/per-seat outcomes and per-game results. `seats`, `agent_seeds`, `results`
-optional final `ranks` and MCTS counter totals use **agent configuration order**. Action traces identify
+optional final `ranks` and MCTS counter totals use **agent configuration order**. A completed
+game may also include `score`: one shared team value or one value per agent,
+with a unit and optional maximum. Tic-Tac-Toe and Connect 4 omit it. Action traces identify
 the acting seat. Search totals count completed iterations and forward-model calls
 from accepted real decisions; basic agents have zero MCTS counters.
 

@@ -1,20 +1,48 @@
 # Setup
 
-Run commands from the repository root. Reuse an existing environment if
-you already built the project. Install missing tools/packages in your own terminal.
+Run commands from the repository root. The Windows setup script prepares the
+workflows you select. Install missing host tools in your own terminal using the
+instructions below.
+
+## Choose a setup
+
+```powershell
+.\tools\setup.ps1 -Profile native
+.\tools\setup.ps1 -Profile browser
+.\tools\setup.ps1 -Profile python
+.\tools\setup.ps1 -Profile python -Gym
+.\tools\setup.ps1 -Profile python -Neural
+.\tools\setup.ps1 -Profile python -Gym -Neural
+```
+
+Run only the profiles you need. `native` builds and checks a game match. `browser`
+installs the matching Rust Wasm target and binding generator, then builds the
+browser files; run `.\serve-browser.ps1` afterward to play. `python` creates
+`.venv`, installs pinned NumPy and maturin packages, builds the Rust adapter and
+checks that it imports. `-Gym` adds Gymnasium for episode workflows; `-Neural`
+adds CPU PyTorch for neural training and evaluation. These switches can be
+combined. `-Profile all` prepares native, browser and Python; add `-Gym` and
+`-Neural` to include those packages. The script reuses `.venv` and matching Rust
+tools when rerun after a source change.
+
+To inspect a selected setup without installing or building, add `-Check`, for
+example `.\tools\setup.ps1 -Profile python -Gym -Check`. It checks command and
+package availability and the Python adapter import; it does not inspect build
+artifacts or run a game. A missing item produces an instruction and a nonzero exit
+status. The script does not install the Windows C++ tools, Rust, Python or a
+browser. Initial project package downloads need internet access.
 
 ## Which tools do I need?
 
-These steps target Windows/PowerShell, matching the validated project setup.
-Install only the tools for the workflows you need. Reopen PowerShell after an
-installer changes PATH. Initial downloads need internet access.
+These steps target Windows/PowerShell. Install only the host tools for your
+chosen workflow. Reopen PowerShell after an installer changes PATH.
 
 | Tool | Needed for | How to install |
 |---|---|---|
 | Microsoft C++ build tools + Windows SDK | Native Windows MSVC builds | Follow [Microsoft's installer instructions](https://learn.microsoft.com/en-us/windows/dev-environment/rust/setup). Install **Desktop development with C++**, including the MSVC compiler and Windows SDK. Do this before Rust. |
 | Rust: rustup, rustc and Cargo | Engine, adapters and Rust tests | Download/run [rustup-init](https://rust-lang.org/tools/install/) for your architecture. Accept the stable MSVC toolchain and default PATH setup. Rustup installs Cargo and the compiler together. |
-| Python 3.14 | Adapter/training; Python also serves browser files | Install [Python Install Manager](https://www.python.org/downloads/windows/), then run `pymanager install 3.14`. Follow its PATH prompts so `py` and `python` work; [official Windows instructions](https://docs.python.org/3.14/using/windows.html) explain existing-launcher conflicts. Reuse an existing compatible installation. |
-| Wasm target + wasm-bindgen-cli | Browser build | After Rust, run `rustup target add wasm32-unknown-unknown` and `cargo install wasm-bindgen-cli --version 0.2.129 --locked`. The binding generator must match the pinned crate version. |
+| Python 3.14 | Adapter/training; `python` on PATH also serves browser files | Install [Python Install Manager](https://www.python.org/downloads/windows/), then run `pymanager install 3.14`. Follow its PATH prompts so `py` and `python` work; [official Windows instructions](https://docs.python.org/3.14/using/windows.html) explain existing-launcher conflicts. Reuse an existing compatible installation. |
+| Wasm target + wasm-bindgen-cli | Browser build | The `browser` profile installs these after Rust. For manual setup, run `rustup target add wasm32-unknown-unknown` and `cargo install wasm-bindgen-cli --version 0.2.129 --locked`. The binding generator must match the pinned crate version. |
 | Chrome or Edge | Browser play and graphical tests | Keep an existing supported browser. Otherwise download Chrome through [Google's installer instructions](https://support.google.com/chrome/answer/95346), run the installer and follow its prompts. |
 | Node.js | JavaScript/Wasm and graphical tests | On [Node's download page](https://nodejs.org/en/download), select version **24**, Windows and your architecture; run the `.msi` installer with PATH integration. The suite was validated with 24.21.0. |
 | JDK 21 + Maven | Optional Java/Rust comparisons | Install the **JDK 21** Windows MSI from [Eclipse Temurin](https://adoptium.net/temurin/releases/?version=21), enabling PATH and JAVA_HOME in [Custom Setup](https://adoptium.net/installation/windows). Download/extract a [Maven binary ZIP](https://maven.apache.org/download.cgi) and add its `bin` directory to your user PATH, following [Maven installation](https://maven.apache.org/install.html). |
@@ -89,7 +117,7 @@ after the script name and need no Cargo separator.
 
 ## Rust: matches and tournaments
 
-After installing the tools above, fetch dependencies and build the native workflows:
+The `native` profile runs the following build and example. To do it manually:
 
 ```powershell
 cargo fetch
@@ -104,7 +132,8 @@ cargo run --release --features mcts-json,replay --example match_play -- examples
 
 ## Browser
 
-If you have not installed the Wasm tools from the table, run:
+The `browser` profile installs the Wasm tools and runs
+`tools/browser/build.ps1`. For manual setup, install the Wasm tools:
 
 ```powershell
 rustup target add wasm32-unknown-unknown
@@ -116,14 +145,19 @@ process; `serve-browser.ps1` uses Python only to serve the local application fil
 
 ## Python: training and Python experiments
 
-The current adapter uses CPython 3.14. These versions match the project pins:
+The `python` profile performs these steps using the pins in
+`adapters/python/pyproject.toml`. For manual setup, the current adapter uses
+CPython 3.14. Install the base packages first:
 
 ```powershell
 py -3.14 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install "numpy==2.5.4" "maturin==1.15.0" "gymnasium==1.4.0"
-.\.venv\Scripts\python.exe -m pip install "torch==2.14.0" --index-url https://download.pytorch.org/whl/cpu
+.\.venv\Scripts\python.exe -m pip install "numpy==2.5.4" "maturin==1.15.0"
 cargo fetch --manifest-path adapters/python/Cargo.toml
 ```
+
+For Gymnasium episodes, install `gymnasium==1.4.0`. For neural workflows,
+install the CPU package with
+`.\.venv\Scripts\python.exe -m pip install "torch==2.14.0" --index-url https://download.pytorch.org/whl/cpu`.
 
 Build/install the Rust adapter into that environment:
 
@@ -168,13 +202,17 @@ Linux/macOS runtime validation.
 
 ```sh
 python3.14 -m venv .venv
-.venv/bin/python -m pip install "numpy==2.5.4" "maturin==1.15.0" "gymnasium==1.4.0"
-.venv/bin/python -m pip install "torch==2.14.0" --index-url https://download.pytorch.org/whl/cpu
+.venv/bin/python -m pip install "numpy==2.5.4" "maturin==1.15.0"
 cargo fetch
 cargo fetch --manifest-path adapters/python/Cargo.toml
 VIRTUAL_ENV="$PWD/.venv" PYO3_PYTHON="$PWD/.venv/bin/python" .venv/bin/python -m maturin develop --release --manifest-path adapters/python/Cargo.toml
 .venv/bin/python -c 'import tag_rust; print(tag_rust.registered_games())'
 ```
+
+For episodes, add `.venv/bin/python -m pip install "gymnasium==1.4.0"`.
+For neural workflows, add
+`.venv/bin/python -m pip install "torch==2.14.0" --index-url https://download.pytorch.org/whl/cpu`.
+The Windows setup script has no POSIX counterpart yet.
 
 Cargo/Node commands elsewhere are the same. Replace the Windows interpreter path
 with `.venv/bin/python`; `.exe` binary suffixes and PowerShell launchers are
@@ -193,8 +231,11 @@ python --version
 wasm-bindgen --version
 node --version
 git --version
-.\.venv\Scripts\python.exe -c "import numpy, gymnasium, torch; print(numpy.__version__, gymnasium.__version__, torch.__version__)"
+.\.venv\Scripts\python.exe -c "import numpy; print(numpy.__version__)"
 ```
+
+Check `gymnasium` and `torch` only if you selected their options. The setup
+script's `-Check` mode performs those package checks for the selected profile.
 
 For optional Java comparisons, also check `java -version`, `javac -version` and
 `mvn -version`. The graphical test command is `node tools/browser/test-browser.mjs`;

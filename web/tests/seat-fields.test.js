@@ -78,3 +78,19 @@ test("MCTS seat controls retain separate search and model-binding JSON", () => {
   document.getElementById("mcts-0").value = "bad json";
   assert.throws(() => readControllers(document, { width: 7, height: 6 }), /Player 0/);
 });
+test("The Game offers native and neural structured MCTS with seat-matched models", () => {
+  const { document } = fixture(2, "thegame");
+  setModels([{id:"team2",kind:"neural_mcts",game:"thegame",player_count:2},
+    {id:"team3",kind:"neural_mcts",game:"thegame",player_count:3}]);
+  const select = document.getElementById("controller-1");
+  assert.deepEqual(select.options.map(option => option.value), ["human", "random", "mcts", "neural_mcts"]);
+  select.value = "mcts"; select.dispatchEvent(new Event("change"));
+  const configuration = JSON.parse(document.getElementById("mcts-1").value);
+  assert.equal(configuration.structured_actions, true);
+  assert.equal(readControllers(document, { players: 2 })[1].kind, "mcts");
+  select.value = "neural_mcts"; select.dispatchEvent(new Event("change"));
+  assert.deepEqual(document.getElementById("model-1").options.map(option => option.value), ["", "team2"]);
+  assert.equal(JSON.parse(document.getElementById("mcts-1").value).structured_actions, true);
+  assert.equal(JSON.parse(document.getElementById("bindings-1").value).value_observers, "deciding_player");
+  assert.equal(readControllers(document, { players: 2 })[1].kind, "neural_mcts");
+});

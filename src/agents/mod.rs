@@ -19,7 +19,7 @@ pub use osla_python::{
     ExternalEvaluation, OpenLinesBatchEvaluator, OslaPythonAgent, OslaPythonConfig,
     OslaPythonError, OslaPythonSnapshot, PreparedEvaluationAgent,
 };
-pub use random::RandomAgent;
+pub use random::{RandomAgent, StructuredRandomAgent, StructuredRandomError};
 pub use sampled_osla::{SampledOslaAgent, SampledOslaSnapshot};
 
 /// An action selection request must contain at least one available move.

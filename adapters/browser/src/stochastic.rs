@@ -158,7 +158,7 @@ macro_rules! stochastic_controllers {
                 },
                 s => s,
             };
-            if GAME_ID == "loveletter" || GAME_ID == "sushigo" {
+            if GAME_ID == "loveletter" || GAME_ID == "sushigo" || GAME_ID == "thegame" {
                 if let SeatSetup::NeuralMcts { bindings, .. } = &setup {
                     if bindings.value_observers.is_some_and(|v| v != tag_rust::inference::ValuePerspective::DecidingPlayer) {
                         return Err(bridge("hidden card games require deciding-player neural observations"));
@@ -189,7 +189,7 @@ macro_rules! stochastic_controllers {
                 SeatSetup::Mcts { configuration, .. } | SeatSetup::NeuralMcts { configuration, .. } => {
                     let mut settings = Settings::from_json(&configuration.to_string()).map_err(bridge)?;
                     settings.seed = Some(seed);
-                    if (GAME_ID == "loveletter" || GAME_ID == "sushigo") && settings.value_completion != tag_rust::search::mcts::ValueCompletion::RequireFullVector {
+                    if (GAME_ID == "loveletter" || GAME_ID == "sushigo" || GAME_ID == "thegame") && settings.value_completion != tag_rust::search::mcts::ValueCompletion::RequireFullVector {
                         return Err(bridge("card games require full absolute-seat value vectors"));
                     }
                     if GAME_ID == "sushigo" && settings.tree_policy != tag_rust::search::mcts::TreePolicy::Ucb1 {
@@ -262,6 +262,9 @@ macro_rules! stochastic_controllers {
                 let ControllerSnapshot::Ai(s) = s else {
                     return SeatData::Human;
                 };
+                if GAME_ID == "thegame" && s.setup["kind"] == "random" {
+                    return SeatData::Random(RngData::from_snapshot(s.rng));
+                }
                 SeatData::Extension {
                     rng: RngData::from_snapshot(s.rng),
                     policy: serde_json::to_value(Policy {
@@ -280,6 +283,22 @@ macro_rules! stochastic_controllers {
                 if matches!(d, SeatData::Human) {
                     return Ok(Controller::Human);
                 }
+                if GAME_ID == "thegame" {
+                    if let SeatData::Random(data) = d {
+                        let saved = data.snapshot()?;
+                        if saved.stream != 0 {
+                            return Err(invalid("Random controller stream differs"));
+                        }
+                        let Controller::Ai(mut agent) = controller(
+                            SeatSetup::Random { seed: saved.initial_seed.to_string() }, self.0
+                        ).map_err(|e| invalid(e.message))? else {
+                            unreachable!("Random setup builds an AI")
+                        };
+                        agent.rng = AgentRng::from_snapshot(&saved).map_err(invalid)?;
+                        agent.saved.rng = saved;
+                        return Ok(Controller::Ai(agent));
+                    }
+                }
                 let SeatData::Extension { rng, policy } = d else {
                     return Err(invalid("unsupported stochastic game policy"));
                 };
@@ -288,6 +307,11 @@ macro_rules! stochastic_controllers {
                     return Err(invalid("unsupported stochastic game policy version"));
                 }
                 let setup: SeatSetup = serde_json::from_value(p.setup).map_err(invalid)?;
+                if GAME_ID == "thegame"
+                    && !matches!(setup, SeatSetup::Mcts { .. } | SeatSetup::NeuralMcts { .. })
+                {
+                    return Err(invalid("The Game extension requires MCTS or Neural MCTS"));
+                }
                 let Controller::Ai(mut a) = controller(setup, self.0).map_err(|e| invalid(e.message))?
                 else {
                     return Err(invalid("AI requires AI setup"));

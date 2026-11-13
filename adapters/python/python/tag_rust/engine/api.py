@@ -317,6 +317,8 @@ def create(name: str, parameters: Mapping[str, object] | None = None, *, players
             return {key: normalize(item, key) for key, item in value.items()}
         if isinstance(value, Sequence) and not isinstance(value, (str, bytes)):
             return [normalize(item, label) for item in value]
+        if label == "communication" and value in ("limited_choices", "silent"):
+            return value
         result = _integer(value, label)
         if result > 2**64-1:
             raise OverflowError(f"{label} exceeds the unsigned 64-bit range")

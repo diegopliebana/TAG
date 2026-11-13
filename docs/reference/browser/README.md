@@ -24,6 +24,11 @@ browser hides the previous human's hand before passing the device; the
 [Sushi Go! manual](../../guides/games/sushigo.md#play-in-the-browser) explains
 the controls.
 
+The Game uses the sequential session: each speech action advances to the next
+speaker, and a completed message round becomes public before card placement.
+Its ordinary view contains one hand and public team progress. A privileged
+reveal can inspect other hands without changing game or agent state.
+
 A rule execution failure reports its original error and stops the live session.
 Further move requests return `game_stopped`; reset or restore a valid recorded
 position to continue. This is separate from a normal win, draw or loss. Invalid

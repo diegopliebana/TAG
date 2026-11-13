@@ -64,11 +64,17 @@ human submits, the next waiting seat appears automatically. Save and fork
 after all seats have chosen. A state file asks for new controllers; branch
 and session files resume recorded controllers.
 
+For The Game, each seat speaks once before a card turn and the messages appear
+together after the last speaker. The active player then places cards on the
+four piles and ends the turn when the minimum is met. See the
+[game manual](../games/thegame.md#play-in-the-browser).
+
 ## Display controls
 
 Settings offers theme, sound, reduced motion, **Fit** and **Scrollable** board
 display. Each new game starts with its own display setting: Sushi Go! uses
-**Scrollable** at 80% zoom; the other games use **Fit** at 100%. Scrollable
+**Scrollable** at 80% zoom, The Game uses **Scrollable** at 100%, and the
+other games use **Fit** at 100%. Scrollable
 display enables zoom. Manual changes remain in effect during the current
 session. On narrow screens, setup fields stack
 vertically. Each game's manual explains any additional views, card/board controls

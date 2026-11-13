@@ -9,9 +9,10 @@ execution uses Wasm inside the existing Web Worker. Python/PyTorch trains a
 model before play; no Python process or inference server is required to use it.
 The separate [Python neural-search interface](neural-mcts.md) remains available
 for batched PyTorch evaluation across independent trees and broader model code.
-Browser native/neural MCTS supports all four games. Local neural agents in the
-native match/tournament CLI are registered for Tic-Tac-Toe and Connect 4 only;
-Can't Stop and Love Letter use Python frozen-model lineup evaluation instead.
+Browser native/neural MCTS supports all six implemented games. Local neural agents in the
+native match/tournament CLI are registered for Tic-Tac-Toe, Connect 4 and The Game.
+The Game's CLI search samples hidden cards from the acting player's observation;
+other hidden and stochastic games use Python frozen-model lineup evaluation.
 
 ## Play in the browser
 
@@ -109,6 +110,16 @@ Connect 4 output of `examples/selfplay/connect4.json`:
 .\.venv\Scripts\python.exe adapters/python/examples/selfplay_train.py --config examples/selfplay/connect4.json --max-cycles 1
 cargo run --offline --release --features mcts-json,replay,inference --example match_play -- examples/matches/neural-mcts-connect4.json
 ```
+
+For The Game, the supplied small compatibility model runs with:
+
+```powershell
+cargo run --offline --release --features mcts-json,replay,inference --example match_play -- examples/matches/thegame-neural-mcts.json
+```
+
+Replace the fixture with a compatible trained export for a research match. Its
+seat count and communication mode must match the match configuration, and its
+own-turn model must return a full absolute-seat value vector.
 
 Add `inference` to the existing native runner's features. A neural agent selects
 exactly one search configuration and its model:

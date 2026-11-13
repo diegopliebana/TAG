@@ -352,7 +352,7 @@ fn search_report<F: LearningGame>(
     )
     .map_err(|e| e.to_string())?;
     Ok(serde_json::json!({
-        "schema_version":1,"algorithm_version":1,
+        "schema_version":1,"algorithm_version":if report.effective_settings.structured_actions { 2 } else { 1 },
         "selected_index":report.selected_index,
         "action_id":model.action_id(observation, &actions[report.selected_index]).map_err(|e| e.to_string())?,
         "root_actions":rows,"fallback":report.fallback,"forced":report.forced,
@@ -475,6 +475,15 @@ impl crate::engine::Engine {
             }};
         }
         match self {
+            Self::TheGame(game) => {
+                if options.observers != ValueObservers::DecidingPlayer
+                    || options.settings.value_completion
+                        != tag_rust::search::mcts::ValueCompletion::RequireFullVector
+                {
+                    return Err("The Game MCTS requires deciding_player observations and require_full_vector completion".into());
+                }
+                start!(game, tag_rust::games::thegame::TheGameForwardModel)
+            }
             Self::SushiGo(game) => {
                 if options.observers != ValueObservers::DecidingPlayer
                     || options.settings.value_completion

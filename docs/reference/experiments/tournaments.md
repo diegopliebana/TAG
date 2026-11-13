@@ -8,8 +8,9 @@ across one or more game configurations. It produces a ranking for each game entr
 and one global ranking, together with the results of every played game.
 
 The application reuses the [match runner](matches.md). Available agents are First
-Available, Random, native OSLA and native MCTS. Current playable games are
+Available, Random, native OSLA and native MCTS. Current playable games include
 Tic-Tac-Toe, Connect 4, Can't Stop and Love Letter (the latter two support 2–4 players).
+The Game supports 1-5 players with First Available and Random agents.
 Love Letter reuses the same registry, schedule, seed handling and reports;
 its [reference](../games/loveletter.md) defines sampling/evaluation capabilities and limits.
 Each shared winner retains a `win`; tournament outcome points divide one point
@@ -89,6 +90,7 @@ are resolved from the tournament JSON file's directory.
 | `allow_self_play` | Default false. If true, a group may contain independent instances of the same named agent. Distinct names for the same algorithm remain distinct pool entries in either mode. |
 | `repetitions` | Positive games per chosen seat allocation, default 1. Each repetition has fresh agents and seeds. |
 | `ranking_metric` | `win_rate` by default, `points_rate` (outcome points), or `average_finishing_position` (lower is better). `rank_points_rate` remains a legacy JSON sorting option. This selects the sorting rule for all rankings. |
+| `ranking_metric: "average_score"` | Sort by mean game-defined score. Requires exactly one scored game entry because different games use different score units. The Game uses cards placed on its four piles. |
 | `seed` | Unsigned 64-bit master seed; omitted/null uses operating-system randomness once and records the result. |
 | `results_file` | Required nonempty JSON output path. Existing files are never overwritten. |
 | `game_logs` | Optional object. `mode` is `off` (no move traces), `inline` (moves in the main report), or `separate` (per-match metadata and browser replay files). `directory` is required only for `separate`, relative to the tournament JSON file. |
@@ -199,7 +201,12 @@ Each record identifies the game entry, pairing, seat allocation and repetition.
 `agents_by_seat` indexes the saved agent pool, `agent_names` gives those names
 directly, and `agent_seeds` records actual seeds. A completed record's `outcome`
 contains per-seat results, move counts, MCTS counters and optional actions; `points`
-contains outcome credit per seat; `rank_points` contains optional raw finishing-place credit. Seat-allocation statistics can be calculated
+contains outcome credit per seat; `rank_points` contains optional raw
+finishing-place credit. The `outcome.score` field contains a team value or one value per player when
+the game defines a score. Per-game ranking rows include `average_score` and
+`scored_appearances`, even when win rate is the sorting metric. Tic-Tac-Toe
+and Connect 4 have no game-defined score. Truncated games have no final score.
+Seat-allocation statistics can be calculated
 from these records without separate aggregate tables.
 
 Fresh agents are constructed for each actual game. Scheduling uses separate RNG

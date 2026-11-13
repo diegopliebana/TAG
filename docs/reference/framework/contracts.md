@@ -36,6 +36,14 @@ environment randomness. Reject invalid external input without partially applying
 the requested transition. Distinguish game errors and runner failures from
 win/draw/loss outcomes; timeout penalties or substitutions are separate policies.
 
+`ForwardModel::action_path` gives the ordered components of an offered action.
+`action_choices(observation, prefix)` returns legal next components from that
+player's observation. A choice carries an action only when it completes the path.
+An invalid prefix returns `InvalidActionPrefix`. Prefix queries leave game state
+and chance unchanged; only submitting the complete action calls `next`. Games
+without meaningful parts use one component per complete action. The opaque
+`u32` components identify choices within a decision, not stable policy IDs.
+
 Apply validated actions directly to the supplied real or simulated state.
 Internal execution failures, such as counter overflow or an inconsistent state,
 must return a descriptive error and stop that execution. They may leave partial
@@ -141,7 +149,14 @@ version and implementation checks.
 ## Results, rewards and search values
 
 Game score, rank, outcome, reward and estimated return are different quantities.
-State whose perspective a value uses, its units and any discounting time step.
+`ForwardModel::game_result` reports each seat's win/draw/loss category with an
+optional game-defined `OutcomeScore`. A team score has one value; a player
+score has one value per seat. The score declares its unit and optional maximum.
+Games without a meaningful score return `None`. The existing `player_score`
+method remains a numeric input to some agents and is not itself evidence that
+a game has a reportable score.
+For rewards and estimated returns, state whose perspective a value uses, its
+units and any discounting time step.
 Multiplayer games may have shared winners and need not be zero-sum. Preserve
 absolute player identity and complete value-vector meaning; never invent other
 players' estimates by negating one value unless an explicit compatible two-player

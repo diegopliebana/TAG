@@ -150,6 +150,13 @@ impl Engine {
                     None => Stop::Finished,
                 }),
             },
+            Self::TheGame(game) => Progress {
+                moves: 0,
+                stop: Ok(match game.session.next_player() {
+                    Decision::Finished => Stop::Finished,
+                    Decision::Player(actor) => Stop::Human(actor.index()),
+                }),
+            },
         }
     }
     pub fn resume(
@@ -176,7 +183,17 @@ impl Engine {
             },
             Self::SushiGo(_) => Progress {
                 moves: 0,
-                stop: Err(crate::engine::unsupported_game("Sushi Go!", "external evaluation")),
+                stop: Err(crate::engine::unsupported_game(
+                    "Sushi Go!",
+                    "external evaluation",
+                )),
+            },
+            Self::TheGame(_) => Progress {
+                moves: 0,
+                stop: Err(crate::engine::unsupported_game(
+                    "The Game",
+                    "external evaluation",
+                )),
             },
         }
     }

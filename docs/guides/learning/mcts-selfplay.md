@@ -107,6 +107,22 @@ explains replay validation and reproducibility. Use the shared
 to test an exported model or enable evaluation after training cycles. Load compatible exports through the [browser model picker](../running/browser.md).
 These small runs establish operation, not playing strength.
 
+### Train The Game
+
+```powershell
+.\.venv\Scripts\python.exe adapters/python/examples/selfplay_train.py --config examples/selfplay/thegame.json --max-cycles 1
+.\.venv\Scripts\python.exe adapters/python/examples/selfplay_train.py --resume results/thegame-training.pt --max-cycles 1
+```
+
+The supplied two-seat configuration uses limited-choice messages, structured
+card-then-pile search and a Random teammate in post-cycle evaluation. It saves
+to `results/`. The shared terminal target is +1 for a team win or -1 for a
+loss; the cards-placed score is reported separately. Set `players` from one to
+five, with a matching model and opponent lineup. The game seed is derived from
+the top-level master seed, and the first card player rotates unless fixed in
+`parameters.first_player`. The [game manual](../games/thegame.md#train-and-evaluate)
+gives a separate frozen-model evaluation command.
+
 ## Configure the experiment
 
 | JSON setting | Controls |

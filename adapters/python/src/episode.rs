@@ -12,7 +12,10 @@ use tag_rust::{
         PlayerId, PublicInformationModel, evaluation::Evaluator, random::AgentRngSnapshot,
         simulation::SimulationModel,
     },
-    games::{cantstop as cs, connect4 as c4, loveletter as ll, sushigo as sg, tictactoe as ttt},
+    games::{
+        cantstop as cs, connect4 as c4, loveletter as ll, sushigo as sg, thegame as tg,
+        tictactoe as ttt,
+    },
     learning::{EncodedObservation, LearningGame, LearningLimits, LearningSpec, ResultTag},
     session::BuiltinAgent,
 };
@@ -211,6 +214,7 @@ pub(crate) enum Runtime {
         EpisodeGame<ll::LoveLetterForwardModel, StochasticOpponent<ll::LoveLetterHeuristic>>,
     ),
     SushiGo(EpisodeGame<sg::SushiGoForwardModel, StochasticOpponent<sg::SushiGoHeuristic>>),
+    TheGame(EpisodeGame<tg::TheGameForwardModel, StochasticOpponent<tg::TheGameHeuristic>>),
 }
 /// One completed return, before conversion to independently owned Python data.
 pub struct Output {
@@ -324,7 +328,7 @@ impl Config {
         if self.teacher != teacher_seed.is_some() {
             return Err("teacher_seed is required exactly when teacher is configured".into());
         }
-        if self.players < 2
+        if self.players < if self.name == "thegame" { 1 } else { 2 }
             || self.learner >= self.players
             || self.horizon == Some(0)
             || self.payloads.is_empty()
@@ -353,7 +357,7 @@ impl Config {
         if !parameters.is_object() {
             return Err("parameters must be a JSON object".into());
         }
-        if ["cantstop", "loveletter", "sushigo"].contains(&self.name.as_str()) {
+        if ["cantstop", "loveletter", "sushigo", "thegame"].contains(&self.name.as_str()) {
             if parameters.get("seed").is_some() {
                 return Err("pass the game seed to reset, not parameters".into());
             }
@@ -416,6 +420,13 @@ impl Config {
                     .map(|s| stochastic_native(&self.teacher_config(), sg::SushiGoHeuristic, s))
                     .transpose()?;
                 Runtime::SushiGo(EpisodeGame::new(*game, opponent, teacher, self)?)
+            }
+            Engine::TheGame(game) => {
+                let opponent = stochastic_native(self, tg::TheGameHeuristic, seed)?;
+                let teacher = teacher_seed
+                    .map(|s| stochastic_native(&self.teacher_config(), tg::TheGameHeuristic, s))
+                    .transpose()?;
+                Runtime::TheGame(EpisodeGame::new(*game, opponent, teacher, self)?)
             }
         })
     }
@@ -498,7 +509,9 @@ where
                 .ok_or("opponent returned an invalid action index")?
                 .clone();
             let id = model.action_id(&view, &action).map_err(|e| e.to_string())?;
-            self.game.apply(id, Some(actor.index())).map_err(|e| e.to_string())?;
+            self.game
+                .apply(id, Some(actor.index()))
+                .map_err(|e| e.to_string())?;
             self.moves = self.moves.checked_add(1).ok_or("move counter overflow")?;
         }
     }
@@ -623,6 +636,7 @@ macro_rules! dispatch {
             Runtime::CantStop($game) => $body,
             Runtime::LoveLetter($game) => $body,
             Runtime::SushiGo($game) => $body,
+            Runtime::TheGame($game) => $body,
         }
     };
 }

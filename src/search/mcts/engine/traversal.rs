@@ -157,7 +157,7 @@ where
     }
     /// Simulate actions after expansion using the independently configured
     /// rollout policy. Length zero evaluates this expanded leaf immediately.
-    async fn rollout(
+    pub(super) async fn rollout(
         &mut self,
         simulation: &mut F::State,
         context: &mut SimulationContext<'_, F>,

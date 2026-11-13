@@ -14,6 +14,18 @@ pair (produce its model with the matching self-play configuration first):
 .\.venv\Scripts\python.exe adapters/python/examples/selfplay_evaluate.py --model examples/selfplay/results/cantstop-model.json --config examples/evaluation/cantstop.json
 ```
 
+For The Game, first train with `examples/selfplay/thegame.json`, then run:
+
+```powershell
+.\.venv\Scripts\python.exe adapters/python/examples/selfplay_evaluate.py --model results/thegame-model.json --config examples/evaluation/thegame.json
+```
+
+Its native lineup members are teammates. Reported wins and losses belong to
+the whole team, and `average_score` is the mean cards placed out of 98 for
+completed candidate games. The Game has no individual finishing rank, so omit
+`ranking`. Solo evaluation needs no teammate. The [game manual](../games/thegame.md)
+explains its starting-seat and communication settings.
+
 The command prints the resolved master seed, model identity and JSON report.
 The configuration's `output.report_file` selects where full results are saved;
 change it for a separate experiment. Input model/config files cannot also be the

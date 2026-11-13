@@ -447,6 +447,10 @@ game_registry!(
     crate::games::connect4::Connect4ForwardModel,
     crate::games::connect4::Connect4Evaluator
 );
+game_registry!(
+    crate::games::thegame::TheGameForwardModel,
+    crate::games::thegame::TheGameHeuristic
+);
 
 // Love Letter returns every player's value from their own sampled observation.
 struct LoveLetterEvaluator;

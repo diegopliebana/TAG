@@ -1,5 +1,6 @@
 //! Independent expected effects, conservation checks and paired hidden-world tests.
 use super::*;
+use crate::agents::{Agent, RandomAgent, StructuredRandomAgent};
 use crate::core::{
     Decision, ForwardModel, PlayerId, PlayerResult,
     checkpoint::Checkpoint,
@@ -60,6 +61,78 @@ fn offers(s: &LoveLetterState) -> Vec<LoveLetterAction> {
     let from_state = MODEL.available_actions(s, s.public.current_player).unwrap();
     assert_eq!(from_state, from_observation);
     from_state
+}
+
+#[test]
+fn component_paths_preserve_guard_targets_and_guesses() {
+    let state = dealt(&[Card::Guard, Card::Priest], Card::Baron, 2);
+    let view = MODEL.observe(&state, P0).unwrap();
+    let offered = MODEL.offered_actions(&view);
+    let before = state.clone();
+    let mut recovered = Vec::new();
+    for card in MODEL.action_choices(&view, &[]).unwrap() {
+        if let Some(action) = card.action {
+            recovered.push(action);
+            continue;
+        }
+        for target in MODEL.action_choices(&view, &[card.component]).unwrap() {
+            if let Some(action) = target.action {
+                recovered.push(action);
+                continue;
+            }
+            for guess in MODEL
+                .action_choices(&view, &[card.component, target.component])
+                .unwrap()
+            {
+                recovered.push(guess.action.unwrap());
+            }
+        }
+    }
+    assert_eq!(recovered, offered);
+    assert!(
+        MODEL
+            .action_choices(&view, &[Card::Guard as u32, 99])
+            .is_err()
+    );
+    assert_eq!(state, before);
+}
+
+#[test]
+fn component_queries_do_not_reveal_other_hands() {
+    let a = dealt(&[Card::Guard, Card::Priest], Card::Baron, 2);
+    let b = dealt(&[Card::Guard, Card::Handmaid], Card::Baron, 2);
+    let first = MODEL.observe(&a, P0).unwrap();
+    let second = MODEL.observe(&b, P0).unwrap();
+    assert_eq!(first, second);
+    for prefix in [
+        vec![],
+        vec![Card::Guard as u32],
+        vec![Card::Guard as u32, 1],
+    ] {
+        assert_eq!(
+            MODEL.action_choices(&first, &prefix),
+            MODEL.action_choices(&second, &prefix)
+        );
+    }
+}
+
+#[test]
+fn component_random_differs_from_uniform_complete_action_random() {
+    let state = dealt(&[Card::Guard, Card::Priest], Card::Baron, 2);
+    let view = MODEL.observe(&state, P0).unwrap();
+    let actions = MODEL.offered_actions(&view);
+    let mut flat_guard = 0;
+    let mut component_guard = 0;
+    for seed in 0..512 {
+        let mut flat = RandomAgent::new(seed);
+        let mut component = StructuredRandomAgent::new(seed);
+        let flat_index = flat.choose(&MODEL, P0, &view, &actions).unwrap();
+        let component_index = component.choose(&MODEL, P0, &view, &actions).unwrap();
+        flat_guard += usize::from(actions[flat_index].played_card() == Card::Guard);
+        component_guard += usize::from(actions[component_index].played_card() == Card::Guard);
+    }
+    assert!(flat_guard > 400);
+    assert!((200..310).contains(&component_guard));
 }
 fn invariants(s: &LoveLetterState) {
     let mut cards: Vec<_> = s
@@ -201,6 +274,15 @@ fn countess_is_forced_only_with_prince_or_king_and_never_reveals_the_other_card(
     for card in [Card::Prince, Card::King] {
         let mut s = dealt(&[Card::Countess, Card::Guard, Card::Guard], card, 1);
         assert_eq!(offers(&s), vec![LoveLetterAction::Play(Card::Countess)]);
+        assert_eq!(
+            MODEL
+                .action_choices(&MODEL.observe(&s, P0).unwrap(), &[])
+                .unwrap(),
+            vec![crate::core::ActionChoice {
+                component: Card::Countess as u32,
+                action: Some(LoveLetterAction::Play(Card::Countess)),
+            }]
+        );
         play(&mut s, LoveLetterAction::Play(Card::Countess));
         assert_eq!(s.hands[0], vec![card]);
         assert!(
@@ -376,6 +458,15 @@ fn protection_expires_at_next_turn_and_no_target_plays_are_explicit() {
         s.public.protected[1] = true;
         s.public.protected[2] = true;
         assert!(offers(&s).contains(&LoveLetterAction::Play(card)));
+        assert!(
+            MODEL
+                .action_choices(&MODEL.observe(&s, P0).unwrap(), &[])
+                .unwrap()
+                .contains(&crate::core::ActionChoice {
+                    component: card as u32,
+                    action: Some(LoveLetterAction::Play(card)),
+                })
+        );
         play(&mut s, LoveLetterAction::Play(card));
     }
     let mut s = dealt(&[Card::Prince, Card::Guard, Card::Guard], Card::Handmaid, 3);

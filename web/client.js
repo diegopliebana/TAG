@@ -5,7 +5,7 @@ export class BridgeFailure extends Error {
 export const MAX_COMMAND_BYTES = 32 * 1024;
 export const MAX_FILE_BYTES = 10 * 1024 * 1024;
 export class BrowserClient {
-  constructor(worker = new Worker(new URL("./worker.js", import.meta.url), { type: "module" })) {
+  constructor(worker = new Worker(new URL(`./worker.js?fresh=${Date.now()}`, import.meta.url), { type: "module" })) {
     this.worker = worker;
     this.generation = "0";
     this.nextId = 0n;

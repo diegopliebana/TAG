@@ -78,6 +78,50 @@ test("Sushi Go! keeps opponent cards face down until privileged reveal", () => {
   assert.ok(!JSON.stringify(board).includes("Cancel this choice round"));
 });
 
+test("The Game displays only the observed hand and offered actions", () => {
+  const board=container(), chosen=[];
+  const action={Play:{card:12,pile:"AscendingOne"}};
+  const view={game:"thegame",observer:0,next_player:0,controllers:[{kind:"human"},{kind:"human"}],
+    board:{width:4,height:1,thegame:{pile_tops:[1,1,100,100],placements:[],messages:[],hand_counts:[7,7],draw_count:84,played_this_turn:0,turns_completed:0,active_player:0,phase:"Play",hand:[12,34],public_only:false}},actions:[action]};
+  renderBoard(board,view,choice=>chosen.push(choice));
+  assert.ok(JSON.stringify(board).includes("Player 0's hand"));
+  assert.ok(!JSON.stringify(board).includes("opponent_hands"));
+  assert.equal(board.buttons().length,2);
+  board.buttons()[0].onclick();
+  assert.equal(board.buttons().length,3);
+  board.buttons().at(-1).onclick();assert.deepEqual(chosen,[action]);
+  const spectator={...view,actions:[],board:{...view.board,thegame:{...view.board.thegame,hand:[],public_only:true}}};
+  renderBoard(board,spectator,()=>{});
+  assert.ok(!JSON.stringify(board).includes("Player 0's hand"));
+  assert.equal(board.buttons().length,0);
+  const revealed={...spectator,board:{...spectator.board,thegame:{...spectator.board.thegame,opponent_hands:[[12,34],[56,78]]}}};
+  renderBoard(board,revealed,()=>{});
+  assert.ok(JSON.stringify(board).includes("All hands (privileged reveal)"));
+  assert.ok(JSON.stringify(board).includes("Player 0"));
+  assert.ok(JSON.stringify(board).includes("Player 1"));
+  for(const card of [12,34,56,78]) assert.ok(JSON.stringify(board).includes(String(card)));
+  assert.equal(board.buttons().length,0);
+  const stale={...revealed,board:{...revealed.board,thegame:{...revealed.board.thegame,opponent_hands:[null,[56,78]]}}};
+  renderBoard(board,stale,()=>{});
+  assert.ok(JSON.stringify(board).includes("Hand unavailable. Save the session, then reload the page to update the game engine."));
+  assert.ok(!JSON.stringify(board).includes("No cards"));
+});
+
+test("The Game keeps every hand card visible while showing one card's piles",()=>{
+  const board=container(),chosen=[];
+  const hand=[58,21,41,4,10,2,91];
+  const actions=hand.flatMap(card=>["AscendingOne","AscendingTwo","DescendingOne","DescendingTwo"].map(pile=>({Play:{card,pile}})));
+  const action_paths=hand.flatMap(card=>[0,1,2,3].map(pile=>[4000+card,pile]));
+  const view={game:"thegame",observer:0,next_player:0,controllers:[{kind:"human"}],actions,
+    board:{width:4,height:1,thegame:{pile_tops:[1,1,100,100],placements:[],messages:[],hand_counts:[7],draw_count:91,played_this_turn:0,turns_completed:0,active_player:0,phase:"Play",hand,action_paths,public_only:false}}};
+  renderBoard(board,view,choice=>chosen.push(choice));
+  assert.equal(board.buttons().length,7);
+  board.buttons()[5].onclick();
+  assert.equal(board.buttons().length,11);
+  assert.equal(board.buttons()[5].attributes["aria-pressed"],"true");
+  board.buttons().at(-1).onclick();assert.deepEqual(chosen,[actions[23]]);
+});
+
 test("candidate artwork updates existing layers and keeps empty pieces hidden", () => {
   const board = container(); const first = view("tictactoe");
   const sprites = { x: "x.svg", o: "o.png", tttCell: "cell.svg", c4Cell: "blue.svg", socket: "socket.svg", red: "red.svg", yellow: "yellow.svg" };

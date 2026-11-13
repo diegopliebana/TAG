@@ -66,6 +66,12 @@ where
     pub fn last_report(&self) -> Option<&SearchReport<F::Action>> {
         self.last_report.as_ref()
     }
+    /// Enable component-node search for a new controller. Existing controllers
+    /// and version-1 checkpoints retain the complete-action search recipe.
+    pub fn with_structured_actions(mut self) -> Self {
+        self.settings.structured_actions = true;
+        self
+    }
 
     /// Save evaluator state and exact RNG progress between decisions.
     ///
@@ -79,7 +85,11 @@ where
             evaluator.as_ref().map(|e| e.checkpoint()).transpose()
         };
         Ok(MctsSnapshot {
-            algorithm_version: 1,
+            algorithm_version: if self.settings.structured_actions {
+                2
+            } else {
+                1
+            },
             settings: self.settings.clone(),
             rng: self.rng.snapshot(),
             simulation_rng: self.simulation_rng.snapshot(),
@@ -100,7 +110,8 @@ where
     /// # Errors
     /// Unsupported versions, inconsistent seed/slots, or evaluator restoration failures.
     pub fn from_snapshot(snapshot: &MctsSnapshot, registry: &EvaluatorRegistry<F>) -> Result<Self> {
-        if snapshot.algorithm_version != 1
+        if !matches!(snapshot.algorithm_version, 1 | 2)
+            || snapshot.settings.structured_actions != (snapshot.algorithm_version == 2)
             || snapshot.settings.seed != Some(snapshot.rng.initial_seed)
             || snapshot.settings.seed != Some(snapshot.simulation_rng.generator.initial_seed)
         {

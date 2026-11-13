@@ -15,7 +15,7 @@ function layout(game = "loveletter") {
   const ids = Object.fromEntries(["board", "board-display", "board-zoom", "board-zoom-value", "board-zoom-reset"].map(id => [id, element()]));
   const board = ids.board, display = ids["board-display"], zoom = ids["board-zoom"];
   Object.assign(board, { clientWidth: 800, clientHeight: 400, scrollTop: 0, scrollLeft: 0 });
-  board.querySelector = selector => selector === (game === "sushigo" ? ".sushigo-board" : ".loveletter-table") ? {} : null;
+  board.querySelector = selector => selector === (game === "sushigo" ? ".sushigo-board" : game === "thegame" ? ".thegame-board" : ".loveletter-table") ? {} : null;
   display.value = "fit"; zoom.value = "100";
   const document = {
     documentElement: element(),
@@ -88,4 +88,19 @@ test("new sessions use each game's starting display and leave later manual chang
   start("sushigo");
   assert.equal(display.value, "scrollable");
   assert.equal(zoom.value, "80");
+});
+
+test("The Game starts scrollable at 100% and supports the shared zoom control",()=>{
+  const {ids,board,display,zoom,start}=layout("thegame");
+  start("thegame");
+  assert.equal(display.value,"scrollable");
+  assert.equal(zoom.value,"100");
+  assert.equal(zoom.disabled,false);
+  assert.equal(board.style.values["--thegame-scale"],"1");
+  zoom.value="125";zoom.listeners.input();
+  assert.equal(board.style.values["--thegame-scale"],"1.25");
+  assert.equal(ids["board-zoom-value"].value,"125%");
+  start("thegame");
+  assert.equal(zoom.value,"100");
+  assert.equal(board.style.values["--thegame-scale"],"1");
 });

@@ -47,6 +47,71 @@ fn configuration(path: &Path) -> Value {
     ],"games":[{"id":"ttt","name":"tictactoe"},{"id":"c4","name":"connect4"}],
     "mode":"exhaustive","seed":42,"results_file":path,"include_actions":true})
 }
+
+#[test]
+fn the_game_tournament_ranks_by_mean_cards_placed() {
+    let temp = Temporary::new();
+    let value = json!({"schema_version":1,"agents":[
+        {"name":"random","agent":{"type":"random"}},
+        {"name":"first","agent":{"type":"first_available"}},
+        {"name":"random2","agent":{"type":"random"}}],
+        "games":[{"id":"thegame","name":"thegame","player_count":2}],
+        "mode":"exhaustive","seed":42,"ranking_metric":"average_score",
+        "results_file":temp.0.join("thegame.json")});
+    let report = run(&resolve(value).unwrap()).unwrap();
+    assert_eq!(report.completed_games, 6);
+    for game in &report.games {
+        assert_eq!(
+            game.outcome.as_ref().unwrap().score.as_ref().unwrap().unit,
+            "cards_placed"
+        );
+    }
+    let rows = &report.rankings.per_game[0].rows;
+    assert!(rows.iter().all(|row| row.average_score.is_some()));
+    assert!(
+        rows.windows(2)
+            .all(|pair| pair[0].average_score >= pair[1].average_score)
+    );
+}
+
+#[cfg(feature = "inference")]
+#[test]
+fn the_game_neural_tournament_uses_rotated_seats_and_team_scores() {
+    let temp = Temporary::new();
+    let model =
+        Path::new(env!("CARGO_MANIFEST_DIR")).join("web/tests/fixtures/mcts/thegame-two.json");
+    let value = json!({"schema_version":1,"agents":[
+        {"name":"neural","agent":{"type":"neural_mcts","model_file":model,
+            "config":{"schema_version":1,"tree_policy":"puct",
+                "structured_actions":true,"rollout_length":0,
+                "budgets":{"iterations":8},"state_evaluator":{"name":"network_value"},
+                "puct_preferences":{"source":"probabilities",
+                    "evaluator":{"name":"network_policy"}}}}},
+        {"name":"random","agent":{"type":"random"}}],
+        "games":[{"id":"thegame","name":"thegame","player_count":2}],
+        "mode":"exhaustive","seed":42,
+        "results_file":temp.0.join("neural-thegame.json")});
+    let settings = resolve(value).unwrap();
+    let report = run(&settings).unwrap();
+    assert_eq!(report, run(&settings).unwrap());
+    assert_eq!(report.completed_games, 2);
+    assert!(report.failure.is_none(), "{:?}", report.failure);
+    assert_ne!(report.games[0].agent_names, report.games[1].agent_names);
+    assert!(report.games.iter().all(|game| {
+        game.outcome.as_ref().is_some_and(|outcome| {
+            outcome
+                .score
+                .as_ref()
+                .is_some_and(|score| score.unit == "cards_placed")
+        })
+    }));
+    assert!(
+        report.rankings.per_game[0]
+            .rows
+            .iter()
+            .all(|row| row.average_score.is_some())
+    );
+}
 fn resolve(value: Value) -> Result<ResolvedTournament> {
     serde_json::from_value::<TournamentConfig>(value)?.resolve(Path::new("."))
 }
@@ -639,6 +704,7 @@ fn outcome(
             agent_seeds: vec![1, 2],
             seats: vec![0, 1],
             results: results.into_iter().map(String::from).collect(),
+            score: None,
             accepted_moves: 0,
             mcts: vec![],
             actions: None,

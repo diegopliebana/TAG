@@ -7,6 +7,8 @@ use serde::{Serialize, de::DeserializeOwned};
 use tag_rust::agents::{
     Agent, FirstAvailableAgent, MctsAgent, OslaAgent, RandomAgent, SampledOslaAgent,
 };
+#[cfg(feature = "inference")]
+use tag_rust::core::checkpoint::Checkpoint;
 use tag_rust::core::{ForwardModel, PlayerId, PlayerResult, PublicInformationModel};
 use tag_rust::core::{evaluation::Evaluator, random::AgentRng, simulation::SimulationModel};
 use tag_rust::replay::ReplayGame;
@@ -95,6 +97,7 @@ pub trait MatchGame:
     fn validate_neural_model(
         &self,
         _parameters: &Self::Parameters,
+        _players: usize,
         _model: &tag_rust::inference::LocalMctsModel,
     ) -> Result<()> {
         Err("this game has no local neural MCTS integration".into())
@@ -170,6 +173,7 @@ macro_rules! placement_game {
             fn validate_neural_model(
                 &self,
                 p: &Self::Parameters,
+                _players: usize,
                 model: &tag_rust::inference::LocalMctsModel,
             ) -> Result<()> {
                 use tag_rust::learning::LearningGame;
@@ -262,6 +266,59 @@ impl MatchGame for tag_rust::games::loveletter::LoveLetterForwardModel {
     }
     fn with_game_seed(p: &Self::Parameters, seed: u64) -> Self::Parameters {
         tag_rust::games::loveletter::LoveLetterParameters { seed, ..p.clone() }
+    }
+}
+
+impl MatchGame for tag_rust::games::thegame::TheGameForwardModel {
+    const STOCHASTIC: bool = true;
+    fn registry() -> EvaluatorRegistry<Self> {
+        Self::native_evaluators()
+    }
+    fn mcts(settings: Settings, registry: &EvaluatorRegistry<Self>) -> Result<MatchAgent<Self>> {
+        native_mcts(settings, registry)
+    }
+    fn game_seed(p: &Self::Parameters) -> Option<u64> {
+        Some(p.seed)
+    }
+    fn with_game_seed(p: &Self::Parameters, seed: u64) -> Self::Parameters {
+        tag_rust::games::thegame::Parameters { seed, ..*p }
+    }
+    #[cfg(feature = "inference")]
+    fn neural(player: &ResolvedPlayer, seed: u64) -> Result<MatchAgent<Self>> {
+        sampled_neural::<Self>(player, seed)
+    }
+    #[cfg(feature = "inference")]
+    fn validate_neural_model(
+        &self,
+        parameters: &Self::Parameters,
+        players: usize,
+        model: &tag_rust::inference::LocalMctsModel,
+    ) -> Result<()> {
+        use tag_rust::inference::ValuePerspective;
+        use tag_rust::learning::{LearningGame, LearningLimits};
+        model
+            .model()
+            .validate_spec(&self.learning_spec_for_players(
+                parameters,
+                players,
+                LearningLimits::default(),
+            )?)?;
+        if model
+            .model()
+            .network()
+            .and_then(|net| net.value_players())
+            .is_none()
+        {
+            return Err("The Game requires a full absolute-seat value vector".into());
+        }
+        if model
+            .bindings()
+            .value_observers
+            .is_some_and(|value| value != ValuePerspective::DecidingPlayer)
+        {
+            return Err("The Game requires deciding-player neural observations".into());
+        }
+        Ok(())
     }
 }
 
@@ -473,6 +530,90 @@ impl<F: MatchGame + PublicInformationModel + tag_rust::learning::LearningGame> A
 #[cfg(feature = "inference")]
 impl<F: MatchGame + PublicInformationModel + tag_rust::learning::LearningGame> NativeAgent<F>
     for NeuralAgent<F>
+{
+    fn counters(&self) -> Option<&Counters> {
+        self.counters.as_ref()
+    }
+}
+
+/// Hidden-game local search restores both search streams at each decision. The
+/// evaluator registry is rebuilt for the current actor without seeing real hidden state.
+#[cfg(feature = "inference")]
+struct SampledNeuralAgent<F: ForwardModel> {
+    snapshot: tag_rust::search::mcts::MctsSnapshot,
+    rng: AgentRng,
+    model: tag_rust::inference::LocalMctsModel,
+    counters: Option<Counters>,
+    marker: std::marker::PhantomData<F>,
+}
+
+#[cfg(feature = "inference")]
+fn sampled_neural<F: MatchGame + SimulationModel + tag_rust::learning::LearningGame>(
+    player: &ResolvedPlayer,
+    seed: u64,
+) -> Result<MatchAgent<F>> {
+    use tag_rust::search::mcts::ValueCompletion;
+    let model = player
+        .selected_model
+        .as_ref()
+        .ok_or("select a model for the current game; ordinary matches require model_file")?
+        .clone();
+    let mut settings = player.mcts.clone().ok_or("missing neural MCTS settings")?;
+    settings.seed = Some(seed);
+    if settings.value_completion != ValueCompletion::RequireFullVector {
+        return Err("The Game requires full absolute-seat value vectors".into());
+    }
+    model.validate_search(&settings)?;
+    let mut registry = F::registry();
+    model.register(&mut registry, PlayerId::new(0))?;
+    let search = MctsAgent::new(settings, &registry)?;
+    Ok(MatchAgent(Box::new(SampledNeuralAgent::<F> {
+        snapshot: search.snapshot()?,
+        rng: AgentRng::new(seed),
+        model,
+        counters: None,
+        marker: std::marker::PhantomData,
+    })))
+}
+
+#[cfg(feature = "inference")]
+impl<F: MatchGame + SimulationModel + tag_rust::learning::LearningGame> Agent<F>
+    for SampledNeuralAgent<F>
+{
+    type Error = String;
+    fn rng(&self) -> &AgentRng {
+        &self.rng
+    }
+    fn rng_mut(&mut self) -> &mut AgentRng {
+        &mut self.rng
+    }
+    fn choose(
+        &mut self,
+        game: &F,
+        actor: PlayerId,
+        observation: &F::Observation,
+        actions: &[F::Action],
+    ) -> std::result::Result<usize, String> {
+        self.counters = None;
+        let mut registry = F::registry();
+        self.model
+            .register(&mut registry, actor)
+            .map_err(|e| e.to_string())?;
+        self.snapshot.rng = self.rng.snapshot();
+        let mut search =
+            MctsAgent::from_snapshot(&self.snapshot, &registry).map_err(|e| e.to_string())?;
+        let result = search.search(game, actor, observation, actions);
+        self.snapshot = search.snapshot().map_err(|e| e.to_string())?;
+        self.rng = AgentRng::from_snapshot(&self.snapshot.rng).map_err(|e| e.to_string())?;
+        let report = result.map_err(|e| e.to_string())?;
+        self.counters = Some(report.counters);
+        Ok(report.selected_index)
+    }
+}
+
+#[cfg(feature = "inference")]
+impl<F: MatchGame + SimulationModel + tag_rust::learning::LearningGame> NativeAgent<F>
+    for SampledNeuralAgent<F>
 {
     fn counters(&self) -> Option<&Counters> {
         self.counters.as_ref()

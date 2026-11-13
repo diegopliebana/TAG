@@ -93,8 +93,8 @@ class MctsSearch:
             raise ValueError("row and byte limits must be positive")
         spec = game.spec()
         if value_observers is None:
-            value_observers = "deciding_player" if spec.identity.game in ("cantstop", "loveletter", "sushigo") else "all_players"
-        if spec.identity.game in ("loveletter", "sushigo"):
+            value_observers = "deciding_player" if spec.identity.game in ("cantstop", "loveletter", "sushigo", "thegame") else "all_players"
+        if spec.identity.game in ("loveletter", "sushigo", "thegame"):
             if (value_observers != "deciding_player"
                     or configuration["value_completion"] != "require_full_vector"):
                 raise ValueError(f"{spec.identity.game} MCTS requires deciding_player observations and require_full_vector completion")

@@ -58,6 +58,9 @@ pub struct GameReport {
     pub agent_seeds: Vec<u64>,
     pub seats: Vec<usize>,
     pub results: Vec<String>,
+    /// Game-defined score, separate from win/draw/loss and search values.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub score: Option<tag_rust::core::OutcomeScore>,
     pub ranks: Option<Vec<usize>>,
     pub truncated: bool,
     pub max_actions: Option<usize>,

@@ -33,11 +33,12 @@ class GameEnv(gym.Env):
         self._include_intermediate = include_intermediate
         self._teacher = teacher
         if opponent is None:
-            opponent = "random" if game in ("cantstop", "loveletter", "sushigo") else "osla_python"
+            opponent = "random" if game in ("cantstop", "loveletter", "sushigo", "thegame") else "osla_python"
         if payloads is None:
             payloads = {"cantstop":("permanent","temporary","owners","dice","context"),
                         "loveletter":("hands","context","public_history","private_history"),
-                        "sushigo":("hand","known_hands","played","players","context","last_reveal")}.get(game,("board",))
+                        "sushigo":("hand","known_hands","played","players","context","last_reveal"),
+                        "thegame":("hand","piles","players","context","placements","messages")}.get(game,("board",))
         if not isinstance(game, str) or not isinstance(opponent, str):
             raise TypeError("game and opponent must be strings")
         if isinstance(payloads, (str, bytes)):

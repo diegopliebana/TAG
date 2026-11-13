@@ -8,5 +8,6 @@ Shared algorithms and adapter operations live in the other reference sections.
 - [Can't Stop](cantstop.md)
 - [Love Letter](loveletter.md)
 - [Sushi Go!](sushigo.md)
+- [The Game](thegame.md)
 
 [All reference sections](../README.md).

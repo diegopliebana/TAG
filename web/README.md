@@ -2,7 +2,8 @@
 
 The browser supports Tic-Tac-Toe, Connect 4, 2–4-player Can't Stop and Love
 Letter, and 2–5-player Sushi Go!. For setup, play, models, zoom, action information screens and saves, use
-the [browser manual](../docs/guides/running/browser.md). This page owns build,
+the [browser manual](../docs/guides/running/browser.md). The Game also supports
+1–5 cooperative players with Human and Random controllers. This page owns build,
 launch and developer validation commands.
 
 ## Prerequisites
@@ -23,7 +24,7 @@ Run from the repository root:
 Or run its commands directly:
 
 ```powershell
-cargo build --offline --release -p tag-browser --target wasm32-unknown-unknown
+cargo build --release -p tag-browser --target wasm32-unknown-unknown
 wasm-bindgen --target web --out-dir web/pkg target/wasm32-unknown-unknown/release/tag_browser.wasm
 ```
 

@@ -7,8 +7,11 @@ master seed once and returns a report. It does not construct a training session,
 update model weights, add examples or consume training minibatch/PyTorch streams.
 
 The existing placement-game evaluation path keeps its two-player native-MCTS
-opponent behaviour and version-1 seeds. Can't Stop and Love Letter use the lineup implementation
-for 2-4 players, including the two-player case.
+opponent behaviour and version-1 seeds. Can't Stop, Love Letter, Sushi Go! and
+The Game use the native lineup implementation; The Game also supports solo
+evaluation. Its lineup members are cooperative teammates. Every seat shares
+the same win/loss and cards-placed score, and the report gives the candidate's
+per-seat and combined mean score. Individual score ranking is unavailable.
 
 ## Configuration and compatibility
 
@@ -27,13 +30,13 @@ validated before scheduled games. Invalid setup preserves previous output files.
 | `opponents` | N-1 unique named `{name,agent}` entries in declared order. |
 | `opponent` | Homogeneous shorthand; copies receive suffixes `-1`, `-2`, etc. |
 | `opponent_search` | Legacy native MCTS profile. Lineup games repeat it over N-1 seats when no explicit lineup is supplied. |
-| `ranking` | Null by default; `score` enables positions based on public game scores. `claimed_columns` remains an alias. |
+| `ranking` | Null by default; `score` enables individual finishing positions from public game scores where supported. The Game rejects it because its score is shared. `claimed_columns` remains an alias. |
 | `max_actions` | Positive limit or null (default disabled) for lineup games. Legacy placement evaluation retains `limits.max_moves`. |
 | `include_actions` | False by default; retain accepted public action events when true. |
 
-Lineup entries support Random, sampled OSLA and native MCTS. OSLA uses
-`CantStopProgress` with its default weights or `LoveLetterHeuristic`, depending
-on the game, and positive u32 `repetitions_per_action` (default 1). MCTS accepts exactly one inline `config` or
+Lineup entries support Random, sampled OSLA and native MCTS. OSLA uses the
+game's native progress or heuristic evaluator and a positive u32
+`repetitions_per_action` (default 1). MCTS accepts exactly one inline `config` or
 `config_file`; relative files resolve from the experiment JSON directory. The
 native registry validates all state/action evaluator settings. Per-game seeds
 override MCTS template seeds; final selection is overridden to most visits.
@@ -41,15 +44,15 @@ Neural candidate evaluation also uses most visits and no root noise.
 
 `opponents` and `opponent` are mutually exclusive and cannot be combined with
 `opponent_search`/`opponent_config_file` in JSON. Names must be nonempty and unique;
-`candidate` is reserved. Explicit lineups, score ranking, action traces and the new
-action limit support Can't Stop and Love Letter. Model/game registration alone
-does not advertise those features for every game.
+`candidate` is reserved. Explicit lineups, action traces and the action limit
+support the native lineup games. Individual score ranking depends on the game;
+The Game reports a shared score and rejects ranking.
 
 ## Seats and randomness
 
 Logical game ID is `cycle*evaluation.games + index`. A rotating candidate uses
 `logical_game_id % player_count`, so rotation continues across training cycles.
-For Love Letter, the initial starter independently rotates as
+For Love Letter and The Game, the initial starter independently rotates as
 `(logical_game_id // player_count) % player_count`. Thus N-squared games cover
 all candidate/starter pairings. An explicit `parameters.first_player` fixes the
 starter; this is independent of `evaluation.positions`, which controls candidate
@@ -59,7 +62,7 @@ Native opponents fill increasing remaining seat IDs in declared order. Fixed
 seats retain that same opponent placement convention. Reports preserve each
 actual lineup instead of inferring it from a combined result.
 
-Both lineup games use the [seed recipe version 2](mcts-selfplay.md#stochastic-self-play-seed-recipe),
+The lineup games use the [seed recipe version 2](mcts-selfplay.md#stochastic-self-play-seed-recipe),
 with phase `evaluation` separating it from training collection:
 
 - `game-chance`, logical game ID and ply 0: real-game chance seed.

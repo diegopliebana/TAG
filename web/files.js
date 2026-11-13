@@ -56,12 +56,12 @@ export class FileControls {
   }
   controllers(reply) {
     const dialog = this.ui["state-setup"];
-    const gameName = reply.view.game === "loveletter" ? "Love Letter" : reply.view.game === "cantstop" ? "Can't Stop" : reply.view.game === "sushigo" ? "Sushi Go!" : reply.view.game === "tictactoe" ? "Tic-Tac-Toe" : "Connect 4";
+    const gameName = reply.view.game === "thegame" ? "The Game" : reply.view.game === "loveletter" ? "Love Letter" : reply.view.game === "cantstop" ? "Can't Stop" : reply.view.game === "sushigo" ? "Sushi Go!" : reply.view.game === "tictactoe" ? "Tic-Tac-Toe" : "Connect 4";
     this.ui["state-summary"].textContent = `${reply.view.game === "tictactoe" ? "Tic-Tac-Toe" : "Connect 4"} | ${reply.view.board.width} × ${reply.view.board.height} | ${reply.view.board.counters[0]} moves${reply.parameters.winning_length ? ` | Winning length ${reply.parameters.winning_length}` : ""}`;
     const defaultAi = reply.view.board.width * reply.view.board.height <= 256 ? "osla" : "first_available";
-    if (["cantstop","loveletter","sushigo"].includes(reply.view.game)) this.ui["state-summary"].textContent = `${gameName} | ${reply.view.controllers.length} players | ${reply.view.board.counters[0]} ${reply.view.game === "sushigo" ? "round" : "accepted actions"}`;
+    if (["cantstop","loveletter","sushigo","thegame"].includes(reply.view.game)) this.ui["state-summary"].textContent = `${gameName} | ${reply.view.controllers.length} players | ${reply.view.board.counters[0]} ${reply.view.game === "sushigo" ? "round" : "accepted actions"}`;
     createSeatFields(this.ui["state-seats"], this.seeds, "state-", reply.view.controllers.length, reply.view.game);
-    fillSeats(document, reply.view.controllers.map((_, seat) => seat === 0 ? { kind: "human" } : { kind: ["cantstop","loveletter","sushigo"].includes(reply.view.game) ? "sampled_osla" : defaultAi, seed: this.seeds.next(), ...(["cantstop","loveletter","sushigo"].includes(reply.view.game) ? { repetitions_per_action: 1 } : {}) }), "state-");
+    fillSeats(document, reply.view.controllers.map((_, seat) => seat === 0 ? { kind: "human" } : { kind: reply.view.game === "thegame" ? "random" : ["cantstop","loveletter","sushigo"].includes(reply.view.game) ? "sampled_osla" : defaultAi, seed: this.seeds.next(), ...(["cantstop","loveletter","sushigo"].includes(reply.view.game) ? { repetitions_per_action: 1 } : {}) }), "state-");
     document.getElementById("state-seed-0").value = this.seeds.next();
     this.ui["state-error"].textContent = "";
     return new Promise(resolve => {

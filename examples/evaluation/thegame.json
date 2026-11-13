@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "game": "thegame",
+  "players": 2,
+  "parameters": {"communication": "limited_choices"},
+  "seed": 42,
+  "search": {
+    "schema_version": 1,
+    "structured_actions": true,
+    "tree_policy": "puct",
+    "rollout_length": 0,
+    "budgets": {"iterations": 8},
+    "value_completion": "require_full_vector",
+    "state_evaluator": {"name": "network_value"},
+    "puct_preferences": {"source": "probabilities", "evaluator": {"name": "network_policy"}}
+  },
+  "evaluation": {
+    "enabled": true,
+    "games": 2,
+    "positions": "rotate",
+    "opponent": {"name": "random", "agent": {"type": "random"}},
+    "max_actions": 1024
+  },
+  "output": {"report_file": "../../results/thegame-evaluation.json"}
+}

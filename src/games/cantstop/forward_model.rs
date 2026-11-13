@@ -304,6 +304,20 @@ impl ForwardModel for CantStopForwardModel {
     fn player_score(&self, state: &CantStopState, player: PlayerId) -> Result<f64, Error> {
         state.position.player_score(player)
     }
+    fn outcome_score(
+        &self,
+        state: &CantStopState,
+    ) -> Result<Option<crate::core::OutcomeScore>, Error> {
+        let values = (0..self.player_count(state))
+            .map(|seat| self.player_score(state, PlayerId::new(seat)))
+            .collect::<Result<Vec<_>, _>>()?;
+        Ok(Some(crate::core::OutcomeScore {
+            scope: crate::core::ScoreScope::Players,
+            values,
+            unit: "claimed_columns",
+            maximum: None,
+        }))
+    }
 }
 impl SimulationModel for CantStopForwardModel {
     fn simulation_fork(

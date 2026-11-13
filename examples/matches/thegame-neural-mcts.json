@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "game": {
+    "name": "thegame",
+    "parameters": {"communication": "LimitedChoices"}
+  },
+  "players": [
+    {
+      "name": "local-neural-mcts",
+      "agent": {
+        "type": "neural_mcts",
+        "model_file": "../../web/tests/fixtures/mcts/thegame-two.json",
+        "config": {
+          "schema_version": 1,
+          "tree_policy": "puct",
+          "structured_actions": true,
+          "rollout_length": 0,
+          "budgets": {"iterations": 16},
+          "state_evaluator": {"name": "network_value"},
+          "puct_preferences": {
+            "source": "probabilities",
+            "evaluator": {"name": "network_policy"}
+          }
+        }
+      }
+    },
+    {"name": "random", "agent": {"type": "random"}}
+  ],
+  "games": 2,
+  "seed": 42,
+  "positions": "rotate",
+  "max_actions": 500,
+  "reporting": {"format": "summary"}
+}

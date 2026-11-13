@@ -59,10 +59,11 @@ def finishing_positions(scores):
             for score in scores]
 
 
-def summarize(rows,players,ranking):
+def summarize(rows,players,ranking,*,team_score=False):
     per_seat = [{"attempted":0,"games":0,"wins":0,"draws":0,"losses":0,"truncated":0,"failed":0}
                 for _ in range(players)]
     place_sums = [0.]*players
+    score_sums = [0.]*players
     for row in rows:
         seat = row["candidate_seat"]
         summary = per_seat[seat]
@@ -70,6 +71,8 @@ def summarize(rows,players,ranking):
         if row["status"] == "completed":
             summary["games"] += 1
             summary[RESULT_LABELS[row["outcomes"][seat]]] += 1
+            if "score" in row:
+                score_sums[seat] += row["score"]
             if ranking is not None:
                 place_sums[seat] += row["finishing_positions"][seat]
         else:
@@ -77,9 +80,13 @@ def summarize(rows,players,ranking):
     combined = {key:sum(row[key] for row in per_seat) for key in per_seat[0]}
     for seat,row in enumerate(per_seat):
         row["win_rate"] = row["wins"]/row["games"] if row["games"] else None
+        if team_score:
+            row["average_score"] = score_sums[seat]/row["games"] if row["games"] else None
         if ranking is not None:
             row["average_finishing_position"] = place_sums[seat]/row["games"] if row["games"] else None
     combined["win_rate"] = combined["wins"]/combined["games"] if combined["games"] else None
+    if team_score:
+        combined["average_score"] = sum(score_sums)/combined["games"] if combined["games"] else None
     if ranking is not None:
         combined["average_finishing_position"] = sum(place_sums)/combined["games"] if combined["games"] else None
     return per_seat,combined
@@ -106,7 +113,7 @@ def evaluate_lineup(settings,snapshot,cycle):
         parameters = game_parameters(settings,logical,phase="evaluation")
         row = {"game_id":logical,"candidate_seat":seat,"game_seed":parameters["seed"],"lineup":actual,
                "moves":0,"status":"failed","outcomes":None}
-        if settings.game == "loveletter":
+        if settings.game in ("loveletter", "thegame"):
             row["first_player"] = parameters["first_player"]
         actions = []
         decisions = []
@@ -128,8 +135,17 @@ def evaluate_lineup(settings,snapshot,cycle):
                         row["status"] = "completed" if result["reason"]=="finished" else "truncated"
                         state = json.loads(native.state(game._native))
                         row["scores"] = state["scores"]
+                        if settings.game == "thegame":
+                            scores = state["scores"]
+                            if (len(scores) != settings.players or len(set(scores)) != 1
+                                or not 0 <= scores[0] <= 98 or scores[0] != int(scores[0])):
+                                raise ValueError("The Game native team scores differ")
+                            row["score"] = int(scores[0])
                         if row["status"] == "completed":
                             terminal_rewards(state["outcomes"])
+                            if settings.game == "thegame" and (len(set(state["outcomes"])) != 1
+                                or (state["outcomes"][0] == 1) != (row["score"] == 98)):
+                                raise ValueError("The Game native team result/score differ")
                             row["outcomes"] = state["outcomes"]
                             if evaluation.ranking is not None:
                                 row["finishing_positions"] = finishing_positions(state["scores"])
@@ -162,10 +178,10 @@ def evaluate_lineup(settings,snapshot,cycle):
         rows.append(row)
         if row["status"] == "failed":
             break
-    per_seat,combined = summarize(rows,settings.players,evaluation.ranking)
+    per_seat,combined = summarize(rows,settings.players,evaluation.ranking,team_score=settings.game == "thegame")
     return {"enabled":True,"model_identity":snapshot.identity,
         **({"information_access":"privileged-research", "game":settings.game, "players":settings.players,
-            "parameters":json.loads(json.dumps(settings.parameters))} if settings.game == "loveletter" else {}),"master_seed":settings.seed,
+            "parameters":json.loads(json.dumps(settings.parameters))} if settings.game in ("loveletter", "thegame") else {}),"master_seed":settings.seed,
         "seed_derivation_version":2,"root_noise":False,"move_policy":"most_visits",
         "requested_games":evaluation.games,"attempted_games":len(rows),"completed_games":combined["games"],
         "truncated_games":combined["truncated"],"failed_games":combined["failed"],

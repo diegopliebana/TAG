@@ -24,7 +24,7 @@ export async function createGame(game, parameters, controllers = [{ kind: "human
   if (!ui("setup").open) ui("new-game").click();
   await until(() => ui("setup").open && !ui("create").disabled, "Setup did not open");
   chooseGame(game);
-  if (["cantstop","loveletter"].includes(game)) {
+  if (["cantstop","loveletter","thegame"].includes(game)) {
     const fields = ui("setup-parameters");
     const players = fields.querySelector('[name="players"]'); players.value = controllers.length; players.dispatchEvent(new Event("change"));
     for (const input of fields.querySelectorAll("input")) {

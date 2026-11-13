@@ -12,6 +12,7 @@ mod runtime;
 mod seeds;
 mod stochastic;
 mod sushigo;
+mod thegame;
 pub use engine::BrowserEngine;
 
 #[cfg(test)]

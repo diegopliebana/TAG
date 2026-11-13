@@ -17,6 +17,9 @@ pub struct RankingRow {
     pub points_rate: Option<f64>,
     pub rank_points_rate: Option<f64>,
     pub average_finishing_position: Option<f64>,
+    /// Mean game-defined score for this game entry, in its reported unit.
+    pub average_score: Option<f64>,
+    pub scored_appearances: usize,
     pub ranked_appearances: usize,
     pub rank_games_covered: usize,
     /// Number of game entries with observations, out of entries in this ranking.
@@ -58,6 +61,8 @@ pub fn calculate(
                 points_rate: None,
                 rank_points_rate: None,
                 average_finishing_position: None,
+                average_score: None,
+                scored_appearances: 0,
                 ranked_appearances: 0,
                 rank_games_covered: 0,
                 games_covered: 0,
@@ -67,6 +72,7 @@ pub fn calculate(
         let mut position_totals = vec![0.0; agents.len()];
         let mut rank_totals = vec![0.0; agents.len()];
         let mut points = vec![0.0; agents.len()];
+        let mut score_totals = vec![0.0; agents.len()];
         for record in records.iter().filter(|r| r.entry_index == entry) {
             let Some(outcome) = &record.outcome else {
                 continue;
@@ -109,6 +115,24 @@ pub fn calculate(
                     _ => return Err("nonterminal result in tournament ranking".into()),
                 }
                 points[*agent] += credit;
+                if let Some(score) = &outcome.score {
+                    let value = match score.scope {
+                        tag_rust::core::ScoreScope::Team if score.values.len() == 1 => {
+                            score.values[0]
+                        }
+                        tag_rust::core::ScoreScope::Players
+                            if score.values.len() == outcome.results.len() =>
+                        {
+                            score.values[seat]
+                        }
+                        _ => return Err("game score dimension differs from its scope".into()),
+                    };
+                    if !value.is_finite() {
+                        return Err("game score must be finite".into());
+                    }
+                    score_totals[*agent] += value;
+                    row.scored_appearances += 1;
+                }
                 if let Some(rank_points) = &record.rank_points {
                     let value = rank_points[seat] / outcome.results.len() as f64;
                     if !value.is_finite() || !(0.0..=1.0).contains(&value) {
@@ -124,12 +148,16 @@ pub fn calculate(
                 }
             }
         }
-        for (((row, points), rank_total), position_total) in rows
+        for ((((row, points), rank_total), position_total), score_total) in rows
             .iter_mut()
             .zip(points)
             .zip(rank_totals)
             .zip(position_totals)
+            .zip(score_totals)
         {
+            if row.scored_appearances > 0 {
+                row.average_score = Some(score_total / row.scored_appearances as f64);
+            }
             if row.ranked_appearances > 0 {
                 row.rank_points_rate = Some(rank_total / row.ranked_appearances as f64);
                 row.average_finishing_position =
@@ -162,6 +190,8 @@ pub fn calculate(
             points_rate: None,
             rank_points_rate: None,
             average_finishing_position: None,
+            average_score: None,
+            scored_appearances: 0,
             ranked_appearances: 0,
             rank_games_covered: 0,
             games_covered: 0,
@@ -180,6 +210,10 @@ pub fn calculate(
             row.losses += local.losses;
             row.truncated += local.truncated;
             row.ranked_appearances += local.ranked_appearances;
+            row.scored_appearances += local.scored_appearances;
+            if game_ids.len() == 1 {
+                row.average_score = local.average_score;
+            }
             if let Some(value) = local.rank_points_rate {
                 row.rank_games_covered += 1;
                 rank_sum += value;
@@ -222,6 +256,7 @@ fn sort(rows: &mut [RankingRow], metric: Metric) {
         Metric::AverageFinishingPosition => {
             row.average_finishing_position.map(|position| -position)
         }
+        Metric::AverageScore => row.average_score,
     };
     rows.sort_by(|a, b| match (score(a), score(b)) {
         (Some(a_score), Some(b_score)) => b_score

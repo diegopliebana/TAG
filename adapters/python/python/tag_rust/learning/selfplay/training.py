@@ -44,7 +44,7 @@ class SelfPlaySession:
         self.runtime = runtime_identity()
         with create(settings.game,game_parameters(settings,0),players=settings.players,max_cells=settings.limits.max_cells,
                     max_bytes=settings.limits.max_request_bytes) as game:
-            if settings.evaluation.enabled and settings.players != 2 and settings.game not in ("cantstop", "loveletter", "sushigo"):
+            if settings.evaluation.enabled and settings.players != 2 and settings.game not in ("cantstop", "loveletter", "sushigo", "thegame"):
                 raise ValueError("candidate/opponent evaluation currently requires two players")
             players = None if settings.model.value_output == "observer" else (settings.model.value_players or tuple(range(settings.players)))
             if players is not None and set(players) != set(range(settings.players)):
@@ -79,7 +79,7 @@ class SelfPlaySession:
             with start_search(game,settings,prototype,neural_evaluator(FrozenModel(self.model))):
                 pass
             if settings.evaluation.enabled:
-                if settings.game in ("cantstop", "loveletter", "sushigo"):
+                if settings.game in ("cantstop", "loveletter", "sushigo", "thegame"):
                     from .lineup_evaluation import validate_lineup
                     validate_lineup(settings,FrozenModel(self.model),game)
                 else:
@@ -172,15 +172,22 @@ class SelfPlaySession:
             report = {"cycle":self.completed_cycles,"before_identity":snapshot.identity,"model_identity":trained.identity,
                 "first_game_id":first_game,"next_game_id":self.next_game_id,"updates":self.updates,
                 "games":[{"game_id":game.game_id,"outcomes":list(game.outcomes),"moves":len(game.positions),
-                          **({"first_player":game.positions[0].actor,
+                          **({"first_player":(game_parameters(self.settings,game.game_id)["first_player"]
+                                               if self.settings.game == "thegame" else game.positions[0].actor),
                               "actions":[position.action for position in game.positions]}
-                             if self.settings.game in ("loveletter", "sushigo") else {}),
-                          **({"game_seed":game.game_seed} if game.game_seed is not None else {})} for game in collected.games],
+                             if self.settings.game in ("loveletter", "sushigo", "thegame") else {}),
+                          **({"game_seed":game.game_seed} if game.game_seed is not None else {}),
+                          **({"score":game.score} if game.score is not None else {})} for game in collected.games],
                 "collection":collected.metrics,"optimization":updates,"training_ms":training_ms,
                 "buffer_positions":len(self.buffer),"buffer_bytes":self.buffer.nbytes,"dropped_positions":self.buffer.dropped,
                 "buffer_digest":self.buffer.digest(),"evaluation":evaluation,"elapsed_ms":(time.perf_counter()-started)*1000}
             if seed_version(self.settings) == 2:
                 report.update(seat_outcome_counts((game.outcomes for game in collected.games),self.settings.players))
+            if self.settings.game == "thegame":
+                average = sum(game.score for game in collected.games) / len(collected.games)
+                report["combined"]["average_score"] = average
+                for seat in report["per_seat"]:
+                    seat["average_score"] = average
             self._history.append(report)
         except BaseException:
             self.failed = True
@@ -204,6 +211,6 @@ class SelfPlaySession:
                 "initial_identity":self.initial_identity,"settings":self.settings.document(),
                 "model_context":{"observers":list(range(self.settings.players)),
                     "turn_context":"any_turn" if self.model.contract.value.players is None else "own_turn"}}
-        if self.settings.game in ("loveletter", "sushigo"):
+        if self.settings.game in ("loveletter", "sushigo", "thegame"):
             result["information_access"] = "privileged-research"
         return result

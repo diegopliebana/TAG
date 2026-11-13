@@ -131,6 +131,7 @@ impl BrowserGame for Game {
             winning_cells: vec![],
             loveletter: None,
             sushigo: None,
+            thegame: None,
             cantstop: Some(
                 json!({"rules":p.rules(),"phase":p.phase(),"dice":p.dice(),"permanent":permanent,"temporary":temporary,"owners":owners}),
             ),
@@ -172,6 +173,20 @@ impl BrowserGame for Game {
             o.position().player_result(p)?,
             o.position().player_score(p)?,
         ))
+    }
+    fn observation_score(o: &CantStopObservation) -> Option<tag_rust::core::OutcomeScore> {
+        Some(tag_rust::core::OutcomeScore {
+            scope: tag_rust::core::ScoreScope::Players,
+            values: (0..o.position().player_count())
+                .map(|seat| {
+                    o.position()
+                        .player_score(PlayerId::new(seat))
+                        .expect("valid seat")
+                })
+                .collect(),
+            unit: "claimed_columns",
+            maximum: None,
+        })
     }
 }
 

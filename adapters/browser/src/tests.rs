@@ -14,6 +14,7 @@ mod loveletter;
 mod mcts;
 mod random;
 mod sushigo;
+mod thegame;
 
 fn send(
     engine: &mut BrowserEngine,

@@ -13,6 +13,7 @@ pub enum BoardOutcome {
     Draw,
     Won(usize),
     SharedWin(Vec<usize>),
+    TeamLoss,
 }
 impl From<tag_rust::core::outcomes::SingleWinnerOutcome> for BoardOutcome {
     fn from(value: tag_rust::core::outcomes::SingleWinnerOutcome) -> Self {
@@ -44,6 +45,7 @@ pub enum GameKind {
     Cantstop,
     Loveletter,
     Sushigo,
+    Thegame,
 }
 /// Explicit seat policy; AI randomness is initialized independently per seat.
 #[derive(Clone, Debug, Serialize, Deserialize)] // Clone: owned seed strings.
@@ -164,6 +166,8 @@ pub struct BoardView {
     pub loveletter: Option<Value>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sushigo: Option<Value>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub thegame: Option<Value>,
     pub width: usize,
     pub height: usize,
     pub cells: Vec<Option<usize>>,
@@ -188,6 +192,8 @@ pub struct PublicView {
     pub actions: Vec<Value>,
     pub results: Vec<PlayerResult>,
     pub scores: Vec<f64>,
+    /// Game-defined result score. None for games such as Tic-Tac-Toe and Connect 4.
+    pub outcome_score: Option<tag_rust::core::OutcomeScore>,
     pub cursor: usize,
     pub tip: usize,
     pub read_only: bool,

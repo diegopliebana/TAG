@@ -14,7 +14,9 @@ pub mod outcomes;
 pub mod players;
 pub mod progress;
 pub mod random;
+pub mod score;
 pub mod simulation;
+pub use score::{GameResult, OutcomeScore, ScoreScope};
 
 // Learning notes: Clone permits an explicit .clone(); Copy permits implicit
 // duplication and requires Clone. Neither trait is automatically implemented
@@ -78,6 +80,25 @@ pub enum PlayerResult {
     Draw,
     Loss,
 }
+
+/// One legal component at a prefix. `action` is present only when this choice
+/// completes a move; selecting an unfinished component has no rule effect.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct ActionChoice<A> {
+    pub component: u32,
+    pub action: Option<A>,
+}
+
+/// An invalid or stale component prefix.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct InvalidActionPrefix;
+
+impl std::fmt::Display for InvalidActionPrefix {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "invalid action component prefix")
+    }
+}
+impl std::error::Error for InvalidActionPrefix {}
 
 /// Common rule operations with game-specific data types.
 ///
@@ -208,6 +229,58 @@ pub trait ForwardModel {
         observation: &Self::Observation, // Shared borrow; caller retains ownership.
     ) -> Vec<Self::Action>; // Transfers ownership of list and actions to caller.
 
+    /// Opaque component identifiers for one offered action. Games with meaningful
+    /// action parts override this. The default exposes each complete action as
+    /// one choice in offered-action order.
+    fn action_path(&self, observation: &Self::Observation, action: &Self::Action) -> Vec<u32>
+    where
+        Self::Action: PartialEq,
+    {
+        self.offered_actions(observation)
+            .iter()
+            .position(|offered| offered == action)
+            .and_then(|index| u32::try_from(index).ok())
+            .map_or_else(Vec::new, |index| vec![index])
+    }
+
+    /// Query legal next components using only an observation. A prefix is a
+    /// read-only selection: it does not advance chance, state, or game depth.
+    /// The returned order follows the first occurrence in `offered_actions`.
+    fn action_choices(
+        &self,
+        observation: &Self::Observation,
+        prefix: &[u32],
+    ) -> Result<Vec<ActionChoice<Self::Action>>, InvalidActionPrefix>
+    where
+        Self::Action: Clone + PartialEq,
+    {
+        let mut choices = Vec::<ActionChoice<Self::Action>>::new();
+        for action in self.offered_actions(observation) {
+            let path = self.action_path(observation, &action);
+            if path.len() <= prefix.len() || !path.starts_with(prefix) {
+                continue;
+            }
+            let component = path[prefix.len()];
+            let complete = path.len() == prefix.len() + 1;
+            if let Some(existing) = choices.iter_mut().find(|c| c.component == component) {
+                // A component may have only one complete action, or only
+                // descendants. Mixing them would make completion ambiguous.
+                if complete || existing.action.is_some() {
+                    return Err(InvalidActionPrefix);
+                }
+            } else {
+                choices.push(ActionChoice {
+                    component,
+                    action: complete.then_some(action),
+                });
+            }
+        }
+        if !prefix.is_empty() && choices.is_empty() {
+            return Err(InvalidActionPrefix);
+        }
+        Ok(choices)
+    }
+
     /// List legal choices for a player in a supplied simulation state.
     ///
     /// # Arguments
@@ -282,6 +355,24 @@ pub trait ForwardModel {
         state: &Self::State, // Shared borrow; caller retains state.
         player: PlayerId,    // Copied value.
     ) -> Result<f64, Self::Error>; // Score by value (f64 is Copy), or owned error.
+
+    /// Game-defined points or progress in the reported result. Games without a
+    /// meaningful score return None; this is separate from player_score, which
+    /// existing agents may use as a win/loss utility.
+    fn outcome_score(&self, _state: &Self::State) -> Result<Option<OutcomeScore>, Self::Error> {
+        Ok(None)
+    }
+
+    /// Combine every seat's outcome with the optional game score.
+    fn game_result(&self, state: &Self::State) -> Result<GameResult, Self::Error> {
+        let players = (0..self.player_count(state))
+            .map(|seat| self.player_result(state, PlayerId::new(seat)))
+            .collect::<Result<Vec<_>, _>>()?;
+        Ok(GameResult {
+            players,
+            score: self.outcome_score(state)?,
+        })
+    }
 }
 
 pub mod lines;

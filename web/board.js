@@ -1,6 +1,7 @@
 import { LoveLetterBoard } from "./loveletter-board.js";
 import { CantStopBoard } from "./cantstop-board.js";
 import { SushiGoBoard } from "./sushigo-board.js";
+import { TheGameBoard } from "./thegame-board.js";
 // Keep each board's controls and update their values and offered actions in place.
 const boards = new WeakMap();
 
@@ -96,7 +97,7 @@ class BoardRenderer {
 export function renderBoard(container, view, choose, { busy = false, sprites = null, emphasis = [] } = {}) {
   let board = boards.get(container);
   if (!board || board.game !== view.game || board.width !== view.board.width || board.height !== view.board.height || board.sprites !== sprites) {
-    board = view.game === "sushigo" ? new SushiGoBoard(container, view, sprites) : view.game === "loveletter" ? new LoveLetterBoard(container,view,sprites) : view.game === "cantstop" ? new CantStopBoard(container, view, sprites) : new BoardRenderer(container, view, sprites);
+    board = view.game === "thegame" ? new TheGameBoard(container, view, sprites) : view.game === "sushigo" ? new SushiGoBoard(container, view, sprites) : view.game === "loveletter" ? new LoveLetterBoard(container,view,sprites) : view.game === "cantstop" ? new CantStopBoard(container, view, sprites) : new BoardRenderer(container, view, sprites);
     boards.set(container, board);
   }
   board.update(view, choose, busy, emphasis);
